@@ -1,6 +1,10 @@
 
 <!-- Header -->
 <header class="is-sticky is-shrink is-boxed header-s1" id="header">
+{{--    <div id="app">--}}
+{{--        <example-component></example-component>--}}
+{{--    </div>--}}
+{{--    <script src="{{ mix('/js/app.js') }}"></script>--}}
     <div class="header-box">
         <div class="header-main">
             <div class="header-wrap">
