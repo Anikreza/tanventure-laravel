@@ -13,14 +13,11 @@
     <link rel="stylesheet" href="{{ asset('assets/css/vendor.bundle.css?ver=141') }}" >
     <link rel="stylesheet" href="{{ asset('assets/css/style.css?ver=141') }}" >
     <link rel="stylesheet" href="{{ asset('assets/css/theme.css?ver=141') }}" >
-
-
 </head>
 
 <body class="body-wider">
 @include('layouts.navbar')
 @yield('content')
 @include('layouts.footer')
-
 </body>
 </html>
