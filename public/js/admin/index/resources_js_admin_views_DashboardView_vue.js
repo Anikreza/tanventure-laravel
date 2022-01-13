@@ -104,6 +104,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 // Utilities
 
 
@@ -127,6 +128,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapState)('app', ['image', 'color'])), {}, {
     siteTitle: function siteTitle() {
       return "Laravel";
+    },
+    siteUrl: function siteUrl() {
+      return "http://127.0.0.1:8000";
     }
   }),
   mounted: function mounted() {
@@ -145,6 +149,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         link.active = false;
         return link;
       });
+    },
+    openHomePage: function openHomePage() {
+      window.open(this.siteUrl, '_blank');
     }
   })
 });
@@ -651,7 +658,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   metaInfo: function metaInfo() {
     return {
-      title: 'Meraner Morgen'
+      title: "Admin - ".concat("Laravel")
     };
   }
 });
@@ -676,21 +683,54 @@ var adminRoutes = [{
   slug: 'dashboard'
 }, {
   to: "#",
+  icon: 'mdi-briefcase-edit',
+  slug: 'articles',
+  subLinks: [{
+    to: "/".concat(adminPrefixSlug, "/categories"),
+    icon: 'mdi-tag-multiple',
+    slug: 'categories'
+  }, {
+    to: "/".concat(adminPrefixSlug, "/articles"),
+    icon: 'mdi-table-edit',
+    slug: 'articles'
+  }, {
+    to: "/".concat(adminPrefixSlug, "/create-article"),
+    icon: 'mdi-square-edit-outline',
+    slug: 'new-article'
+  }]
+}, {
+  to: "#",
+  icon: 'mdi-page-next',
+  slug: 'pages',
+  subLinks: [{
+    to: "/".concat(adminPrefixSlug, "/pages"),
+    icon: 'mdi-table-edit',
+    slug: 'pages'
+  }, {
+    to: "/".concat(adminPrefixSlug, "/create-page"),
+    icon: 'mdi-square-edit-outline',
+    slug: 'new-page'
+  }]
+}, {
+  to: "#",
   icon: 'mdi-cog',
   slug: 'settings',
   subLinks: [{
+    to: "/".concat(adminPrefixSlug, "/ad-spaces"),
+    icon: 'mdi-google-ads',
+    slug: 'ad-spaces'
+  }, {
+    to: "/".concat(adminPrefixSlug, "/widget-settings"),
+    icon: 'mdi-saw-blade',
+    slug: 'widget-settings'
+  }, {
+    to: "/".concat(adminPrefixSlug, "/system-settings"),
+    icon: 'mdi-cog',
+    slug: 'system-settings'
+  }, {
     to: "/".concat(adminPrefixSlug, "/user-profile"),
     icon: 'mdi-account',
-    slug: 'user_profile'
-  }, {
-    to: "#",
-    icon: '#',
-    slug: 'first_level',
-    subLinks: [{
-      to: "",
-      icon: 'mdi-arrow-right-bold ',
-      slug: 'second_level'
-    }]
+    slug: 'user-profile'
   }]
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (adminRoutes);
@@ -714,7 +754,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#core-footer {\n  z-index: 0;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#core-footer {\n    z-index: 0;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -804,7 +844,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/logo.png?df2ec7f39c4f308c20dc6e9cfa0d9713");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/logo.png?a6fbe95b36fd7b02f90ac7c59aa50694");
 
 /***/ }),
 
@@ -1615,7 +1655,8 @@ var render = function() {
                     "v-list-item",
                     [
                       _c("v-img", {
-                        attrs: { src: _vm.logo, height: "55", contain: "" }
+                        attrs: { src: _vm.logo, height: "55", contain: "" },
+                        on: { click: _vm.openHomePage }
                       })
                     ],
                     1
@@ -1829,48 +1870,6 @@ var render = function() {
                 [
                   _c("v-divider", { staticClass: "mt-3" }),
                   _vm._v(" "),
-                  _c(
-                    "v-flex",
-                    { attrs: { xs12: "" } },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "text-center body-2 text-uppercase filter-menu-item-label"
-                        },
-                        [_vm._v("Active Language")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-layout",
-                        {
-                          staticClass: "theme-changer",
-                          attrs: { "justify-center": "" }
-                        },
-                        _vm._l(_vm.$i18n.availableLocales, function(t) {
-                          return _c("v-avatar", {
-                            key: t,
-                            class: [
-                              t === _vm.$i18n.locale
-                                ? "color-active bg-color-success"
-                                : "bg-color-" + _vm.color
-                            ],
-                            attrs: { size: "50" },
-                            domProps: { textContent: _vm._s(t.toUpperCase()) },
-                            on: {
-                              click: function($event) {
-                                return _vm.setLocale(t)
-                              }
-                            }
-                          })
-                        }),
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
                   _c("v-divider", { staticClass: "mt-3" }),
                   _vm._v(" "),
                   _c(
@@ -2018,7 +2017,11 @@ var render = function() {
       _c("v-spacer"),
       _vm._v(" "),
       _c("span", { staticClass: "font-weight-light copyright" }, [
-        _vm._v("\n    ©\n    " + _vm._s(new Date().getFullYear()) + "\n    "),
+        _vm._v(
+          "\n        ©\n        " +
+            _vm._s(new Date().getFullYear()) +
+            "\n        "
+        ),
         _c(
           "a",
           {
@@ -2418,9 +2421,7 @@ var render = function() {
           )
         ],
         1
-      ),
-      _vm._v(" "),
-      _vm.$route.meta.name !== "Maps" ? _c("core-footer") : _vm._e()
+      )
     ],
     1
   )

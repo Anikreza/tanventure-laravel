@@ -27,7 +27,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
-console.log('url', ({"MIX_APP_URL":"http://127.0.0.1:8000","MIX_APP_NAME":"Laravel"}).APP_URL);
 
 /***/ }),
 

@@ -196,6 +196,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -638,7 +639,11 @@ var render = function() {
               _vm._g(
                 _vm._b(
                   {
-                    attrs: { "error-messages": errors, success: valid },
+                    attrs: {
+                      outlined: "",
+                      "error-messages": errors,
+                      success: valid
+                    },
                     model: {
                       value: _vm.inner_value,
                       callback: function($$v) {

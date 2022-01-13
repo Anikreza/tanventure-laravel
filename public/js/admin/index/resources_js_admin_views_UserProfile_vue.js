@@ -373,6 +373,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -460,6 +461,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -721,6 +723,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -731,8 +737,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       type: [Object, String],
       "default": ''
     },
+    disabled: {
+      type: Boolean,
+      "default": false
+    },
     value: {
-      type: Number,
       required: true
     },
     field: {
@@ -805,6 +814,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -2316,6 +2326,7 @@ var render = function() {
                     {
                       attrs: {
                         rules: _vm.rules,
+                        outlined: "",
                         label: _vm.$t("Fields." + _vm.fieldKey),
                         field: _vm.fieldKey,
                         readonly: "",
@@ -2407,6 +2418,7 @@ var render = function() {
           return [
             _c(
               "v-row",
+              { staticStyle: { "margin-left": "0", "margin-right": "0" } },
               [
                 _c(
                   "v-flex",
@@ -2428,6 +2440,7 @@ var render = function() {
                               id: "file-input",
                               clearable: "",
                               "show-size": "",
+                              outlined: "",
                               counter: "",
                               chips: "",
                               multiple: _vm.multiple
@@ -2529,33 +2542,43 @@ var render = function() {
           return [
             _c(
               "v-radio-group",
-              {
-                attrs: { row: _vm.isRow },
-                scopedSlots: _vm._u(
-                  [
-                    {
-                      key: "label",
-                      fn: function() {
-                        return [
-                          _c("div", [
-                            _vm._v(_vm._s(_vm.$t("Fields." + _vm.field)) + ":")
-                          ])
-                        ]
+              _vm._g(
+                _vm._b(
+                  {
+                    attrs: { row: _vm.isRow },
+                    scopedSlots: _vm._u(
+                      [
+                        {
+                          key: "label",
+                          fn: function() {
+                            return [
+                              _c("div", [
+                                _vm._v(
+                                  _vm._s(_vm.$t("Fields." + _vm.field)) + ":"
+                                )
+                              ])
+                            ]
+                          },
+                          proxy: true
+                        }
+                      ],
+                      null,
+                      true
+                    ),
+                    model: {
+                      value: _vm.inner_value,
+                      callback: function($$v) {
+                        _vm.inner_value = $$v
                       },
-                      proxy: true
+                      expression: "inner_value"
                     }
-                  ],
-                  null,
-                  true
-                ),
-                model: {
-                  value: _vm.inner_value,
-                  callback: function($$v) {
-                    _vm.inner_value = $$v
                   },
-                  expression: "inner_value"
-                }
-              },
+                  "v-radio-group",
+                  _vm.$attrs,
+                  false
+                ),
+                _vm.$listeners
+              ),
               [
                 _vm._v(" "),
                 _vm._l(_vm.options, function(option, i) {
@@ -2563,6 +2586,7 @@ var render = function() {
                     key: i,
                     attrs: {
                       label: option.label,
+                      disabled: _vm.disabled,
                       name: option.label,
                       value: option.value
                     }
@@ -2614,7 +2638,11 @@ var render = function() {
               _vm._g(
                 _vm._b(
                   {
-                    attrs: { "error-messages": errors, success: valid },
+                    attrs: {
+                      outlined: "",
+                      "error-messages": errors,
+                      success: valid
+                    },
                     model: {
                       value: _vm.inner_value,
                       callback: function($$v) {

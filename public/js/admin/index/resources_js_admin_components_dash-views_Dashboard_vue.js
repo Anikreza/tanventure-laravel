@@ -323,6 +323,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 // Plugins
 
 
@@ -477,17 +478,10 @@ __webpack_require__.r(__webpack_exports__);
       "default": function _default() {
         return [{
           sortable: false,
-          key: 'company'
+          key: 'title'
         }, {
           sortable: false,
-          key: 'candidate'
-        }, {
-          sortable: false,
-          key: 'total_screen_test'
-        }, {
-          sortable: false,
-          key: 'passed',
-          align: 'right'
+          key: 'view'
         }];
       }
     },
@@ -495,20 +489,14 @@ __webpack_require__.r(__webpack_exports__);
       type: Array,
       "default": function _default() {
         return [{
-          name: 'Google',
-          totalCandidate: '109',
-          totalScreenTest: '151',
-          passed: '51'
+          title: 'Mit Sanuslife macht Ewald Rieder ein gesundes Lebensgefühl zum',
+          view: '187'
         }, {
-          name: 'Microsoft',
-          totalCandidate: '111',
-          totalScreenTest: '178',
-          passed: '45'
+          title: 'Wir brauchen einen neuen Feminismus',
+          view: '111'
         }, {
-          name: 'Twitter',
-          totalCandidate: '187',
-          totalScreenTest: '254',
-          passed: '114'
+          title: 'Thomas Oliver Müller erhält für Club-Deal Chicago einen Award',
+          view: '107'
         }];
       }
     },
@@ -6469,9 +6457,7 @@ var render = function() {
                 },
                 [
                   _c("h4", { staticClass: "title font-weight-light" }, [
-                    _vm._v(
-                      _vm._s(_vm.$t("Pages.Dashboard.company_register_history"))
-                    )
+                    _vm._v("Last 7 Days Visit")
                   ]),
                   _vm._v(" "),
                   _c(
@@ -6479,18 +6465,16 @@ var render = function() {
                     { staticClass: "category d-inline-flex font-weight-light" },
                     [
                       _c("v-icon", { attrs: { color: "green", small: "" } }, [
-                        _vm._v("\n            mdi-arrow-up\n          ")
+                        _vm._v(
+                          "\n                        mdi-arrow-up\n                    "
+                        )
                       ]),
                       _vm._v(" "),
                       _c("span", { staticClass: "green--text" }, [
                         _vm._v("55%")
                       ]),
                       _vm._v(
-                        " \n          " +
-                          _vm._s(
-                            _vm.$t("Pages.Dashboard.registration_increase")
-                          ) +
-                          "\n        "
+                        " \n                    Visitor increased in last week\n                "
                       )
                     ],
                     1
@@ -6503,7 +6487,11 @@ var render = function() {
                       _c(
                         "v-icon",
                         { staticClass: "mr-2", attrs: { small: "" } },
-                        [_vm._v("\n            mdi-clock-outline\n          ")]
+                        [
+                          _vm._v(
+                            "\n                        mdi-clock-outline\n                    "
+                          )
+                        ]
                       ),
                       _vm._v(" "),
                       _c(
@@ -6514,13 +6502,13 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n             " +
+                            "\n                        " +
                               _vm._s(
                                 _vm.$t("Common.updated_ago", {
                                   time: "4 " + _vm.$t("Common.minute")
                                 })
                               ) +
-                              "\n          "
+                              "\n                    "
                           )
                         ]
                       )
@@ -6553,9 +6541,9 @@ var render = function() {
                 [
                   _c("h4", { staticClass: "title font-weight-light" }, [
                     _vm._v(
-                      "\n          " +
+                      "\n                    " +
                         _vm._s(_vm.$t("Pages.Dashboard.email_campaign")) +
-                        "\n        "
+                        "\n                "
                     )
                   ]),
                   _vm._v(" "),
@@ -6564,11 +6552,11 @@ var render = function() {
                     { staticClass: "category d-inline-flex font-weight-light" },
                     [
                       _vm._v(
-                        "\n          " +
+                        "\n                    " +
                           _vm._s(
                             _vm.$t("Pages.Dashboard.last_campaign_performance")
                           ) +
-                          "\n        "
+                          "\n                "
                       )
                     ]
                   ),
@@ -6580,7 +6568,11 @@ var render = function() {
                       _c(
                         "v-icon",
                         { staticClass: "mr-2", attrs: { small: "" } },
-                        [_vm._v("\n            mdi-clock-outline\n          ")]
+                        [
+                          _vm._v(
+                            "\n                        mdi-clock-outline\n                    "
+                          )
+                        ]
                       ),
                       _vm._v(" "),
                       _c(
@@ -6591,13 +6583,13 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n            " +
+                            "\n                        " +
                               _vm._s(
                                 _vm.$t("Common.updated_ago", {
                                   time: "10 " + _vm.$t("Common.hour")
                                 })
                               ) +
-                              "\n          "
+                              "\n                    "
                           )
                         ]
                       )
@@ -6627,7 +6619,7 @@ var render = function() {
                 },
                 [
                   _c("h3", { staticClass: "title font-weight-light" }, [
-                    _vm._v(_vm._s(_vm.$t("Pages.Dashboard.completed_task")))
+                    _vm._v("Push Notification")
                   ]),
                   _vm._v(" "),
                   _c(
@@ -6635,9 +6627,7 @@ var render = function() {
                     { staticClass: "category d-inline-flex font-weight-light" },
                     [
                       _vm._v(
-                        "\n          " +
-                          _vm._s(_vm.$t("Pages.Dashboard.latest_update")) +
-                          "\n        "
+                        "\n                    Sent by every 3 hours\n                "
                       )
                     ]
                   ),
@@ -6649,7 +6639,11 @@ var render = function() {
                       _c(
                         "v-icon",
                         { staticClass: "mr-2", attrs: { small: "" } },
-                        [_vm._v("\n            mdi-clock-outline\n          ")]
+                        [
+                          _vm._v(
+                            "\n                        mdi-clock-outline\n                    "
+                          )
+                        ]
                       ),
                       _vm._v(" "),
                       _c(
@@ -6657,13 +6651,7 @@ var render = function() {
                         { staticClass: "caption grey--text font-weight-light" },
                         [
                           _vm._v(
-                            "\n             " +
-                              _vm._s(
-                                _vm.$t("Pages.Dashboard.campaign_sent", {
-                                  time: "10 " + _vm.$t("Common.minute")
-                                })
-                              ) +
-                              "\n          "
+                            "\n                        Sent 10 minute ago\n                    "
                           )
                         ]
                       )
@@ -6684,13 +6672,11 @@ var render = function() {
               _c("material-stats-card", {
                 attrs: {
                   color: _vm.$store.state.app.color,
-                  icon: "mdi-currency-eur",
-                  title: _vm.$t("Pages.Dashboard.revenue"),
-                  value: "€34,245",
+                  icon: "mdi-book-multiple",
+                  title: "Total Articles",
+                  value: "551",
                   "sub-icon": "mdi-calendar",
-                  "sub-text": _vm.$t("Pages.Dashboard.last_()_hours", {
-                    time: 24
-                  })
+                  "sub-text": "5 article published in last 24 hour"
                 }
               })
             ],
@@ -6704,15 +6690,12 @@ var render = function() {
               _c("material-stats-card", {
                 attrs: {
                   color: _vm.$store.state.app.color,
-                  icon: "mdi-account-box-multiple",
-                  title: _vm.$t("Common.companies"),
-                  value: "50",
+                  icon: "mdi-account-group",
+                  title: "Total Visit This Month",
+                  value: "60000",
                   "sub-icon": "mdi-account-check",
                   "sub-icon-color": "success",
-                  "sub-text": _vm.$t("Pages.Dashboard.companies_joined", {
-                    company: 5,
-                    time: "24 " + _vm.$t("Common.hour")
-                  })
+                  "sub-text": "2500 people visited in last 24 hours"
                 }
               })
             ],
@@ -6726,13 +6709,11 @@ var render = function() {
               _c("material-stats-card", {
                 attrs: {
                   color: _vm.$store.state.app.color,
-                  icon: "mdi-progress-question",
-                  title: _vm.$t("Common.questions"),
-                  value: "75",
-                  "sub-icon": "mdi-code-tags",
-                  "sub-text": _vm.$t("Pages.Dashboard.with_supported_skill", {
-                    skill: 5
-                  })
+                  icon: "mdi-tag-multiple",
+                  title: "Total Categories",
+                  value: "6",
+                  "sub-icon": "mdi-video",
+                  "sub-text": "7 Video published"
                 }
               })
             ],
@@ -6746,14 +6727,11 @@ var render = function() {
               _c("material-stats-card", {
                 attrs: {
                   color: _vm.$store.state.app.color,
-                  icon: "mdi-monitor-screenshot",
-                  title: _vm.$t("Common.screen_test"),
-                  value: "+245",
+                  icon: "mdi-account-multiple-check ",
+                  title: "Unique User Visited",
+                  value: "51550",
                   "sub-icon": "mdi-update",
-                  "sub-text": _vm.$t(
-                    "Pages.Dashboard.average_screen_test_weekly",
-                    { avg: 5 }
-                  )
+                  "sub-text": "41 unique user in last 7 days"
                 }
               })
             ],
@@ -6767,10 +6745,8 @@ var render = function() {
               _c("SimpleTable", {
                 attrs: {
                   color: _vm.$store.state.app.color,
-                  title: _vm.$t("Pages.Dashboard.screening_summary"),
-                  "sub-title": _vm.$t("Pages.Dashboard.last_screening", {
-                    time: "20th Jun, 2020"
-                  })
+                  title: "Most Popular Articles",
+                  "sub-title": "Last Updated at " + new Date().toDateString()
                 }
               })
             ],
@@ -6814,7 +6790,9 @@ var render = function() {
                               _c("v-icon", { staticClass: "mr-2" }, [
                                 _vm._v("mdi-bug")
                               ]),
-                              _vm._v("\n              Bugs\n            ")
+                              _vm._v(
+                                "\n                            Bugs\n                        "
+                              )
                             ],
                             1
                           ),
@@ -6826,7 +6804,9 @@ var render = function() {
                               _c("v-icon", { staticClass: "mr-2" }, [
                                 _vm._v("mdi-code-tags")
                               ]),
-                              _vm._v("\n              Website\n            ")
+                              _vm._v(
+                                "\n                            Website\n                        "
+                              )
                             ],
                             1
                           ),
@@ -6837,7 +6817,9 @@ var render = function() {
                               _c("v-icon", { staticClass: "mr-2" }, [
                                 _vm._v("mdi-cloud")
                               ]),
-                              _vm._v("\n              Server\n            ")
+                              _vm._v(
+                                "\n                            Server\n                        "
+                              )
                             ],
                             1
                           )
@@ -6895,7 +6877,7 @@ var render = function() {
                                     [
                                       _c("v-list-item-title", [
                                         _vm._v(
-                                          '\n                    Sign contract for "What are conference organized afraid of?"\n                  '
+                                          '\n                                        Sign contract for "What are conference organized afraid of?"\n                                    '
                                         )
                                       ])
                                     ],
@@ -6974,7 +6956,7 @@ var render = function() {
                                     [
                                       _c("v-list-item-title", [
                                         _vm._v(
-                                          "\n                    Lines From Great Russian Literature? Or E-mails From My Boss?\n                  "
+                                          "\n                                        Lines From Great Russian Literature? Or E-mails From My Boss?\n                                    "
                                         )
                                       ])
                                     ],
@@ -7053,7 +7035,7 @@ var render = function() {
                                     [
                                       _c("v-list-item-title", [
                                         _vm._v(
-                                          "\n                    Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept\n                    through metro Detroit\n                  "
+                                          "\n                                        Flooded: One year later, assessing what was lost and what was found when a\n                                        ravaging rain swept\n                                        through metro Detroit\n                                    "
                                         )
                                       ])
                                     ],
@@ -7168,9 +7150,9 @@ var render = function() {
                             { key: header.key, class: [header.class || ""] },
                             [
                               _vm._v(
-                                "\n            " +
-                                  _vm._s(_vm.$t("Common." + header.key)) +
-                                  "\n          "
+                                "\n                        " +
+                                  _vm._s(header.key.toUpperCase()) +
+                                  "\n                    "
                               )
                             ]
                           )
