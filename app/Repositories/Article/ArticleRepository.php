@@ -43,11 +43,11 @@ class ArticleRepository implements ArticleInterface
             ->paginate($perPage);
     }
 
-    private function baseQuery(int $categoryId = 1)
+    private function baseQuery(int $categoryId = 0)
     {
         return $this->model->whereHas('categories', function ($q) use ($categoryId) {
             $q->where('is_published', '=', 0);
-            $q->when($categoryId !== 1, function ($sq) use ($categoryId) {
+            $q->when($categoryId !== 0, function ($sq) use ($categoryId) {
                 $sq->where('category_id', $categoryId);
             });
         });
@@ -118,5 +118,15 @@ class ArticleRepository implements ArticleInterface
             ->inRandomOrder()
             ->limit($limit)
             ->get();
+    }
+
+    public function searchArticle($query, $perPage)
+    {
+        return $this->baseQuery(0)
+            ->select('id', 'title', 'slug', 'published', 'viewed', 'image', 'featured')
+            ->where('title', 'LIKE', '%' . $query . '%')
+            ->latest()
+            ->limit(5)
+            ->paginate($perPage);
     }
 }

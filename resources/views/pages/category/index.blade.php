@@ -14,9 +14,7 @@
     <link rel="stylesheet" href="assets/css/style.css?ver=141">
     <link rel="stylesheet" href="assets/css/theme.css?ver=141">
 
-
 </head>
-
 <body class="body-wider">
 
 <div class="section blog section-x tc-grey">

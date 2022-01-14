@@ -23,8 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [WebsiteController::class, 'index'])->name('home');
 Route::get('/{slug}', [WebsiteController::class, 'articleDetails'])->name('article-details');
 Route::get('/category/{slug}', [WebsiteController::class, 'categoryDetails'])->name('category');
-Route::get('/send-notification', [NotificationController::class, 'sendNotification'])->name('send.notification');
-
+Route::get('/search', [WebsiteController::class, 'searchArticle'])->name('search');
 /**
  * ADMIN ROUTES
  */

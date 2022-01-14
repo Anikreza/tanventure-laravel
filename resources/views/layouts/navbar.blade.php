@@ -42,9 +42,9 @@
 
                 <!-- header-search -->
                 <div class="header-search">
-                    <form role="search" method="POST" class="search-form" action="#">
+                    <form class="search-form" action="{{ route('search') }}">
                         <div class="search-group">
-                            <input type="text" class="input-search" placeholder="Search ...">
+                            <input type="text" class="input-search" placeholder="Search.." title="search"  name="query" required>
                             <button class="search-submit" type="submit"><i class="icon ti-search"></i></button>
                         </div>
                     </form>

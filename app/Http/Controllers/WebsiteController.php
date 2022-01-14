@@ -67,6 +67,17 @@ class WebsiteController extends Controller
         return view('pages.category.index', compact('segments', 'category','categoryArticles'));
     }
 
+    public function searchArticle(Request $request)
+    {
+        $searchTerm = $request->input('query');
+        $searchedArticles = $this->articleRepository->searchArticle($searchTerm, 5);
+        $segments = [
+            ['name' => $searchTerm],
+        ];
+
+        return view('pages.search.index', compact('segments', 'searchTerm', 'searchedArticles'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -132,4 +143,6 @@ class WebsiteController extends Controller
     {
         //
     }
+
+
 }
