@@ -43,7 +43,15 @@ class WebsiteController extends Controller
         $article = $this->articleRepository->getArticle($slug, true);
         $category = $article['categories'][0];
         $similarArticles = $this->articleRepository->getSimilarArticles($category['id'], 2);
-
+        $segments = [
+            [
+                'name' => $article['categories'][0]['name'],
+                'url' => route('category', [
+                    'slug' => $category['slug']
+                ])
+            ],
+            ['name' => $article['title'], 'url' => url($slug)]
+        ];
         $cacheKey = request()->ip() . $slug;
         \Cache::remember($cacheKey, 60, function () use ($article) {
             $article->viewed = $article->viewed + 1;
@@ -51,8 +59,9 @@ class WebsiteController extends Controller
             return true;
         });
 
-        return view('pages.articleDetail.index', compact('article','similarArticles','category'));
+        return view('pages.articleDetail.index', compact('article', 'similarArticles', 'category','segments'));
     }
+
     public function categoryDetails($slug)
     {
         $category = Category::where('slug', $slug)->first();
@@ -64,13 +73,13 @@ class WebsiteController extends Controller
         ];
         $categoryArticles = $this->articleRepository->paginateByCategoryWithFilter(5, $category->id);
 
-        return view('pages.category.index', compact('segments', 'category','categoryArticles'));
+        return view('pages.category.index', compact('segments', 'category', 'categoryArticles'));
     }
 
     public function searchArticle(Request $request)
     {
         $searchTerm = $request->input('query');
-        $searchedArticles = $this->articleRepository->searchArticle($searchTerm, 5);
+        $searchedArticles = $this->articleRepository->searchArticles($searchTerm, 3);
         $segments = [
             ['name' => $searchTerm],
         ];
@@ -143,6 +152,4 @@ class WebsiteController extends Controller
     {
         //
     }
-
-
 }

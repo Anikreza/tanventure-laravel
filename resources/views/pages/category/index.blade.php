@@ -1,25 +1,10 @@
 @extends('master')
 @section('content')
-<head>
-    <meta charset="utf-8">
-    <meta name="author" content="Softnio">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <!-- Fav Icon  -->
-    <link rel="shortcut icon" href="images/favicon.png">
-    <!-- Site Title  -->
-    <title>Genox - Creative Agency &amp; Digital Web Agency Multipurpose HTML Template</title>
-    <!-- Bundle and Base CSS -->
-    <link rel="stylesheet" href="assets/css/vendor.bundle.css?ver=141">
-    <link rel="stylesheet" href="assets/css/style.css?ver=141">
-    <link rel="stylesheet" href="assets/css/theme.css?ver=141">
-
-</head>
 <body class="body-wider">
 
 <div class="section blog section-x tc-grey">
     <div class="container">
-                <h4 style="color: grey">Latest Blogs On {{$category->name}}</h4>
+                <h5 style="color: grey">Latest Blogs On {{$category->name}}</h5>
         <br/>
         <div class="row gutter-vr-30px">
                 <div class="col-md-8">
@@ -32,7 +17,7 @@
                                         'image' => $article->image,
                                         'title' => $article->title,
                                         'slug' => $article->slug,
-                                        'excerpt' => $article->excerpt,
+                                        'description' => $article->description,
                                         'category' => $category->name,
                                     ])
                             </div>

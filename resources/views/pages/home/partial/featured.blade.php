@@ -12,9 +12,10 @@
                         @include('component.card.featuredCard',
                             [
                                 'image' => $article['image'],
-                                'title' => $article['title'],
+                                'description' => $article['description'],
+                                'title'=>$article['title'],
                                 'slug' => $article['slug'],
-                                'category' => $category ?? $article['categories'][0]['name'],
+                                'category' => $category ?? $article['categories'][0],
                             ])
                     </div><!-- .post -->
                 </div><!-- .col -->

@@ -5,7 +5,7 @@
             <div class="header-wrap">
                 <!-- Logo  -->
                 <div class="header-logo logo">
-                    <a href="/" class="logo-link">
+                    <a href="{{ route('home') }}" class="logo-link">
                         <img class="logo-white" src="{{asset("images/logo.png")}}" alt="logo">
                     </a>
                 </div>
@@ -33,10 +33,10 @@
                                 </li>
                             @endforeach
                         </ul>
-                            <ul class="menu-btns">
-                                <li><a href="" class="btn search search-trigger"><i class="icon ti-search "></i></a>
-                                </li>
-                            </ul>
+                        <ul class="menu-btns">
+                            <li><a href="" class="btn search search-trigger"><i class="icon ti-search "></i></a>
+                            </li>
+                        </ul>
                     </nav>
                 </div><!-- .header-navbar -->
 
@@ -44,7 +44,8 @@
                 <div class="header-search">
                     <form class="search-form" action="{{ route('search') }}">
                         <div class="search-group">
-                            <input type="text" class="input-search" placeholder="Search.." title="search"  name="query" required>
+                            <input type="text" class="input-search" placeholder="Search.." name="query"
+                                   required>
                             <button class="search-submit" type="submit"><i class="icon ti-search"></i></button>
                         </div>
                     </form>

@@ -23,7 +23,7 @@
         </div>
         <h3><a href="{{ route('article-details', ['slug' => $slug]) }}">{{$title}}</a></h3>
         <div class="content">
-            <p style="max-height: 150px; overflow: hidden;">{{$description}}</p>
+                        <p style="max-height: 150px; overflow: hidden;">{{$description}}</p>
         </div>
         <a href="{{ route('article-details', ['slug' => $slug]) }}" class="btn-primary btn-arrow">Read More</a>
     </div>

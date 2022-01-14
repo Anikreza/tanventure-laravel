@@ -4,7 +4,12 @@
     </a>
 </div>
 <div class="post-content">
-    <p class="post-tag">DECEMBER 08, 2018</p>
-    <h4><a href="/articleDetail">{{$title}}</a></h4>
-    <a href="/articleDetail" class="btn btn-arrow">Read More</a>
+    <ul class="post-tag">
+        <li><a href="">
+                <span>DECEMBER 08, 2018</span></a>
+        </li>
+    </ul>
+    <h4><a href="{{ route('article-details', ['slug' => $slug]) }}">{{$title}}</a></h4>
+    <p style="height: 55px; overflow: hidden; margin-top: 10px"> {{$description}}</p>
+    <a href="{{ route('article-details', ['slug' => $slug]) }}" class="btn-primary btn-arrow">Read More</a>
 </div>

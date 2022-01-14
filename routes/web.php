@@ -20,10 +20,10 @@ use Illuminate\Support\Facades\Route;
  * PUBLIC ROUTES
  */
 
-Route::get('/', [WebsiteController::class, 'index'])->name('home');
+Route::get('/home', [WebsiteController::class, 'index'])->name('home');
 Route::get('/{slug}', [WebsiteController::class, 'articleDetails'])->name('article-details');
 Route::get('/category/{slug}', [WebsiteController::class, 'categoryDetails'])->name('category');
-Route::get('/search', [WebsiteController::class, 'searchArticle'])->name('search');
+Route::get('/', [WebsiteController::class, 'searchArticle'])->name('search');
 /**
  * ADMIN ROUTES
  */

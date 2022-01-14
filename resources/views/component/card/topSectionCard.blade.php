@@ -21,7 +21,7 @@
             </div><!-- author -->
             <div class="post-tag">
                 <ul class="post-cat">
-                    <li><a href="#"><em class="icon ti-bookmark"></em> {{$category}}</a></li>
+                    <li><a href="{{ route('category', ['slug' =>  $category->slug]) }}"><em class="icon ti-bookmark"></em> {{$category->name}}</a></li>
                 </ul>
             </div><!-- .post-tag -->
         </div>

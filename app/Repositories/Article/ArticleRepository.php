@@ -38,16 +38,16 @@ class ArticleRepository implements ArticleInterface
     public function paginateByCategoryWithFilter(int $perPage, int $categoryId)
     {
         return $this->baseQuery($categoryId)
-            ->select('id', 'title', 'slug', 'featured', 'published', 'image', 'viewed')
+            ->select('id', 'title', 'slug', 'featured', 'published', 'image', 'viewed','description')
             ->latest()
             ->paginate($perPage);
     }
 
-    private function baseQuery(int $categoryId = 0)
+    private function baseQuery(int $categoryId = 1)
     {
         return $this->model->whereHas('categories', function ($q) use ($categoryId) {
             $q->where('is_published', '=', 0);
-            $q->when($categoryId !== 0, function ($sq) use ($categoryId) {
+            $q->when($categoryId !== 1, function ($sq) use ($categoryId) {
                 $sq->where('category_id', $categoryId);
             });
         });
@@ -56,7 +56,7 @@ class ArticleRepository implements ArticleInterface
     public function publishedArticles(int $categoryId, int $limit)
     {
         return $this->baseQuery($categoryId)
-            ->select('id', 'title', 'slug', 'featured', 'published', 'image', 'viewed')
+            ->select('id', 'title', 'slug', 'featured', 'published', 'image', 'viewed','description')
             ->with('favorites')
             ->with('categories')
             ->latest()
@@ -67,7 +67,7 @@ class ArticleRepository implements ArticleInterface
     public function publishedFeaturedArticles(int $categoryId, int $limit)
     {
         return $this->baseQuery($categoryId)
-            ->select('id', 'title', 'slug', 'featured', 'published', 'image', 'viewed')
+            ->select('id', 'title', 'slug', 'featured', 'published', 'image', 'viewed','description')
             ->where('featured', 1)
             ->latest()
             ->limit($limit)
@@ -77,7 +77,7 @@ class ArticleRepository implements ArticleInterface
     public function mostReadArticles(int $categoryId, int $limit)
     {
         return $this->baseQuery($categoryId)
-            ->select('id', 'title', 'slug', 'featured', 'published', 'image', 'viewed')
+            ->select('id', 'title', 'slug', 'featured', 'published', 'image', 'viewed','description')
             ->limit($limit)
             ->orderBy('viewed', 'desc')
             ->get();
@@ -114,16 +114,16 @@ class ArticleRepository implements ArticleInterface
     public function getSimilarArticles($categoryId, $limit)
     {
         return $this->baseQuery($categoryId)
-            ->select('id', 'title', 'slug', 'published', 'viewed', 'image', 'featured')
+            ->select('id', 'title', 'slug', 'published', 'viewed', 'image', 'featured','description')
             ->inRandomOrder()
             ->limit($limit)
             ->get();
     }
 
-    public function searchArticle($query, $perPage)
+    public function searchArticles($query, $perPage)
     {
-        return $this->baseQuery(0)
-            ->select('id', 'title', 'slug', 'published', 'viewed', 'image', 'featured')
+        return $this->baseQuery(1)
+            ->select('id', 'title', 'slug', 'published', 'viewed', 'image', 'featured','description')
             ->where('title', 'LIKE', '%' . $query . '%')
             ->latest()
             ->limit(5)

@@ -12,7 +12,7 @@
                                 'image' => $article['image'],
                                 'title' => $article['title'],
                                 'slug' => $article['slug'],
-                                'category' => $category ?? $article['categories'][0]['name'],
+                                'category' => $category ?? $article['categories'][0],
                             ])
                     </div>
                 </div><!-- .col -->

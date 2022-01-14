@@ -1,4 +1,3 @@
-
 <div class="container">
     <br/>
     <br/>
@@ -11,12 +10,13 @@
         @foreach($mostReadArticles as $article)
             <div class="col-sm-8 col-md-4 text-center">
                 <div class="post post-alt">
-                    @include('component.card.featuredCard',
+                    @include('component.card.mostReadCard',
                         [
                             'image' => $article['image'],
-                            'title' => $article['title'],
+                            'description' => $article['description'],
+                            'title'=>$article['title'],
                             'slug' => $article['slug'],
-                            'category' => $category ?? $article['categories'][0]['name'],
+                            'category' => $category ?? $article['categories'][0],
                         ])
                 </div><!-- .post -->
             </div><!-- .col -->

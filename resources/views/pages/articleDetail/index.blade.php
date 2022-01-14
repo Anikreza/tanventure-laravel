@@ -2,6 +2,7 @@
 @section('content')
 <div class="section blog section-x">
     <div class="container">
+
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="post post-full post-details">
@@ -32,7 +33,7 @@
                                 </div>
                                 <div class="post-tag d-flex">
                                     <ul class="post-cat">
-                                        <li><a href="#"><em class="icon ti-bookmark"></em>
+                                        <li><a href="{{ route('category', ['slug' =>  $category->slug]) }}"><em class="icon ti-bookmark"></em>
                                                 <span>{{ $category->name }}</span></a></li>
                                     </ul>
                                 </div>

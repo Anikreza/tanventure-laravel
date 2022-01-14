@@ -3,7 +3,7 @@
     <body class="body-wider">
     <div class="section blog section-x tc-grey">
         <div class="container">
-            <h4 style="color: grey">Query: {{$searchTerm}}</h4>
+            <h5 style="color: grey">Query: {{$searchTerm}}</h5>
             <br/>
             <div class="row gutter-vr-30px">
                 <div class="col-md-8">
@@ -11,13 +11,13 @@
                         <div class="post post-full">
                             <div class="col-md-10">
                                 <div class="post post-full post-details">
-                                    @include('component.card.categoryArticles',
+                                    @include('component.card.searchCard',
                                         [
                                             'image' => $article->image,
                                             'title' => $article->title,
                                             'slug' => $article->slug,
-                                            'excerpt' => $article->excerpt,
-                                            'category' => $article->categories[0]->name,
+                                            'category' => $article['categories'][0]['name'],
+                                            'description'=>$article['description']
                                         ])
                                 </div>
                             </div>
@@ -34,8 +34,23 @@
                 </div><!-- .col -->
                 <div class="col-md-4 pl-lg-4">
                     <div class="sidebar">
+
+                        <div class="wgs wgs-sidebar bg-secondary wgs-tags">
+                            <h3 class="wgs-heading">Tags</h3>
+                            <div class="wgs-content">
+                                <ul class="tag-list">
+                                    <li><a href="">Shipping</a></li>
+                                    <li><a href="">Cargo</a></li>
+                                    <li><a href="">Delivery</a></li>
+                                    <li><a href="">Safe</a></li>
+                                    <li><a href="">Fast</a></li>
+                                    <li><a href="">sea</a></li>
+                                </ul>
+                            </div>
+                        </div><!-- .wgs -->
+
                         <div class="wgs wgs-sidebar bg-secondary wgs-recents">
-                            <h3 class="wgs-heading">Recent News</h3>
+                            <h3 class="wgs-heading">Similar Posts</h3>
                             <div class="wgs-content">
                                 <ul class="post-recent">
                                     <li>
@@ -55,6 +70,7 @@
                                 </ul>
                             </div>
                         </div><!-- .wgs -->
+
                         <div class="wgs wgs-sidebar bg-secondary wgs-archive">
                             <h3 class="wgs-heading">Archives</h3>
                             <div class="wgs-content">
@@ -67,19 +83,7 @@
                                 </ul>
                             </div>
                         </div><!-- .wgs -->
-                        <div class="wgs wgs-sidebar bg-secondary wgs-tags">
-                            <h3 class="wgs-heading">Tags</h3>
-                            <div class="wgs-content">
-                                <ul class="tag-list">
-                                    <li><a href="">Shipping</a></li>
-                                    <li><a href="">Cargo</a></li>
-                                    <li><a href="">Delivery</a></li>
-                                    <li><a href="">Safe</a></li>
-                                    <li><a href="">Fast</a></li>
-                                    <li><a href="">sea</a></li>
-                                </ul>
-                            </div>
-                        </div><!-- .wgs -->
+
                     </div><!-- .sidebar -->
                 </div><!-- .col -->
             </div><!-- .row -->
