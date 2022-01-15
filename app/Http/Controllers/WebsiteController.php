@@ -20,7 +20,6 @@ class WebsiteController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-
     private $articleRepository;
     private $baseSeoData;
     private $homePageSeoData;
@@ -57,8 +56,11 @@ class WebsiteController extends Controller
         $publishedArticles = $this->articleRepository->publishedArticles(1, 4);
         $featuredArticles = $this->articleRepository->publishedFeaturedArticles(1, 3);
         $mostReadArticles = $this->articleRepository->mostReadArticles(1, 3);
-        SEOMeta::setTitle('myAppHomePage',false);
-//        $this->seo($this->baseSeoData);
+        $appName = env('APP_NAME');
+        $this->baseSeoData['title'] = "$appName";
+        $this->baseSeoData['description'] = "$appName";
+        $this->baseSeoData['keywords'] = "$appName";
+        $this->seo($this->baseSeoData);
 
         return view('pages.home.index',
             compact(
@@ -90,6 +92,12 @@ class WebsiteController extends Controller
             return true;
         });
 
+        $appName = env('APP_NAME');
+        $this->baseSeoData['title'] = " $article->title - $appName";
+        $this->baseSeoData['description'] = " $article->title - $appName";
+        $this->baseSeoData['keywords'] = " $article->title - $appName";
+        $this->seo($this->baseSeoData);
+
         return view('pages.articleDetail.index', compact('article', 'similarArticles', 'category','segments'));
     }
 
@@ -104,16 +112,14 @@ class WebsiteController extends Controller
         ];
         $categoryArticles = $this->articleRepository->paginateByCategoryWithFilter(5, $category->id);
 
-        SEOMeta::setTitle("myAppHome |{$category->name}| {$category->keywords}",false);
-        SEOMeta::setDescription("{$category->excerpt}");
-        SEOMeta::setKeywords("{$category->keywords}");
-//        // SEO META INFO
+       // SEO META INFO
 //        $name = empty($category->meta_title) ? $category->name : $category->meta_title;
 //        $title = request()->has('page') ? $name . " (Page " . request('page') . ')' : $name;
-//        $this->baseSeoData['title'] = "{$title} | {$this->baseSeoData['app_name']}";
-//        $this->baseSeoData['description'] = "{$category->excerpt}";
-//        $this->baseSeoData['keywords'] = "{$category->keywords}";
-//        $this->seo($this->baseSeoData);
+        $appName = env('APP_NAME');
+        $this->baseSeoData['title'] = "{$appName}- {$category->name}- {$category->keywords}";
+        $this->baseSeoData['description'] = "{$category->excerpt}";
+        $this->baseSeoData['keywords'] = "{$category->keywords}";
+        $this->seo($this->baseSeoData);
 
         return view('pages.category.index', compact('segments', 'category', 'categoryArticles'));
     }
@@ -123,15 +129,13 @@ class WebsiteController extends Controller
         $searchTerm = $request->input('query');
         $searchedArticles = $this->articleRepository->searchArticles($searchTerm, 3);
 
-        $this->baseSeoData['title'] = "{$searchTerm}";
-        $this->seo($this->baseSeoData);
-
         $segments = [
             ['name' => $searchTerm],
         ];
 
         // SEO META INFO
-        $this->baseSeoData['title'] = "{$searchTerm}";
+        $appName = env('APP_NAME');
+        $this->baseSeoData['title'] = "$searchTerm - $appName";
         $this->seo($this->baseSeoData);
 
         return view('pages.search.index', compact('segments', 'searchTerm', 'searchedArticles'));
@@ -206,9 +210,9 @@ class WebsiteController extends Controller
     private function seo($data)
     {
         SEOMeta::setTitle($data['title'], false);
-//        SEOMeta::setDescription($data['description']);
+        SEOMeta::setDescription($data['description']);
 //        SEOMeta::addMeta('name', $value = null, $name = 'name');
-    //    SEOMeta::setKeywords($data['keywords']);
+        SEOMeta::setKeywords($data['keywords']);
 //        SEOMeta::setRobots($data['robots']);
         SEOMeta::setCanonical(url()->full());
 

@@ -11,6 +11,7 @@
         "php": "^7.4|^8.0",
         "ext-curl": "*",
         "ext-json": "*",
+        "anlutro/l4-settings": "^1.0",
         "artesaos/seotools": "^0.20.2",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",

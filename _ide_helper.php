@@ -17178,6 +17178,138 @@
      
 }
 
+    namespace anlutro\LaravelSettings { 
+            /**
+     * 
+     *
+     */ 
+        class Facade {
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getDefaultDriver()
+        {
+                        /** @var \anlutro\LaravelSettings\SettingsManager $instance */
+                        return $instance->getDefaultDriver();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function createJsonDriver()
+        {
+                        /** @var \anlutro\LaravelSettings\SettingsManager $instance */
+                        return $instance->createJsonDriver();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function createDatabaseDriver()
+        {
+                        /** @var \anlutro\LaravelSettings\SettingsManager $instance */
+                        return $instance->createDatabaseDriver();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function createMemoryDriver()
+        {
+                        /** @var \anlutro\LaravelSettings\SettingsManager $instance */
+                        return $instance->createMemoryDriver();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function createArrayDriver()
+        {
+                        /** @var \anlutro\LaravelSettings\SettingsManager $instance */
+                        return $instance->createArrayDriver();
+        }
+                    /**
+         * Get a driver instance.
+         *
+         * @param string|null $driver
+         * @return mixed 
+         * @throws \InvalidArgumentException
+         * @static 
+         */ 
+        public static function driver($driver = null)
+        {            //Method inherited from \Illuminate\Support\Manager         
+                        /** @var \anlutro\LaravelSettings\SettingsManager $instance */
+                        return $instance->driver($driver);
+        }
+                    /**
+         * Register a custom driver creator Closure.
+         *
+         * @param string $driver
+         * @param \Closure $callback
+         * @return \anlutro\LaravelSettings\SettingsManager 
+         * @static 
+         */ 
+        public static function extend($driver, $callback)
+        {            //Method inherited from \Illuminate\Support\Manager         
+                        /** @var \anlutro\LaravelSettings\SettingsManager $instance */
+                        return $instance->extend($driver, $callback);
+        }
+                    /**
+         * Get all of the created "drivers".
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getDrivers()
+        {            //Method inherited from \Illuminate\Support\Manager         
+                        /** @var \anlutro\LaravelSettings\SettingsManager $instance */
+                        return $instance->getDrivers();
+        }
+                    /**
+         * Get the container instance used by the manager.
+         *
+         * @return \Illuminate\Contracts\Container\Container 
+         * @static 
+         */ 
+        public static function getContainer()
+        {            //Method inherited from \Illuminate\Support\Manager         
+                        /** @var \anlutro\LaravelSettings\SettingsManager $instance */
+                        return $instance->getContainer();
+        }
+                    /**
+         * Set the container instance used by the manager.
+         *
+         * @param \Illuminate\Contracts\Container\Container $container
+         * @return \anlutro\LaravelSettings\SettingsManager 
+         * @static 
+         */ 
+        public static function setContainer($container)
+        {            //Method inherited from \Illuminate\Support\Manager         
+                        /** @var \anlutro\LaravelSettings\SettingsManager $instance */
+                        return $instance->setContainer($container);
+        }
+                    /**
+         * Forget all of the resolved driver instances.
+         *
+         * @return \anlutro\LaravelSettings\SettingsManager 
+         * @static 
+         */ 
+        public static function forgetDrivers()
+        {            //Method inherited from \Illuminate\Support\Manager         
+                        /** @var \anlutro\LaravelSettings\SettingsManager $instance */
+                        return $instance->forgetDrivers();
+        }
+         
+    }
+     
+}
+
     namespace Facade\Ignition\Facades { 
             /**
      * Class Flare.
@@ -21126,6 +21258,7 @@ namespace  {
             class JsonLdMulti extends \Artesaos\SEOTools\Facades\JsonLdMulti {}
             class SEO extends \Artesaos\SEOTools\Facades\SEOTools {}
             class Share extends \Jorenvh\Share\ShareFacade {}
+            class Setting extends \anlutro\LaravelSettings\Facade {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
             class Image extends \Intervention\Image\Facades\Image {}
      

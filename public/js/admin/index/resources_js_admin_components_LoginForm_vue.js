@@ -156,7 +156,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   metaInfo: function metaInfo() {
     return {
       title: this.$t('Home.siteName', {
-        siteName: "Laravel"
+        siteName: "Demo BlogSite"
       }) + ' | ' + this.$t('Pages.Login.login')
     };
   }

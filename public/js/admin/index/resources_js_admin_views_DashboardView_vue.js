@@ -127,7 +127,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapState)('app', ['image', 'color'])), {}, {
     siteTitle: function siteTitle() {
-      return "Laravel";
+      return "Demo BlogSite";
     },
     siteUrl: function siteUrl() {
       return "http://127.0.0.1:8000";
@@ -333,7 +333,7 @@ __webpack_require__.r(__webpack_exports__);
         name: 'GitHub',
         Link: ''
       }],
-      siteTitle: "Laravel"
+      siteTitle: "Demo BlogSite"
     };
   }
 });
@@ -658,7 +658,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   metaInfo: function metaInfo() {
     return {
-      title: "Admin - ".concat("Laravel")
+      title: "Admin - ".concat("Demo BlogSite")
     };
   }
 });
