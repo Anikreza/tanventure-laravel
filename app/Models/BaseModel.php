@@ -21,4 +21,6 @@ class BaseModel extends Model
             $model->attributes['updated_at'] = Carbon::now();
         });
     }
+
+    protected $guarded = [];
 }

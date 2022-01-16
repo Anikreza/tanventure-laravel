@@ -23,15 +23,15 @@
                                                       field="meta_title" :label="'Meta title'"/>
                         </v-col>
 
-<!--                        <v-col cols="12" md="6">-->
-<!--                            <VSelectSearchWithValidation v-model="form.categories"-->
-<!--                                                         :options="categories"-->
-<!--                                                         rules="required"-->
-<!--                                                         ref="category"-->
-<!--                                                         field="category"-->
-<!--                                                         :label="`Category`"-->
-<!--                                                         item-text="name"/>-->
-<!--                        </v-col>-->
+                        <v-col cols="12" md="6">
+                            <VSelectSearchWithValidation v-model="form.categories"
+                                                         :options="categories"
+                                                         rules="required"
+                                                         ref="category"
+                                                         field="category"
+                                                         :label="`Category`"
+                                                         item-text="name"/>
+                        </v-col>
 
 
                         <v-col cols="12" md="4">
@@ -186,12 +186,9 @@ export default {
                 read_time: 3,
                 published: 1,
                 featured: 0,
-                is_video: 0,
                 description: '',
                 keywords: '',
-                cover_caption: '',
                 image: '',
-                image_url: ''
             }
         }
     },
