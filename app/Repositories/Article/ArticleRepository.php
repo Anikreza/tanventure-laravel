@@ -4,6 +4,7 @@ namespace App\Repositories\Article;
 
 use App\Models\Article;
 use App\Models\Keyword;
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -143,7 +144,7 @@ class ArticleRepository implements ArticleInterface
 
     public function all(array $columns = [])
     {
-        return count($columns) ? Article::select($columns)->orderBy('id')->get() : Article::orderBy('id')->get();
+        return count($columns) ? Article::select($columns)->orderBy('id')->get() : Article::orderBy('viewed')->get();
     }
 
     public function paginate($perPage = 10)
@@ -161,6 +162,7 @@ class ArticleRepository implements ArticleInterface
             ->when(\request()->has('search'), function ($q) {
                 $q->where('title', 'LIKE', '%' . \request('search') . '%');
             })
+            ->orderBy('viewed','desc')
             ->paginate($perPage);
     }
 
@@ -176,6 +178,19 @@ class ArticleRepository implements ArticleInterface
             ->latest()
             ->paginate($perPage);
     }
+
+    public function getArticleCount()
+    {
+         return Article::where('created_at', '>', Carbon::now()->subDays(1))
+             ->groupBy(\DB::raw('HOUR(created_at)'))
+             ->count();
+    }
+    public function getAllArticleCount(): int
+    {
+        return Article::all()->count();
+    }
+
+
 
     private function baseQuery(int $categoryId = 1)
     {

@@ -4,6 +4,9 @@ class CategoryApi extends HttpClient {
     list(page = 1, query) {
         return this.requestType('get').request(`/articles?page=${page}&${query}`)
     }
+    ArticleCount() {
+        return this.requestType('get').request(`/articles`)
+    }
 
     get(slug) {
         return this.requestType('get').request(`/articles/${slug}/edit`)

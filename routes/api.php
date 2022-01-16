@@ -67,15 +67,5 @@ Route::group([
     Route::post("articles/{id}", [ArticleController::class, 'update']);
     Route::apiResource("articles", ArticleController::class);
 
-    Route::get("fetch-all-published-pages", [PageController::class, 'get']);
-    Route::get("pages/{slug}/edit", [PageController::class, 'edit']);
-    Route::post("pages/{id}", [PageController::class, 'update']);
-    Route::apiResource("pages", PageController::class);
 
-    Route::apiResource("ad-spaces", AdSpaceController::class);
-    Route::post("ad-spaces/{id}", [AdSpaceController::class, 'update']);
-    Route::get("settings", [SettingsController::class, 'get']);
-    Route::post("settings", [SettingsController::class, 'set']);
-
-    Route::post("save-page-ids", [PageController::class, 'savePageIds']);
 });

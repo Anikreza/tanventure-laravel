@@ -47,7 +47,7 @@
 
                         <v-simple-table>
                             <template v-slot:default v-if="articles">
-                                <thead>
+                                <thead >
                                 <tr>
                                     <th class="text-left">Category</th>
                                     <th class="text-left">Title</th>
@@ -75,15 +75,15 @@
                                             {{ category.name }}
                                         </v-chip>
                                     </td>
-                                    <td style="display: flex; align-items: center;">
+                                    <td style="display: flex; align-items: center; height: fit-content; padding: 30px">
                                         <span v-if="article.image" class="mr-4">
-                                            <img :src="article.thumb_image_url"
+                                            <img v-bind:src="'/' + article.image"
                                                  :alt="article.title"
                                                  width="60"
                                                  style="border-radius: 10px">
                                         </span>
                                         <span v-if="article.published">
-                                            <a :href="`/${article.slug}`" target="_blank">{{ article.title }}</a>
+                                            <a  :href="`/${article.slug}`" target="_blank">{{ article.title }}</a>
                                         </span>
                                         <span v-else>
                                             {{ article.title }}
@@ -198,8 +198,9 @@ export default {
             const query = qs.stringify(this.filter, {encode: false, skipNulls: true});
 
             Api.list(this.currentPage, query).then(res => {
-                this.articles = res.data.data;
-                this.currentPage = res.data.data.current_page;
+                console.log('currentPage', res.data.all.original.data)
+                this.articles = res.data.all.original.data;
+                this.currentPage = res.data.all.original.data.current_page;
                 this.loading = false;
             }).catch(err => {
                 this.loading = false;

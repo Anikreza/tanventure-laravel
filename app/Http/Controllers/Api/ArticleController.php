@@ -20,12 +20,20 @@ class ArticleController extends ApiController
     /**
      * Returns All categories
      * @param Request $request
-     * @return JsonResponse
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|JsonResponse|\Illuminate\Http\Response
      */
 
-    public function index(Request $request): JsonResponse
+    public function index(Request $request)
     {
-        return $this->successResponse($this->articleRepository->paginate($request->input('perPage')), true);
+        $all= $this->successResponse($this->articleRepository->paginate(10), true);
+        $count= $this->successResponse($this->articleRepository->getArticleCount(), true);
+        $AllCount= $this->successResponse($this->articleRepository->getAllArticleCount(), true);
+        $response = [
+            'all' => $all,
+            'count'=>$count,
+            'allCount'=>$AllCount,
+        ];
+        return response($response, 201);
     }
 
     /**
@@ -126,7 +134,7 @@ class ArticleController extends ApiController
             "article_id" => $article->id,
             "title" => $article->title,
             "body" => $article->excerpt,
-            "image" => $article->thumb_image_url
+            "image" => $article->image
         ];
 
         \Artisan::call("send:notification", [
