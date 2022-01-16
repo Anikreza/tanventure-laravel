@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ArticleController;
+use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\User\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,4 +36,11 @@ Route::group([
     Route::post("/auth/save-profile", [ProfileController::class, "update"]);
     Route::post("/email-update", [ProfileController::class, "emailUpdate"]);
     Route::post("/update-password", [ProfileController::class, "passwordUpdate"]);
+
+    Route::post("categories/priority-update", [CategoryController::class, 'priorityUpdate']);
+    Route::apiResource("categories", CategoryController::class);
+
+    Route::get("articles/{slug}/edit", [ArticleController::class, 'edit']);
+    Route::post("articles/{id}", [ArticleController::class, 'update']);
+    Route::apiResource("articles", ArticleController::class);
 });

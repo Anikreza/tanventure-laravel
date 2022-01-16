@@ -23,22 +23,16 @@
                                                       field="meta_title" :label="'Meta title'"/>
                         </v-col>
 
-                        <v-col cols="12" md="6">
-                            <VSelectSearchWithValidation v-model="form.categories"
-                                                         :options="categories"
-                                                         rules="required"
-                                                         ref="category"
-                                                         field="category"
-                                                         :label="`Category`"
-                                                         item-text="name"/>
-                        </v-col>
+<!--                        <v-col cols="12" md="6">-->
+<!--                            <VSelectSearchWithValidation v-model="form.categories"-->
+<!--                                                         :options="categories"-->
+<!--                                                         rules="required"-->
+<!--                                                         ref="category"-->
+<!--                                                         field="category"-->
+<!--                                                         :label="`Category`"-->
+<!--                                                         item-text="name"/>-->
+<!--                        </v-col>-->
 
-                        <v-col cols="12" md="6">
-                            <VTextFieldWithValidation v-model="form.read_time" rules="required"
-                                                      ref="read_time"
-                                                      field="read_time"
-                                                      :label="'Read time (in minute)'"/>
-                        </v-col>
 
                         <v-col cols="12" md="4">
                             <VRadioInputWithValidation field="published"
@@ -54,12 +48,12 @@
                                                        v-model="form.featured"/>
                         </v-col>
 
-                        <v-col cols="12" md="4">
-                            <VRadioInputWithValidation field="is_video"
-                                                       :rules="'required'"
-                                                       :options="[{label: 'Yes', value: 1}, {label: 'No', value: 0}]"
-                                                       v-model="form.is_video"/>
-                        </v-col>
+<!--                        <v-col cols="12" md="4">-->
+<!--                            <VRadioInputWithValidation field="is_video"-->
+<!--                                                       :rules="'required'"-->
+<!--                                                       :options="[{label: 'Yes', value: 1}, {label: 'No', value: 0}]"-->
+<!--                                                       v-model="form.is_video"/>-->
+<!--                        </v-col>-->
 
                         <v-col cols="12" md="12">
                             <VTextAreaFieldWithValidation
@@ -110,12 +104,12 @@
                                                       :label="form.is_video ? 'Poster*' : 'Image*'"/>
                         </v-col>
 
-                        <v-col cols="12" md="6">
-                            <VTextFieldWithValidation v-model="form.cover_caption"
-                                                      ref="cover_caption"
-                                                      field="cover_caption"
-                                                      :label="'Cover Caption'"/>
-                        </v-col>
+<!--                        <v-col cols="12" md="6">-->
+<!--                            <VTextFieldWithValidation v-model="form.cover_caption"-->
+<!--                                                      ref="cover_caption"-->
+<!--                                                      field="cover_caption"-->
+<!--                                                      :label="'Cover Caption'"/>-->
+<!--                        </v-col>-->
                     </v-row>
                     <v-row>
                         <v-col style="text-align: center">

@@ -85,18 +85,18 @@
                                                                        :options="[{label: 'Yes', value: 1}, {label: 'No', value: 0}]"
                                                                        v-model="form.is_published"/>
                                         </v-col>
-                                        <v-col cols="12" sm="12" md="12">
-                                            <VRadioInputWithValidation field="display_in_navigation"
-                                                                       :rules="'required'"
-                                                                       :options="[{label: 'Yes', value: 1}, {label: 'No', value: 0}]"
-                                                                       v-model="form.display_in_navigation"/>
-                                        </v-col>
-                                        <v-col cols="12" sm="12" md="12">
-                                            <VRadioInputWithValidation field="display_in_home_page"
-                                                                       :rules="'required'"
-                                                                       :options="[{label: 'Yes', value: 1}, {label: 'No', value: 0}]"
-                                                                       v-model="form.display_in_home_page"/>
-                                        </v-col>
+<!--                                        <v-col cols="12" sm="12" md="12">-->
+<!--                                            <VRadioInputWithValidation field="display_in_navigation"-->
+<!--                                                                       :rules="'required'"-->
+<!--                                                                       :options="[{label: 'Yes', value: 1}, {label: 'No', value: 0}]"-->
+<!--                                                                       v-model="form.display_in_navigation"/>-->
+<!--                                        </v-col>-->
+<!--                                        <v-col cols="12" sm="12" md="12">-->
+<!--                                            <VRadioInputWithValidation field="display_in_home_page"-->
+<!--                                                                       :rules="'required'"-->
+<!--                                                                       :options="[{label: 'Yes', value: 1}, {label: 'No', value: 0}]"-->
+<!--                                                                       v-model="form.display_in_home_page"/>-->
+<!--                                        </v-col>-->
                                     </v-row>
 
                                 </v-container>
