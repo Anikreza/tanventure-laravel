@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 ;
+
 use App\Models\Category;
+
 //use App\Models\Page;
 use App\Repositories\Article\ArticleRepository;
 use Artesaos\SEOTools\Facades\JsonLd;
@@ -11,6 +13,7 @@ use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\TwitterCard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Str;
 
 
 class WebsiteController extends Controller
@@ -32,7 +35,7 @@ class WebsiteController extends Controller
     {
         $this->homePageSeoData = json_decode(setting()->get('general'), true);
         $this->baseSeoData = [
-            'title' =>'A travel blog site',
+            'title' => 'A travel blog site',
             'description' => 'A travel blog site',
             'keywords' => 'A travel blog site',
 //            'image' => $this->homePageSeoData['home_page_image_url'] ?
@@ -45,10 +48,13 @@ class WebsiteController extends Controller
             'robots' => 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
         ];
 
-
         $this->articleRepository = $articleRepository;
+        $tags = $this->articleRepository->getAllTags();
         $categories = Category::select('name', 'slug')->where('is_published', 0)->orderBy('position', 'asc')->pluck('name', 'slug');
+        $featuredArticles = $this->articleRepository->publishedArticles(1, 3);
         view()->share('categories', $categories);
+        view()->share('tags', $tags);
+        view()->share('featuredPosts', $featuredArticles);
     }
 
     public function index()
@@ -96,7 +102,7 @@ class WebsiteController extends Controller
         $this->baseSeoData['title'] = " $article->title - $appName";
         $this->seo($this->baseSeoData);
 
-        return view('pages.articleDetail.index', compact('article', 'similarArticles', 'category','segments'));
+        return view('pages.articleDetail.index', compact('article', 'similarArticles', 'category', 'segments'));
     }
 
     public function categoryDetails($slug)
@@ -110,7 +116,7 @@ class WebsiteController extends Controller
         ];
         $categoryArticles = $this->articleRepository->paginateByCategoryWithFilter(5, $category->id);
 
-       // SEO META INFO
+        // SEO META INFO
 //        $name = empty($category->meta_title) ? $category->name : $category->meta_title;
 //        $title = request()->has('page') ? $name . " (Page " . request('page') . ')' : $name;
         $appName = env('APP_NAME');
@@ -120,6 +126,36 @@ class WebsiteController extends Controller
         $this->seo($this->baseSeoData);
 
         return view('pages.category.index', compact('segments', 'category', 'categoryArticles'));
+    }
+
+    public function tagDetails($slug)
+    {
+        $tagDetails = $this->articleRepository->getTagInfoWithArticles($slug, 10);
+        $tag = $tagDetails['tagInfo'];
+        $tags = $tagDetails['tags'];
+        $tagArticles = $tagDetails['articles'];
+
+        if (!isset($tag->title)) {
+            \Log::error("tag not found: " . $slug);
+            abort(404);
+        }
+
+        $segments = [
+            ['name' => $tag->title, 'url' => route('tag', ['slug' => Str::slug($tag->title)])],
+        ];
+
+        // SEO META INFO
+        if ($tag->title == 'XYZs column') {
+            $this->baseSeoData['title'] = "Demo blogsite Travel blog etc | {$this->baseSeoData['app_name']}";
+            $this->baseSeoData['description'] = "here, you will find blogs describing cultures, ethnicity and politics around the world";
+        } else {
+            $this->baseSeoData['title'] = "{$tag->title} | {$this->baseSeoData['app_name']}";
+        }
+
+        $this->seo($this->baseSeoData);
+
+        view()->share('tags', $tags);
+        return view('pages.tag.index', compact('segments', 'tag', 'tagArticles'));
     }
 
     public function searchArticle(Request $request)

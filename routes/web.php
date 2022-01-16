@@ -24,6 +24,8 @@ Route::get('/home', [WebsiteController::class, 'index'])->name('home');
 Route::get('/{slug}', [WebsiteController::class, 'articleDetails'])->name('article-details');
 Route::get('/category/{slug}', [WebsiteController::class, 'categoryDetails'])->name('category');
 Route::get('/', [WebsiteController::class, 'searchArticle'])->name('search');
+Route::get('tag/{slug}', [WebsiteController::class, 'tagDetails'])->name('tag');
+
 /**
  * ADMIN ROUTES
  */

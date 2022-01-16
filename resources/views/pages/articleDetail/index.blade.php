@@ -57,24 +57,37 @@
                                 </div>
                             </div>
                         </div>
-                    </div><!-- post -->
-
+                    </div>
+                    <!-- post -->
+                    <!-- tags -->
+                    <div>
+                    <span class="label-primary">
+                       TAGS:
+                    </span>
+                        @foreach($article->keywords as $keyword)
+                            <a class="post-tag" href="{{ route('tag', ['slug' => \Str::slug($keyword->title)]) }}">
+                                <span  style=" font-size:16px; margin-left: 10px; background-color:#ea4a4a; color: #ffffff; padding: 10px; border-radius: 5px">{{ $keyword->title }}</span>
+                            </a>
+                        @endforeach
+                    </div>
+                    <br/>
+                    <br/>
+                    <!-- tags -->
                     <!-- similar Posts -->
-
                     <div class="wgs">
                         <div class="section-head">
-                            <h3 class="wgs-heading mb-10">Related Posts</h3>
+                            <h4 class="label-primary" style="font-weight: 500">Related Posts</h4>
                         </div>
-                        <div class="row gutter-vr-30px">
+                        <div class="row gutter-vr-30px ">
                             @foreach($similarArticles as $article)
-                                <div class="col-12 col-lg-6">
+                                <div class="col-12 col-lg-6 bg-white">
                                     <div class="post post-full post-v2">
                                         @include('component.card.similarArticle',
                                                [
                                                    'image' => $article['image'],
                                                    'title' => $article['title'],
                                                    'slug' => $article['slug'],
-                                                   'category' => $article['categories'][0]['name'],
+                                                   'category' => $article['categories'][0],
                                                ])
                                     </div><!-- .post -->
                                 </div><!-- .col -->

@@ -10,7 +10,7 @@
                     <div class="post post-full">
                         <div class="col-md-10">
                             <div class="post post-full post-details">
-                                @include('component.card.categoryArticles',
+                                @include('component.card.searchCard',
                                     [
                                         'image' => $article->image,
                                         'title' => $article->title,
@@ -32,52 +32,7 @@
                 </div>
             </div><!-- .col -->
             <div class="col-md-4 pl-lg-4">
-                <div class="sidebar">
-                    <div class="wgs wgs-sidebar bg-secondary wgs-recents">
-                        <h3 class="wgs-heading">Recent News</h3>
-                        <div class="wgs-content">
-                            <ul class="post-recent">
-                                <li>
-                                    <h5><a href="dallas-news-details.html">Bringing Great Design Ideas To Completion </a></h5>
-                                    <p class="post-tag">DECEMBER 12, 2018</p>
-                                </li>
-                                <li>
-                                    <h5><a href="dallas-news-details.html">Highlights z UX Cambridge 2018 </a></h5>
-                                    <p class="post-tag">DECEMBER 10, 2018</p>
-                                </li>
-                                <li>
-                                    <h5><a href="dallas-news-details.html">Ladies, Wine & Design Hamburg #10: "New Tech" panel in our Werkhalle</a></h5>
-                                    <p class="post-tag">DECEMBER 12, 2018</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- .wgs -->
-                    <div class="wgs wgs-sidebar bg-secondary wgs-archive">
-                        <h3 class="wgs-heading">Archives</h3>
-                        <div class="wgs-content">
-                            <ul class="wgs-menu">
-                                <li><a href="#">December 2017 <span>(10)</span></a></li>
-                                <li><a href="#">November 2017 <span>(01)</span></a></li>
-                                <li><a href="#">Octobor 2017 <span>(17)</span></a></li>
-                                <li><a href="#">September <span>(05)</span></a></li>
-                                <li><a href="#">August <span>(40)</span></a></li>
-                            </ul>
-                        </div>
-                    </div><!-- .wgs -->
-                    <div class="wgs wgs-sidebar bg-secondary wgs-tags">
-                        <h3 class="wgs-heading">Tags</h3>
-                        <div class="wgs-content">
-                            <ul class="tag-list">
-                                <li><a href="">Shipping</a></li>
-                                <li><a href="">Cargo</a></li>
-                                <li><a href="">Delivery</a></li>
-                                <li><a href="">Safe</a></li>
-                                <li><a href="">Fast</a></li>
-                                <li><a href="">sea</a></li>
-                            </ul>
-                        </div>
-                    </div><!-- .wgs -->
-                </div><!-- .sidebar -->
+                @include('component.card.sideBarCard',['tags'=>$tags,'header'=>'All Tags'])
             </div><!-- .col -->
         </div><!-- .row -->
     </div><!-- .container -->

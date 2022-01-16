@@ -3,7 +3,9 @@
 namespace App\Repositories\Article;
 
 use App\Models\Article;
+use App\Models\Keyword;
 use Illuminate\Http\Request;
+use Str;
 
 class ArticleRepository implements ArticleInterface
 {
@@ -129,4 +131,39 @@ class ArticleRepository implements ArticleInterface
             ->limit(5)
             ->paginate($perPage);
     }
+
+    public function getAllTags(){
+       return Keyword::all();
+    }
+
+    public function getTagInfoWithArticles($tag, $perPage, $includeFavorites = false): array
+    {
+        $string = Str::title(str_replace('-', ' ', trim($tag)));
+        $tag = Keyword::where('title', 'LIKE', '%' . $string . '%')->get();
+        $tags = Keyword::all();
+
+        return [
+            'tagInfo' => count($tag) ? $tag[0] : null,
+            'tags'=> count($tags) ? $tags : null,
+            'articles' => count($tag) ? $this->getArticlesByTag($perPage, $tag->pluck('id')->toArray(), $includeFavorites) : []
+        ];
+    }
+
+    public function getArticlesByTag($perPage, array $keywordIds, $includeFavorites = false)
+    {
+        $q = $this->model->whereHas('keywords', function ($q) use ($keywordIds) {
+            $q->whereIn('keyword_id', $keywordIds);
+        })
+            ->with('categories:id,name,slug')
+            ->with('keywords:id,title')
+            ->where('published', true)
+            ->when($includeFavorites, function ($q) {
+                $q->with(['favorites']);
+            })
+            ->select('id', 'title', 'slug', 'featured', 'published', 'image', 'viewed','description')
+            ->latest();
+
+        return $perPage === 4 ? $q->limit($perPage)->get() : $q->paginate($perPage);
+    }
+
 }

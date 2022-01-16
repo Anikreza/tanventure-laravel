@@ -4,10 +4,10 @@
     <div class="section blog section-x tc-grey">
         <div class="container">
             @include('component.breadcrumb')
-            <h5 style="color: #7e7777; margin-left: 15px; margin-bottom: 15px">Showing Results For : <span style="color: #ea5757"> {{ $searchTerm}}</span></h5>
+            <h5 style="color: #7e7777; margin-left: 15px; margin-bottom: 15px">Showing Posts With Tag : <span style="color: #ea5757"> {{ $tag->title}}</span></h5>
             <div class="row gutter-vr-30px">
                 <div class="col-md-8">
-                    @foreach($searchedArticles as $article)
+                    @foreach($tagArticles as $article)
                         <div class="post post-full">
                             <div class="col-md-10">
                                 <div class="post post-full post-details">
@@ -28,12 +28,12 @@
                 <div class="col-md-8 order-md-last">
                     <div class="button-area pagination-area">
                         <ul class="pagination text-center text-md-right">
-                            {{ $searchedArticles->render("pagination::bootstrap-4") }}
+                            {{ $tagArticles->render("pagination::bootstrap-4") }}
                         </ul>
                     </div>
                 </div><!-- .col -->
                 <div class="col-md-4 pl-lg-4">
-                    @include('component.card.sideBarCard',['tags'=>$tags,'header'=>'All Tags'])
+                       @include('component.card.sideBarCard',['tags'=>$tags,'header'=>'All Tags'])
                 </div><!-- .col -->
             </div><!-- .row -->
         </div><!-- .container -->
