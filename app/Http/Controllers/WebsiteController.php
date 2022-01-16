@@ -30,20 +30,20 @@ class WebsiteController extends Controller
      */
     public function __construct(ArticleRepository $articleRepository)
     {
-//        $this->homePageSeoData = json_decode(setting()->get('general'), true);
-//        $this->baseSeoData = [
-//            'title' => $this->homePageSeoData['home_page_title'],
-//            'description' => $this->homePageSeoData['home_page_description'],
-//            'keywords' => $this->homePageSeoData['home_page_keywords'],
+        $this->homePageSeoData = json_decode(setting()->get('general'), true);
+        $this->baseSeoData = [
+            'title' =>'A travel blog site',
+            'description' => 'A travel blog site',
+            'keywords' => 'A travel blog site',
 //            'image' => $this->homePageSeoData['home_page_image_url'] ?
 //                Storage::disk('public')->url('settings/' . basename($this->homePageSeoData['home_page_image_url']))
 //                :
 //                asset('asset/logo.png'),
-//            'type' => 'website',
-//            'site' => env('APP_URL'),
-//            'app_name' => $this->homePageSeoData['app_name'],
-//            'robots' => 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
-//        ];
+            'type' => 'website',
+            'site' => env('APP_URL'),
+            'app_name' => env('APP_NAME'),
+            'robots' => 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
+        ];
 
 
         $this->articleRepository = $articleRepository;
@@ -94,8 +94,6 @@ class WebsiteController extends Controller
 
         $appName = env('APP_NAME');
         $this->baseSeoData['title'] = " $article->title - $appName";
-        $this->baseSeoData['description'] = " $article->title - $appName";
-        $this->baseSeoData['keywords'] = " $article->title - $appName";
         $this->seo($this->baseSeoData);
 
         return view('pages.articleDetail.index', compact('article', 'similarArticles', 'category','segments'));
@@ -213,12 +211,12 @@ class WebsiteController extends Controller
         SEOMeta::setDescription($data['description']);
 //        SEOMeta::addMeta('name', $value = null, $name = 'name');
         SEOMeta::setKeywords($data['keywords']);
-//        SEOMeta::setRobots($data['robots']);
+        SEOMeta::setRobots($data['robots']);
         SEOMeta::setCanonical(url()->full());
 
 //        OpenGraph::addProperty('keywords', '$value'); // value can be string or array
         OpenGraph::setTitle($data['title']); // define title
-     //   OpenGraph::setDescription($data['description']);  // define description
+        OpenGraph::setDescription($data['description']);  // define description
 
 //        if ($data['image']) {
 //            OpenGraph::addImage($data['image']); // add image url
@@ -227,11 +225,11 @@ class WebsiteController extends Controller
 //        }
 
         OpenGraph::setUrl(url()->current()); // define url
-       // OpenGraph::setSiteName($data['app_name']); //define site_name
+        OpenGraph::setSiteName($data['app_name']); //define site_name
 
         TwitterCard::setType('summary'); // type of twitter card tag
         TwitterCard::setTitle($data['title']); // title of twitter card tag
-       // TwitterCard::setDescription($data['description']); // description of twitter card tag
+        TwitterCard::setDescription($data['description']); // description of twitter card tag
 
 //        if ($data['image']) {
 //            TwitterCard::setImage($data['image']); // add image url
@@ -239,7 +237,7 @@ class WebsiteController extends Controller
 //            TwitterCard::setImage($this->homePageSeoData['home_page_image_url']); // add image url
 //        }
 
-      //  TwitterCard::setSite($data['site']); // site of twitter card tag
+        TwitterCard::setSite($data['site']); // site of twitter card tag
         TwitterCard::setUrl(url()->current()); // url of twitter card tag
 
         if (isset($data['read_time'])) {
@@ -248,9 +246,9 @@ class WebsiteController extends Controller
         }
 
 //        JsonLd::addValue($key, $value); // value can be string or array
-       // JsonLd::setType($data['type']); // type of twitter card tag
+        JsonLd::setType($data['type']); // type of twitter card tag
         JsonLd::setTitle($data['title']); // title of twitter card tag
-       // JsonLd::setDescription($data['description']); // description of twitter card tag
+        JsonLd::setDescription($data['description']); // description of twitter card tag
 //
 //        if ($data['image']) {
 //
@@ -258,7 +256,7 @@ class WebsiteController extends Controller
 //        } else {
 //            JsonLd::setImage($this->homePageSeoData['home_page_image_url']); // add image url
 //        }
-//        JsonLd::setSite('@meraner-morgen'); // site of twitter card tag
+        JsonLd::setSite('@DemoBlog'); // site of twitter card tag
         JsonLd::setUrl(url()->current()); // url of twitter card tag
     }
 }
