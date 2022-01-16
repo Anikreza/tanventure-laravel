@@ -2,7 +2,7 @@
 @section('content')
     <body class="body-wider">
     <div class="section blog section-x tc-grey">
-        <div class="container">
+        <div class="container bg-light-gradient">
             @include('component.breadcrumb')
             <h5 style="color: #7e7777; margin-left: 15px; margin-bottom: 15px">Showing Results For : <span style="color: #ea5757"> {{ $searchTerm}}</span></h5>
             <div class="row gutter-vr-30px">

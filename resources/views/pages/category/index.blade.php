@@ -2,14 +2,14 @@
 @section('content')
 <body class="body-wider">
 <div class="section blog section-x tc-grey">
-    <div class="container">
+    <div class="container bg-light-gradient">
         @include('component.breadcrumb')
-        <div class="row gutter-vr-30px">
-                <div class="col-md-8">
+        <div class="row gutter-vr-30px ">
+                <div class="col-md-8 ">
                     @foreach($categoryArticles as $article)
-                    <div class="post post-full">
+                    <div class="post post-full ">
                         <div class="col-md-10">
-                            <div class="post post-full post-details">
+                            <div class="post post-full post-details ">
                                 @include('component.card.searchCard',
                                     [
                                         'image' => $article->image,
@@ -32,7 +32,7 @@
                 </div>
             </div><!-- .col -->
             <div class="col-md-4 pl-lg-4">
-                @include('component.card.sideBarCard',['tags'=>$tags,'header'=>'All Tags'])
+                @include('component.card.sideBarCard',['tags'=>$tags,'header'=>'Sea Posts By Tag'])
             </div><!-- .col -->
         </div><!-- .row -->
     </div><!-- .container -->

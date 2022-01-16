@@ -1,17 +1,17 @@
 <div class="sidebar">
-    <div class="wgs wgs-sidebar bg-secondary wgs-tags">
+    <div class="wgs wgs-sidebar bg-light-gradient wgs-tags">
         <h3 class="wgs-heading">{{$header}}</h3>
         <div class="wgs-content">
             <ul class="tag-list">
                 @foreach($tags as $tag)
-                    <li>
+                    <li >
                         <a href="{{ route('tag', ['slug' => \Str::slug($tag->title)]) }}">{{$tag->title}}</a>
                     </li>
                 @endforeach</ul>
         </div>
     </div><!-- .wgs -->
-    <div class="wgs wgs-sidebar bg-secondary wgs-recents">
-        <h3 class="wgs-heading">Similar Posts</h3>
+    <div class="wgs wgs-sidebar bg-light-gradient wgs-recents">
+        <h3 class="wgs-heading">Suggested Posts</h3>
         <div class="wgs-content">
             <ul class="post-recent">
                 @foreach($featuredPosts as $article)
@@ -24,7 +24,7 @@
         </div>
     </div><!-- .wgs -->
 
-    <div class="wgs wgs-sidebar bg-secondary wgs-archive">
+    <div class="wgs wgs-sidebar bg-primary-after-transparency wgs-archive">
         <h3 class="wgs-heading">Archives</h3>
         <div class="wgs-content">
             <ul class="wgs-menu">
