@@ -81,14 +81,77 @@ class ArticleRepository implements ArticleInterface
         return \Str::slug($name);
     }
 
-    public function update(Request $request, int $id)
+    public function update(Request $request, int $id): array
     {
-        // TODO: Implement update() method.
+        $article = Article::findOrFail($id);
+        $isPublishedBefore = $article->published;
+
+        $data = [
+            'title' => $request->input('title'),
+            'slug' => $this->slugify($request->input('title')),
+            'excerpt' => $request->input('excerpt'),
+            'featured' => filter_var($request->input('featured'), FILTER_VALIDATE_BOOLEAN),
+            'description' => $request->input('description'),
+            'published' => filter_var($request->input('published'), FILTER_VALIDATE_BOOLEAN),
+            'meta_title' => $request->input('meta_title'),
+        ];
+
+
+        if ($request->hasFile('image') && $request->file('image')) {
+            $image = $request->file('image');
+            $extension = $image->getClientOriginalExtension();
+
+            $data['image'] = $this->slugify($request->input('title')) . '-' . time() . '.' . $extension;
+
+            $path = public_path('storage/articles/');
+            $thumbPath = public_path('storage/articles/' . 'thumb_');
+            if (!File::exists($path)) {
+                File::makeDirectory($path);
+            }
+
+            Image::make($image)->resize(null, 675, function ($constraint) {
+                $constraint->aspectRatio();
+            })->encode($extension)
+                ->save($path . $data['image']);
+            Image::make($image)->resize(null, 200, function ($constraint) {
+                $constraint->aspectRatio();
+            })->encode($extension)
+                ->save($thumbPath . $data['image']);
+        }
+
+        // Category
+        $article->categories()->detach();
+        $article->categories()->sync([$request->input('categories')]);
+
+        // Keywords
+        $newKeywords = explode(',', $request->input('keywords'));
+        $keywordIds = [];
+
+        foreach ($newKeywords as $keyword) {
+            $keyword = Keyword::firstOrCreate(['title' => $keyword]);
+            array_push($keywordIds, $keyword->id);
+        }
+
+        $article->keywords()->detach();
+        $article->keywords()->sync($keywordIds);
+        $article->update($data);
+
+        return ['article' => $article, 'previouslyPublished' => $isPublishedBefore];
     }
 
     public function delete(int $id)
     {
-        // TODO: Implement delete() method.
+        $article = Article::findOrFail($id);
+        Storage::disk($this->disk)->delete('articles/' . $article->image);
+        $article->categories()->detach();
+        $article->keywords()->detach();
+
+        return $article->delete();
+    }
+
+    public function all(array $columns = [])
+    {
+        return count($columns) ? Article::select($columns)->orderBy('id')->get() : Article::orderBy('id')->get();
     }
 
     public function paginate($perPage = 10)
