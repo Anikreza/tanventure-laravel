@@ -66,8 +66,7 @@ class WebsiteController extends Controller
         $publishedArticles = $this->articleRepository->publishedArticles(1, 4);
         $featuredArticles = $this->articleRepository->publishedFeaturedArticles(1, 3);
         $mostReadArticles = $this->articleRepository->mostReadArticles(1, 3);
-        $appName = env('APP_NAME');
-        $this->baseSeoData['title'] = "$appName";
+
         $this->seo($this->baseSeoData);
 
         return view('pages.home.index',
@@ -84,6 +83,10 @@ class WebsiteController extends Controller
         $article = $this->articleRepository->getArticle($slug, true);
         $category = $article['categories'][0];
         $similarArticles = $this->articleRepository->getSimilarArticles($category['id'], 2);
+        $tags = $article->keywords;
+        $tagTitles=[];
+        foreach ($tags as $tag)
+            array_push($tagTitles,$tag->title);
         $segments = [
             [
                 'name' => $article['categories'][0]['name'],
@@ -102,6 +105,7 @@ class WebsiteController extends Controller
 
         $appName = env('APP_NAME');
         $this->baseSeoData['title'] = " $article->title - $appName";
+        $this->baseSeoData['keywords'] = $tagTitles;
         $this->seo($this->baseSeoData);
 
         return view('pages.articleDetail.index', compact('article', 'similarArticles', 'category', 'segments'));
@@ -122,7 +126,7 @@ class WebsiteController extends Controller
 //        $name = empty($category->meta_title) ? $category->name : $category->meta_title;
 //        $title = request()->has('page') ? $name . " (Page " . request('page') . ')' : $name;
         $appName = env('APP_NAME');
-        $this->baseSeoData['title'] = "{$appName}- {$category->name}- {$category->keywords}";
+        $this->baseSeoData['title'] = "{$appName} | {$category->name} | {$category->keywords}";
         $this->baseSeoData['description'] = "{$category->excerpt}";
         $this->baseSeoData['keywords'] = "{$category->keywords}";
         $this->seo($this->baseSeoData);
