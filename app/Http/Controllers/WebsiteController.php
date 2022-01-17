@@ -33,11 +33,19 @@ class WebsiteController extends Controller
      */
     public function __construct(ArticleRepository $articleRepository)
     {
+        $this->articleRepository = $articleRepository;
+        $tags = $this->articleRepository->getAllTags();
+        $tagTitles=[];
+        foreach ($tags as $tag)
+            array_push($tagTitles,$tag->title);
+        $categories = Category::select('name', 'slug')->where('is_published', 0)->orderBy('position', 'asc')->pluck('name', 'slug');
+        $featuredArticles = $this->articleRepository->publishedArticles(1, 3);
         $this->homePageSeoData = json_decode(setting()->get('general'), true);
         $this->baseSeoData = [
             'title' => 'A travel blog site',
             'description' => 'A travel blog site',
-            'keywords' => 'A travel blog site',
+            'keywords' => $tagTitles,
+
 //            'image' => $this->homePageSeoData['home_page_image_url'] ?
 //                Storage::disk('public')->url('settings/' . basename($this->homePageSeoData['home_page_image_url']))
 //                :
@@ -48,10 +56,6 @@ class WebsiteController extends Controller
             'robots' => 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
         ];
 
-        $this->articleRepository = $articleRepository;
-        $tags = $this->articleRepository->getAllTags();
-        $categories = Category::select('name', 'slug')->where('is_published', 0)->orderBy('position', 'asc')->pluck('name', 'slug');
-        $featuredArticles = $this->articleRepository->publishedArticles(1, 3);
         view()->share('categories', $categories);
         view()->share('tags', $tags);
         view()->share('featuredPosts', $featuredArticles);
@@ -64,8 +68,6 @@ class WebsiteController extends Controller
         $mostReadArticles = $this->articleRepository->mostReadArticles(1, 3);
         $appName = env('APP_NAME');
         $this->baseSeoData['title'] = "$appName";
-        $this->baseSeoData['description'] = "$appName";
-        $this->baseSeoData['keywords'] = "$appName";
         $this->seo($this->baseSeoData);
 
         return view('pages.home.index',

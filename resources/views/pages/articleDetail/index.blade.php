@@ -7,7 +7,7 @@
                 <div class="col-md-10">
                     <div class="post post-full post-details">
                         <div class="post-thumb">
-                            <img src="{{ $article['image'] }}" alt="">
+                            <img src="{{asset($article->image)}}" alt="">
                         </div>
                         <div class="post-entry d-sm-flex d-block align-items-start">
                             <div class="content-left d-flex d-sm-block">
