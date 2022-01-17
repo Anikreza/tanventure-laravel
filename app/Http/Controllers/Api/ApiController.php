@@ -37,7 +37,7 @@ class ApiController extends Controller
      * @return JsonResponse
      */
 
-    protected function failResponse($code = Response::HTTP_INTERNAL_SERVER_ERROR, $message = 'Something went wrong,please try again later'): JsonResponse
+    protected function failResponse($message = 'Something went wrong,please try again later', $code = Response::HTTP_INTERNAL_SERVER_ERROR): JsonResponse
     {
         $array = [
             "code" => $code,

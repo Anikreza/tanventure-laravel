@@ -112,9 +112,9 @@
                     :color="$store.state.app.color"
                     icon="mdi-book-multiple"
                     :title="`Total Articles`"
-                    value="551"
+                    :value=allArticleCount
                     sub-icon="mdi-calendar"
-                    :sub-text="`5 article published in last 24 hour`"
+                    :sub-text= "articleCountInLastDay+' Articles Added In Last 24 Hours'"
                 />
             </v-flex>
             <v-flex
@@ -313,6 +313,7 @@ import MaterialCard from '@/components/material/Card'
 import MaterialChartCard from '@/components/material/ChartCard'
 import MaterialStatsCard from '@/components/material/StatsCard'
 import SimpleTable from '@/components/general/SimpleTable'
+import Api from "@/api/resources/article";
 
 export default {
     name: 'Dashboard',
@@ -400,13 +401,31 @@ export default {
                 0: false,
                 1: false,
                 2: false
-            }
+            },
+            articleCountInLastDay:0,
+            allArticleCount:0,
         }
     },
+
     methods: {
         complete(index) {
             this.list[index] = !this.list[index]
-        }
+        },
+        getCount(){
+            this.loading = true;
+            Api.ArticleCount().then(res=>{
+                console.log('count',res.data.allCount.original.data)
+                this.articleCountInLastDay=res.data.count.original.data;
+                this.allArticleCount=res.data.allCount.original.data;
+                this.loading=false;
+            }).catch(err => {
+                this.loading = false;
+            })
+        },
+    },
+
+    async created() {
+        await this.getCount();
     }
 }
 </script>

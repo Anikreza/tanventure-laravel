@@ -15,8 +15,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="(item, index) in tableRows" :key="index">
-                        <td v-for="data in item">{{ data }}</td>
+                    <tr>
+                        <td> {{ articles[0].title }}</td>
+                        <td> {{ articles[0].viewed }}</td>
+                    </tr>
+                    <tr>
+                        <td> {{ articles[1].title }}</td>
+                        <td> {{ articles[1].viewed }}</td>
+                    </tr>
+                    <tr>
+                        <td> {{ articles[2].title }}</td>
+                        <td> {{ articles[2].viewed }}</td>
                     </tr>
                     </tbody>
                 </template>
@@ -27,6 +36,9 @@
 
 <script>
 import MaterialCard from '@/components/material/Card'
+import Api from "@/api/resources/article";
+import categoryApi from "@/api/resources/category";
+import qs from "qs";
 
 export default {
     components: {
@@ -52,25 +64,6 @@ export default {
                 ]
             }
         },
-        tableRows: {
-            type: Array,
-            default: () => {
-                return [
-                    {
-                        title: 'Mit Sanuslife macht Ewald Rieder ein gesundes Lebensgefühl zum',
-                        view: '187'
-                    },
-                    {
-                        title: 'Wir brauchen einen neuen Feminismus',
-                        view: '111'
-                    },
-                    {
-                        title: 'Thomas Oliver Müller erhält für Club-Deal Chicago einen Award',
-                        view: '107'
-                    }
-                ]
-            }
-        },
         title: {
             type: String,
             required: true
@@ -80,11 +73,57 @@ export default {
             required: false
         }
     },
-    data: () => ({}),
-    mounted() {
-        for (const item in this.tableRows) {
-
+    data() {
+        return {
+            loading: false,
+            articles: {},
+            editId: null,
+            categories: [
+                {name: 'All', id: null},
+            ],
+            statuses: [
+                {name: 'All', id: 1},
+                {name: 'Published', id: 1},
+                {name: 'Pending', id: 0},
+            ],
+            currentPage: 1,
+            filter: {
+                search: null,
+                category: null,
+                is_published: null,
+            }
         }
+    },
+    methods: {
+        async getCategories() {
+            this.loading = true;
+            await categoryApi.getCategories('*').then(res => {
+                this.categories = [...this.categories, ...res.data.data];
+                this.loading = false;
+            });
+        },
+        getData() {
+            this.loading = true;
+            const query = qs.stringify(this.filter, {encode: false, skipNulls: true});
+
+            Api.list(this.currentPage, query).then(res => {
+                console.log('simpletable',res.data.all.original.data.data);
+                this.articles = res.data.all.original.data.data;
+                this.currentPage = res.data.all.original.data.current_page;
+                this.loading = false;
+            }).catch(err => {
+                this.loading = false;
+            })
+        },
+        paginate(current_page) {
+            this.currentPage = current_page;
+            this.getData()
+        }
+    },
+
+    async created() {
+        await this.getCategories();
+        await this.getData();
     }
 }
 </script>

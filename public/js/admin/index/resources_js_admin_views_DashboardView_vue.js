@@ -325,7 +325,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       links: [{
         name: 'Home',
-        Link: '/dashboard'
+        Link: '/dashboard/admin/home'
       }, {
         name: 'Demo',
         Link: ''
@@ -1869,6 +1869,48 @@ var render = function() {
                 { staticClass: "pb-5", attrs: { wrap: "" } },
                 [
                   _c("v-divider", { staticClass: "mt-3" }),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { attrs: { xs12: "" } },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "text-center body-2 text-uppercase filter-menu-item-label"
+                        },
+                        [_vm._v("Active Language")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-layout",
+                        {
+                          staticClass: "theme-changer",
+                          attrs: { "justify-center": "" }
+                        },
+                        _vm._l(_vm.$i18n.availableLocales, function(t) {
+                          return _c("v-avatar", {
+                            key: t,
+                            class: [
+                              t === _vm.$i18n.locale
+                                ? "color-active bg-color-success"
+                                : "bg-color-" + _vm.color
+                            ],
+                            attrs: { size: "50" },
+                            domProps: { textContent: _vm._s(t.toUpperCase()) },
+                            on: {
+                              click: function($event) {
+                                return _vm.setLocale(t)
+                              }
+                            }
+                          })
+                        }),
+                        1
+                      )
+                    ],
+                    1
+                  ),
                   _vm._v(" "),
                   _c("v-divider", { staticClass: "mt-3" }),
                   _vm._v(" "),

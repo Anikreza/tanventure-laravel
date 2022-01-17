@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Article;
 
 class NotificationController extends Controller
 {
@@ -13,16 +14,22 @@ class NotificationController extends Controller
      */
     public function sendNotification(): bool
     {
-        $data = [
-            "title" => "Red Eagle Suisse: Mit dem TRITON strebt...",
-            "body" => "Mit der aeronautischen Drohne TRITON streben Ulrich T. Grabowski und die Red Eagle Suisse einen idealen Schutz für Industrieanlagen an.",
-            "image" => "https://meraner-morgen.it/wp-content/uploads/2021/01/TRITON.jpg"
-        ];
+        $article = Article::with(['categories' => function ($q) {
+            $q->with(['articles' => function ($sq) {
+                $sq->limit(4);
+            }]);
+        }])
+            ->with('keywords')
+            ->where('published', true)
+            ->first();
 
-        $deviceTokens = [env('FIREBASE_TEST_DEVICE_TOKEN')];
         return \Artisan::call("send:notification", [
-            'notificationData' => $data,
-            'deviceTokens' => $deviceTokens
+            'notificationData' => [
+                "article_id" => $article->id,
+                "title" => $article->title,
+                "body" => $article->excerpt,
+                "image" => $article->thumb_image_url
+            ]
         ]);
     }
 }

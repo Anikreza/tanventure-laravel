@@ -4,13 +4,18 @@ namespace App\Repositories\Article;
 
 use App\Models\Article;
 use App\Models\Keyword;
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use Str;
 
 class ArticleRepository implements ArticleInterface
 {
 
     private $model;
+    private $disk = 'public';
 
     public function __construct(Article $article)
     {
@@ -19,17 +24,146 @@ class ArticleRepository implements ArticleInterface
 
     public function save(Request $request)
     {
-        // TODO: Implement save() method.
+
+
+        $image = $request->image;
+        if ($image) {
+            $image_ext = $image->getClientOriginalExtension();
+            $image_full_name = time() . '.' . $image_ext;
+            $upload_path = 'assets/images/';
+            $image_url = $upload_path . $image_full_name;
+
+            $success = $image->move($upload_path, $image_full_name);
+        } else {
+            $image_url = '';
+        }
+
+
+        $article = Article::create([
+            'user_id' => auth()->user()->id,
+            'title' => $request->input('title'),
+            'slug' => $this->slugify($request->input('title')),
+            'excerpt' => $request->input('excerpt'),
+            'featured' => filter_var($request->input('featured'), FILTER_VALIDATE_BOOLEAN),
+            'description' => $request->input('description'),
+            'published' => filter_var($request->input('published'), FILTER_VALIDATE_BOOLEAN),
+            'image_disk' => $this->disk,
+            'meta_title' => $request->input('meta_title'),
+            'image' => $image_url,
+        ]);
+        // Category
+        $article->categories()->sync([$request->input('categories')]);
+
+        // Keywords
+        $newKeywords = explode(',', $request->input('keywords'));
+        $keywordIds = [];
+
+        foreach ($newKeywords as $keyword) {
+            $keyword = Keyword::firstOrCreate(['title' => $keyword]);
+            array_push($keywordIds, $keyword->id);
+        }
+
+        $article->keywords()->sync($keywordIds);
+
+        return $article;
     }
 
-    public function update(Request $request, int $id)
+    private function slugify($name): string
     {
-        // TODO: Implement update() method.
+        return \Str::slug($name);
+    }
+
+    public function update(Request $request, int $id): array
+    {
+        $article = Article::findOrFail($id);
+        $isPublishedBefore = $article->published;
+
+        $data = [
+            'title' => $request->input('title'),
+            'slug' => $this->slugify($request->input('title')),
+            'excerpt' => $request->input('excerpt'),
+            'featured' => filter_var($request->input('featured'), FILTER_VALIDATE_BOOLEAN),
+            'description' => $request->input('description'),
+            'published' => filter_var($request->input('published'), FILTER_VALIDATE_BOOLEAN),
+            'meta_title' => $request->input('meta_title'),
+        ];
+
+
+        if ($request->hasFile('image') && $request->file('image')) {
+            $image = $request->file('image');
+            $extension = $image->getClientOriginalExtension();
+
+            $data['image'] = $this->slugify($request->input('title')) . '-' . time() . '.' . $extension;
+
+            $path ='assets/images';
+            $thumbPath ='storage/articles/' . 'thumb_';
+            if (!File::exists($path)) {
+                File::makeDirectory(public_path().'/'.$path,0777,true);
+
+            }
+
+            Image::make($image)->resize(null, 675, function ($constraint) {
+                $constraint->aspectRatio();
+            })->encode($extension)
+                ->save($path . $data['image']);
+            Image::make($image)->resize(null, 200, function ($constraint) {
+                $constraint->aspectRatio();
+            })->encode($extension)
+                ->save($thumbPath . $data['image']);
+        }
+
+        // Category
+        $article->categories()->detach();
+        $article->categories()->sync([$request->input('categories')]);
+
+        // Keywords
+        $newKeywords = explode(',', $request->input('keywords'));
+        $keywordIds = [];
+
+        foreach ($newKeywords as $keyword) {
+            $keyword = Keyword::firstOrCreate(['title' => $keyword]);
+            array_push($keywordIds, $keyword->id);
+        }
+
+        $article->keywords()->detach();
+        $article->keywords()->sync($keywordIds);
+        $article->update($data);
+
+        return ['article' => $article, 'previouslyPublished' => $isPublishedBefore];
     }
 
     public function delete(int $id)
     {
-        // TODO: Implement delete() method.
+        $article = Article::findOrFail($id);
+        Storage::disk($this->disk)->delete('articles/' . $article->image);
+        $article->categories()->detach();
+        $article->keywords()->detach();
+
+        return $article->delete();
+    }
+
+    public function all(array $columns = [])
+    {
+        return count($columns) ? Article::select($columns)->orderBy('id')->get() : Article::orderBy('viewed')->get();
+    }
+
+    public function paginate($perPage = 10)
+    {
+        return Article::latest()
+            ->with(['categories'])
+            ->when(request()->has('category'), function ($q) {
+                $q->whereHas('categories', function ($sq) {
+                    $sq->where('category_id', \request('category'));
+                });
+            })
+            ->when(request()->has('is_published'), function ($q) {
+                $q->where('published', (bool)request('is_published'));
+            })
+            ->when(\request()->has('search'), function ($q) {
+                $q->where('title', 'LIKE', '%' . \request('search') . '%');
+            })
+            ->orderBy('viewed','desc')
+            ->paginate($perPage);
     }
 
     public function paginateWithFilter(int $limit)
@@ -44,6 +178,19 @@ class ArticleRepository implements ArticleInterface
             ->latest()
             ->paginate($perPage);
     }
+
+    public function getArticleCount()
+    {
+         return Article::where('created_at', '>', Carbon::now()->subDays(1))
+             ->groupBy(\DB::raw('HOUR(created_at)'))
+             ->count();
+    }
+    public function getAllArticleCount(): int
+    {
+        return Article::all()->count();
+    }
+
+
 
     private function baseQuery(int $categoryId = 1)
     {

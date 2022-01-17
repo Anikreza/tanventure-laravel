@@ -85,18 +85,18 @@
                                                                        :options="[{label: 'Yes', value: 1}, {label: 'No', value: 0}]"
                                                                        v-model="form.is_published"/>
                                         </v-col>
-                                        <v-col cols="12" sm="12" md="12">
-                                            <VRadioInputWithValidation field="display_in_navigation"
-                                                                       :rules="'required'"
-                                                                       :options="[{label: 'Yes', value: 1}, {label: 'No', value: 0}]"
-                                                                       v-model="form.display_in_navigation"/>
-                                        </v-col>
-                                        <v-col cols="12" sm="12" md="12">
-                                            <VRadioInputWithValidation field="display_in_home_page"
-                                                                       :rules="'required'"
-                                                                       :options="[{label: 'Yes', value: 1}, {label: 'No', value: 0}]"
-                                                                       v-model="form.display_in_home_page"/>
-                                        </v-col>
+<!--                                        <v-col cols="12" sm="12" md="12">-->
+<!--                                            <VRadioInputWithValidation field="display_in_navigation"-->
+<!--                                                                       :rules="'required'"-->
+<!--                                                                       :options="[{label: 'Yes', value: 1}, {label: 'No', value: 0}]"-->
+<!--                                                                       v-model="form.display_in_navigation"/>-->
+<!--                                        </v-col>-->
+<!--                                        <v-col cols="12" sm="12" md="12">-->
+<!--                                            <VRadioInputWithValidation field="display_in_home_page"-->
+<!--                                                                       :rules="'required'"-->
+<!--                                                                       :options="[{label: 'Yes', value: 1}, {label: 'No', value: 0}]"-->
+<!--                                                                       v-model="form.display_in_home_page"/>-->
+<!--                                        </v-col>-->
                                     </v-row>
 
                                 </v-container>
@@ -143,12 +143,12 @@
                     <th class="text-left">
                         Published
                     </th>
-                    <th class="text-left">
-                        Navigation Display
-                    </th>
-                    <th class="text-left">
-                        Homepage Display
-                    </th>
+<!--                    <th class="text-left">-->
+<!--                        Navigation Display-->
+<!--                    </th>-->
+<!--                    <th class="text-left">-->
+<!--                        Homepage Display-->
+<!--                    </th>-->
                     <th class="text-left">
                         Actions
                     </th>
@@ -185,26 +185,26 @@
                             </v-chip>
 
                         </td>
-                        <td>
-                            <v-chip
-                                small
-                                class="ma-2"
-                                text-color="white"
-                                :color="category.display_in_navigation ? 'success' : 'red'"
-                            >
-                                {{ category.display_in_navigation ? 'Displayed' : 'Hidden' }}
-                            </v-chip>
-                        </td>
-                        <td>
-                            <v-chip
-                                small
-                                class="ma-2"
-                                text-color="white"
-                                :color="category.display_in_home_page ? 'success' : 'red'"
-                            >
-                                {{ category.display_in_home_page ? 'Displayed' : 'Hidden' }}
-                            </v-chip>
-                        </td>
+<!--                        <td>-->
+<!--                            <v-chip-->
+<!--                                small-->
+<!--                                class="ma-2"-->
+<!--                                text-color="white"-->
+<!--                                :color="category.display_in_navigation ? 'success' : 'red'"-->
+<!--                            >-->
+<!--                                {{ category.display_in_navigation ? 'Displayed' : 'Hidden' }}-->
+<!--                            </v-chip>-->
+<!--                        </td>-->
+<!--                        <td>-->
+<!--                            <v-chip-->
+<!--                                small-->
+<!--                                class="ma-2"-->
+<!--                                text-color="white"-->
+<!--                                :color="category.display_in_home_page ? 'success' : 'red'"-->
+<!--                            >-->
+<!--                                {{ category.display_in_home_page ? 'Displayed' : 'Hidden' }}-->
+<!--                            </v-chip>-->
+<!--                        </td>-->
                         <td>
                             <v-icon
                                 small
@@ -253,8 +253,6 @@ export default {
                 excerpt: '',
                 keywords: '',
                 is_video: 0,
-                display_in_navigation: 1,
-                display_in_home_page: 1,
                 is_published: 1
             }
         }
@@ -290,8 +288,6 @@ export default {
                 excerpt: '',
                 keywords: '',
                 is_video: 0,
-                display_in_navigation: 1,
-                display_in_home_page: 1,
                 is_published: 1
             };
             this.dialog = true
