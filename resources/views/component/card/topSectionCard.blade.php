@@ -3,7 +3,7 @@
         <img src="{{asset($image)}}" style="width: 100%"/>
     </a>
 </div>
-<div class="post-entry bg-white d-sm-flex d-block align-items-start">
+<div class="post-entry d-sm-flex d-block align-items-start">
     <div class="post-date">
         <p>Mar <strong>19</strong></p>
     </div>

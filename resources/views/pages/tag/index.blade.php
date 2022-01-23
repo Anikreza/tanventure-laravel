@@ -2,7 +2,7 @@
 @section('content')
     <body class="body-wider">
     <div class="section blog section-x tc-grey">
-        <div class="container bg-light-gradient">
+        <div class="container">
             @include('component.breadcrumb')
             <h5 style="color: #7e7777; margin-left: 15px; margin-bottom: 15px">Showing Posts With Tag : <span style="color: #ea5757"> {{ $tag->title}}</span></h5>
             <div class="row gutter-vr-30px">

@@ -13,7 +13,9 @@
 
 <body class="body-wider">
 @include('layouts.navbar')
-@yield('content')
+<div  style="background-color: #f3ffec">
+    @yield('content')
+</div>
 @include('layouts.footer')
 </body>
 </html>

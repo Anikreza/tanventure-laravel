@@ -1,5 +1,5 @@
 <div class="sidebar">
-    <div class="wgs wgs-sidebar bg-light-gradient wgs-tags">
+    <div class="wgs wgs-sidebar wgs-tags">
         <h3 class="wgs-heading">{{$header}}</h3>
         <div class="wgs-content">
             <ul class="tag-list">
@@ -10,7 +10,7 @@
                 @endforeach</ul>
         </div>
     </div><!-- .wgs -->
-    <div class="wgs wgs-sidebar bg-light-gradient wgs-recents">
+    <div class="wgs wgs-sidebar wgs-recents">
         <h3 class="wgs-heading">Suggested Posts</h3>
         <div class="wgs-content">
             <ul class="post-recent">

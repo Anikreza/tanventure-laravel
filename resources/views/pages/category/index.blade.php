@@ -2,7 +2,7 @@
 @section('content')
 <body class="body-wider">
 <div class="section blog section-x tc-grey">
-    <div class="container bg-light-gradient">
+    <div class="container">
         @include('component.breadcrumb')
         <div class="row gutter-vr-30px ">
                 <div class="col-md-8 ">
