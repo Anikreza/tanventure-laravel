@@ -24,20 +24,29 @@ class ArticleRepository implements ArticleInterface
 
     public function save(Request $request)
     {
+        $fileNameToStore = null;
 
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
 
-        $image = $request->image;
-        if ($image) {
-            $image_ext = $image->getClientOriginalExtension();
-            $image_full_name = time() . '.' . $image_ext;
-            $upload_path = 'assets/images/';
-            $image_url = $upload_path . $image_full_name;
+            $extension = $image->getClientOriginalExtension();
 
-            $success = $image->move($upload_path, $image_full_name);
-        } else {
-            $image_url = '';
+            $fileNameToStore = $this->slugify($request->input('title')) . '-' . time() . '.' . $extension;
+
+            $path = public_path('storage/articles/');
+            if (!File::exists($path)) {
+                File::makeDirectory($path);
+            }
+
+            Image::make($image)->resize(null, 576, function ($constraint) {
+                $constraint->aspectRatio();
+            })->encode($extension)
+                ->save(public_path('storage/articles/' . $fileNameToStore));
+            Image::make($image)->resize(null, 180, function ($constraint) {
+                $constraint->aspectRatio();
+            })->encode($extension)
+                ->save(public_path('storage/articles/' . 'thumb_' . $fileNameToStore));
         }
-
 
         $article = Article::create([
             'user_id' => auth()->user()->id,
@@ -49,7 +58,7 @@ class ArticleRepository implements ArticleInterface
             'published' => filter_var($request->input('published'), FILTER_VALIDATE_BOOLEAN),
             'image_disk' => $this->disk,
             'meta_title' => $request->input('meta_title'),
-            'image' => $image_url,
+            'image' => $fileNameToStore,
         ]);
         // Category
         $article->categories()->sync([$request->input('categories')]);
@@ -65,6 +74,7 @@ class ArticleRepository implements ArticleInterface
 
         $article->keywords()->sync($keywordIds);
 
+
         return $article;
     }
 
@@ -73,22 +83,15 @@ class ArticleRepository implements ArticleInterface
         return \Str::slug($name);
     }
 
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return mixed
+     */
     public function update(Request $request, int $id): array
     {
         $article = Article::findOrFail($id);
         $isPublishedBefore = $article->published;
-
-        $image = $request->image;
-        if ($image) {
-            $image_ext = $image->getClientOriginalExtension();
-            $image_full_name = time() . '.' . $image_ext;
-            $upload_path = 'assets/images/';
-            $image_url = $upload_path . $image_full_name;
-
-            $success = $image->move($upload_path, $image_full_name);
-        } else {
-            $image_url = '';
-        }
 
         $data = [
             'title' => $request->input('title'),
@@ -98,8 +101,30 @@ class ArticleRepository implements ArticleInterface
             'description' => $request->input('description'),
             'published' => filter_var($request->input('published'), FILTER_VALIDATE_BOOLEAN),
             'meta_title' => $request->input('meta_title'),
-            'image'=>$image_url,
         ];
+
+
+        if ($request->hasFile('image') && $request->file('image')) {
+            $image = $request->file('image');
+            $extension = $image->getClientOriginalExtension();
+
+            $data['image'] = $this->slugify($request->input('title')) . '-' . time() . '.' . $extension;
+
+            $path = public_path('storage/articles/');
+            $thumbPath = public_path('storage/articles/' . 'thumb_');
+            if (!File::exists($path)) {
+                File::makeDirectory($path);
+            }
+
+            Image::make($image)->resize(null, 675, function ($constraint) {
+                $constraint->aspectRatio();
+            })->encode($extension)
+                ->save($path . $data['image']);
+            Image::make($image)->resize(null, 200, function ($constraint) {
+                $constraint->aspectRatio();
+            })->encode($extension)
+                ->save($thumbPath . $data['image']);
+        }
 
         // Category
         $article->categories()->detach();
@@ -170,9 +195,9 @@ class ArticleRepository implements ArticleInterface
 
     public function getArticleCount()
     {
-         return Article::where('created_at', '>', Carbon::now()->subDays(1))
-             ->groupBy(\DB::raw('HOUR(created_at)'))
-             ->count();
+        return Article::where('created_at', '>', Carbon::now()->subDays(1))
+            ->groupBy(\DB::raw('HOUR(created_at)'))
+            ->count();
     }
     public function getAllArticleCount(): int
     {
@@ -269,7 +294,7 @@ class ArticleRepository implements ArticleInterface
     }
 
     public function getAllTags(){
-       return Keyword::all();
+        return Keyword::all();
     }
 
     public function getTagInfoWithArticles($tag, $perPage, $includeFavorites = false): array
