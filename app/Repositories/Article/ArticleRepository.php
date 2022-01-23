@@ -78,6 +78,18 @@ class ArticleRepository implements ArticleInterface
         $article = Article::findOrFail($id);
         $isPublishedBefore = $article->published;
 
+        $image = $request->image;
+        if ($image) {
+            $image_ext = $image->getClientOriginalExtension();
+            $image_full_name = time() . '.' . $image_ext;
+            $upload_path = 'assets/images/';
+            $image_url = $upload_path . $image_full_name;
+
+            $success = $image->move($upload_path, $image_full_name);
+        } else {
+            $image_url = '';
+        }
+
         $data = [
             'title' => $request->input('title'),
             'slug' => $this->slugify($request->input('title')),
@@ -86,31 +98,8 @@ class ArticleRepository implements ArticleInterface
             'description' => $request->input('description'),
             'published' => filter_var($request->input('published'), FILTER_VALIDATE_BOOLEAN),
             'meta_title' => $request->input('meta_title'),
+            'image'=>$image_url,
         ];
-
-
-        if ($request->hasFile('image') && $request->file('image')) {
-            $image = $request->file('image');
-            $extension = $image->getClientOriginalExtension();
-
-            $data['image'] = $this->slugify($request->input('title')) . '-' . time() . '.' . $extension;
-
-            $path ='assets/images';
-            $thumbPath ='storage/articles/' . 'thumb_';
-            if (!File::exists($path)) {
-                File::makeDirectory(public_path().'/'.$path,0777,true);
-
-            }
-
-            Image::make($image)->resize(null, 675, function ($constraint) {
-                $constraint->aspectRatio();
-            })->encode($extension)
-                ->save($path . $data['image']);
-            Image::make($image)->resize(null, 200, function ($constraint) {
-                $constraint->aspectRatio();
-            })->encode($extension)
-                ->save($thumbPath . $data['image']);
-        }
 
         // Category
         $article->categories()->detach();
