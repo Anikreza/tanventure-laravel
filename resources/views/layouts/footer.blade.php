@@ -17,11 +17,9 @@
             <div class="col-lg-3 col-sm-6">
                 <div class="wgs">
                     <div class="wgs-content">
-                        <h3 class="wgs-title">Company</h3>
+                        <h3 class="wgs-title"> About</h3>
                         <ul class="wgs-menu">
-                            <li><a href="dallas-about.html">About us</a></li>
-                            <li><a href="texas-about.html">Why Genox?</a></li>
-                            <li><a href="dallas-team.html">Meet the team</a></li>
+                            <a href="{{ url('columnist') }}" class="footer-links">Columnist</a>
                         </ul>
                     </div>
                 </div><!-- .wgs -->
@@ -31,9 +29,9 @@
                     <div class="wgs-content">
                         <h3 class="wgs-title">Services</h3>
                         <ul class="wgs-menu">
-                            <li><a href="dallas-services.html">Digital Media</a></li>
-                            <li><a href="texas-services.html">Strategy</a></li>
-                            <li><a href="florida-services.html">Development</a></li>
+                            @foreach($footerPages as $pageLink)
+                            <a href="{{ route('article-details', ['slug' => $pageLink['page']['slug']]) }}">{{ $pageLink['page']['title'] }}</a>
+                            @endforeach
                         </ul>
                     </div>
                 </div><!-- .wgs -->

@@ -15,10 +15,9 @@
                                     <p>Mar <strong>19</strong></p>
                                 </div>
                                 <ul class="social text-center">
-                                    <li><a href="" class="fac fab fa-facebook-f"></a></li>
-                                    <li><a href="" class="twi fab fa-twitter"></a></li>
-                                    <li><a href="" class="pin fab fa-pinterest-p"></a></li>
-                                    <li><a href="" class="goo fab fa-google-plus-g"></a></li>
+                                    @foreach($shareLinks as $key=>$link)
+                                    <li><a href="{{$link}}" target="_blank" class="pin fab fa-{{$key}}"></a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <div class="post-content post-content-wd">
