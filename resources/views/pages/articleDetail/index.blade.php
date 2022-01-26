@@ -24,7 +24,7 @@
                                 <div class="post-meta d-block d-lg-flex align-items-center">
                                     <div class="post-author d-flex align-items-center flex-shrink-0 align-self-start">
                                         <div class="author-thumb">
-                                            <img src="images/author-image-a.jpg" alt="">
+                                            <img src="{{asset('images/author-image-b.jpg')}}" alt="">
                                         </div>
                                         <div class="author-name">
                                             <p>Mark Anthony</p>

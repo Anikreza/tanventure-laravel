@@ -1,4 +1,4 @@
-<div class="section section-l bg-white section-news ">
+<div class="section section-l section-news ">
     <br/>
     <div class="container">
         <div class="row justify-content-center">

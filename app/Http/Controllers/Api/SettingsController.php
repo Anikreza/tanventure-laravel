@@ -28,7 +28,7 @@ class SettingsController extends ApiController
         }
 
         $settings = $request->except('home_page_image');
-//        $settings = array_merge($settings, $request->all());
+        $settings = array_merge($settings, $request->all());
 
         setting([
             'general' => json_encode($settings)

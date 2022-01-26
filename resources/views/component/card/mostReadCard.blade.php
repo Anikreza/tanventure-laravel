@@ -10,6 +10,5 @@
         </li>
     </ul>
     <h4><a href="{{ route('article-details', ['slug' => $slug]) }}">{{$title}}</a></h4>
-    <p style="height: 55px; overflow: hidden; margin-top: 10px"> {{$description}}</p>
     <a href="{{ route('article-details', ['slug' => $slug]) }}" class="btn-primary btn-arrow">Read More</a>
 </div>

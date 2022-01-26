@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Page;
 use App\Models\PageLink;
+use App\Models\Visitor;
 use App\Repositories\Article\ArticleRepository;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\OpenGraph;
@@ -59,7 +60,6 @@ class WebsiteController extends Controller
         $footerPages = \Cache::remember('footer_pages', config('cache.default_ttl'), function () {
             return PageLink::where('key', 'footer_pages')->with('page:id,title,slug')->get()->toArray();
         });
-
         view()->share('footerPages', $footerPages);
         view()->share('categories', $categories);
         view()->share('tags', $tags);
@@ -68,6 +68,8 @@ class WebsiteController extends Controller
 
     public function index()
     {
+
+        $this->articleRepository->SetVisitor();
         $publishedArticles = $this->articleRepository->publishedArticles(1, 4);
         $featuredArticles = $this->articleRepository->publishedFeaturedArticles(1, 3);
         $mostReadArticles = $this->articleRepository->mostReadArticles(1, 3);
@@ -161,7 +163,7 @@ class WebsiteController extends Controller
 
         // SEO META INFO
         if ($tag->title == 'XYZs column') {
-            $this->baseSeoData['title'] = "Demo blogsite Travel blog etc | {$this->baseSeoData['app_name']}";
+            $this->baseSeoData['title'] = "Demo blogsite Travel blog | {$this->baseSeoData['app_name']}";
             $this->baseSeoData['description'] = "here, you will find blogs describing cultures, ethnicity and politics around the world";
         } else {
             $this->baseSeoData['title'] = "{$tag->title} | {$this->baseSeoData['app_name']}";
@@ -220,10 +222,8 @@ class WebsiteController extends Controller
         $page->excerpt = null;
         $page->keywords = [];
         $page->image_url = null;
-        $page->read_time = null;
         return $page;
     }
-
 
     public function getColumnistPage()
     {

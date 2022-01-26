@@ -12,7 +12,7 @@
             <div class="post-author d-flex align-items-center">
                 <div class="author-thumb">
                     <a href='/articleDetail'>
-                        <img src="{{asset($image)}}"/>
+                        <img src="{{asset('images/author-image-b.jpg')}}"/>
                     </a>
                 </div>
                 <div class="author-name">
@@ -25,7 +25,7 @@
                 </ul>
             </div><!-- .post-tag -->
         </div>
-        <h4><a href="#">{{$title}}</a></h4>
+        <h4><a href="{{ route('article-details', ['slug' => $slug]) }}">{{$title}}</a></h4>
     </div>
 </div>
 
