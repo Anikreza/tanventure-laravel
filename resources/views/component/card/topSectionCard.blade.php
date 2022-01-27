@@ -1,6 +1,6 @@
-<div class="post-thumb">
+<div class="post-thumb" style="padding: 4%">
     <a href="{{ route('article-details', ['slug' => $slug]) }}">
-        <img src="{{asset($image)}}" style="width: 100%"/>
+        <img src="{{asset($image)}}" style="width: 100%; box-shadow: 3px 3px 3px 3px #707070; border-radius: 5px"/>
     </a>
 </div>
 <div class="post-entry d-sm-flex d-block align-items-start">
