@@ -3,19 +3,29 @@
 <head>
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Site Title  -->
     {!! SEO::generate() !!}
     <!-- Bundle and Base CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/vendor.bundle.css?ver=141') }}" >
     <link rel="stylesheet" href="{{ asset('assets/css/style.css?ver=141') }}" >
     <link rel="stylesheet" href="{{ asset('assets/css/theme.css?ver=141') }}" >
+
 </head>
 
 <body class="body-wider">
 @include('layouts.navbar')
-<div  style="background: linear-gradient(180deg,#ffffff,#e0cccc,#ffffff) ">
+<div>
     @yield('content')
 </div>
 @include('layouts.footer')
+
+<div class="preloader preloader-light preloader-florida"><span class="spinner spinner-alt"><img class="spinner-brand" srcset="{{ asset('assets/images/logo-white.png') }}" src="images/logo-white.png" alt=""></span></div>
+<!-- JavaScript -->
+<script src="{{ asset('assets/js/jquery.bundle.js') }}"></script>
+<script src="{{ asset('assets/js/scripts.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+@yield('scripts')
 </body>
 </html>
+

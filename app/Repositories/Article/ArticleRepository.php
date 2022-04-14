@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Category;
 use App\Models\Keyword;
 use App\Models\Visitor;
+use Cache;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -125,7 +126,9 @@ class ArticleRepository implements ArticleInterface
     public function delete(int $id)
     {
         $article = Article::findOrFail($id);
-        Storage::disk($this->disk)->delete('articles/' . $article->image);
+        if (File::exists($article->image)) {
+            File::delete($article->image);
+        }
         $article->categories()->detach();
         $article->keywords()->detach();
 
@@ -181,12 +184,20 @@ class ArticleRepository implements ArticleInterface
         return Article::all()->count();
     }
 
-    public function SetVisitor()
-    {
+    public function SetVisitor()   {
         $ip = request()->ip();
-        $visited_date = Date("Y-m-d:H:i:s");
+        $visited_date = Carbon::now();
         $visitor = Visitor::firstOrCreate(['ip' => $ip], ['visit_date' => $visited_date]);
         $visitor->increment('hits');
+        $visitor->increment('lastDayRecord');
+
+        Visitor::where('visit_date', '<', Carbon::now()->subDays(1))
+            ->update(['lastDayRecord' => 0]);
+
+        Visitor::where('created_at', '<', Carbon::now()->subDays(1))
+            ->update(['visit_date' => Carbon::now(), 'created_at' => Carbon::now()]);
+
+
     }
 
     public function getTotalVisitCount(): int
@@ -196,9 +207,8 @@ class ArticleRepository implements ArticleInterface
 
     public function getLastDaysTotalVisitCount(): int
     {
-        return Visitor::where('created_at', '>', Carbon::now()->subDays(1))
-            ->groupBy(\DB::raw('HOUR(created_at)'))
-            ->sum('hits');
+        return Visitor::where('updated_at', '>', Carbon::now()->subDays(1))
+            ->sum('lastDayRecord');
     }
 
     public function getUniqueVisitorCount(): int
@@ -208,20 +218,14 @@ class ArticleRepository implements ArticleInterface
 
     public function getLastWeeksUniqueVisitorCount()
     {
-        return Visitor::where('created_at', '>', Carbon::now()->subDays(7))
-            ->groupBy(\DB::raw('HOUR(created_at)'))
-            ->count();
+        return Visitor::where('updated_at', '>', Carbon::now()->subDays(7))
+            ->count('id');
     }
 
     public function getLastWeeksVisitCountByDay()
     {
-        //
-//        $visitorsPerDay = [];
-//        foreach ($data as $key=>$item) {
-//            $visitorsPerDay[] = $item->visits;
-//        }
-        return Visitor::select( DB::raw('sum(hits) as visits'))
-            ->where('created_at', ">", DB::raw('NOW() - INTERVAL 1 WEEK'))
+        return Visitor::select(DB::raw('sum(hits) as visits'))
+            ->where('visit_date', ">", DB::raw('NOW() - INTERVAL 1 WEEK'))
             ->groupBy('visit_date')
             ->get();
     }
@@ -244,12 +248,20 @@ class ArticleRepository implements ArticleInterface
     public function publishedArticles(int $categoryId, int $limit)
     {
         return $this->baseQuery($categoryId)
-            ->select('id', 'title', 'slug', 'featured', 'published', 'image', 'viewed', 'description')
-            ->with('favorites')
+            ->select('id', 'title', 'slug', 'featured', 'published', 'image', 'viewed', 'description','updated_at','created_at')
             ->with('categories')
             ->latest()
             ->limit($limit)
             ->get();
+    }
+
+    public function getNovels()
+    {
+        return $this->baseQuery(1)
+            ->select('id', 'title', 'slug', 'featured', 'published', 'image', 'viewed', 'description')
+            ->with('categories')
+            ->latest()
+            ->paginate(5);
     }
 
     public function publishedFeaturedArticles(int $categoryId, int $limit)
@@ -276,19 +288,21 @@ class ArticleRepository implements ArticleInterface
         return $this->model->with(['categories' => function ($q) use ($condition, $isSlug) {
             $q->with(['articles' => function ($sq) use ($condition, $isSlug) {
                 $sq->select('article_id', 'title', 'slug', 'published', 'viewed', 'image', 'featured', 'description')
-                    ->with('favorites')
                     ->where('published', '=', true)
-                    ->when($isSlug, function ($s) use ($condition, $isSlug) {
+                    ->when($isSlug, function ($s) use ($condition) {
                         $s->where('slug', '!=', $condition);
                     })
-                    ->when(!$isSlug, function ($s) use ($condition, $isSlug) {
+                    ->when(!$isSlug, function ($s) use ($condition) {
                         $s->where('article_id', '!=', $condition);
                     })
                     ->inRandomOrder()
                     ->limit(4);
             }]);
         }])
-            ->with(['keywords', 'favorites'])
+            ->with(['keywords'])
+            ->with(['comments'=>function($q){
+                $q->orderBy('created_at', 'desc');
+            }])
             ->where('published', true)
             ->when($isSlug, function ($q) use ($condition) {
                 $q->where('slug', $condition);
@@ -302,7 +316,7 @@ class ArticleRepository implements ArticleInterface
     public function getSimilarArticles($categoryId, $limit)
     {
         return $this->baseQuery($categoryId)
-            ->select('id', 'title', 'slug', 'published', 'viewed', 'image', 'featured', 'description')
+            ->select('id', 'title', 'slug', 'published', 'viewed', 'image', 'featured', 'description','created_at','updated_at')
             ->inRandomOrder()
             ->limit($limit)
             ->get();
@@ -320,14 +334,14 @@ class ArticleRepository implements ArticleInterface
 
     public function getAllTags()
     {
-        return Keyword::all();
+        return Keyword::all()->unique('title');
     }
 
     public function getTagInfoWithArticles($tag, $perPage, $includeFavorites = false): array
     {
         $string = Str::title(str_replace('-', ' ', trim($tag)));
         $tag = Keyword::where('title', 'LIKE', '%' . $string . '%')->get();
-        $tags = Keyword::all();
+        $tags = Keyword::all()->unique('title');
 
         return [
             'tagInfo' => count($tag) ? $tag[0] : null,

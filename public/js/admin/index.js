@@ -2851,9 +2851,9 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(vue_meta__WEBPACK_IMPORTED_MODULE_3
 // Set in .env
 // https://github.com/MatteoGabriele/vue-analytics
 
-if (({"MIX_APP_URL":"http://127.0.0.1:8000","MIX_APP_NAME":"Demo BlogSite"}).GOOGLE_ANALYTICS) {
+if (({"MIX_APP_URL":"http://127.0.0.1:8000","MIX_APP_NAME":"tanventure"}).GOOGLE_ANALYTICS) {
   vue__WEBPACK_IMPORTED_MODULE_0__.default.use((vue_analytics__WEBPACK_IMPORTED_MODULE_1___default()), {
-    id: ({"MIX_APP_URL":"http://127.0.0.1:8000","MIX_APP_NAME":"Demo BlogSite"}).GOOGLE_ANALYTICS,
+    id: ({"MIX_APP_URL":"http://127.0.0.1:8000","MIX_APP_NAME":"tanventure"}).GOOGLE_ANALYTICS,
     router: router,
     autoTracking: {
       page: "development" !== 'development'
@@ -2922,7 +2922,7 @@ __webpack_require__.r(__webpack_exports__);
   // redirect if already signed in
   beforeEnter: function beforeEnter(to, from, next) {
     if (_store__WEBPACK_IMPORTED_MODULE_0__.default.getters.authorized) {
-      next('/dashboard/admin/home');
+      next('/dashboard/admin/landingPage');
     } else {
       next();
     }
@@ -2941,7 +2941,7 @@ __webpack_require__.r(__webpack_exports__);
     requiresAuth: false
   },
   redirect: {
-    path: '/dashboard/admin/home'
+    path: '/dashboard/admin/landingPage'
   }
 }, {
   path: '/dashboard/admin',
@@ -3227,7 +3227,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__.default.Store({
   mutations: _mutations__WEBPACK_IMPORTED_MODULE_6__.default,
   state: _state__WEBPACK_IMPORTED_MODULE_7__.default,
   plugins: [(0,vuex_persistedstate__WEBPACK_IMPORTED_MODULE_2__.default)({
-    key: "Demo BlogSite",
+    key: "tanventure",
     reducer: function reducer(val) {
       if (val.token === '') {
         // return empty state when user logged out

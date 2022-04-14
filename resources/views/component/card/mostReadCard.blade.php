@@ -6,7 +6,7 @@
 <div class="post-content">
     <ul class="post-tag">
         <li><a href="">
-                <span>DECEMBER 08, 2018</span></a>
+                <span style="color: #475e42">DECEMBER 08, 2018</span></a>
         </li>
     </ul>
     <h4><a href="{{ route('article-details', ['slug' => $slug]) }}">{{$title}}</a></h4>

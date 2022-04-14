@@ -32,7 +32,7 @@ Route::group([
 //    Route::post("/remove-favorites", [AppController::class, 'removeFavorites']);
 //    Route::post("/save-personal-settings", [AppController::class, 'savePersonalSettings']);
 //    Route::post("/get-personal-settings", [AppController::class, 'getPersonalSettings']);
-//    Route::get("/get-home-page-data", [AppArticleController::class, 'getHomePageData']);
+//    Route::get("/get-landingPage-page-data", [AppArticleController::class, 'getHomePageData']);
 //    Route::get("/search-article", [AppArticleController::class, 'searchArticle']);
 //    Route::get("/get-article/{id}", [AppArticleController::class, 'getArticle']);
 //    Route::get("/get-page/{id}", [AppController::class, 'getPage']);

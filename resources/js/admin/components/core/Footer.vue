@@ -28,7 +28,7 @@
 export default {
     data: () => ({
         links: [
-            {name: 'Home', Link: '/dashboard/admin/home'},
+            {name: 'Home', Link: '/dashboard/admin/landingPage'},
             {name: 'Demo', Link: ''},
             {name: 'GitHub', Link: ''}
         ],

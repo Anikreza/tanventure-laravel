@@ -132,7 +132,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _context.next = 6;
                 return _this.$store.dispatch('login', _this.form).then(function () {
-                  return _this.$router.push('/dashboard/admin/home');
+                  return _this.$router.push('/dashboard/admin/landingPage');
                 })["catch"](function () {
                   _this.$store.dispatch('app/setSnackbarMessage', _this.$t('Messages.login_failed'));
                 });
@@ -156,7 +156,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   metaInfo: function metaInfo() {
     return {
       title: this.$t('Home.siteName', {
-        siteName: "Demo BlogSite"
+        siteName: "tanventure"
       }) + ' | ' + this.$t('Pages.Login.login')
     };
   }

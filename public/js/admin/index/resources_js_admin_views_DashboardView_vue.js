@@ -127,7 +127,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapState)('app', ['image', 'color'])), {}, {
     siteTitle: function siteTitle() {
-      return "Demo BlogSite";
+      return "tanventure";
     },
     siteUrl: function siteUrl() {
       return "http://127.0.0.1:8000";
@@ -325,7 +325,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       links: [{
         name: 'Home',
-        Link: '/dashboard/admin/home'
+        Link: '/dashboard/admin/landingPage'
       }, {
         name: 'Demo',
         Link: ''
@@ -333,7 +333,7 @@ __webpack_require__.r(__webpack_exports__);
         name: 'GitHub',
         Link: ''
       }],
-      siteTitle: "Demo BlogSite"
+      siteTitle: "tanventure"
     };
   }
 });
@@ -658,7 +658,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   metaInfo: function metaInfo() {
     return {
-      title: "Admin - ".concat("Demo BlogSite")
+      title: "Admin - ".concat("tanventure")
     };
   }
 });
@@ -754,7 +754,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#core-footer {\r\n    z-index: 0;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#core-footer {\n    z-index: 0;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

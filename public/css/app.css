@@ -163,7 +163,7 @@
       font-size: 16px;
       line-height: 22px;
       line-height: 34px !important;
-      color: #29304D; }
+      color: #19b275; }
       .header .nav-link-area .navbar-nav .nav-link.active {
         color: #475e42; }
       .header .nav-link-area .navbar-nav .nav-link:hover {
@@ -178,7 +178,7 @@
     .header .navbar-toggler .material-icons {
       display: flex;
       font-size: 30px;
-      color: #29304D;
+      color: #19b275;
       height: -webkit-fill-available;
       place-content: flex-end;
       align-self: flex-end; }
@@ -208,7 +208,7 @@ body {
   font-style: normal;
   font-size: 20px;
   line-height: 25px;
-  color: #29304D; }
+  color: #19b275; }
 
 .article-card {
   padding: 0;
@@ -249,7 +249,7 @@ body {
   font-style: normal;
   font-size: 16px;
   line-height: 22px;
-  color: #29304D;
+  color: #19b275;
   text-align: left;
   margin-top: 5px; }
   .article-card .article-title:hover, .four-col-section .article-title:hover, .latest-article-section .article-title:hover, .content-rows .article-title:hover, .similar-posts-section .article-title:hover, .article-page-wrapper .article-title:hover, .category-page-wrapper .article-title:hover {
@@ -327,20 +327,20 @@ body {
   margin-bottom: 40px;
   background: #F7F9FC; }
   .breadcrumb .breadcrumb-item a {
-    color: #29304D;
+    color: #19b275;
     text-decoration: none; }
   .breadcrumb .breadcrumb-item.active a {
-    color: #8CD8E5 !important; }
+    color: #475e42 !important; }
 
 .pagination .page-item.active .page-link {
-  background: #8CD8E5;
-  border-color: #8CD8E5; }
+  background: #475e42;
+  border-color: #475e42; }
 
 .pagination .page-link {
-  color: #8CD8E5; }
+  color: #475e42; }
 
 a {
-  color: #29304D;
+  color: #19b275;
   text-decoration: none; }
   a .article-title .col {
     cursor: pointer; }
@@ -1610,7 +1610,7 @@ a {
       .four-col-section .article-card .card-header-section .row {
         margin: 0 -7px; }
   .four-col-section .info-section .read-time-section > i {
-    color: #29304D !important; }
+    color: #19b275 !important; }
   .four-col-section .info-section span {
     color: #7F8393 !important; }
   .four-col-section .article-title {
@@ -1620,7 +1620,7 @@ a {
 .outline-info {
   margin-top: 5px !important; }
   .outline-info .article-title {
-    color: #29304D;
+    color: #19b275;
     padding-bottom: 5px !important; }
   .outline-info .info-section {
     color: #7F8393; }
@@ -1639,7 +1639,7 @@ a {
     margin: 10px 0 35px 0;
     font-size: 36px; }
   .latest-article-section .article-title {
-    color: #29304D; }
+    color: #19b275; }
   .latest-article-section .info-section {
     color: #7F8393; }
 
@@ -1682,7 +1682,7 @@ a {
     padding-left: 15px;
     padding-right: 34px;
     font-size: 38px;
-    color: #29304D; }
+    color: #19b275; }
 
 .popular-articles .article-title {
   font-size: 18px !important;
@@ -1757,7 +1757,7 @@ a {
       background: #F7F9FC;
       border-radius: 100px;
       box-shadow: none;
-      color: #29304D;
+      color: #19b275;
       font-family: "Open Sans", sans-serif;
       font-weight: 400;
       font-size: 14px;
@@ -1765,7 +1765,7 @@ a {
     .search-section ion-searchbar .searchbar-search-icon {
       top: 15px;
       left: 20px;
-      color: #29304D;
+      color: #19b275;
       font-size: 20px !important; }
   .search-section .filter-icon-area {
     display: flex;
@@ -1844,7 +1844,7 @@ a {
     .sidebar-articles .section-title span {
       position: relative;
       padding-bottom: 10px;
-      border-bottom: 2px solid #29304D; }
+      border-bottom: 2px solid #19b275; }
   .sidebar-articles .item {
     padding: 0 0 20px 0; }
   .sidebar-articles .article-card {
@@ -1911,7 +1911,7 @@ a {
 .article-page-wrapper .similar-articles .article-title {
   font-size: 18px !important;
   line-height: 24px !important;
-  color: #29304D; }
+  color: #19b275; }
 
 .content-section {
   padding: 0 3px; }
@@ -1920,7 +1920,7 @@ a {
     font-style: normal;
     font-size: 16px;
     line-height: 22px;
-    color: #29304D;
+    color: #19b275;
     font-size: 24px;
     line-height: 26px;
     padding: 10px 0 10px 0; }

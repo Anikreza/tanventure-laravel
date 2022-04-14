@@ -5,18 +5,20 @@
 </div>
 <div class="post-entry d-sm-flex d-block align-items-start">
     <div class="post-date">
-        <p>Mar <strong>19</strong></p>
+        <p>{{$time->translatedFormat('M')}} <strong style="font-weight: lighter">'{{$time->translatedFormat('y')}}</strong></p>
     </div>
     <div class="post-content">
         <div class="post-meta d-flex align-items-center">
             <div class="post-author d-flex align-items-center">
                 <div class="author-thumb">
-                    <a href='/articleDetail'>
-                        <img src="{{asset('images/author-image-b.jpg')}}"/>
+                    <a href='{{route('about')}}'>
+                        <img src="{{asset('assets/images/pp.jpg')}}"/>
                     </a>
                 </div>
                 <div class="author-name">
-                    <p>Mark Anthony</p>
+                    <a href='{{route('about')}}'>
+                    <p style="color: #4d1219">তানভীর রেজা অনিক</p>
+                    </a>
                 </div>
             </div><!-- author -->
             <div class="post-tag">
@@ -25,7 +27,7 @@
                 </ul>
             </div><!-- .post-tag -->
         </div>
-        <h4><a href="{{ route('article-details', ['slug' => $slug]) }}">{{$title}}</a></h4>
+        <h4 style="color: #155b3f"><a href="{{ route('article-details', ['slug' => $slug]) }}">{{$title}}</a></h4>
     </div>
 </div>
 

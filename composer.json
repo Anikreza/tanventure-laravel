@@ -14,6 +14,7 @@
         "ext-json": "*",
         "anlutro/l4-settings": "^1.0",
         "artesaos/seotools": "^0.20.0",
+        "beyondcode/laravel-comments": "^1.3",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -25,6 +26,7 @@
         "laravel/sanctum": "^2.9",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
+        "laravelista/comments": "^4.5",
         "laravelium/sitemap": "^8.0",
         "rap2hpoutre/laravel-log-viewer": "^1.7"
     },

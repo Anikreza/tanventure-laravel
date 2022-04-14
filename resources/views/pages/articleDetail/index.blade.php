@@ -1,35 +1,43 @@
 @extends('master')
 @section('content')
-    <div class="section blog section-x">
-        <div class="container">
-            @include('component.breadcrumb')
+    <div class="section blog section-blg" style="background: linear-gradient(-40deg,#ffffff,#9f9f9f,#b6b3b3,#e8e7e7);">
+{{--    <div class="section blog section-blg">--}}
+        {{--        @include('component.breadcrumb')--}}
+        <div class="article-thumb">
+            <img src="{{asset($article->image)}}" alt="">
+        </div>
+        {{--        <div class="container-blog">--}}
+        <div class="customContainer">
             <div class="row justify-content-center">
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <div class="post post-full post-details">
-                        <div class="post-thumb">
-                            <img src="{{asset($article->image)}}" alt="">
-                        </div>
                         <div class="post-entry d-sm-flex d-block align-items-start">
                             <div class="content-left d-flex d-sm-block">
                                 <div class="post-date">
-                                    <p>Mar <strong>19</strong></p>
+                                    <p>{{$article->created_at->translatedFormat('M')}} <strong
+                                            style="font-weight: lighter">'{{$article->created_at->translatedFormat('y')}}</strong>
+                                    </p>
                                 </div>
                                 <ul class="social text-center">
                                     @foreach($shareLinks as $key=>$link)
-                                    <li><a href="{{$link}}" target="_blank" class="pin fab fa-{{$key}}"></a></li>
+                                        <li><a href="{{$link}}" target="_blank" class="pin fab fa-{{$key}}"></a></li>
                                     @endforeach
                                 </ul>
                             </div>
                             <div class="post-content post-content-wd">
                                 <div class="post-meta d-block d-lg-flex align-items-center">
-                                    <div class="post-author d-flex align-items-center flex-shrink-0 align-self-start">
-                                        <div class="author-thumb">
-                                            <img src="{{asset('images/author-image-b.jpg')}}" alt="">
+                                    <a href="{{route('about')}}">
+
+                                        <div
+                                            class="post-author d-flex align-items-center flex-shrink-0 align-self-start">
+                                            <div class="author-thumb">
+                                                <img src="{{asset('assets/images/pp.jpg')}}" alt="">
+                                            </div>
+                                            <div class="author-name">
+                                                <p style="color: #231111">তানভীর রেজা অনিক</p>
+                                            </div>
                                         </div>
-                                        <div class="author-name">
-                                            <p>Mark Anthony</p>
-                                        </div>
-                                    </div>
+                                    </a>
                                     <div class="post-tag d-flex">
                                         <ul class="post-cat">
                                             <li><a href="{{ route('category', ['slug' =>  $category->slug]) }}"><em
@@ -38,8 +46,9 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <h3>{{ $article['title'] }}</h3>
-                                <div class="content">
+                                <h3 style="color:#475E42FF;">{{ $article['title'] }}</h3>
+                                <hr/>
+                                <div class="content" style="text-align: justify">
                                     {!! $article['description'] !!}
                                 </div>
                             </div>
@@ -53,13 +62,20 @@
                     </span>
                         @foreach($article->keywords as $keyword)
                             <a class="post-tag" href="{{ route('tag', ['slug' => \Str::slug($keyword->title)]) }}">
-                                <span  style=" font-size:16px; margin-left: 10px; background-color:#ea4a4a; color: #ffffff; padding: 10px; border-radius: 5px">{{ $keyword->title }}</span>
+                                <span
+                                    style=" font-size:16px; margin-left: 10px; background-color:#19b275; color: #ffffff; padding: 10px; border-radius: 5px">{{ $keyword->title }}</span>
                             </a>
                         @endforeach
                     </div>
                     <br/>
                     <br/>
                     <!-- tags -->
+                    <hr/>
+                    <!-- comments -->
+                    <div id="comments">
+                        @include('component.comments.index',['comments'=>$article->comments,'article'=>$article->id])
+                    </div>
+                <!-- comments -->
                     <!-- similar Posts -->
                     <div class="wgs">
                         <div class="section-head">
@@ -67,10 +83,11 @@
                         </div>
                         <div class="row gutter-vr-30px ">
                             @foreach($similarArticles as $article)
-                                <div class="col-12 col-lg-6 bg-white">
+                                <div class="col-12 col-lg-6">
                                     <div class="post post-full post-v2">
                                         @include('component.card.similarArticle',
                                                [
+                                                   'time'=>$article['created_at'],
                                                    'image' => $article['image'],
                                                    'title' => $article['title'],
                                                    'slug' => $article['slug'],

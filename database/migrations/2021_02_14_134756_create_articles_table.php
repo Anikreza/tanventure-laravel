@@ -17,6 +17,7 @@ class CreateArticlesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('title')->unique();
+            $table->string('author')->nullable();
             $table->string('slug')->unique();
             $table->longText('description');
             $table->text('excerpt')->nullable();

@@ -18,8 +18,8 @@ class AdminSeeder extends Seeder
             'first_name' => 'Christoph',
             'last_name' => 'Swoboda',
             'gender' => 'm',
-            'email' => 'admin@meraner-morgen.it',
-            'password' => bcrypt('mmtest!'),
+            'email' => 'BlogAdmin@gmail.com',
+            'password' => bcrypt('Civediamo22'),
             'role' => 1,
             'email_verified_at' => now()
         ];

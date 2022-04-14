@@ -2,7 +2,7 @@
     <nav>
         <ol class="breadcrumb" style="background-color: inherit">
             <li class="breadcrumb-item">
-                <a href="{{route('home')}}">Home</a>
+                <a style="color: #19b275" href="{{route('landingPage')}}">Home</a>
             </li>
             @for($i = 0; $i < count($segments); $i++)
                 <li class="breadcrumb-item @if($i == (count($segments) - 1)) active @endif" aria-current="page">

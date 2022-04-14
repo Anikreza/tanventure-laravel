@@ -5,29 +5,22 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 /**
  * PUBLIC ROUTES
  */
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 Route::get('/send-notification', [NotificationController::class, 'sendNotification'])->name('send.notification');
-Route::get('/', [WebsiteController::class, 'index'])->name('home');
+Route::get('/', [WebsiteController::class, 'home'])->name('landingPage');
+Route::get('/blog', [WebsiteController::class, 'index'])->name('blog');
+Route::get('/Tanvir-Reza-Anik', [WebsiteController::class, 'about'])->name('about');
+Route::get('/the-novel', [WebsiteController::class, 'novel'])->name('novel');
 Route::get('/articles/{slug}', [WebsiteController::class, 'articleDetails'])->name('article-details');
 Route::get('/category/{slug}', [WebsiteController::class, 'categoryDetails'])->name('category');
 Route::get('/search', [WebsiteController::class, 'searchArticle'])->name('search');
 Route::get('/columnist', [WebsiteController::class, 'getColumnistPage'])->name('columnist');
 Route::get('tag/{slug}', [WebsiteController::class, 'tagDetails'])->name('tag');
-
+Route::post('/newsLetter', [WebsiteController::class, 'newsLetters'])->name('newsLetter');
+Route::post('/postComment', [WebsiteController::class, 'postComment'])->name('comment');
 /**
  * ADMIN ROUTES
  */

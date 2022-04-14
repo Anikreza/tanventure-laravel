@@ -25,6 +25,7 @@ Vue.prototype.$http = axios;
 Vue.prototype.$baseURL = process.env.MIX_APP_URL;
 
 Vue.component('contact-form', require('./contact-form').default);
+Vue.component('comments-list', require('../../views/pages/comments/commentsList').default);
 const app = new Vue({
     el: document.querySelector('#form-plugin'),
 });

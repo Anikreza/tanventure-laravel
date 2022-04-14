@@ -44,7 +44,7 @@ export default [
         // redirect if already signed in
         beforeEnter: (to, from, next) => {
             if (store.getters.authorized) {
-                next('/dashboard/admin/home')
+                next('/dashboard/admin/landingPage')
             } else {
                 next()
             }
@@ -64,7 +64,7 @@ export default [
             requiresAuth: false
         },
         redirect: {
-            path: '/dashboard/admin/home'
+            path: '/dashboard/admin/landingPage'
         }
     },
     {

@@ -1,11 +1,11 @@
 <div class="post-thumb ">
     <a href="{{ route('article-details', ['slug' => $slug]) }}">
-        <img src={{asset($image)}} alt="">
+        <img src={{asset($image)}} alt="" style="box-shadow: 4px 4px 4px 4px #414141; border-radius: 8px">
     </a>
 </div>
 <div class="post-entry  d-sm-flex d-block align-items-start">
     <div class="post-date">
-        <p>Mar <strong>19</strong></p>
+        <p>{{$time->translatedFormat('M')}} <strong style="font-weight: lighter">'{{$time->translatedFormat('y')}}</strong></p>
     </div>
     <div class="post-content post-content-s2">
         <h4 style="margin-bottom: 20px; font-weight: 400">{{ $title}}</h4>

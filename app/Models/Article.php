@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Storage;
+use Laravelista\Comments\Commentable;
 
 class Article extends BaseModel
 {
     use HasFactory;
+    use Commentable;
 
     protected $appends = ['image_url', 'thumb_image_url'];
 
@@ -64,26 +66,14 @@ class Article extends BaseModel
         return $this->hasMany(Favorite::class);
     }
 
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function getImageUrlAttribute(): ?string
     {
         return $this->image ? Storage::disk('public')->url('articles/' . basename($this->image)) : null;
     }
 
-    public function getThumbImageUrlAttribute(): ?string
-    {
-        if ($this->image) {
-            if (Storage::disk('public')->exists('articles/thumb_' . basename($this->image))) {
-                return Storage::disk('public')->url('articles/thumb_' . basename($this->image));
-            } else {
-                return Storage::disk('public')->url('articles/' . basename($this->image));
-            }
-        } else {
-            return null;
-        }
-    }
-
-    public function getReadTimeAttribute(): string
-    {
-        return $this->attributes['read_time'] . ' min Lesezeit';
-    }
 }

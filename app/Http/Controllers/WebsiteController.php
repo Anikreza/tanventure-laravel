@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-;
 
+
+use App\Models\Article;
+use App\Models\Comment;
+use App\Models\User;
 use App\Models\Category;
+use App\Models\NewsLetter;
 use App\Models\Page;
 use App\Models\PageLink;
 use App\Models\Visitor;
@@ -52,15 +56,15 @@ class WebsiteController extends Controller
 
         $this->articleRepository = $articleRepository;
         $tags = $this->articleRepository->getAllTags();
-//        $tagTitles=[];
-//        foreach ($tags as $tag)
-//            array_push($tagTitles,$tag->title);
+
+        $subscribers = NewsLetter::all();
         $categories = Category::select('name', 'slug')->where('is_published', 0)->orderBy('position', 'asc')->pluck('name', 'slug');
         $featuredArticles = $this->articleRepository->publishedArticles(1, 3);
         $footerPages = \Cache::remember('footer_pages', config('cache.default_ttl'), function () {
             return PageLink::where('key', 'footer_pages')->with('page:id,title,slug')->get()->toArray();
         });
         view()->share('footerPages', $footerPages);
+        view()->share('subscribers', $subscribers);
         view()->share('categories', $categories);
         view()->share('tags', $tags);
         view()->share('featuredPosts', $featuredArticles);
@@ -76,7 +80,7 @@ class WebsiteController extends Controller
 
         $this->seo($this->baseSeoData);
 
-        return view('pages.home.index',
+        return view('pages.landingPage.index',
             compact(
                 'publishedArticles',
                 'featuredArticles',
@@ -85,18 +89,87 @@ class WebsiteController extends Controller
         );
     }
 
+    public function home()
+    {
+        $this->baseSeoData['title'] = " Tanventure | Let me tell you a story";
+        $this->seo($this->baseSeoData);
+
+        return view('pages.homePage.index'
+//            ,
+//            compact(
+//
+//            )
+        );
+    }
+
+    public function about()
+    {
+        $this->baseSeoData['title'] = " Tanvir Reza Anik | tanventure";
+        $this->baseSeoData['keywords'] = "bikepacking";
+        $this->seo($this->baseSeoData);
+
+        return view('pages.about.index');
+
+    }
+
+    public function novel()
+    {
+        $novels = $this->articleRepository->getNovels();
+
+        $this->baseSeoData['title'] = " The Novel | tanventure";
+        $this->seo($this->baseSeoData);
+
+        return view('pages.novel.index',
+            compact(
+                'novels'
+            )
+        );
+
+    }
+
+    public function newsLetters(Request $request): \Illuminate\Http\RedirectResponse
+    {
+        $request->validate([
+            'email' => 'email|required|unique:news_letters,email',
+        ]);
+
+        NewsLetter::create([
+            'email' => $request->input('email')
+        ]);
+
+        return back()->with("success", "Thanks! We Got You!!");
+    }
+
+    public function sendNewsLetters(Request $request): \Illuminate\Http\RedirectResponse
+    {
+        $subscribers = NewsLetter::all();
+        $data = [];
+        for ($i = 0; $i < $subscribers->count(); $i++) {
+            \Mail::send('email.mail', $data, function ($message) use ($subscribers, $i) {
+                $message->to($subscribers[$i]->email)
+                    ->from('Anikreza22@gmail.com', 'Anik Reza')
+                    ->subject('Subject Line');
+            });
+        }
+
+        return back()->with("success", "Thank You, We've Got You");
+    }
+
+
     public function articleDetails($slug)
     {
         $article = $this->articleRepository->getArticle($slug, true);
         if (!$article) {
             return $this->renderPage($slug);
         }
+
         $category = $article['categories'][0];
         $similarArticles = $this->articleRepository->getSimilarArticles($category['id'], 2);
         $tags = $article->keywords;
-        $tagTitles=[];
-        foreach ($tags as $tag)
-            array_push($tagTitles,$tag->title);
+        $tagTitles = [];
+        foreach ($tags as $tag) {
+            $tagTitles[] = $tag->title;
+        }
         $segments = [
             [
                 'name' => $article['categories'][0]['name'],
@@ -119,7 +192,7 @@ class WebsiteController extends Controller
         $this->seo($this->baseSeoData);
         $shareLinks = $this->getSeoLinksForDetailsPage($article);
 
-        return view('pages.articleDetail.index', compact('article', 'shareLinks','similarArticles', 'category', 'segments'));
+        return view('pages.articleDetail.index', compact('article', 'shareLinks', 'similarArticles', 'category', 'segments'));
     }
 
     public function categoryDetails($slug)
@@ -191,6 +264,7 @@ class WebsiteController extends Controller
 
         return view('pages.search.index', compact('segments', 'searchTerm', 'searchedArticles'));
     }
+
     public function renderPage($slug)
     {
         $page = Page::where('slug', $slug)->with('keywords')->first();
@@ -215,19 +289,35 @@ class WebsiteController extends Controller
         return view('pages.page-details.index', compact('page', 'segments', 'shareLinks'));
     }
 
-    private function generatePageClass($title): \stdClass
+    private function generatePageClass(): \stdClass
     {
         $page = new \stdClass();
-        $page->title = $title;
+        $page->title = 'Columnist';
         $page->excerpt = null;
         $page->keywords = [];
         $page->image_url = null;
         return $page;
     }
 
+    public function postComment(Request $request): \Illuminate\Http\JsonResponse
+    {
+        $comment=Comment::create([
+           'guest_name'=>$request->input('name'),
+           'comment'=>$request->input('comment'),
+           'article_id'=>json_decode($request->input('article')),
+        ]);
+
+        return response()->json([
+            'message'=>'added successfully',
+            'status'=>200,
+            'comment'=>$comment
+        ]);
+
+    }
+
     public function getColumnistPage()
     {
-        $page = $this->generatePageClass('Columnist');
+        $page = $this->generatePageClass();
         $segments = [
             ['name' => $page->title, 'url' => url('Columnist')]
         ];
@@ -306,7 +396,7 @@ class WebsiteController extends Controller
 
         if ($data['image']) {
 
-         JsonLd::setImage($data['image']); // add image url
+            JsonLd::setImage($data['image']); // add image url
         } else {
             JsonLd::setImage($this->homePageSeoData['home_page_image_url']); // add image url
         }
