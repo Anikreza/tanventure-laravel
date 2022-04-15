@@ -1,4 +1,4 @@
-<div class="sidebar" style="width: 27vw">
+<div class="sidebar customSidebarWidth">
     <div class="wgs wgs-sidebar wgs-tags">
         <h3 class="wgs-heading">{{$header}}</h3>
         <div class="wgs-content">

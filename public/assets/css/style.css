@@ -3498,7 +3498,7 @@ h6, .h6, .fz-6 { font-size: 0.875rem; }
 .post .social a { background: #475e42; border-color: #19b275; }
 .post-v1 .post-content { padding: 35px 0 0; }
 .post-content { padding: 15px 0; }
-.post-content h4 { color: #1a1212; font-weight: 600}
+.post-content h4 { color: #0d4830; font-weight: 600;}
 .post-content h4 a { color: inherit; }
 .post-content h4 a:hover { color: #475e42; }
 .tc-bunker .post-content h4 { color: #ffffff; }
@@ -3525,7 +3525,7 @@ h6, .h6, .fz-6 { font-size: 0.875rem; }
 .tc-bunker .post-full .post-content h3 a { color: #ffffff; }
 .tc-bunker .post-full .post-content h3 a:hover { color: #475e42; }
 .bg-ocean-pattern .tc-bunker .post-full .post-content h3 a:hover { color: #475e42; }
-.post-full .post-content h4 { font-size: 1.125rem; }
+.post-full .post-content h4 { font-size: 1.225rem; }
 .post-full .post-entry { position: relative; padding: 40px 0 50px; }
 .post-full .post-date { background: #19b275; color: #ffffff; flex-shrink: 0; height: 50px; width: 50px; text-align: center; font-size: .875rem; font-family: "Poppins", sans-serif; position: absolute; top: -50px; }
 .bg-ocean-pattern .post-full .post-date { background: #475e42; }
@@ -3987,7 +3987,7 @@ video {
 @media (min-width: 768px) { .post-v1 .post-content { padding: 15px 0; }
   .post-v1 .post-content h4 { margin-bottom: 16px; }
   .post-content { margin-left: 30px; }
-  .post-content h4 a { font-size: inherit; }
+  .post-content h4 a { font-size: 1.7rem; }
   .post-alt { margin-bottom: 0; }
   .post-alt .post-content h4 { line-height: 1.444; font-size: 1rem; }
   .post-alt .post-content h4 + .btn { margin-top: 7px; }
@@ -4000,7 +4000,8 @@ video {
 @media (min-width: 992px) { .post { padding: 0; }
   .post-alt .post-content { padding: 35px 40px 33px; }
   .post-alt .post-content h4 { font-size: 1.125rem; }
-  .post-alt .post-content-s2 { padding: 30px; }
+    .post-content h4 a { font-size: 1rem; }
+    .post-alt .post-content-s2 { padding: 30px; }
   .post-alt .post-thumb { max-width: 100%; height: auto; }
   .post-full .post-date { width: 90px; height: 90px; padding: 15px; }
   .post-full .post-date strong { font-size: 1.875rem; }
@@ -4083,10 +4084,43 @@ video {
 .wgs-category-s2 { padding-bottom: 30px; }
 .wgs-tags-s2 .wgs-content .tag-list a { background: #f2f2f2; font-size: 15px; padding: 8px 18px; }
 
-@media (min-width: 800px) { .wgs-sidebar { padding: 40px; }
+@media (max-width: 1024px) { .wgs-sidebar { padding: 40px; }
     .customContainer{
         margin:1rem 1rem 0 1rem;
     }
+    .customSearchCard{
+        width: 85vw;
+    }
+    .customMobileSidebar{
+      display: block;
+    }.customLargeSidebar{
+      display: none;
+    }.customSidebarWidth{
+         width: 90vw;
+     }
+    .customAuthorName{
+        margin-left: 33.33333333333%;
+    }
+    .customAuthorName img{
+        width: 40px;
+        border-radius: 100%;
+    }.customAuthorName p{
+        font-size: 12px;
+    }
+    .customBlogTop{
+        height: 3350px;
+    }
+    .custom4Column{
+        padding: 2rem;
+        flex:0 0 100%;max-width:100%
+    }.custom3Column{
+        flex:0 0 100%;max-width:100%
+    }
+     .customThumbDescription{
+         display: block;
+         color: #0a1108;
+         font-size: 20px;
+     }
   .wgs-sidebar:not(:last-child) { margin-bottom: 40px; }
   .wgs-sidebar-s2 { padding: 0; }
   .wgs-search { padding: 0; }
@@ -4123,11 +4157,47 @@ video {
 .comments-form-visible .input { border: 1px solid #e5e5e5; }
 
 .comment-content p { margin-bottom: 8px; }
+@media (min-width: 1025px) {
 
-@media (min-width: 992px) { .comments { margin-top: 100px; }
+    .comments { margin-top: 100px; }
 
     .customContainer{
-        margin: 2rem 10rem 0 8rem;
+        margin: 2rem 8rem 0 6rem;
+    }
+    .customSearchCard{
+        width: 62vw;
+    }
+    .custom4Column{
+        flex:0 0 50%;max-width:50%
+    }
+    .customSearchCard{
+        width: 62vw; position: absolute; top: 0
+    }
+
+    .customSidebarWidth{
+        width: 27vw;
+    }.customMobileSidebar{
+         display: none;
+     }.customLargeSidebar{
+          display: block;
+      }
+
+    .custom3Column{
+        padding: 2rem;
+        flex:0 0 33.3333333333%;max-width:33.3333333333%
+    }
+    .customBlogTop{
+        height: 138vh;
+    }
+    .customAuthorName{
+        margin-left: 0;
+    }
+    .customAuthorName img{
+        width: 40px;
+        border-radius: 100%;
+    }
+    .customThumbDescription{
+        display: none;
     }
   .comments-list .media img { width: 90px; height: 90px; margin-top: 10px; margin-left: 20px }
   .comments-list .comments-row > ul > li { padding-left: 120px; }

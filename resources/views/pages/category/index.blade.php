@@ -8,7 +8,7 @@
                 <div class="col-md-9 ">
                     @foreach($categoryArticles as $key=> $article)
                     <div class="post post-full ">
-                        <div class="col-md-10">
+                        <div class="col-md-12">
                             <div class="post post-full post-details ">
                                 @include('component.card.searchCard',
                                     [
@@ -32,10 +32,13 @@
                     </ul>
                 </div>
             </div><!-- .col -->
-            <div class="col-md-2 pl-lg-2">
+            <div class="col-md-2 pl-lg-2 customLargeSidebar">
                 @include('component.card.sideBarCard',['tags'=>$tags,'header'=>'Read Posts By Tag'])
             </div><!-- .col -->
         </div><!-- .row -->
+        <div class="col-md-2 pl-lg-2 customMobileSidebar">
+            @include('component.card.sideBarCard',['tags'=>$tags,'header'=>'Read Posts By Tag'])
+        </div><!-- .col -->
     </div><!-- .container -->
 </div>
 <!-- end section/blog -->

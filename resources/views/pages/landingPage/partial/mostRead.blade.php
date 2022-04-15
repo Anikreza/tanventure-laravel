@@ -8,13 +8,14 @@
     <br/>
     <div class="row gutter-vr-30px justify-content-sm-center">
         @foreach($mostReadArticles as $article)
-            <div class="col-sm-8 col-md-4 text-center">
+            <div class="custom3Column text-center">
                 <div class="post post-alt">
                     @include('component.card.mostReadCard',
                         [
                             'image' => $article['image'],
                             'title'=>$article['title'],
                             'slug' => $article['slug'],
+                            'description' => $article['excerpt'],
                             'category' => $category ?? $article['categories'][0],
                         ])
                 </div><!-- .post -->

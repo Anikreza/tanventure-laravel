@@ -4,17 +4,17 @@
     </div>
     <br/>
     <br/>
-    <div class="row gutter-vr-30px justify-content-sm-center">
+    <div class="row gutter-vr-10px justify-content-sm-center">
         @foreach($featuredArticles as $article)
-            <div class="col-sm-8 col-md-4 text-center">
-                <div class="post post-alt" style="background-color: {{$color}};
-                        -webkit-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
-                       -moz-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);">
+            <div class="custom3Column text-center">
+                <div class="post post-alt" style="background-color: {{$color}}; {{$color!=='inherit'?'-webkit-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+                       -moz-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);':''}} ">
                     @include('component.card.featuredCard',
                         [
                             'image' => $article['image'],
                             'title'=>$article['title'],
                             'slug' => $article['slug'],
+                            'description' => $article['excerpt'],
                             'category' => $category ?? $article['categories'][0],
                         ])
                 </div><!-- .post -->

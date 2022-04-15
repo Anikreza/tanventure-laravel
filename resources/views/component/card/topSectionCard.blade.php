@@ -9,13 +9,13 @@
     </div>
     <div class="post-content">
         <div class="post-meta d-flex align-items-center">
-            <div class="post-author d-flex align-items-center">
+            <div class="post-author d-flex align-items-center customAuthorName">
                 <div class="author-thumb">
                     <a href='{{route('about')}}'>
                         <img src="{{asset('assets/images/pp.jpg')}}"/>
                     </a>
                 </div>
-                <div class="author-name">
+                <div class="author-name" >
                     <a href='{{route('about')}}'>
                     <p style="color: #4d1219">তানভীর রেজা অনিক</p>
                     </a>
@@ -27,7 +27,8 @@
                 </ul>
             </div><!-- .post-tag -->
         </div>
-        <h4 style="color: #155b3f"><a href="{{ route('article-details', ['slug' => $slug]) }}">{{$title}}</a></h4>
+        <h4 style="color: #155b3f;"><a href="{{ route('article-details', ['slug' => $slug]) }}">{{$title}}</a></h4>
+        <p class="customThumbDescription">{{$description}}</p>
     </div>
 </div>
 

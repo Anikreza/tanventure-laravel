@@ -1,11 +1,11 @@
 <div style="background-image:url({{asset("assets/images/$key.png")}});background-size: contain; filter: blur(3px); opacity: .4; height: 24rem"><</div>
 
-<div class="post-entry d-sm-flex d-block align-items-start"  style="width: 62vw; position: absolute; top: 0">
+<div class="post-entry d-sm-flex d-block align-items-start customSearchCard"  style="position: absolute; top: 0">
             <div class="post-content">
                 <h3 style="width: 180%; margin-top: -40px; font-weight: 400"><a href="{{ route('article-details', ['slug' => $slug]) }}">{{$title}}</a></h3>
 
                 <a href="{{ route('article-details', ['slug' => $slug]) }}">
-                    <img src="{{asset($image)}}" alt="" style="width:100%; object-fit: fill; box-shadow: 3px 3px 3px 3px #000000; border-radius: 5px">
+                    <img src="{{asset($image)}}" alt="" style="width:90%; object-fit: fill; box-shadow: 3px 3px 3px 3px #000000; border-radius: 5px">
                 </a>
 
                 <div style="display: flex" >

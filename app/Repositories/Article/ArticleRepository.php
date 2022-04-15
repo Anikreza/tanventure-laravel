@@ -248,7 +248,7 @@ class ArticleRepository implements ArticleInterface
     public function publishedArticles(int $categoryId, int $limit)
     {
         return $this->baseQuery($categoryId)
-            ->select('id', 'title', 'slug', 'featured', 'published', 'image', 'viewed', 'description','updated_at','created_at')
+            ->select('id', 'title', 'slug', 'featured','excerpt', 'published', 'image', 'viewed', 'description','updated_at','created_at')
             ->with('categories')
             ->latest()
             ->limit($limit)
@@ -267,7 +267,7 @@ class ArticleRepository implements ArticleInterface
     public function publishedFeaturedArticles(int $categoryId, int $limit)
     {
         return $this->baseQuery($categoryId)
-            ->select('id', 'title', 'slug', 'featured', 'published', 'image', 'viewed', 'description')
+            ->select('id', 'title', 'slug', 'featured','excerpt', 'published', 'image', 'viewed', 'description')
             ->where('featured', 1)
             ->latest()
             ->limit($limit)
@@ -277,7 +277,7 @@ class ArticleRepository implements ArticleInterface
     public function mostReadArticles(int $categoryId, int $limit)
     {
         return $this->baseQuery($categoryId)
-            ->select('id', 'title', 'slug', 'featured', 'published', 'image', 'viewed', 'description')
+            ->select('id', 'title', 'slug', 'featured','excerpt', 'published', 'image', 'viewed', 'description')
             ->limit($limit)
             ->orderBy('viewed', 'desc')
             ->get();
