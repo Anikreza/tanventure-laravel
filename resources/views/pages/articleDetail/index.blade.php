@@ -3,11 +3,18 @@
     <div class="section blog section-blg" style="background: linear-gradient(-40deg,#ffffff,#9f9f9f,#b6b3b3,#e8e7e7);">
 {{--    <div class="section blog section-blg">--}}
         {{--        @include('component.breadcrumb')--}}
-        <div class="article-thumb">
+        <div class="floatingTitle w3-animate-top">
+            <h2>{{$article->title}}</h2>
+            <br/>
+            <p>{{$article->excerpt}}</p>
+            <a onclick="topFunction()" href="#reading" class="arrowDown"><i class='fas fa-angle-down'></i></a>
+        </div>
+        <div class="w3-animate-fading articleCover articleBlur">
             <img src="{{asset($article->image)}}" alt="">
         </div>
+
         {{--        <div class="container-blog">--}}
-        <div class="customContainer">
+        <div class="customContainer articleContainer">
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <div class="post post-full post-details">
@@ -102,4 +109,21 @@
             </div><!-- .row -->
         </div><!-- .container -->
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function(){
+                if ($(this).scrollTop() > 50) {
+                    $('.articleCover').addClass('articleScrolled');
+                } else {
+                    $('.articleCover').removeClass('articleScrolled');
+                }
+            });
+        });
+
+        function topFunction() {
+            document.body.scrollTop = 100;
+            document.documentElement.scrollTop = 100;
+        }
+    </script>
 @endsection

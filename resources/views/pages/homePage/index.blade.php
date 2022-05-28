@@ -3,6 +3,7 @@
     <div class='home'>
         <div class='home-center'>
             <h2 class='infoanim'> LET ME TELL YOU A STORY...</h2>
+            <h2 class='mobileHeader'> LET ME TELL YOU A STORY...</h2>
             <div class='home-data'>
                 <p> #AdventureIsOutThere </p>
                 <p> I Am Tanvir </p>
@@ -12,21 +13,14 @@
                 <p> Whole Of The World With My Bike </p>
             </div>
         </div>
-{{--                <div class='stylediv'></div>--}}
+        {{--                <div class='stylediv'></div>--}}
 
-        <div class='home-hr'><div class='home-others'>
-                <hr/>
-                <br/>
-                <div
-                    style="background-image:url({{asset('assets/images/ng.jpg')}});
-                        background-size: cover;
-                        filter: blur(4px);
-                        opacity: .8; height: 470px;"
-                >
-                </div>
-                <div class="section section-l section-news" style="position: absolute; top: 0;z-index:2">
+        <div class='home-hr'>
+            <div class='home-others'>
+                <div class="customHomeImageCenter"></div>
+                <div class="section section-l section-news customFeaturedSection">
                     @if(count($featuredPosts))
-                        @include('pages.landingPage.partial.featured',['featuredArticles'=>$featuredPosts, 'color'=>'#c5c5c5'])
+                        @include('pages.homePage.partial.slide',['featuredArticles'=>$featuredPosts])
                     @endif
                 </div>
                 <div class='home-im'></div>
@@ -70,7 +64,36 @@
                         </div><!-- .wgs -->
 
                     </div>
+
                 </div>
             </div>
+            <div class="section section-l section-news customMobileFeaturedSection">
+                @if(count($featuredPosts))
+                    @include('pages.landingPage.partial.featured',['featuredArticles'=>$featuredPosts, 'color'=>'whitesmoke'])
+                @endif
+            </div>
         </div>
+
+        <script>
+            let slideIndex = 0;
+            showSlides();
+
+            function showSlides() {
+                let i;
+                let slides = document.getElementsByClassName("mySlides");
+                let dots = document.getElementsByClassName("dot");
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) {slideIndex = 1}
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex-1].style.display = "block";
+                dots[slideIndex-1].className += " active";
+                setTimeout(showSlides, 5000); // Change image every 2 seconds
+            }
+        </script>
 @endsection
+

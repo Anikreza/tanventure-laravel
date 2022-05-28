@@ -14,13 +14,14 @@
 </head>
 
 <body class="body-wider">
+<div class="preloader preloader-florida"><span class="spinner spinner-alt"><img class="spinner-brand" srcset="{{ asset('assets/images/logo-white.png') }}"  alt=""></span></div>
+
 @include('layouts.navbar')
 <div>
     @yield('content')
 </div>
 @include('layouts.footer')
 
-<div class="preloader preloader-light preloader-florida"><span class="spinner spinner-alt"><img class="spinner-brand" srcset="{{ asset('assets/images/logo-white.png') }}" src="images/logo-white.png" alt=""></span></div>
 <!-- JavaScript -->
 <script src="{{ asset('assets/js/jquery.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/scripts.js') }}"></script>

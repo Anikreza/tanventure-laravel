@@ -4,7 +4,7 @@
     <div class="customContainer">
         <div class="row gutter-vr-30px justify-content-sm-center">
             @foreach($articles as $key=> $article)
-                <div class="custom4Column text-center">
+                <div class="custom4Column text-center  w3-animate-zoom">
                     <div class="post post-full post-v2">
                         @include('component.card.topSectionCard',
                             [

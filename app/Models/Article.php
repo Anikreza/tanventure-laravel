@@ -75,5 +75,9 @@ class Article extends BaseModel
     {
         return $this->image ? Storage::disk('public')->url('articles/' . basename($this->image)) : null;
     }
+    public function getThumbImageUrlAttribute(): ?string
+    {
+        return $this->image ? Storage::disk('public')->url('articles/' . basename($this->image)) : '';
+    }
 
 }

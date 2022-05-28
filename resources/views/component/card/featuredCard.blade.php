@@ -1,4 +1,4 @@
-<div class="post-thumb" style="background-color: #7a2828">
+<div class="post-thumb">
     <a href="{{ route('article-details', ['slug' => $slug]) }}">
         <img src="{{asset($image)}}" style="width: 100%; border-radius: 5px" alt="{{$title}}"/>
     </a>

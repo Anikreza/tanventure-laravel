@@ -7,7 +7,7 @@
     <div class="row gutter-vr-10px justify-content-sm-center">
         @foreach($featuredArticles as $article)
             <div class="custom3Column text-center">
-                <div class="post post-alt" style="background-color: {{$color}}; {{$color!=='inherit'?'-webkit-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+                <div class="post post-alt" style="background-color: {{$color}}; {{$color!=='aa'?'-webkit-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
                        -moz-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);':''}} ">
                     @include('component.card.featuredCard',
                         [
