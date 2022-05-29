@@ -4169,75 +4169,64 @@ video {
 .comments-form-s2 .input-bordered { border-color: rgba(120, 119, 140, 0.25); }
 
 .comments-form-visible .input { border: 1px solid #e5e5e5; }
-.comments-list {
-    height: 65vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    border-right: 1px solid #cbcbcb;
-    scrollbar-width:thin;
-}
-.commentFormToggle{
-    padding: 1rem;
-    background-color: white;
-    margin-bottom: 2rem;
-}
+
 .comment-content p { margin-bottom: 8px; }
 @media (min-width: 1024px) {
     .customContainer{
         margin: 2rem 8rem 0 6rem;
     }
     .comments { margin: 1vh 7vw 0 0; width: 53vw;
-        /*border-right: 3px solid #282727;*/
-        /*background-color: whitesmoke;*/
-    }
-    .comments-list{
-        /*background: linear-gradient(-40deg, #cccccc, #ffffff, #f6f6f6, #cccccc);*/
-        /*box-shadow: 4px 2px 4px 4px #1f1f1f;*/
+        height: 120vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        background: linear-gradient(-40deg, #c8e0d0, #ffffff, #ffffff, #c1e1d8);
+        box-shadow: 4px 2px 4px 4px #19b275;
+        /*border-right: 1px solid white;*/
     }
     .customSimilarPostContainer{width: 30vw}
-    .comments-form .input { width: 120%;}
-    .columnist-row{background-image: url(../../images/aa.jpg);min-height: 85vh;}
-    .custom4Column{
-        flex:0 0 50%;max-width:50%
-    }
-    .customSearchCard{
-        width: 62vw; position: absolute; top: 0
-    }
-    .customFeaturedSection{
-        position: absolute; top: 0;z-index:2
-    }
-    .customHomeImageCenter{
-        background-image: url("../../assets/images/ng.jpg");
-        background-size: cover;
-        filter: blur(4px);
-        opacity: .8;
-        height: 470px;
-    }
-    .customSidebarWidth{
-        width: 27vw;
-    }.customMobileSidebar{
-         display: none;
-     }.customLargeSidebar{
-          display: block;
-      }
+.comments-form .input { width: 120%;}
+.columnist-row{background-image: url(../../images/aa.jpg);min-height: 85vh;}
+.custom4Column{
+    flex:0 0 50%;max-width:50%
+}
+.customSearchCard{
+    width: 62vw; position: absolute; top: 0
+}
+.customFeaturedSection{
+    position: absolute; top: 0;z-index:2
+}
+.customHomeImageCenter{
+    background-image: url("../../assets/images/ng.jpg");
+    background-size: cover;
+    filter: blur(4px);
+    opacity: .8;
+    height: 470px;
+}
+.customSidebarWidth{
+    width: 27vw;
+}.customMobileSidebar{
+     display: none;
+ }.customLargeSidebar{
+      display: block;
+  }
 
-    .custom3Column{
-        padding: 2rem;
-        flex:0 0 33.3333333333%;max-width:33.3333333333%
-    }
-    .customBlogTop{
-        height: 145vh;
-    }
-    .customAuthorName{
-        margin-left: 0;
-    }
-    .customAuthorName img{
-        width: 40px;
-        border-radius: 100%;
-    }
-    .customThumbDescription{
-        display: none;
-    }
+.custom3Column{
+    padding: 2rem;
+    flex:0 0 33.3333333333%;max-width:33.3333333333%
+}
+.customBlogTop{
+    height: 145vh;
+}
+.customAuthorName{
+    margin-left: 0;
+}
+.customAuthorName img{
+    width: 40px;
+    border-radius: 100%;
+}
+.customThumbDescription{
+    display: none;
+}
 }
 .comments-list .media img { margin-top: 10px; margin-left: 20px }
 .comments-list .comments-row > ul > li { padding-left: 120px; }
@@ -4629,7 +4618,7 @@ html,body{font-family:Verdana,sans-serif;font-size:15px;line-height:1.5}html{ove
 h1{font-size:36px}h2{font-size:30px}h3{font-size:24px}h4{font-size:20px}h5{font-size:18px}h6{font-size:16px}
 .w3-serif{font-family:serif}.w3-sans-serif{font-family:sans-serif}.w3-cursive{font-family:cursive}.w3-monospace{font-family:monospace}
 h1,h2,h3,h4,h5,h6{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin:10px 0}.w3-wide{letter-spacing:4px}
-hr{border:0;border-top:1px solid #cbcbcb;margin:20px 0}
+hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-image{max-width:100%;height:auto}img{vertical-align:middle}a{color:inherit}
 .w3-table,.w3-table-all{border-collapse:collapse;border-spacing:0;width:100%;display:table}.w3-table-all{border:1px solid #ccc}
 .w3-bordered tr,.w3-table-all tr{border-bottom:1px solid #ddd}.w3-striped tbody tr:nth-child(even){background-color:#f1f1f1}

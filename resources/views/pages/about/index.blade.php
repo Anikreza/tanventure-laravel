@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-    <div class="section blog section-x" style="background: linear-gradient(180deg,#ffffff,#ffffff,#a4b0ad,#ffffff);">
+    <div class="section blog section-x   w3-animate-bottom" style="background: linear-gradient(180deg,#ffffff,#ffffff,#a4b0ad,#ffffff);">
         <div class="customContainer" style="text-align: center">
             @include('component.breadcrumb')
             <div class="col col-md-12 col-sm-12 article-content animate__animated animate__fadeIn"

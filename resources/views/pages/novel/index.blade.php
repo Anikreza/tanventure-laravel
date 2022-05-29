@@ -3,7 +3,7 @@
     <div class="section blog section-x" style="background: linear-gradient(180deg,#759b6d,#ffffff,#f3fffb,#ffffff);">
         <div style="text-align: center">
             @include('component.breadcrumb')
-            <div class="col col-md-12 col-sm-12 article-content animate__animated animate__fadeIn"
+            <div class="col col-md-12 col-sm-12 article-content w3-animate-zoom"
                  style="--animate-duration: 1500ms">
                 <div class="columnist-row"></div>
                 <div class="row" style="position: absolute; top: 1%; padding: 5rem 10rem 2rem 10rem">
@@ -13,7 +13,7 @@
                     {{--                    </div>--}}
                     <div class=" col col-md-12 col-12 columnist-info">
                         <h2>ট্যানভেঞ্চার!!</h2>
-                        <p style="color: #421a27" >
+                        <p style="color: #dbefda; font-size: 2vh;">
                             ট্যানকে যেবার প্রথম দেখেছিলাম, ওর সারা গায়ে ধুলো, কাদার ছোপ, ছন্নছাড়া এক ভংগি যেনো তার
                             চেহারায় গিল্টি করে দেয়া হয়েছে, ওর সাইকেলটা ঠেলে নিয়ে আফতাবনগরের একটা সাকো পার হচ্ছে, মুখে
                             লেগে আছে বোকার মত এক টুকরো হাসি, সর্বক্ষণ, চোখদুটোতে কি যেনো একটা অনুভুতি ফুটে আছে। ওই চোখে
@@ -37,14 +37,18 @@
             </div>
             <div class="customContainer">
                 @foreach($novels as $key=> $novel)
+                    <br/>
+                    <br/>
+                    <br/>
                     <div
+                        class="novelAnimation hidden"
                         style="{{ $key%2===0? 'height: 10vh; margin: 2rem; text-align: left' : 'height: 10vh; margin: 2rem; text-align: right'  }}"
                     >
                         <p style="color:#475e42;">
                             ------------------------------------------------------------------------------------------------------------</p>
 
                         <a href="{{ route('article-details', ['slug' => $novel->slug]) }}">
-                            <h2 style="color: #475e42">Tan's Stories</h2>
+                            <h2 style="color: #475e42">{{$novel->title}}</h2>
                         </a>
                         {{--                    <h2>{{$novel->title}}</h2>--}}
                         <p style="color:#475e42;">
@@ -54,9 +58,9 @@
                     <div
                         style="{{ $key%2===0? 'display: flex; justify-content: space-evenly;' : 'display: flex; justify-content: space-evenly; flex-direction: row-reverse'  }}"
                     >
-                        <div class="col col-md-6 col-12">
+                        <div class="col col-md-6 col-12 novelAnimation hidden">
                             <p style="height: 40vh; overflow: hidden; color: #0a1108">
-                                {{--                            {{$novel->description}}--}}
+                                {{--                            {{$novel->excerpt}}--}}
                                 Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                                 do
                                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -90,7 +94,7 @@
                             <a href="{{ route('article-details', ['slug' => $novel->slug]) }}"
                                class="btn-primary btn-arrow">Read More</a>
                         </div>
-                        <div class="col col-md-6 col-12">
+                        <div class="col col-md-6 col-12  novelAnimation hidden">
                             <div>
                                 <a href="{{ route('article-details', ['slug' => $novel->slug]) }}">
                                     <img src="{{$novel->image }}" alt="Tanvir Reza Anik"

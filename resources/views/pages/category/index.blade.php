@@ -1,15 +1,15 @@
 @extends('master')
 @section('content')
 <body class="body-wider" style="background: linear-gradient(180deg,#ffffff,#cce0d0,#ffffff);">
-<div class="section blog section-x tc-grey" >
+<div class="section blog section-x tc-grey">
     <div style="margin:0 4rem 4rem 4rem">
         @include('component.breadcrumb')
         <div class="row gutter-vr-30px ">
-                <div class="col-md-9 ">
+                <div class="col-md-9">
                     @foreach($categoryArticles as $key=> $article)
-                    <div class="post post-full ">
+                    <div class="post post-full">
                         <div class="col-md-12">
-                            <div class="post post-full post-details ">
+                            <div class="post post-full post-details">
                                 @include('component.card.searchCard',
                                     [
                                         'key'=>$key,
