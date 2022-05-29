@@ -4,8 +4,9 @@
     <div class="customContainer">
         <div class="row gutter-vr-30px justify-content-sm-center">
             @foreach($articles as $key=> $article)
-                <div class="custom4Column text-center  w3-animate-zoom">
-                    <div class="post post-full post-v2">
+                <div class="custom4Column text-center  w3-animate-zoom" >
+                    <a href="{{ route('article-details', ['slug' =>  $article['slug']]) }}">
+                    <div class="post post-full post-v2 postContainer">
                         @include('component.card.topSectionCard',
                             [
                                 'key'=>$key,
@@ -17,6 +18,7 @@
                                 'category' => $category ?? $article['categories'][0],
                             ])
                     </div>
+                    </a>
                 </div><!-- .col -->
             @endforeach
         </div><!-- .row -->

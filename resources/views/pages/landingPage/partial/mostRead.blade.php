@@ -9,7 +9,8 @@
     <div class="row gutter-vr-30px justify-content-sm-center">
         @foreach($mostReadArticles as $article)
             <div class="custom3Column text-center">
-                <div class="post post-alt">
+                <a href="{{ route('article-details', ['slug' =>  $article['slug']]) }}">
+                <div class="post post-alt postContainer">
                     @include('component.card.mostReadCard',
                         [
                             'image' => $article['image'],
@@ -19,6 +20,7 @@
                             'category' => $category ?? $article['categories'][0],
                         ])
                 </div><!-- .post -->
+                </a>
             </div><!-- .col -->
         @endforeach
 

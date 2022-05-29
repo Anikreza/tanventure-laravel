@@ -278,7 +278,7 @@ class ArticleRepository implements ArticleInterface
     {
         return $this->baseQuery($categoryId)
             ->select('id', 'title', 'slug', 'featured','excerpt', 'published', 'image', 'viewed', 'description')
-            ->limit($limit)
+            ->limit(6)
             ->orderBy('viewed', 'desc')
             ->get();
     }

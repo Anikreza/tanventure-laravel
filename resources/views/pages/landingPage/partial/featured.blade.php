@@ -7,8 +7,8 @@
     <div class="row gutter-vr-10px justify-content-sm-center">
         @foreach($featuredArticles as $article)
             <div class="custom3Column text-center">
-                <div class="post post-alt" style="background-color: {{$color}}; {{$color!=='aa'?'-webkit-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
-                       -moz-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);':''}} ">
+                <a href="{{ route('article-details', ['slug' =>  $article['slug']]) }}">
+                <div class="post post-alt postContainer">
                     @include('component.card.featuredCard',
                         [
                             'image' => $article['image'],
@@ -18,6 +18,7 @@
                             'category' => $category ?? $article['categories'][0],
                         ])
                 </div><!-- .post -->
+                </a>
             </div><!-- .col -->
         @endforeach
 
