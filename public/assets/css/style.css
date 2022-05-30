@@ -3527,9 +3527,8 @@ h6, .h6, .fz-6 { font-size: 0.875rem; }
 .bg-ocean-pattern .tc-bunker .post-full .post-content h3 a:hover { color: #475e42; }
 .post-full .post-content h4 { font-size: 1.225rem; }
 .post-full .post-entry { position: relative; padding: 40px 0 50px; }
-.post-full .post-date {  background: #19b275; color: #ffffff; flex-shrink: 0; height: 5vh; width: 4vh; text-align: center; font-size: 1rem; font-family: "Poppins", sans-serif; position: absolute; top: -50px; }
-.bg-ocean-pattern .post-full .post-date { background: #475e42; }
-.post-full .post-date span, .post-full .post-date strong { display: block; font-size: 1rem; font-weight: 700; }
+.bg-ocean-pattern .post-full .post-date { background: #19b275; }
+.post-full .post-date span, .post-full .post-date strong { display: block; font-size: 2rem; font-weight: 700; }
 .tc-bunker .post-full .post-date p { color: #ffffff; }
 .post-full .post-author .author-thumb { max-width: 45px; }
 .post-full .post-author .author-thumb img { border-radius: 50%; }
@@ -3879,7 +3878,8 @@ video {
     .post-content h4 a { font-size: 1rem; }
     .post-alt .post-content-s2 { padding: 30px; }
     .post-alt .post-thumb { max-width: 100%; height: auto; }
-    .post-full .post-date { height: 8vh; width: 8vh; }
+    .post-date {  background: rgba(25,178,117,1); color: #ffffff; flex-shrink: 0; height: 100px; width: 100px; text-align: center; font-size: .875rem; font-family: "Poppins", sans-serif; position: absolute; left: -2vh}
+
     .post-full .post-date strong { font-size: 1.875rem; }
     .post-full .post-content h3 { font-size: 1.5rem; }
     .post-details .post-author { margin-bottom: 0px; margin-right: 30px; }
@@ -3969,13 +3969,18 @@ video {
 .customBanner p{margin-top:2vh;color: #0c3b1c; font-size: 1.8vh; font-weight: 600}
 .sectionBanner{transform: rotate(0deg); margin-bottom: -2vh; background: rgba(0,0,0, .7); width: fit-content; margin-left: 45vw; padding: 0 1rem 0 1rem}
 .sectionBanner2{transform: rotate(0deg); margin-bottom: -2vh; background: rgba(0,0,0, .7); width: fit-content; margin-left: 45vw; padding: 0 1rem 0 1rem }
+.customTags{font-size:2vh; margin-left: 10px; background-color:#19b275; color: #ffffff; padding: 10px; border-radius: 5px}
+.customTags:hover{background-color: #b41616
+}
 
-
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
     .wgs-sidebar { padding: 40px; }
     .customContainer{
         margin:1rem 2rem 0 2rem;
     }
+    .post-details .post-date {display: none}
+    .post-full .post-date { background: rgba(25,178,117,1); color: #ffffff; flex-shrink: 0; height: 120px; width: 120px; text-align: center; font-size: 30px; font-family: "Poppins", sans-serif; position: absolute; margin-top: -7vh; left: -1vh }
+
     .contentHover{width: 95vw; position: relative}
     .contentHoverTop{width: 95vw; position: relative}
     .comments { margin: 1rem; width: auto;}
@@ -4152,7 +4157,8 @@ video {
 
 .comments-form-visible .input { border: 1px solid #e5e5e5; }
 .comments-list {
-    height: 65vh;
+    min-height: 500px;
+    max-height: 900px;
     overflow-y: scroll;
     overflow-x: hidden;
     border-right: 1px solid #cbcbcb;
@@ -4325,12 +4331,11 @@ video {
 
 @media (min-width: 1024px) {
     .customContainer{
-        margin: 2rem 8rem 0 6rem;
+        margin: 2rem 8rem 0 3rem;
     }
     .contentHover{width: 24.2vw; position: relative}
     .contentHoverTop{width: 36vw; position: relative}
-
-    .comments { margin: 1vh 7vw 0 0; width: 53vw;
+    .comments { margin: 2vh 3vw 0 0; width: 53vw;
         /*border-right: 3px solid #282727;*/
         /*background-color: whitesmoke;*/
     }
@@ -4338,7 +4343,7 @@ video {
         /*background: linear-gradient(-40deg, #cccccc, #ffffff, #f6f6f6, #cccccc);*/
         /*box-shadow: 4px 2px 4px 4px #1f1f1f;*/
     }
-    .customSimilarPostContainer{width: 30vw}
+    .customSimilarPostContainer{width: 24vw}
     .comments-form .input { width: 120%;}
     .columnist-row{background-image: url(../../images/aa.jpg);min-height: 85vh;}
     .custom4Column{
@@ -4383,6 +4388,8 @@ video {
         display: none;
     }
 }
+
+
 .comments-list .media img { margin-top: 10px; margin-left: 20px }
 .comments-list .comments-row > ul > li { padding-left: 120px; }
 .comments-form { margin-top: 90px; }

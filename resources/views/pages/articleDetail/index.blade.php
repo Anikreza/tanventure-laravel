@@ -14,15 +14,15 @@
         </div>
 
         {{--        <div class="container-blog">--}}
-        <div class="customContainer articleContainer">
+        <div class="col-lg-11 col-sm-12 customContainer">
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <div class="post post-full post-details">
                         <div class="post-entry d-sm-flex d-block align-items-start">
                             <div class="content-left d-flex">
                                 <div class="post-date">
-                                    <p>{{$article->created_at->translatedFormat('M')}} <strong
-                                            style="font-weight: lighter; font-size: 2vh">'{{$article->created_at->translatedFormat('y')}}</strong>
+                                    <p style="font-size: 1.5rem">{{$article->created_at->translatedFormat('M')}} <strong
+                                            style="font-weight: lighter; font-size: 1.5rem">'{{$article->created_at->translatedFormat('y')}}</strong>
                                     </p>
                                 </div>
                                 <ul class="social text-center  d-sm-none d-lg-block" style="font-size:1vh">
@@ -42,19 +42,21 @@
                                                      src="{{asset('assets/images/pp.jpg')}}" alt="">
                                             </div>
                                             <div class="author-name">
-                                                <p style="font-size: 1.6vh; color: #231111">তানভীর রেজা অনিক</p>
+                                                <p style="font-size: 1.9vh; color: #097349">তানভীর রেজা অনিক</p>
                                             </div>
                                         </div>
                                     </a>
-                                    <div class="post-tag  d-flex">
+                                    <div class="post-tag  d-flex align-items-center" style="background: rgba(0,0,0,.1); width: fit-content; padding: 1px 2rem 1px 2rem">
                                         <ul class="post-cat" style="font-size:1.8vh">
-                                            <li><a href="{{ route('category', ['slug' =>  $category->slug]) }}"><em
+                                            <li><a style="color: #1a0707" href="{{ route('category', ['slug' =>  $category->slug]) }}"><em
                                                         class="icon ti-bookmark"></em>
                                                     <span>{{ $category->name }}</span></a></li>
                                         </ul>
+                                        <ul class="d-lg-none d-sm-block"><li><a style="font-size: 1.8vh; color: #210808">||  {{$article->created_at->translatedFormat('M')}} '{{$article->created_at->translatedFormat('y')}}</a></li></ul>
+
                                     </div>
                                 </div>
-                                <h3 style="font-size:2.6vh;color:#475E42FF;">{{ $article['title'] }}</h3>
+                                <h3 style="font-size:3.6vh;color:#475E42FF; border-left: 20px solid #19b275; padding-left: 1rem; background: rgba(12,12,12,.1)">{{ $article['title'] }}</h3>
                                 <hr/>
                                 {{--                            mobile share--}}
                                 <div class="d-md-flex  d-lg-none" style=" font-size:2vh;">
@@ -78,7 +80,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- post -->
+                <!-- post -->
                     <!-- tags -->
                     <div style=" font-size:2vh;">
                         <br/>
@@ -88,7 +90,7 @@
                         @foreach($article->keywords as $keyword)
                             <a class="post-tag" href="{{ route('tag', ['slug' => \Str::slug($keyword->title)]) }}">
                                 <span
-                                    style=" font-size:2vh; margin-left: 10px; background-color:#19b275; color: #ffffff; padding: 10px; border-radius: 5px">{{ $keyword->title }}</span>
+                                    class="customTags">{{ $keyword->title }}</span>
                             </a>
                         @endforeach
                     </div>
@@ -97,9 +99,10 @@
                     <!-- tags -->
                     <hr/>
                     <!-- comments -->
-                    <div class="d-lg-flex d-sm-block justify-content-between">
-                    <div id="comments">
-                        @include('component.comments.index',['comments'=>$article->comments,'article'=>$article->id])
+                    <div class="d-lg-flex d-sm-block justify-content-evenly">
+                    <div id="comments" class="wgs col-sm-12 col-lg-8 comments justify-center comments-list">
+{{--                        @include('component.comments.index',['comments'=>$article->comments,'article'=>$article->id])--}}
+                        @include('pages.articleDetail.partial.disquss')
                     </div>
                     <!-- comments -->
                     <!-- similar Posts -->
