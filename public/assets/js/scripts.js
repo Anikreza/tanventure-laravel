@@ -25,7 +25,7 @@ var NioApp =(function (jQ, win, doc){
 
 $(document).ready(function() {
     $(window).scroll(function(){
-        if ($(this).scrollTop() > 10) {
+        if ($(this).scrollTop() > 100) {
             $('.articleCover').addClass('articleScrolled');
             $('.articleCover').addClass('w3-animate-zoomOut');
             $('.articleCover').removeClass('articleBlur');

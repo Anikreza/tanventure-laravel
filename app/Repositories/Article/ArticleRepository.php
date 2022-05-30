@@ -5,6 +5,7 @@ namespace App\Repositories\Article;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Keyword;
+use App\Models\User;
 use App\Models\Visitor;
 use Cache;
 use Illuminate\Support\Carbon;
@@ -144,6 +145,7 @@ class ArticleRepository implements ArticleInterface
     {
         return Article::latest()
             ->with(['categories'])
+            ->with('author')
             ->when(request()->has('category'), function ($q) {
                 $q->whereHas('categories', function ($sq) {
                     $sq->where('category_id', \request('category'));
@@ -169,6 +171,7 @@ class ArticleRepository implements ArticleInterface
         return $this->baseQuery($categoryId)
             ->select('id', 'title', 'slug', 'featured', 'published', 'image', 'viewed', 'description')
             ->latest()
+            ->with('author')
             ->paginate($perPage);
     }
 
@@ -248,8 +251,8 @@ class ArticleRepository implements ArticleInterface
     public function publishedArticles(int $categoryId, int $limit)
     {
         return $this->baseQuery($categoryId)
-            ->select('id', 'title', 'slug', 'featured','excerpt', 'published', 'image', 'viewed', 'description','updated_at','created_at')
             ->with('categories')
+            ->with('author')
             ->latest()
             ->limit($limit)
             ->get();
@@ -258,18 +261,30 @@ class ArticleRepository implements ArticleInterface
     public function getNovels()
     {
         return $this->baseQuery(1)
-            ->select('id', 'title', 'slug', 'featured', 'published', 'image', 'viewed', 'description')
             ->with('categories')
             ->latest()
+            ->with('author')
             ->paginate(5);
+    }
+
+    public function getAuthor($slug)
+    {
+        return User::where('id', $slug)
+            ->first();
+    }
+    public function getAuthorArticles($slug)
+    {
+        return $this->model
+            ->where('user_id', $slug)
+            ->paginate(8);
     }
 
     public function publishedFeaturedArticles(int $categoryId, int $limit)
     {
         return $this->baseQuery($categoryId)
-            ->select('id', 'title', 'slug', 'featured','excerpt', 'published', 'image', 'viewed', 'description')
             ->where('featured', 1)
             ->latest()
+            ->with('author')
             ->limit($limit)
             ->get();
     }
@@ -277,15 +292,16 @@ class ArticleRepository implements ArticleInterface
     public function mostReadArticles(int $categoryId, int $limit)
     {
         return $this->baseQuery($categoryId)
-            ->select('id', 'title', 'slug', 'featured','excerpt', 'published', 'image', 'viewed', 'description')
             ->limit(6)
+            ->with('author')
             ->orderBy('viewed', 'desc')
             ->get();
     }
 
     public function getArticle($condition, $isSlug = false)
     {
-        return $this->model->with(['categories' => function ($q) use ($condition, $isSlug) {
+        return $this->model
+            ->with(['categories' => function ($q) use ($condition, $isSlug) {
             $q->with(['articles' => function ($sq) use ($condition, $isSlug) {
                 $sq->select('article_id', 'title', 'slug', 'published', 'viewed', 'image', 'featured', 'description')
                     ->where('published', '=', true)
@@ -299,6 +315,7 @@ class ArticleRepository implements ArticleInterface
                     ->limit(4);
             }]);
         }])
+            ->with(['author'])
             ->with(['keywords'])
             ->with(['comments'=>function($q){
                 $q->orderBy('created_at', 'desc');
@@ -316,16 +333,16 @@ class ArticleRepository implements ArticleInterface
     public function getSimilarArticles($categoryId, $limit)
     {
         return $this->baseQuery($categoryId)
-            ->select('id', 'title', 'slug', 'published', 'viewed', 'image', 'featured', 'description','created_at','updated_at')
             ->inRandomOrder()
             ->limit($limit)
+            ->with('author')
             ->get();
     }
 
     public function searchArticles($query, $perPage)
     {
         return $this->baseQuery(1)
-            ->select('id', 'title', 'slug', 'published', 'viewed', 'image', 'featured', 'description')
+            ->with('author')
             ->where('title', 'LIKE', '%' . $query . '%')
             ->latest()
             ->limit(5)
@@ -357,11 +374,11 @@ class ArticleRepository implements ArticleInterface
         })
             ->with('categories:id,name,slug')
             ->with('keywords:id,title')
+            ->with('author')
             ->where('published', true)
             ->when($includeFavorites, function ($q) {
                 $q->with(['favorites']);
             })
-            ->select('id', 'title', 'slug', 'featured', 'published', 'image', 'viewed', 'description')
             ->latest();
 
         return $perPage === 4 ? $q->limit($perPage)->get() : $q->paginate($perPage);

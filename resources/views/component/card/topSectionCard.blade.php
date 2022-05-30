@@ -20,12 +20,12 @@
                 <div class="post-author d-flex align-items-center customAuthorName">
                     <div class="author-thumb">
                         <a href='{{route('about')}}'>
-                            <img src="{{asset('assets/images/pp.jpg')}}"/>
+                            <img style="width: 6vh; height: 6vh; border-radius: 50%; object-fit: cover" src="{{$article['author']['image']}}" alt="{{$title}}"/>
                         </a>
                     </div>
                     <div class="author-name" >
                         <a href='{{route('about')}}'>
-                            <p style="color: #4d1219">তানভীর রেজা অনিক</p>
+                            <p style="color: #4d1219">{{$author}}</p>
                         </a>
                     </div>
                 </div><!-- author -->

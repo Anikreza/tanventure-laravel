@@ -12,7 +12,9 @@ class AuthApi extends HttpClient {
     async logout() {
         return this.requestType('post').request(`/auth/logout`)
     }
-
+    async user() {
+        return this.requestType('get').request(`/auth/user`)
+    }
     async refresh() {
         return this.requestType('post').request(`/auth/refresh`)
     }

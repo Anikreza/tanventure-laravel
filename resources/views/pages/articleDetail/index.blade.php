@@ -1,7 +1,7 @@
 @extends('master')
 @section('content')
-    <div class="section blog section-blg" style="background: linear-gradient(-40deg,#ffffff,#9f9f9f,#b6b3b3,#e8e7e7);">
-        {{--    <div class="section blog section-blg">--}}
+{{--    <div class="section blog section-blg" style="background: linear-gradient(-40deg,#ffffff,#9f9f9f,#b6b3b3,#e8e7e7);" onclick="scrollDown()">--}}
+            <div class="section blog section-blg">
         {{--        @include('component.breadcrumb')--}}
         <div class="floatingTitle w3-animate-top">
             <h2>{{$article->title}}</h2>
@@ -33,16 +33,16 @@
                             </div>
                             <div class="post-content post-content-wd">
                                 <div class="post-meta d-block d-lg-flex align-items-center">
-                                    <a href="{{route('about')}}">
-
+                                    <a href="{{route('author',['slug' => $article['author']['id']])}}">
                                         <div
                                             class="post-author d-flex align-items-center flex-shrink-0 align-self-start">
                                             <div>
-                                                <img style="width: 6vh; height: 6vh; border-radius: 50%"
-                                                     src="{{asset('assets/images/pp.jpg')}}" alt="">
+                                                <img src="{{asset($article['author']['image'])}}" alt="{{$article->title}}"
+                                                     style="width: 6vh; height: 6vh; border-radius: 50%; object-fit: cover"
+                                                />
                                             </div>
                                             <div class="author-name">
-                                                <p style="font-size: 1.9vh; color: #097349">তানভীর রেজা অনিক</p>
+                                                <p style="font-size: 1.9vh; color: #097349">{{$article['author']['name']}}</p>
                                             </div>
                                         </div>
                                     </a>
@@ -136,7 +136,7 @@
     <script>
         $(document).ready(function () {
             $(window).scroll(function () {
-                if ($(this).scrollTop() > 50) {
+                if ($(this).scrollTop() > 100) {
                     $('.articleCover').addClass('articleScrolled');
                 } else {
                     $('.articleCover').removeClass('articleScrolled');
@@ -145,8 +145,8 @@
         });
 
         function scrollDown() {
-            document.body.scrollTop = 100;
-            document.documentElement.scrollTop = 100;
+            document.body.scrollTop = 150;
+            document.documentElement.scrollTop = 150;
         }
     </script>
 @endsection

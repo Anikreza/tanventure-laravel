@@ -8,40 +8,65 @@
             <v-form @submit.prevent="handleSubmit(onSubmit)">
                 <v-container py-0>
                     <v-layout wrap>
-                        <v-flex xs12 md4>
-                            <VRadioInputWithValidation field="gender"
-                                                       :rules="'required'"
-                                                       :options="[{label: $t('Fields.mr'), value: 0}, {label: $t('Fields.mrs'), value: 1}]"
-                                                       v-model="profile.gender"/>
-                        </v-flex>
-                        <v-flex xs12 md4>
+
+                        <v-flex xs12 md6>
                             <VTextFieldWithValidation :label="$t('Fields.first_name')"
                                                       field="first_name"
                                                       rules="required|min:2"
                                                       v-model="profile.first_name"
                             />
                         </v-flex>
-                        <v-flex xs12 md4>
+
+                        <v-flex xs12 md6>
                             <VTextFieldWithValidation :label="$t('Fields.last_name')"
                                                       field="last_name"
                                                       rules="required|min:2"
                                                       v-model="profile.last_name"
                             />
                         </v-flex>
-                        <v-flex xs12 md6>
+                        <v-col cols="12" md="6">
                             <VTextFieldWithValidation :label="$t('Fields.email')"
                                                       disabled
                                                       field="email"
                                                       rules="required|email"
                                                       v-model="profile.email"
                             />
-                        </v-flex>
+                        </v-col>
                         <v-flex xs12 md6>
-                            <VTextFieldWithValidation :label="$t('Fields.address')"
-                                                      field="address"
-                                                      v-model="profile.address"
-                            />
+                            <VRadioInputWithValidation field="gender"
+                                                       :rules="'required'"
+                                                       :options="[{label: $t('Fields.mr'), value: 0}, {label: $t('Fields.mrs'), value: 1}]"
+                                                       v-model="profile.gender"/>
                         </v-flex>
+
+                        <v-col cols="12" md="6">
+                            <VFileInputWithValidation v-model="profile.image"
+                                                      ref="image"
+                                                      rules=""
+                                                      field="image"
+                                                      :isRow="true"
+                                                      :label="'Update Profile Image*'"/>
+                        </v-col>
+
+                        <v-col cols="12" md="6">
+                            <v-img :src="profile.image" alt="this image"
+                                   style="width: 600px; height: 300px; object-fit: contain"
+                            />
+                        </v-col>
+
+                        <v-col cols="12" md="6">
+                            <h3>Update Your Bio, Tell us who you are</h3>
+                            <vue-editor
+                                :editorOptions="editorConfig"
+                                v-model="profile.bio"/>
+                        </v-col>
+
+                        <v-col cols="12" md="6">
+                            <h3>Write about what you love to write</h3>
+                            <vue-editor id="editor"
+                                        :editorOptions="editorConfig"
+                                        v-model="profile.types"/>
+                        </v-col>
 
                         <v-flex
                             xs12
@@ -65,6 +90,15 @@ import VTextFieldWithValidation from '@/components/inputs/VTextFieldWithValidati
 import DatePickerWithValidation from '@/components/inputs/DatePickerWithValidation'
 import VRadioInputWithValidation from '@/components/inputs/VRadioInputWithValidation'
 import VFileInputWithValidation from '@/components/inputs/VFileInputWithValidation'
+import VTextAreaFieldWithValidation from "@/components/inputs/VTextAreaFieldWithValidation";
+import {Quill, VueEditor} from "vue2-editor";
+import {ImageDrop} from 'quill-image-drop-module'
+import ImageResize from 'quill-image-resize-module'
+import router from "../../../router";
+
+Quill.register('modules/imageResize', ImageResize)
+Quill.register('modules/imageDrop', ImageDrop)
+
 export default {
     name: 'information-update-card',
     components: {
@@ -73,16 +107,26 @@ export default {
         VTextFieldWithValidation,
         DatePickerWithValidation,
         VRadioInputWithValidation,
-        VFileInputWithValidation
+        VFileInputWithValidation,
+        VTextAreaFieldWithValidation,
+        VueEditor
     },
     data: () => {
         return {
+            editorConfig: {
+                modules: {
+                    imageDrop: true,
+                    imageResize: {}
+                }
+            },
             profile: {
                 gender: 0,
                 first_name: '',
                 last_name: '',
                 email: '',
-                address: '',
+                bio: '',
+                types: '',
+                image: '',
             },
         }
     },
@@ -93,8 +137,9 @@ export default {
             first_name: user.first_name,
             last_name: user.last_name,
             email: user.email,
-            d_o_b: user.d_o_b,
-            address: ''
+            bio: user.bio,
+            types: user.types,
+            image: user.image,
         }
     },
     methods: {
@@ -104,7 +149,10 @@ export default {
             const {address, ...profile} = this.profile
             const formData = {...profile, ...address}
             this.$store.dispatch('saveProfile', formData)
-                .then(() => this.$store.dispatch('app/setSnackbarMessage', this.$t('Messages.saved_successfully')))
+                .then(res => {
+                    this.$store.dispatch('app/setSnackbarMessage', this.$t('Messages.saved_successfully'))
+                    window.location.reload()
+                })
                 .catch(() => this.$store.dispatch('app/setSnackbarMessage', this.$t('Messages.something_went_wrong')))
         },
     }

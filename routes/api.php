@@ -48,6 +48,7 @@ Route::group([
     Route::post("/forgot-password", [AuthController::class, 'forgotPassword']);
     Route::post("/token-verification", [AuthController::class, 'tokenVerification']);
     Route::post("/reset-password", [AuthController::class, 'resetPassword']);
+    Route::get("/user", [AuthController::class, 'user']);
 });
 
 Route::group([

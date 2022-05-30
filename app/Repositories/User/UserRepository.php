@@ -5,6 +5,8 @@ namespace App\Repositories\User;
 
 
 use App\Enums\FileDirectory;
+use App\Models\AboutMe;
+use App\Models\Information;
 use App\Models\User;
 use App\Services\FileUpload;
 use DB;
@@ -20,38 +22,76 @@ class UserRepository implements UserInterface
 
     private function getProfileDataFromRequest($request): array
     {
-        return $request([
-            'gender',
-            'first_name',
-            'last_name',
-            'address',
+        return $request->only([
+            'name',
+            'email',
+            'image',
         ]);
     }
 
-    /**
-     * @param $user
-     * @param $request
-     * @return array|Throwable
-     * @throws Throwable
-     */
-    public function updateProfile($user, Request $request): ?Throwable
+    public function updateProfile($user, Request $request)
     {
         try {
             DB::beginTransaction();
 
-            $profileData = $this->getProfileDataFromRequest($request);
+            $gender = '';
+            if ($request->input('gender') == 1) {
+                $gender = 'female';
+            } else {
+                $gender = 'm';
+            }
+
+            $user = User::where('id', $user->id)->update([
+                'first_name' => $request->input('first_name'),
+                'last_name' => $request->input('last_name'),
+                'email' => $request->input('email'),
+                'gender' => $gender,
+                'bio' => $request->input('bio'),
+                'types' => $request->input('types'),
+            ]);
+
+            DB::commit();
+
+            return $user;
+        } catch (Throwable $e) {
+            DB::rollBack();
+
+            return $e;
+        }
+    }
+
+    public function updateProfileAndImage($user, Request $request)
+    {
+        try {
+            DB::beginTransaction();
 
             if ($request->hasFile('image')) {
                 $files = (new FileUpload($request->file('image')))
                     ->directory(FileDirectory::AVATAR . $user->id)
-                    ->setDimension(null, 250)
+                    ->setDimension(null, null)
                     ->setFileName($request->file('image')->getClientOriginalName())
                     ->upload();
-
-                $profileData['avatar'] = $files['main_file_name'];
             }
 
-            $user = User::where('id', $user->id)->update($profileData);
+//            Information::where('key', 'user_image')->update(['value' => FileDirectory::AVATAR . $user->id . '/' . $request->file('image')->getClientOriginalName()]);
+            $gender = '';
+            if ($request->input('gender') == 1) {
+                $gender = 'female';
+            } else {
+                $gender = 'm';
+            }
+
+            $user = User::where('id', $user->id)->update([
+                'first_name' => $request->input('first_name'),
+                'last_name' => $request->input('last_name'),
+                'email' => $request->input('email'),
+                'gender' => $gender,
+                'bio' => $request->input('bio'),
+                'types' => $request->input('types'),
+                'image' => FileDirectory::AVATAR . $user->id . '/' . $request->file('image')->getClientOriginalName()
+
+            ]);
+
             DB::commit();
 
             return $user;

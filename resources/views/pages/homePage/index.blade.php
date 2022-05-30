@@ -2,7 +2,7 @@
 @section('content')
 <div class='home'>
 {{--    <div class='home-center'>--}}
-        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" >
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" data-interval="5000" data-pause="false">
             <div class="carousel-inner">
                 @foreach($featuredPosts as $key=> $article)
                     @include('component.card.sliderCard',
@@ -41,7 +41,7 @@
                 <div class="d-lg-flex d-sm-none">
                     @foreach($featuredPosts as $article)
                         <div style="width: 100vw">
-                            <div class="contentHover">
+                            <div class="contentHover ">
                                 <a href="{{ route('article-details', ['slug' => $article['slug']]) }}">
                                     <div class="content-overlay-dense"></div>
                                     <img src="{{asset($article['image'])}}"

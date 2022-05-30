@@ -2040,14 +2040,14 @@ var AuthApi = /*#__PURE__*/function (_HttpClient) {
       return logout;
     }()
   }, {
-    key: "refresh",
+    key: "user",
     value: function () {
-      var _refresh = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+      var _user = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                return _context3.abrupt("return", this.requestType('post').request("/auth/refresh"));
+                return _context3.abrupt("return", this.requestType('get').request("/auth/user"));
 
               case 1:
               case "end":
@@ -2055,6 +2055,30 @@ var AuthApi = /*#__PURE__*/function (_HttpClient) {
             }
           }
         }, _callee3, this);
+      }));
+
+      function user() {
+        return _user.apply(this, arguments);
+      }
+
+      return user;
+    }()
+  }, {
+    key: "refresh",
+    value: function () {
+      var _refresh = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                return _context4.abrupt("return", this.requestType('post').request("/auth/refresh"));
+
+              case 1:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this);
       }));
 
       function refresh() {
@@ -2922,7 +2946,7 @@ __webpack_require__.r(__webpack_exports__);
   // redirect if already signed in
   beforeEnter: function beforeEnter(to, from, next) {
     if (_store__WEBPACK_IMPORTED_MODULE_0__.default.getters.authorized) {
-      next('/dashboard/admin/landingPage');
+      next('/dashboard/admin/home');
     } else {
       next();
     }
@@ -2941,7 +2965,7 @@ __webpack_require__.r(__webpack_exports__);
     requiresAuth: false
   },
   redirect: {
-    path: '/dashboard/admin/landingPage'
+    path: '/dashboard/admin/home'
   }
 }, {
   path: '/dashboard/admin',
@@ -3088,18 +3112,21 @@ var removeAuthDataFromLocalStorage = function removeAuthDataFromLocalStorage() {
                   password: userData.password
                 }).then(function (response) {
                   var data = response.data;
+                  var role = data.user.role;
 
-                  if (data.access_token) {
-                    var token = "".concat(data.token_type, " ").concat(data.access_token);
-                    var user = data.user;
-                    _services_storage__WEBPACK_IMPORTED_MODULE_2__.localStorage.setItem('token', token);
-                    commit('auth_success', {
-                      token: token
-                    });
-                    commit('set_auth_profile', user);
-                    resolve(data);
-                  } else {
-                    reject('something_went_wrong');
+                  if (role === '1') {
+                    if (data.access_token) {
+                      var token = "".concat(data.token_type, " ").concat(data.access_token);
+                      var user = data.user;
+                      _services_storage__WEBPACK_IMPORTED_MODULE_2__.localStorage.setItem('token', token);
+                      commit('auth_success', {
+                        token: token
+                      });
+                      commit('set_auth_profile', user);
+                      resolve(data);
+                    } else {
+                      reject('something_went_wrong');
+                    }
                   }
                 })["catch"](function (_ref2) {
                   var data = _ref2.data;
@@ -3152,12 +3179,33 @@ var removeAuthDataFromLocalStorage = function removeAuthDataFromLocalStorage() {
   saveProfile: function saveProfile(_ref7, payload) {
     var commit = _ref7.commit;
     return new Promise(function (resolve, reject) {
-      _api_profile__WEBPACK_IMPORTED_MODULE_3__.default.saveProfile(payload).then(function (_ref8) {
-        var data = _ref8.data;
-        commit('set_auth_profile', data.user);
-        resolve(data.user);
-      })["catch"](function (_ref9) {
-        var data = _ref9.data;
+      _api_profile__WEBPACK_IMPORTED_MODULE_3__.default.saveProfile(payload).then( /*#__PURE__*/function () {
+        var _ref9 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(_ref8) {
+          var data;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  data = _ref8.data;
+                  _context2.next = 3;
+                  return _api_auth__WEBPACK_IMPORTED_MODULE_1__.default.user().then(function (res) {
+                    commit('set_auth_profile', res.data);
+                    resolve(res.data);
+                  });
+
+                case 3:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2);
+        }));
+
+        return function (_x) {
+          return _ref9.apply(this, arguments);
+        };
+      }())["catch"](function (_ref10) {
+        var data = _ref10.data;
         return reject(data);
       });
     });

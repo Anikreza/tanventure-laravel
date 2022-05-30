@@ -10,16 +10,17 @@
         @foreach($mostReadArticles as $article)
             <div class="custom3Column text-center">
                 <a href="{{ route('article-details', ['slug' =>  $article['slug']]) }}">
-                <div class="post post-alt postContainer">
-                    @include('component.card.mostReadCard',
-                        [
-                            'image' => $article['image'],
-                            'title'=>$article['title'],
-                            'slug' => $article['slug'],
-                            'description' => $article['excerpt'],
-                            'category' => $category ?? $article['categories'][0],
-                        ])
-                </div><!-- .post -->
+                    <div class="post post-alt postContainer">
+                        @include('component.card.mostReadCard',
+                            [
+                                'image' => $article['image'],
+                                'title'=>$article['title'],
+                                'slug' => $article['slug'],
+                                'author' => $article['author']['name'],
+                                'description' => $article['excerpt'],
+                                'category' => $category ?? $article['categories'][0],
+                            ])
+                    </div><!-- .post -->
                 </a>
             </div><!-- .col -->
         @endforeach

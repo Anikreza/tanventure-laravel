@@ -132,7 +132,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _context.next = 6;
                 return _this.$store.dispatch('login', _this.form).then(function () {
-                  return _this.$router.push('/dashboard/admin/landingPage');
+                  return _this.$router.push('/dashboard/admin/home');
                 })["catch"](function () {
                   _this.$store.dispatch('app/setSnackbarMessage', _this.$t('Messages.login_failed'));
                 });

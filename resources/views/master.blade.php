@@ -7,9 +7,9 @@
     <!-- Site Title  -->
     {!! SEO::generate() !!}
     <!-- Bundle and Base CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/css/vendor.bundle.css?ver=141') }}" >
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css?ver=141') }}" >
-    <link rel="stylesheet" href="{{ asset('assets/css/theme.css?ver=141') }}" >
+    <link rel="stylesheet" href="{{ asset('assets/css/vendor.bundle.css') }}" >
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" >
+{{--    <link rel="stylesheet" href="{{ asset('assets/css/theme.css') }}" >--}}
 
 </head>
 

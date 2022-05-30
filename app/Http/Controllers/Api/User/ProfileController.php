@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Api\ApiController;
-use App\Http\Requests\User\SaveProfileRequest;
 use App\Repositories\User\UserRepository;
 use Illuminate\Http\JsonResponse;
 use Throwable;
+use Illuminate\Http\Request;
 
 class ProfileController extends ApiController
 {
@@ -17,40 +17,20 @@ class ProfileController extends ApiController
         $this->repository = $userRepository;
     }
 
-    /**
-     * Update User's profile
-     * @param SaveProfileRequest $request
-     * @return JsonResponse
-     */
-    public function update(SaveProfileRequest $request): JsonResponse
+    public function update(Request $request)
     {
         try {
             $user = auth()->user();
-            $user = $this->repository->updateProfile($user, $request);
-
-            return response()->json(['user' => $user]);
+            if($request->input('image')){
+                return $this->repository->updateProfile($user, $request);
+            }
+            else{
+                return $this->repository->updateProfileAndImage($user, $request);
+            }
         } catch (Throwable $exception) {
             $this->errorLog($exception, 'api');
 
             return $this->failResponse($exception->getMessage());
         }
-    }
-
-    /**
-     * User Password Update.
-     *
-     * @return JsonResponse
-     */
-    public function passwordUpdate(): JsonResponse
-    {
-        //
-    }
-
-    /**
-     * @return JsonResponse
-     */
-    public function emailUpdate(): JsonResponse
-    {
-        //
     }
 }

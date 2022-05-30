@@ -15,18 +15,22 @@ export default {
             authApi.login({email: userData.email, password: userData.password})
                 .then(response => {
                     const {data} = response
+                    const role = data.user.role
 
-                    if (data.access_token) {
-                        const token = `${data.token_type} ${data.access_token}`
-                        const user = data.user
-                        localStorage.setItem('token', token)
-                        commit('auth_success', {token})
-                        commit('set_auth_profile', user)
-                        resolve(data)
-                    } else {
-                        reject('something_went_wrong')
+                    if (role==='1') {
+                        if(data.access_token){
+                            const token = `${data.token_type} ${data.access_token}`
+                            const user = data.user
+                            localStorage.setItem('token', token)
+                            commit('auth_success', {token})
+                            commit('set_auth_profile', user)
+                            resolve(data)
+                        }
+                        else{
+                            reject('something_went_wrong')
+                        }
+
                     }
-
                 })
                 .catch(({data}) => {
                     commit('auth_error')
@@ -69,9 +73,11 @@ export default {
     saveProfile({commit}, payload) {
         return new Promise((resolve, reject) => {
             profile.saveProfile(payload)
-                .then(({data}) => {
-                    commit('set_auth_profile', data.user)
-                    resolve(data.user)
+                .then(async ({data}) => {
+                    await authApi.user().then(res => {
+                        commit('set_auth_profile', res.data)
+                        resolve(res.data)
+                    })
                 })
                 .catch(({data}) => reject(data))
         })

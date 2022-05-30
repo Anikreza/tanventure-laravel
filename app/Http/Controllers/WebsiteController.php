@@ -77,7 +77,6 @@ class WebsiteController extends Controller
         $publishedArticles = $this->articleRepository->publishedArticles(1, 4);
         $featuredArticles = $this->articleRepository->publishedFeaturedArticles(1, 3);
         $mostReadArticles = $this->articleRepository->mostReadArticles(1, 3);
-
         $this->seo($this->baseSeoData);
 
         return view('pages.landingPage.index',
@@ -110,6 +109,16 @@ class WebsiteController extends Controller
 
         return view('pages.about.index');
 
+    }
+    public function author($slug)
+    {
+        $author=$this->articleRepository->getAuthor($slug);
+        $authorArticles=$this->articleRepository->getAuthorArticles($slug);
+        $this->baseSeoData['title'] = $author->name . "TanVenture";
+        $this->baseSeoData['keywords'] = "bikepacking";
+        $this->seo($this->baseSeoData);
+
+        return view('pages.author.index', compact('authorArticles', 'author'));
     }
 
     public function novel()

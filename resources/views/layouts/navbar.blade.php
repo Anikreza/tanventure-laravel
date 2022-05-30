@@ -32,8 +32,8 @@
                             </li>
                             <li class="menu-item  has-sub">
                                 <a
-                                    class="nav-link @if(Request::url() == url('/Tanvir-Reza-Anik')) active @endif"
-                                    href="{{route('about')}}">ABOUT ME</a>
+                                    class="nav-link @if(Request::url() == url('/author')) active @endif"
+                                    href="{{route('author',['slug' =>8])}}">ABOUT ME</a>
                             </li>
                             <li class="menu-item  has-sub">
                                 <a

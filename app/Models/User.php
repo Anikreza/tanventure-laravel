@@ -27,6 +27,8 @@ class User extends Authenticatable
         'image',
         'gender',
         'address',
+        'bio',
+        'types',
         'email',
         'role',
         'password',
@@ -58,6 +60,13 @@ class User extends Authenticatable
     public function articles(): HasMany
     {
         return $this->hasMany(Article::class);
+    }
+    /**
+     * @return HasMany
+     */
+    public function information(): HasMany
+    {
+        return $this->hasMany(Information::class);
     }
 
     public function getUserTypeAttribute(): string
@@ -95,6 +104,6 @@ class User extends Authenticatable
 
     public function getTitleAttribute(): string
     {
-        return $this->attributes['gender'] == 'm' ? 'Mr.' : 'Mrs.';
+        return $this->attributes['gender'] == 'm' ? '' : 'মিস';
     }
 }

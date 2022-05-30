@@ -15,13 +15,13 @@
         <ul class="post-tag">
             <li>
                 <a href='{{route('about')}}'>
-                    <span style="color: #4d1219">তানভীর রেজা অনিক</span>
+                    <span style="color: #4d1219">{{$author}}</span>
                 </a>
                 <a>
                     <span>||</span>
                 </a>
                 <a href="{{route('about')}}">
-                    <span style="color: #0f3828">27th May</span>
+                    <span style="color: #0f3828">{{$article->created_at->translatedFormat('M')}} '{{$article->created_at->translatedFormat('y')}}</span>
                 </a>
             </li>
         </ul>
