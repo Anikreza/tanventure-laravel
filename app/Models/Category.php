@@ -10,14 +10,14 @@ class Category extends BaseModel
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'slug',
+        'name_en',
+        'name_bn',
+        'slug_en',
+        'slug_bn',
         'excerpt',
         'keywords',
         'is_published',
         'is_video',
-        'display_in_navigation',
-        'display_in_home_page',
         'position',
         'categories',
     ];

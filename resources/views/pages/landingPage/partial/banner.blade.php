@@ -29,10 +29,11 @@
 </div>
 
 <div>
-    <h1 style="font-size: 50px; letter-spacing: 1rem;text-align: center" class="align-items-center"> ট্যানভেঞ্চার</h1>
-    <p style="font-size: 2vh;letter-spacing: .4rem;text-align: center; color: #810c0c" class="align-items-center"
-    >
-        প্রকৃতির গল্পগুলো পড়ুন
+    <h1 style="font-size: 50px;font-family: Script; letter-spacing: 1rem;text-align: center; text-transform: uppercase" class="align-items-center">
+        {{ __('general.tanventure') }}
+    </h1>
+    <p style="font-size: 2vh;letter-spacing: .4rem;text-align: center; text-transform: capitalize; color: #810c0c" class="align-items-center">
+        {{ __('general.readLatestBlogs') }}
     </p>
     <hr/>
 </div>

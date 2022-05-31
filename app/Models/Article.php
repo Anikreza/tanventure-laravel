@@ -18,10 +18,14 @@ class Article extends BaseModel
 
     protected $fillable = [
         'user_id',
-        'title',
-        'slug',
-        'description',
-        'excerpt',
+        'title_en',
+        'title_bn',
+        'slug_en',
+        'slug_bn',
+        'description_en',
+        'description_bn',
+        'excerpt_en',
+        'excerpt_bn',
         'cover_caption',
         'image',
         'image_disk', // 'default: local, option: s3, gc (google cloud), if null then external link'

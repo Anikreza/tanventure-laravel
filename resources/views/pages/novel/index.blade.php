@@ -47,8 +47,8 @@
                         <p style="color:#475e42;">
                             ------------------------------------------------------------------------------------------------------------</p>
 
-                        <a href="{{ route('article-details', ['slug' => $novel->slug]) }}">
-                            <h2 style="color: #475e42">{{$novel->title}}</h2>
+                        <a href="{{ route('article-details', ['slug' => $novel['slug'.'_'.app()->getLocale()]]) }}">
+                            <h2 style="color: #475e42">{{$novel['title'.'_'.app()->getLocale()]}}</h2>
                         </a>
                         {{--                    <h2>{{$novel->title}}</h2>--}}
                         <p style="color:#475e42;">
@@ -60,43 +60,14 @@
                     >
                         <div class="col col-md-6 col-12 novelAnimation hidden">
                             <p style="height: 40vh; overflow: hidden; color: #0a1108">
-                                {{--                            {{$novel->excerpt}}--}}
-                                Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis
-                                nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                irure
-                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                Excepteur
-                                sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                                est
-                                laborumLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco
-                                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                                in
-                                voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                cupidatat
-                                non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
-                                adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                enim
-                                ad
-                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat.
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                nulla
-                                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                deserunt
-                                mollit anim id est laborum.
+                                {{$novel['excerpt'.'_'.app()->getLocale()]}}
                             </p>
-                            <a href="{{ route('article-details', ['slug' => $novel->slug]) }}"
+                            <a href="{{ route('article-details', ['slug' => $novel['slug'.'_'.app()->getLocale()]]) }}"
                                class="btn-primary btn-arrow">Read More</a>
                         </div>
                         <div class="col col-md-6 col-12  novelAnimation hidden">
                             <div>
-                                <a href="{{ route('article-details', ['slug' => $novel->slug]) }}">
+                                <a href="{{ route('article-details', ['slug' => $novel['slug'.'_'.app()->getLocale()]]) }}">
                                     <img src="{{$novel->image }}" alt="Tanvir Reza Anik"
                                          style="box-shadow: 4px 4px 4px 4px #3d3d3d">
                                 </a>

@@ -16,11 +16,14 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('title')->unique();
-            $table->string('author')->nullable();
-            $table->string('slug')->unique();
-            $table->longText('description');
-            $table->text('excerpt')->nullable();
+            $table->string('title_en')->unique();
+            $table->string('title_bn')->unique();
+            $table->string('slug_en')->unique();
+            $table->string('slug_bn')->unique();
+            $table->longText('description_en');
+            $table->longText('description_bn');
+            $table->text('excerpt_en')->nullable();
+            $table->text('excerpt_bn')->nullable();
             $table->string('image')->nullable();
             $table->string('image_disk')->nullable();
             $table->string('meta_title')->nullable();

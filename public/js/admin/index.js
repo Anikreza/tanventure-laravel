@@ -2376,7 +2376,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-i18n */ "./node_modules/vue-i18n/dist/vue-i18n.esm.js");
 /* harmony import */ var _lang__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/lang */ "./resources/js/admin/lang/index.js");
 /* harmony import */ var vee_validate_dist_locale_en_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vee-validate/dist/locale/en.json */ "./node_modules/vee-validate/dist/locale/en.json");
-/* harmony import */ var vee_validate_dist_locale_de_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vee-validate/dist/locale/bn.json */ "./node_modules/vee-validate/dist/locale/de.json");
+/* harmony import */ var vee_validate_dist_locale_de_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vee-validate/dist/locale/de.json */ "./node_modules/vee-validate/dist/locale/de.json");
 /**
  * Vue i18n
  *
@@ -4685,7 +4685,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _css_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_10_0_rules_0_use_2_vuetify_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!../../postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./vuetify.min.css */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10[0].rules[0].use[2]!./node_modules/vuetify/dist/vuetify.min.css");
 
-
+            
 
 var options = {};
 
@@ -4715,7 +4715,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_13_0_rules_0_use_1_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_13_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_13_0_rules_0_use_3_theme_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-13[0].rules[0].use[1]!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13[0].rules[0].use[2]!../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13[0].rules[0].use[3]!./_theme.scss */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-13[0].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13[0].rules[0].use[3]!./resources/sass/admin/_theme.scss");
 
-
+            
 
 var options = {};
 
@@ -4745,7 +4745,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_13_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_13_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_13_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-13[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13[0].rules[0].use[2]!../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13[0].rules[0].use[3]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./App.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-13[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-13[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-13[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/App.vue?vue&type=style&index=0&lang=scss&");
 
-
+            
 
 var options = {};
 
@@ -5041,12 +5041,12 @@ module.exports = function (list, options) {
 
 /***/ "./node_modules/vee-validate/dist/locale/de.json":
 /*!*******************************************************!*\
-  !*** ./node_modules/vee-validate/dist/locale/bn.json ***!
+  !*** ./node_modules/vee-validate/dist/locale/de.json ***!
   \*******************************************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"code\":\"bn\",\"messages\":{\"alpha\":\"{_field_} darf nur alphabetische Zeichen enthalten\",\"alpha_dash\":\"{_field_} darf alphanumerische Zeichen sowie Striche und Unterstriche enthalten\",\"alpha_num\":\"{_field_} darf nur alphanumerische Zeichen enthalten\",\"alpha_spaces\":\"{_field_} darf nur alphanumerische Zeichen und Leerzeichen enthalten\",\"between\":\"{_field_} muss zwischen {min} und {max} liegen\",\"confirmed\":\"Die Bestätigung von {_field_} stimmt nicht überein\",\"digits\":\"{_field_} muss numerisch sein und exakt {length} Ziffern enthalten\",\"dimensions\":\"{_field_} muss {width} x {height} Bildpunkte groß sein\",\"email\":\"{_field_} muss eine gültige E-Mail-Adresse sein\",\"excluded\":\"{_field_} muss ein gültiger Wert sein\",\"ext\":\"{_field_} muss eine gültige Datei sein\",\"image\":\"{_field_} muss eine Grafik sein\",\"oneOf\":\"{_field_} muss ein gültiger Wert sein\",\"integer\":\"{_field_} muss eine ganze Zahl sein\",\"length\":\"Die Länge von {_field_} muss {length} sein\",\"max\":\"{_field_} darf nicht länger als {length} Zeichen sein\",\"max_value\":\"{_field_} darf maximal {max} sein\",\"mimes\":\"{_field_} muss einen gültigen Dateityp haben\",\"min\":\"{_field_} muss mindestens {length} Zeichen lang sein\",\"min_value\":\"{_field_} muss mindestens {min} sein\",\"numeric\":\"{_field_} darf nur numerische Zeichen enthalten\",\"regex\":\"Das Format von {_field_} ist ungültig\",\"required\":\"{_field_} ist ein Pflichtfeld\",\"required_if\":\"{_field_} ist ein Pflichtfeld\",\"size\":\"{_field_} muss kleiner als {size}KB sein\",\"double\":\"Das Feld {_field_} muss eine gültige Dezimalzahl sein\"}}");
+module.exports = JSON.parse("{\"code\":\"de\",\"messages\":{\"alpha\":\"{_field_} darf nur alphabetische Zeichen enthalten\",\"alpha_dash\":\"{_field_} darf alphanumerische Zeichen sowie Striche und Unterstriche enthalten\",\"alpha_num\":\"{_field_} darf nur alphanumerische Zeichen enthalten\",\"alpha_spaces\":\"{_field_} darf nur alphanumerische Zeichen und Leerzeichen enthalten\",\"between\":\"{_field_} muss zwischen {min} und {max} liegen\",\"confirmed\":\"Die Bestätigung von {_field_} stimmt nicht überein\",\"digits\":\"{_field_} muss numerisch sein und exakt {length} Ziffern enthalten\",\"dimensions\":\"{_field_} muss {width} x {height} Bildpunkte groß sein\",\"email\":\"{_field_} muss eine gültige E-Mail-Adresse sein\",\"excluded\":\"{_field_} muss ein gültiger Wert sein\",\"ext\":\"{_field_} muss eine gültige Datei sein\",\"image\":\"{_field_} muss eine Grafik sein\",\"oneOf\":\"{_field_} muss ein gültiger Wert sein\",\"integer\":\"{_field_} muss eine ganze Zahl sein\",\"length\":\"Die Länge von {_field_} muss {length} sein\",\"max\":\"{_field_} darf nicht länger als {length} Zeichen sein\",\"max_value\":\"{_field_} darf maximal {max} sein\",\"mimes\":\"{_field_} muss einen gültigen Dateityp haben\",\"min\":\"{_field_} muss mindestens {length} Zeichen lang sein\",\"min_value\":\"{_field_} muss mindestens {min} sein\",\"numeric\":\"{_field_} darf nur numerische Zeichen enthalten\",\"regex\":\"Das Format von {_field_} ist ungültig\",\"required\":\"{_field_} ist ein Pflichtfeld\",\"required_if\":\"{_field_} ist ein Pflichtfeld\",\"size\":\"{_field_} muss kleiner als {size}KB sein\",\"double\":\"Das Feld {_field_} muss eine gültige Dezimalzahl sein\"}}");
 
 /***/ }),
 
@@ -7873,7 +7873,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /*!
- * vue-i18n v8.22.4
+ * vue-i18n v8.22.4 
  * (c) 2021 kazuya kawaguchi
  * Released under the MIT License.
  */
@@ -10106,7 +10106,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
   null,
   null,
   null
-
+  
 )
 
 /* hot reload */
@@ -10148,7 +10148,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
   null,
   null,
   null
-
+  
 )
 
 /* hot reload */
@@ -10173,7 +10173,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
 /* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
 /* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default);
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -10192,7 +10192,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
 /* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Notification_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Notification_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
 /* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Notification_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default);
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Notification_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -10452,7 +10452,7 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * vue-meta v2.4.0
  * (c) 2020
- * - Declan bn Wet
+ * - Declan de Wet
  * - Sébastien Chopin (@Atinux)
  * - Pim (@pimlie)
  * - All the amazing contributors
@@ -15775,7 +15775,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /*!
- * vue-toastr v2.1.2
+ * vue-toastr v2.1.2 
  * (c) 2019 s4l1h
  * Released under the MIT License.
  */
@@ -15913,11 +15913,11 @@ var __vue_staticRenderFns__ = [];
   /* functional template */
   const __vue_is_functional_template__ = false;
   /* style inject */
-
+  
   /* style inject SSR */
+  
 
-
-
+  
   var ToastProgress = normalizeComponent_1(
     { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
     __vue_inject_styles__,
@@ -16162,11 +16162,11 @@ var __vue_staticRenderFns__$1 = [];
   /* functional template */
   const __vue_is_functional_template__$1 = false;
   /* style inject */
-
+  
   /* style inject SSR */
+  
 
-
-
+  
   var toast = normalizeComponent_1(
     { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
     __vue_inject_styles__$1,
@@ -16491,9 +16491,9 @@ var __vue_staticRenderFns__$2 = [];
   /* functional template */
   const __vue_is_functional_template__$2 = false;
   /* style inject SSR */
+  
 
-
-
+  
   var VueToastr = normalizeComponent_1(
     { render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 },
     __vue_inject_styles__$2,
@@ -16548,11 +16548,11 @@ const __vue_script__$3 = VueToastr;
   /* functional template */
   const __vue_is_functional_template__$3 = undefined;
   /* style inject */
-
+  
   /* style inject SSR */
+  
 
-
-
+  
   var VueToastr$1 = normalizeComponent_1(
     {},
     __vue_inject_styles__$3,
@@ -62908,7 +62908,7 @@ __nested_webpack_require_1259735__.r(__webpack_exports__);
     prevPage: 'Pàgina anterior',
     firstPage: 'Primera pàgina',
     lastPage: 'Última pàgina',
-    pageText: '{0}-{1} bn {2}'
+    pageText: '{0}-{1} de {2}'
   },
   datePicker: {
     itemsSelected: '{0} seleccionats',
@@ -62938,7 +62938,7 @@ __nested_webpack_require_1259735__.r(__webpack_exports__);
   },
   pagination: {
     ariaLabel: {
-      wrapper: 'Navegació bn la pàgina',
+      wrapper: 'Navegació de la pàgina',
       next: 'Pàgina següent',
       previous: 'Pàgina anterior',
       page: 'Ves a la pàgina {0}',
@@ -63118,7 +63118,7 @@ __nested_webpack_require_1263968__.r(__webpack_exports__);
 
 /***/ "./src/locale/de.ts":
 /*!**************************!*\
-  !*** ./src/locale/bn.ts ***!
+  !*** ./src/locale/de.ts ***!
   \**************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __nested_webpack_require_1266034__) {
@@ -63394,7 +63394,7 @@ __nested_webpack_require_1272155__.r(__webpack_exports__);
     prevPage: 'Página anterior',
     firstPage: 'Primer página',
     lastPage: 'Última página',
-    pageText: '{0}-{1} bn {2}'
+    pageText: '{0}-{1} de {2}'
   },
   datePicker: {
     itemsSelected: '{0} seleccionados',
@@ -63424,7 +63424,7 @@ __nested_webpack_require_1272155__.r(__webpack_exports__);
   },
   pagination: {
     ariaLabel: {
-      wrapper: 'Navegación bn paginación',
+      wrapper: 'Navegación de paginación',
       next: 'Página siguiente',
       previous: 'Página anterior',
       page: 'Ir a la página {0}',
@@ -63697,7 +63697,7 @@ __nested_webpack_require_1280445__.r(__webpack_exports__);
   close: 'Fermer',
   dataIterator: {
     noResultsText: 'Aucun enregistrement correspondant trouvé',
-    loadingText: "Chargement bn l'\xE9l\xE9ment..."
+    loadingText: "Chargement de l'\xE9l\xE9ment..."
   },
   dataTable: {
     itemsPerPageText: 'Lignes par page :',
@@ -63718,7 +63718,7 @@ __nested_webpack_require_1280445__.r(__webpack_exports__);
     prevPage: 'Page précédente',
     firstPage: 'Première page',
     lastPage: 'Dernière page',
-    pageText: '{0}-{1} bn {2}'
+    pageText: '{0}-{1} de {2}'
   },
   datePicker: {
     itemsSelected: '{0} sélectionné(s)',
@@ -63732,11 +63732,11 @@ __nested_webpack_require_1280445__.r(__webpack_exports__);
     prev: 'Visuel précédent',
     next: 'Visuel suivant',
     ariaLabel: {
-      delimiter: 'Diapositive {0} bn {1}'
+      delimiter: 'Diapositive {0} de {1}'
     }
   },
   calendar: {
-    moreEvents: '{0} bn plus'
+    moreEvents: '{0} de plus'
   },
   fileInput: {
     counter: '{0} fichier(s)',
@@ -63748,7 +63748,7 @@ __nested_webpack_require_1280445__.r(__webpack_exports__);
   },
   pagination: {
     ariaLabel: {
-      wrapper: 'Navigation bn pagination',
+      wrapper: 'Navigation de pagination',
       next: 'Page suivante',
       previous: 'Page précédente',
       page: 'Aller à la page {0}',
@@ -64092,7 +64092,7 @@ __nested_webpack_require_1288651__.r(__webpack_exports__);
 /*!*****************************!*\
   !*** ./src/locale/index.ts ***!
   \*****************************/
-/*! exports provided: af, ar, bg, ca, ckb, cs, bn, el, en, es, et, fa, fi, fr, hr, hu, he, id, it, ja, ko, lv, lt, nl, no, pl, pt, ro, ru, sk, sl, srCyrl, sv, th, tr, az, uk, zhHans, zhHant */
+/*! exports provided: af, ar, bg, ca, ckb, cs, de, el, en, es, et, fa, fi, fr, hr, hu, he, id, it, ja, ko, lv, lt, nl, no, pl, pt, ro, ru, sk, sl, srCyrl, sv, th, tr, az, uk, zhHans, zhHant */
 /***/ (function(module, __webpack_exports__, __nested_webpack_require_1290942__) {
 
 "use strict";
@@ -64115,7 +64115,7 @@ __nested_webpack_require_1290942__.r(__webpack_exports__);
 /* harmony import */ var _cs__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_1290942__(/*! ./cs */ "./src/locale/cs.ts");
 /* harmony reexport (safe) */ __nested_webpack_require_1290942__.d(__webpack_exports__, "cs", function() { return _cs__WEBPACK_IMPORTED_MODULE_5__["default"]; });
 
-/* harmony import */ var _de__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_1290942__(/*! ./bn */ "./src/locale/de.ts");
+/* harmony import */ var _de__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_1290942__(/*! ./de */ "./src/locale/de.ts");
 /* harmony reexport (safe) */ __nested_webpack_require_1290942__.d(__webpack_exports__, "de", function() { return _de__WEBPACK_IMPORTED_MODULE_6__["default"]; });
 
 /* harmony import */ var _el__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_1290942__(/*! ./el */ "./src/locale/el.ts");
@@ -64683,7 +64683,7 @@ __nested_webpack_require_1311657__.r(__webpack_exports__);
       sortDescending: 'Aflopend gesorteerd.',
       sortAscending: 'Oplopend gesorteerd.',
       sortNone: 'Niet gesorteerd.',
-      activateNone: 'Activeer om bn sortering te verwijderen.',
+      activateNone: 'Activeer om de sortering te verwijderen.',
       activateDescending: 'Activeer om aflopend te sorteren.',
       activateAscending: 'Activeer om oplopend te sorteren.'
     },
@@ -64939,7 +64939,7 @@ __nested_webpack_require_1317981__.r(__webpack_exports__);
     prevPage: 'Página anterior',
     firstPage: 'Primeira página',
     lastPage: 'Última página',
-    pageText: '{0}-{1} bn {2}'
+    pageText: '{0}-{1} de {2}'
   },
   datePicker: {
     itemsSelected: '{0} selecionado(s)',
@@ -64953,7 +64953,7 @@ __nested_webpack_require_1317981__.r(__webpack_exports__);
     prev: 'Visão anterior',
     next: 'Próxima visão',
     ariaLabel: {
-      delimiter: 'Slide {0} bn {1} do carrossel'
+      delimiter: 'Slide {0} de {1} do carrossel'
     }
   },
   calendar: {
@@ -64969,7 +64969,7 @@ __nested_webpack_require_1317981__.r(__webpack_exports__);
   },
   pagination: {
     ariaLabel: {
-      wrapper: 'Navegação bn paginação',
+      wrapper: 'Navegação de paginação',
       next: 'Próxima página',
       previous: 'Página anterior',
       page: 'Ir à página {0}',
@@ -74565,7 +74565,7 @@ var index = {
 
 /***/ "./resources/js/admin/lang/de/Common.json":
 /*!************************************************!*\
-  !*** ./resources/js/admin/lang/bn/Common.json ***!
+  !*** ./resources/js/admin/lang/de/Common.json ***!
   \************************************************/
 /***/ ((module) => {
 
@@ -74576,7 +74576,7 @@ module.exports = JSON.parse("{\"needHelp\":\"Brauchen Sie Hilfe?\",\"close\":\"S
 
 /***/ "./resources/js/admin/lang/de/Core/Footer.json":
 /*!*****************************************************!*\
-  !*** ./resources/js/admin/lang/bn/Core/Footer.json ***!
+  !*** ./resources/js/admin/lang/de/Core/Footer.json ***!
   \*****************************************************/
 /***/ ((module) => {
 
@@ -74587,7 +74587,7 @@ module.exports = JSON.parse("{\"facebook\":\"Facebook\",\"footer\":\"Fusszeile\"
 
 /***/ "./resources/js/admin/lang/de/Core/Nav.json":
 /*!**************************************************!*\
-  !*** ./resources/js/admin/lang/bn/Core/Nav.json ***!
+  !*** ./resources/js/admin/lang/de/Core/Nav.json ***!
   \**************************************************/
 /***/ ((module) => {
 
@@ -74598,7 +74598,7 @@ module.exports = JSON.parse("{\"dashboard\":\"Dashboard\",\"user-profile\":\"Ben
 
 /***/ "./resources/js/admin/lang/de/Core/Toolbar.json":
 /*!******************************************************!*\
-  !*** ./resources/js/admin/lang/bn/Core/Toolbar.json ***!
+  !*** ./resources/js/admin/lang/de/Core/Toolbar.json ***!
   \******************************************************/
 /***/ ((module) => {
 
@@ -74609,7 +74609,7 @@ module.exports = {"title":"Titel"};
 
 /***/ "./resources/js/admin/lang/de/Fields.json":
 /*!************************************************!*\
-  !*** ./resources/js/admin/lang/bn/Fields.json ***!
+  !*** ./resources/js/admin/lang/de/Fields.json ***!
   \************************************************/
 /***/ ((module) => {
 
@@ -74620,7 +74620,7 @@ module.exports = JSON.parse("{\"first_name\":\"Vorname\",\"last_name\":\"Nachnam
 
 /***/ "./resources/js/admin/lang/de/Home.json":
 /*!**********************************************!*\
-  !*** ./resources/js/admin/lang/bn/Home.json ***!
+  !*** ./resources/js/admin/lang/de/Home.json ***!
   \**********************************************/
 /***/ ((module) => {
 
@@ -74631,7 +74631,7 @@ module.exports = JSON.parse("{\"title\":\"Titel\",\"siteName\":\"{siteName}\",\"
 
 /***/ "./resources/js/admin/lang/de/Messages.json":
 /*!**************************************************!*\
-  !*** ./resources/js/admin/lang/bn/Messages.json ***!
+  !*** ./resources/js/admin/lang/de/Messages.json ***!
   \**************************************************/
 /***/ ((module) => {
 
@@ -74642,7 +74642,7 @@ module.exports = JSON.parse("{\"login_failed\":\"Falsche Anmeldeinformationen\",
 
 /***/ "./resources/js/admin/lang/de/Pages/Dashboard.json":
 /*!*********************************************************!*\
-  !*** ./resources/js/admin/lang/bn/Pages/Dashboard.json ***!
+  !*** ./resources/js/admin/lang/de/Pages/Dashboard.json ***!
   \*********************************************************/
 /***/ ((module) => {
 
@@ -74653,7 +74653,7 @@ module.exports = JSON.parse("{\"company_register_history\":\"Firmenregistrierung
 
 /***/ "./resources/js/admin/lang/de/Pages/Login.json":
 /*!*****************************************************!*\
-  !*** ./resources/js/admin/lang/bn/Pages/Login.json ***!
+  !*** ./resources/js/admin/lang/de/Pages/Login.json ***!
   \*****************************************************/
 /***/ ((module) => {
 
@@ -74664,7 +74664,7 @@ module.exports = JSON.parse("{\"toolbarTitle\":\"Melden Sie sich bei Ihrem Konto
 
 /***/ "./resources/js/admin/lang/de/Validation.json":
 /*!****************************************************!*\
-  !*** ./resources/js/admin/lang/bn/Validation.json ***!
+  !*** ./resources/js/admin/lang/de/Validation.json ***!
   \****************************************************/
 /***/ ((module) => {
 
@@ -74873,7 +74873,7 @@ webpackContext.id = "./resources/js/admin/store/modules sync recursive \\.js$";
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/
+/******/ 	
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -74886,17 +74886,17 @@ webpackContext.id = "./resources/js/admin/store/modules sync recursive \\.js$";
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/
+/******/ 	
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
+/******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
+/******/ 	
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = __webpack_modules__;
-/******/
+/******/ 	
 /******/ 	// the startup function
 /******/ 	// It's empty as some runtime module handles the default behavior
 /******/ 	__webpack_require__.x = x => {};
@@ -74912,7 +74912,7 @@ webpackContext.id = "./resources/js/admin/store/modules sync recursive \\.js$";
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -74924,7 +74924,7 @@ webpackContext.id = "./resources/js/admin/store/modules sync recursive \\.js$";
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/ensure chunk */
 /******/ 	(() => {
 /******/ 		__webpack_require__.f = {};
@@ -74937,7 +74937,7 @@ webpackContext.id = "./resources/js/admin/store/modules sync recursive \\.js$";
 /******/ 			}, []));
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/get javascript chunk filename */
 /******/ 	(() => {
 /******/ 		// This function allow to reference async chunks
@@ -74948,7 +74948,7 @@ webpackContext.id = "./resources/js/admin/store/modules sync recursive \\.js$";
 /******/ 			return undefined;
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/get mini-css chunk filename */
 /******/ 	(() => {
 /******/ 		// This function allow to reference all chunks
@@ -74957,7 +74957,7 @@ webpackContext.id = "./resources/js/admin/store/modules sync recursive \\.js$";
 /******/ 			return "" + chunkId + ".css";
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -74969,12 +74969,12 @@ webpackContext.id = "./resources/js/admin/store/modules sync recursive \\.js$";
 /******/ 			}
 /******/ 		})();
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/load script */
 /******/ 	(() => {
 /******/ 		var inProgress = {};
@@ -74993,13 +74993,13 @@ webpackContext.id = "./resources/js/admin/store/modules sync recursive \\.js$";
 /******/ 			if(!script) {
 /******/ 				needAttach = true;
 /******/ 				script = document.createElement('script');
-/******/
+/******/ 		
 /******/ 				script.charset = 'utf-8';
 /******/ 				script.timeout = 120;
 /******/ 				if (__webpack_require__.nc) {
 /******/ 					script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 				}
-/******/
+/******/ 		
 /******/ 				script.src = url;
 /******/ 			}
 /******/ 			inProgress[url] = [done];
@@ -75020,7 +75020,7 @@ webpackContext.id = "./resources/js/admin/store/modules sync recursive \\.js$";
 /******/ 			needAttach && document.head.appendChild(script);
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -75031,23 +75031,23 @@ webpackContext.id = "./resources/js/admin/store/modules sync recursive \\.js$";
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
 /******/ 		__webpack_require__.p = "/";
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
 /******/ 	(() => {
 /******/ 		// no baseURI
-/******/
+/******/ 		
 /******/ 		// object to store loaded and loading chunks
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// Promise = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/admin/index": 0
 /******/ 		};
-/******/
+/******/ 		
 /******/ 		var deferredModules = [
 /******/ 			["./resources/js/app.js"],
 /******/ 			["./resources/sass/admin/index.scss"],
@@ -75057,7 +75057,7 @@ webpackContext.id = "./resources/js/admin/store/modules sync recursive \\.js$";
 /******/ 				// JSONP chunk loading for javascript
 /******/ 				var installedChunkData = __webpack_require__.o(installedChunks, chunkId) ? installedChunks[chunkId] : undefined;
 /******/ 				if(installedChunkData !== 0) { // 0 means "already installed".
-/******/
+/******/ 		
 /******/ 					// a Promise means "currently loading".
 /******/ 					if(installedChunkData) {
 /******/ 						promises.push(installedChunkData[2]);
@@ -75068,7 +75068,7 @@ webpackContext.id = "./resources/js/admin/store/modules sync recursive \\.js$";
 /******/ 								installedChunkData = installedChunks[chunkId] = [resolve, reject];
 /******/ 							});
 /******/ 							promises.push(installedChunkData[2] = promise);
-/******/
+/******/ 		
 /******/ 							// start chunk loading
 /******/ 							var url = __webpack_require__.p + __webpack_require__.u(chunkId);
 /******/ 							// create error before stack unwound to get useful stacktrace later
@@ -75093,17 +75093,17 @@ webpackContext.id = "./resources/js/admin/store/modules sync recursive \\.js$";
 /******/ 					}
 /******/ 				}
 /******/ 		};
-/******/
+/******/ 		
 /******/ 		// no prefetching
-/******/
+/******/ 		
 /******/ 		// no preloaded
-/******/
+/******/ 		
 /******/ 		// no HMR
-/******/
+/******/ 		
 /******/ 		// no HMR manifest
-/******/
+/******/ 		
 /******/ 		var checkDeferredModules = x => {};
-/******/
+/******/ 		
 /******/ 		// install a JSONP callback for chunk loading
 /******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
 /******/ 			var [chunkIds, moreModules, runtime, executeModules] = data;
@@ -75127,18 +75127,18 @@ webpackContext.id = "./resources/js/admin/store/modules sync recursive \\.js$";
 /******/ 			while(resolves.length) {
 /******/ 				resolves.shift()();
 /******/ 			}
-/******/
+/******/ 		
 /******/ 			// add entry modules from loaded chunk to deferred list
 /******/ 			if(executeModules) deferredModules.push.apply(deferredModules, executeModules);
-/******/
+/******/ 		
 /******/ 			// run deferred modules when all chunks ready
 /******/ 			return checkDeferredModules();
 /******/ 		}
-/******/
+/******/ 		
 /******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
-/******/
+/******/ 		
 /******/ 		function checkDeferredModulesImpl() {
 /******/ 			var result;
 /******/ 			for(var i = 0; i < deferredModules.length; i++) {
@@ -75166,7 +75166,7 @@ webpackContext.id = "./resources/js/admin/store/modules sync recursive \\.js$";
 /******/ 			return (checkDeferredModules = checkDeferredModulesImpl)();
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /************************************************************************/
 /******/ 	// run startup
 /******/ 	__webpack_require__.x();

@@ -5,9 +5,9 @@
              alt="{{$title}}"/>
     </div>
     <div class="content-details fadeIn-bottom">
-        <a href="{{ route('article-details', ['slug' => $slug]) }}">
+{{--        <a href="{{ route('article-details', ['slug' => $slug]) }}">--}}
             <p class="content-text">{{$description}}</p>
-        </a>
+{{--        </a>--}}
     </div>
     {{--    </div>--}}
 
@@ -30,7 +30,7 @@
 
             </div>
         </div><!-- author -->
-        <h4><a href="{{ route('article-details', ['slug' => $slug]) }}">{{$title}}</a></h4>
+        <h4>{{$title}}</h4>
         <p class="customThumbDescription">{{$description}}</p>
         {{--        <a href="{{ route('article-details', ['slug' => $slug]) }}" class="btn-primary btn-arrow">Read More</a>--}}
     </div>

@@ -22,10 +22,10 @@
                                     <div class="post-author d-flex align-items-center flex-shrink-0 align-self-start">
                                     </div>
                                 </div>
-                                <h3 style="text-align: center">{{ $page['title'] }}</h3>
+                                <h3 style="text-align: center">{{ $page['title'.'_'.app()->getLocale()] }}</h3>
 
                                 <div class="content">
-                                    {!! $page['description'] !!}
+                                    {!! $page['description'.'_'.app()->getLocale()] !!}
                                 </div>
                             </div>
                         </div>

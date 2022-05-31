@@ -6,17 +6,17 @@
         <div class="row gutter-vr-30px justify-content-sm-center">
             @foreach($articles as $key=> $article)
                 <div class="custom4Column text-center  w3-animate-zoom" >
-                    <a href="{{ route('article-details', ['slug' =>  $article['slug']]) }}">
+                    <a href="{{ route('article-details', ['slug' =>  $article['slug'.'_'.app()->getLocale()]]) }}">
                     <div class="post post-full post-v2 postContainer">
                         @include('component.card.topSectionCard',
                             [
                                 'key'=>$key,
                                 'time'=>$article['created_at'],
                                 'image' => $article['image'],
-                                'title' => $article['title'],
-                                'slug' => $article['slug'],
+                                'title' => $article['title'.'_'.app()->getLocale()],
+                                'slug' => $article['slug'.'_'.app()->getLocale()],
                                 'author' => $article['author']['name'],
-                                'description' => $article['excerpt'],
+                                'description' => $article['excerpt'.'_'.app()->getLocale()],
                                 'category' => $category ?? $article['categories'][0],
                             ])
                     </div>

@@ -1984,7 +1984,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-i18n */ "./node_modules/vue-i18n/dist/vue-i18n.esm.js");
 /* harmony import */ var _lang__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/lang */ "./resources/js/admin/lang/index.js");
 /* harmony import */ var vee_validate_dist_locale_en_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vee-validate/dist/locale/en.json */ "./node_modules/vee-validate/dist/locale/en.json");
-/* harmony import */ var vee_validate_dist_locale_de_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vee-validate/dist/locale/bn.json */ "./node_modules/vee-validate/dist/locale/de.json");
+/* harmony import */ var vee_validate_dist_locale_de_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vee-validate/dist/locale/de.json */ "./node_modules/vee-validate/dist/locale/de.json");
 /**
  * Vue i18n
  *
@@ -2102,7 +2102,6 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.config.productionTip = false;
 vue__WEBPACK_IMPORTED_MODULE_0__.default.prototype.$http = (axios__WEBPACK_IMPORTED_MODULE_1___default());
 vue__WEBPACK_IMPORTED_MODULE_0__.default.prototype.$baseURL = "http://127.0.0.1:8000";
 vue__WEBPACK_IMPORTED_MODULE_0__.default.component('contact-form', __webpack_require__(/*! ./contact-form */ "./resources/js/website/contact-form.vue").default);
-vue__WEBPACK_IMPORTED_MODULE_0__.default.component('comments-list', Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../views/pages/comments/commentsList'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()).default);
 var app = new vue__WEBPACK_IMPORTED_MODULE_0__.default({
   el: document.querySelector('#form-plugin')
 });
@@ -2111,12 +2110,12 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0__.default({
 
 /***/ "./node_modules/vee-validate/dist/locale/de.json":
 /*!*******************************************************!*\
-  !*** ./node_modules/vee-validate/dist/locale/bn.json ***!
+  !*** ./node_modules/vee-validate/dist/locale/de.json ***!
   \*******************************************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"code\":\"bn\",\"messages\":{\"alpha\":\"{_field_} darf nur alphabetische Zeichen enthalten\",\"alpha_dash\":\"{_field_} darf alphanumerische Zeichen sowie Striche und Unterstriche enthalten\",\"alpha_num\":\"{_field_} darf nur alphanumerische Zeichen enthalten\",\"alpha_spaces\":\"{_field_} darf nur alphanumerische Zeichen und Leerzeichen enthalten\",\"between\":\"{_field_} muss zwischen {min} und {max} liegen\",\"confirmed\":\"Die Bestätigung von {_field_} stimmt nicht überein\",\"digits\":\"{_field_} muss numerisch sein und exakt {length} Ziffern enthalten\",\"dimensions\":\"{_field_} muss {width} x {height} Bildpunkte groß sein\",\"email\":\"{_field_} muss eine gültige E-Mail-Adresse sein\",\"excluded\":\"{_field_} muss ein gültiger Wert sein\",\"ext\":\"{_field_} muss eine gültige Datei sein\",\"image\":\"{_field_} muss eine Grafik sein\",\"oneOf\":\"{_field_} muss ein gültiger Wert sein\",\"integer\":\"{_field_} muss eine ganze Zahl sein\",\"length\":\"Die Länge von {_field_} muss {length} sein\",\"max\":\"{_field_} darf nicht länger als {length} Zeichen sein\",\"max_value\":\"{_field_} darf maximal {max} sein\",\"mimes\":\"{_field_} muss einen gültigen Dateityp haben\",\"min\":\"{_field_} muss mindestens {length} Zeichen lang sein\",\"min_value\":\"{_field_} muss mindestens {min} sein\",\"numeric\":\"{_field_} darf nur numerische Zeichen enthalten\",\"regex\":\"Das Format von {_field_} ist ungültig\",\"required\":\"{_field_} ist ein Pflichtfeld\",\"required_if\":\"{_field_} ist ein Pflichtfeld\",\"size\":\"{_field_} muss kleiner als {size}KB sein\",\"double\":\"Das Feld {_field_} muss eine gültige Dezimalzahl sein\"}}");
+module.exports = JSON.parse("{\"code\":\"de\",\"messages\":{\"alpha\":\"{_field_} darf nur alphabetische Zeichen enthalten\",\"alpha_dash\":\"{_field_} darf alphanumerische Zeichen sowie Striche und Unterstriche enthalten\",\"alpha_num\":\"{_field_} darf nur alphanumerische Zeichen enthalten\",\"alpha_spaces\":\"{_field_} darf nur alphanumerische Zeichen und Leerzeichen enthalten\",\"between\":\"{_field_} muss zwischen {min} und {max} liegen\",\"confirmed\":\"Die Bestätigung von {_field_} stimmt nicht überein\",\"digits\":\"{_field_} muss numerisch sein und exakt {length} Ziffern enthalten\",\"dimensions\":\"{_field_} muss {width} x {height} Bildpunkte groß sein\",\"email\":\"{_field_} muss eine gültige E-Mail-Adresse sein\",\"excluded\":\"{_field_} muss ein gültiger Wert sein\",\"ext\":\"{_field_} muss eine gültige Datei sein\",\"image\":\"{_field_} muss eine Grafik sein\",\"oneOf\":\"{_field_} muss ein gültiger Wert sein\",\"integer\":\"{_field_} muss eine ganze Zahl sein\",\"length\":\"Die Länge von {_field_} muss {length} sein\",\"max\":\"{_field_} darf nicht länger als {length} Zeichen sein\",\"max_value\":\"{_field_} darf maximal {max} sein\",\"mimes\":\"{_field_} muss einen gültigen Dateityp haben\",\"min\":\"{_field_} muss mindestens {length} Zeichen lang sein\",\"min_value\":\"{_field_} muss mindestens {min} sein\",\"numeric\":\"{_field_} darf nur numerische Zeichen enthalten\",\"regex\":\"Das Format von {_field_} ist ungültig\",\"required\":\"{_field_} ist ein Pflichtfeld\",\"required_if\":\"{_field_} ist ein Pflichtfeld\",\"size\":\"{_field_} muss kleiner als {size}KB sein\",\"double\":\"Das Feld {_field_} muss eine gültige Dezimalzahl sein\"}}");
 
 /***/ }),
 
@@ -4933,7 +4932,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /*!
- * vue-i18n v8.22.4
+ * vue-i18n v8.22.4 
  * (c) 2021 kazuya kawaguchi
  * Released under the MIT License.
  */
@@ -7164,7 +7163,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
   null,
   null,
   null
-
+  
 )
 
 /* hot reload */
@@ -7189,7 +7188,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
 /* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_contact_form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_contact_form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
 /* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_contact_form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default);
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_contact_form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -19713,7 +19712,7 @@ Vue.compile = compileToFunctions;
 
 /***/ "./resources/js/admin/lang/de/Common.json":
 /*!************************************************!*\
-  !*** ./resources/js/admin/lang/bn/Common.json ***!
+  !*** ./resources/js/admin/lang/de/Common.json ***!
   \************************************************/
 /***/ ((module) => {
 
@@ -19724,7 +19723,7 @@ module.exports = JSON.parse("{\"needHelp\":\"Brauchen Sie Hilfe?\",\"close\":\"S
 
 /***/ "./resources/js/admin/lang/de/Core/Footer.json":
 /*!*****************************************************!*\
-  !*** ./resources/js/admin/lang/bn/Core/Footer.json ***!
+  !*** ./resources/js/admin/lang/de/Core/Footer.json ***!
   \*****************************************************/
 /***/ ((module) => {
 
@@ -19735,7 +19734,7 @@ module.exports = JSON.parse("{\"facebook\":\"Facebook\",\"footer\":\"Fusszeile\"
 
 /***/ "./resources/js/admin/lang/de/Core/Nav.json":
 /*!**************************************************!*\
-  !*** ./resources/js/admin/lang/bn/Core/Nav.json ***!
+  !*** ./resources/js/admin/lang/de/Core/Nav.json ***!
   \**************************************************/
 /***/ ((module) => {
 
@@ -19746,7 +19745,7 @@ module.exports = JSON.parse("{\"dashboard\":\"Dashboard\",\"user-profile\":\"Ben
 
 /***/ "./resources/js/admin/lang/de/Core/Toolbar.json":
 /*!******************************************************!*\
-  !*** ./resources/js/admin/lang/bn/Core/Toolbar.json ***!
+  !*** ./resources/js/admin/lang/de/Core/Toolbar.json ***!
   \******************************************************/
 /***/ ((module) => {
 
@@ -19757,7 +19756,7 @@ module.exports = {"title":"Titel"};
 
 /***/ "./resources/js/admin/lang/de/Fields.json":
 /*!************************************************!*\
-  !*** ./resources/js/admin/lang/bn/Fields.json ***!
+  !*** ./resources/js/admin/lang/de/Fields.json ***!
   \************************************************/
 /***/ ((module) => {
 
@@ -19768,7 +19767,7 @@ module.exports = JSON.parse("{\"first_name\":\"Vorname\",\"last_name\":\"Nachnam
 
 /***/ "./resources/js/admin/lang/de/Home.json":
 /*!**********************************************!*\
-  !*** ./resources/js/admin/lang/bn/Home.json ***!
+  !*** ./resources/js/admin/lang/de/Home.json ***!
   \**********************************************/
 /***/ ((module) => {
 
@@ -19779,7 +19778,7 @@ module.exports = JSON.parse("{\"title\":\"Titel\",\"siteName\":\"{siteName}\",\"
 
 /***/ "./resources/js/admin/lang/de/Messages.json":
 /*!**************************************************!*\
-  !*** ./resources/js/admin/lang/bn/Messages.json ***!
+  !*** ./resources/js/admin/lang/de/Messages.json ***!
   \**************************************************/
 /***/ ((module) => {
 
@@ -19790,7 +19789,7 @@ module.exports = JSON.parse("{\"login_failed\":\"Falsche Anmeldeinformationen\",
 
 /***/ "./resources/js/admin/lang/de/Pages/Dashboard.json":
 /*!*********************************************************!*\
-  !*** ./resources/js/admin/lang/bn/Pages/Dashboard.json ***!
+  !*** ./resources/js/admin/lang/de/Pages/Dashboard.json ***!
   \*********************************************************/
 /***/ ((module) => {
 
@@ -19801,7 +19800,7 @@ module.exports = JSON.parse("{\"company_register_history\":\"Firmenregistrierung
 
 /***/ "./resources/js/admin/lang/de/Pages/Login.json":
 /*!*****************************************************!*\
-  !*** ./resources/js/admin/lang/bn/Pages/Login.json ***!
+  !*** ./resources/js/admin/lang/de/Pages/Login.json ***!
   \*****************************************************/
 /***/ ((module) => {
 
@@ -19812,7 +19811,7 @@ module.exports = JSON.parse("{\"toolbarTitle\":\"Melden Sie sich bei Ihrem Konto
 
 /***/ "./resources/js/admin/lang/de/Validation.json":
 /*!****************************************************!*\
-  !*** ./resources/js/admin/lang/bn/Validation.json ***!
+  !*** ./resources/js/admin/lang/de/Validation.json ***!
   \****************************************************/
 /***/ ((module) => {
 
@@ -19986,7 +19985,7 @@ webpackContext.id = "./resources/js/admin/lang sync recursive \\.json$";
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/
+/******/ 	
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -19999,14 +19998,14 @@ webpackContext.id = "./resources/js/admin/lang sync recursive \\.json$";
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/
+/******/ 	
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/
+/******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
+/******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -20019,7 +20018,7 @@ webpackContext.id = "./resources/js/admin/lang sync recursive \\.json$";
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -20031,7 +20030,7 @@ webpackContext.id = "./resources/js/admin/lang sync recursive \\.json$";
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -20043,12 +20042,12 @@ webpackContext.id = "./resources/js/admin/lang sync recursive \\.json$";
 /******/ 			}
 /******/ 		})();
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -20059,7 +20058,7 @@ webpackContext.id = "./resources/js/admin/lang sync recursive \\.json$";
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /************************************************************************/
 /******/ 	// startup
 /******/ 	// Load entry module

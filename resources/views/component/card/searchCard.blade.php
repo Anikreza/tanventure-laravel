@@ -15,13 +15,13 @@
 
                     <div class="post-author d-flex align-items-center" style="padding: 1rem">
                         <a href="{{route('about')}}">
-                        <div class="author-thumb">
-                            <img src="{{asset('assets/images/pp.jpg')}}" alt="">
+                        <div>
+                            <img src="{{asset($article->author->image)}}" alt="" style="width: 5vh; height: 5vh;border-radius: 50%">
                         </div>
                         </a>
                         <div class="author-name" style="width: 150px">
                             <a href="{{route('about')}}">
-                            <p style="font-size: .7rem; color: #0a1015">তানভীর রেজা অনিক</p>
+                            <p style="font-size: .7rem; color: #0a1015">{{$article->author->name}}</p>
                             </a>
                         </div>
                         <div class="post-tag d-flex" style="margin-left: 10px">

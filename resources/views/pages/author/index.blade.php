@@ -12,7 +12,7 @@
                     </div>
                     <div class="col col-lg-6 col-sm-12 columnist-info align-content-center" style="font-size: 2.2vh">
                         <h2 class="paddedHeader">{{$author->name}}</h2>
-                        {!! $author->bio !!}
+                        {!! $author['bio'.'_'.app()->getLocale()] !!}
                     </div>
                 </div>
             </div>

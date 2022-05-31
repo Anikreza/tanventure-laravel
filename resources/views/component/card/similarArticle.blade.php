@@ -12,8 +12,8 @@
         <div class="post-tag">
             <ul class="post-cat">
                 <li style="font-size: 1.5vh">
-                    <a href="{{ route('category', ['slug' =>  $category->slug]) }}"><em class="icon ti-bookmark"></em>
-                        <span>{{$category->name}}</span>
+                    <a href="{{ route('category', ['slug' =>  $category['slug'.'_'.app()->getLocale()]]) }}"><em class="icon ti-bookmark"></em>
+                        <span>{{$category['name'.'_'.app()->getLocale()]}}</span>
                     </a>
                 </li>
             </ul>

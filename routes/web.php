@@ -27,7 +27,7 @@ Route::post('/postComment', [WebsiteController::class, 'postComment'])->name('co
  */
 
 Route::get('language/{locale}', function ($locale) {
-    app()->setLocale('bn');
+    app()->setLocale('en');
     session()->put('locale', $locale);
     return redirect()->back();
 });

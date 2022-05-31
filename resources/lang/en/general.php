@@ -1,2 +1,20 @@
 <?php
-return ["label" => "hey man"];
+return [
+    "tanventure" => "tanventure",
+    "letMe" => "let me tell you a story",
+    'iAm'=>'Hey! I am Tanvir. But You Can Call Me Tan',
+    'anotherStory'=>'and thats another story. I have Lots Of Them',
+    "adventure" => "#AdventureIsOutThere",
+    "readLatestBlogs" => "read latest blogs",
+    '22'=>'22',
+    '23'=>'23',
+    '24'=>'24',
+    '25'=>'25',
+    '26'=>'26',
+    '27'=>'27',
+    '28'=>'28',
+    'miss'=>'Ms.',
+    'mr'=>'Mr.',
+    'myWritings'=>'My Articles',
+    'whatIWrite'=>'Things I Write About',
+];

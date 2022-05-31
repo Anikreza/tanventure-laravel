@@ -28,17 +28,17 @@
                             <li class="menu-item  has-sub">
                                 <a
                                     class="nav-link @if(Request::url() == url('/blog')) active @endif"
-                                    href="{{route('blog')}}">ব্লগ</a>
+                                    href="{{route('blog')}}"> {{ __('navbar.blog') }}</a>
                             </li>
                             <li class="menu-item  has-sub">
                                 <a
                                     class="nav-link @if(Request::url() == url('/author')) active @endif"
-                                    href="{{route('author',['slug' =>8])}}">আমি</a>
+                                    href="{{route('author',['slug' =>8])}}">{{ __('navbar.aboutMe') }}</a>
                             </li>
                             <li class="menu-item  has-sub">
                                 <a
                                     class="nav-link @if(Request::url() == url('/the-novel')) active @endif"
-                                    href="{{route('novel')}}">ট্যানের ডায়েরী</a>
+                                    href="{{route('novel')}}">{{ __('navbar.novel') }}</a>
                             </li>
 {{--                            @foreach($footerPages as $pageLink)--}}
 {{--                                <li class="menu-item  has-sub">--}}
@@ -47,14 +47,14 @@
 {{--                                </li>--}}
 {{--                            @endforeach--}}
                             <li class="menu-item  has-sub">
-                                <a class="menu-link nav-link active menu-toggle">ব্লগের ধরন <i class="fa fa-caret-down"></i></a>
+                                <a class="menu-link nav-link active menu-toggle">{{ __('navbar.category') }} <i class="fa fa-caret-down"></i></a>
                                 <ul class="menu-sub menu-drop">
                             @foreach($categories as $category)
                                         <li class="menu-item has-sub">
                                             <a
-                                                class="nav-link @if(Request::url() == route('category', ['slug' => $category]) ) active @endif"
+                                                class="nav-link @if(Request::url() == route('category', ['slug' => $category['name'.'_'.app()->getLocale()]]) ) active @endif"
                                                 aria-current="page"
-                                                href="{{ route('category', ['slug' => $category]) }}">{{ strtoupper($category) }}
+                                                href="{{ route('category', ['slug' => $category['name'.'_'.app()->getLocale()]]) }}">{{ strtoupper($category['name'.'_'.app()->getLocale()]) }}
                                             </a>
                                         </li>
                             @endforeach

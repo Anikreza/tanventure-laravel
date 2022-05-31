@@ -14,10 +14,10 @@
                                     [
                                         'key'=>$key,
                                         'image' => $article->image,
-                                        'title' => $article->title,
-                                        'slug' => $article->slug,
-                                        'description' => $article->description,
-                                        'category' => $category->name,
+                                        'title' => $article['title'.'_'.app()->getLocale()],
+                                        'slug' => $article['slug'.'_'.app()->getLocale()],
+                                        'description' => $article['description'.'_'.app()->getLocale()],
+                                        'category' => $category['name'.'_'.app()->getLocale()],
                                     ])
                             </div>
                         </div>

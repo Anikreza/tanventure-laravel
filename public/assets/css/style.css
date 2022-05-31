@@ -3974,8 +3974,10 @@ video {
 .exploreSectionText p{font-size: 2.3vh; background: rgb(25,178,117,.1);padding: 10px;margin:0 14vw 0 14vw; text-align: center; border-left: 20px solid #19b275;}
 .paddedHeader {font-size: 4vh; background: rgb(25,178,117,.1);padding: 10px; text-align: center; border-left: 20px solid #19b275;}
 .header-logo a{letter-spacing: .8rem}
-
-
+.homeIntroLayer {line-height: 1; padding: 10px; text-align: center; border-left: 20px solid #56987e;border-right: 20px solid #6bbd9c;}
+.homeIntro{transform: rotate(-1deg);margin-top: -2vh ;background: rgba(166, 215, 195, 0.1);  font-size:1.6vh; font-weight: 100; padding: 10px; text-align: center; border-right: 20px solid #8bc7af; border-left: 20px solid #689b87;}
+.homeIntro p{letter-spacing: .1rem; color: #260505
+}
 @media (max-width: 1023px) {
     .wgs-sidebar { padding: 40px; }
     .customContainer{
@@ -5055,6 +5057,23 @@ hr{border:0;border-top:1px solid #cbcbcb;margin:20px 0}
 }
 
 /*banner*/
+.img-container-home {
+    margin-top:12vh;
+    display: inline-block;
+    overflow: hidden;
+    margin-left: -2.8px;
+    margin-right: -2.8px;
+    width: 140px;
+    vertical-align: top;
+    box-shadow: 2px 2px 16px 2px rgba(0,0,0,0.5);
+}
+.homeBannerContainer {
+    height: 22vh;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
 
 .bannerContainer {
     height: 27vh;

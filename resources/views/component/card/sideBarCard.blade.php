@@ -16,8 +16,8 @@
             <ul class="post-recent">
                 @foreach($featuredPosts as $article)
                     @include('component.card.sideBarFeatured',[
-                            'title'=>$article->title,
-                            'slug'=>$article->slug,
+                            'title'=>$article['title'.'_'.app()->getLocale()],
+                            'slug'=>$article['slug'.'_'.app()->getLocale()],
                         ])
                 @endforeach
             </ul>

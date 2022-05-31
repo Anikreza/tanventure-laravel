@@ -58,7 +58,8 @@ class WebsiteController extends Controller
         $tags = $this->articleRepository->getAllTags();
 
         $subscribers = NewsLetter::all();
-        $categories = Category::select('name', 'slug')->where('is_published', 0)->orderBy('position', 'asc')->pluck('name', 'slug');
+        $categories = Category::select('name_en', 'name_bn','slug_en', 'slug_bn')->where('is_published', 0)
+            ->orderBy('position', 'asc')->get();
         $featuredArticles = $this->articleRepository->publishedArticles(1, 4);
         $footerPages = \Cache::remember('footer_pages', config('cache.default_ttl'), function () {
             return PageLink::where('key', 'footer_pages')->with('page:id,title,slug')->get()->toArray();
@@ -171,7 +172,6 @@ class WebsiteController extends Controller
         if (!$article) {
             return $this->renderPage($slug);
         }
-
         $category = $article['categories'][0];
         $similarArticles = $this->articleRepository->getSimilarArticles($category['id'], 2);
         $tags = $article->keywords;
@@ -181,12 +181,12 @@ class WebsiteController extends Controller
         }
         $segments = [
             [
-                'name' => $article['categories'][0]['name'],
+                'name' => $article['categories'][0]['name'.'_'.app()->getLocale()],
                 'url' => route('category', [
-                    'slug' => $category['slug']
+                    'slug' => $category['slug'.'_'.app()->getLocale()]
                 ])
             ],
-            ['name' => $article['title'], 'url' => url($slug)]
+            ['name' => $article['title'.'_'.app()->getLocale()], 'url' => url($slug)]
         ];
         $cacheKey = request()->ip() . $slug;
         \Cache::remember($cacheKey, 60, function () use ($article) {
@@ -196,7 +196,7 @@ class WebsiteController extends Controller
         });
 
         $appName = env('APP_NAME');
-        $this->baseSeoData['title'] = " $article->title - $appName";
+        $this->baseSeoData['title'] = $article['title'.'_'.app()->getLocale()]. '-'. $appName;
         $this->baseSeoData['keywords'] = $tagTitles;
         $this->seo($this->baseSeoData);
         $shareLinks = $this->getSeoLinksForDetailsPage($article);
@@ -206,11 +206,11 @@ class WebsiteController extends Controller
 
     public function categoryDetails($slug)
     {
-        $category = Category::where('slug', $slug)->first();
+        $category = Category::where('slug_en', $slug)->orWhere('slug_bn', $slug)->first();
         $segments = [
             [
-                'name' => "{$category->name}",
-                'url' => route('category', ['slug' => $category->slug])
+                'name' => "{$category['name'.'_'.app()->getLocale()]}",
+                'url' => route('category', ['slug' => $category['slug'.'_'.app()->getLocale()]])
             ],
         ];
         $categoryArticles = $this->articleRepository->paginateByCategoryWithFilter(5, $category->id);
@@ -219,7 +219,7 @@ class WebsiteController extends Controller
 //        $name = empty($category->meta_title) ? $category->name : $category->meta_title;
 //        $title = request()->has('page') ? $name . " (Page " . request('page') . ')' : $name;
         $appName = env('APP_NAME');
-        $this->baseSeoData['title'] = "{$appName} | {$category->name} | {$category->keywords}";
+        $this->baseSeoData['title'] = "{$appName} | {$category['name'.'_'.app()->getLocale()]} | {$category->keywords}";
         $this->baseSeoData['description'] = "{$category->excerpt}";
         $this->baseSeoData['keywords'] = "{$category->keywords}";
         $this->seo($this->baseSeoData);
@@ -244,9 +244,9 @@ class WebsiteController extends Controller
         ];
 
         // SEO META INFO
+        $appName = env('APP_NAME');
         if ($tag->title == 'XYZs column') {
-            $this->baseSeoData['title'] = "Demo blogsite Travel blog | {$this->baseSeoData['app_name']}";
-            $this->baseSeoData['description'] = "here, you will find blogs describing cultures, ethnicity and politics around the world";
+            $this->baseSeoData['title'] = " $appName | {$this->baseSeoData['app_name']}";
         } else {
             $this->baseSeoData['title'] = "{$tag->title} | {$this->baseSeoData['app_name']}";
         }
@@ -308,22 +308,6 @@ class WebsiteController extends Controller
         return $page;
     }
 
-    public function postComment(Request $request): \Illuminate\Http\JsonResponse
-    {
-        $comment=Comment::create([
-           'guest_name'=>$request->input('name'),
-           'comment'=>$request->input('comment'),
-           'article_id'=>json_decode($request->input('article')),
-        ]);
-
-        return response()->json([
-            'message'=>'added successfully',
-            'status'=>200,
-            'comment'=>$comment
-        ]);
-
-    }
-
     public function getColumnistPage()
     {
         $page = $this->generatePageClass();
@@ -338,7 +322,7 @@ class WebsiteController extends Controller
     private function getSeoLinksForDetailsPage($data)
     {
         $this->baseSeoData = [
-            'title' => $data->title . " | {$this->baseSeoData['app_name']}",
+            'title' => $data['title'.'_'.app()->getLocale()] . " | {$this->baseSeoData['app_name']}",
             'description' => $data->excerpt,
             'keywords' => count($data->keywords) ? implode(", ", $data->keywords->pluck('title')->toArray()) : $this->baseSeoData['keywords'],
             'image' => $data->image_url,

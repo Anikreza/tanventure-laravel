@@ -9,15 +9,15 @@
     <div class="row gutter-vr-30px justify-content-sm-center">
         @foreach($mostReadArticles as $article)
             <div class="custom3Column text-center">
-                <a href="{{ route('article-details', ['slug' =>  $article['slug']]) }}">
+                <a href="{{ route('article-details', ['slug' =>  $article['slug'.'_'.app()->getLocale()]]) }}">
                     <div class="post post-alt postContainer">
                         @include('component.card.mostReadCard',
                             [
                                 'image' => $article['image'],
-                                'title'=>$article['title'],
+                                'title'=>$article['title'.'_'.app()->getLocale()],
                                 'slug' => $article['slug'],
                                 'author' => $article['author']['name'],
-                                'description' => $article['excerpt'],
+                                'description' => $article['excerpt'.'_'.app()->getLocale()],
                                 'category' => $category ?? $article['categories'][0],
                             ])
                     </div><!-- .post -->

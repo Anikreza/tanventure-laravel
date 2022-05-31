@@ -155,7 +155,7 @@ class ArticleRepository implements ArticleInterface
                 $q->where('published', (bool)request('is_published'));
             })
             ->when(\request()->has('search'), function ($q) {
-                $q->where('title', 'LIKE', '%' . \request('search') . '%');
+                $q->where('title'.'_'.app()->getLocale(), 'LIKE', '%' . \request('search') . '%');
             })
             ->orderBy('viewed', 'desc')
             ->paginate($perPage);
@@ -169,7 +169,6 @@ class ArticleRepository implements ArticleInterface
     public function paginateByCategoryWithFilter(int $perPage, int $categoryId)
     {
         return $this->baseQuery($categoryId)
-            ->select('id', 'title', 'slug', 'featured', 'published', 'image', 'viewed', 'description')
             ->latest()
             ->with('author')
             ->paginate($perPage);
@@ -302,10 +301,9 @@ class ArticleRepository implements ArticleInterface
         return $this->model
             ->with(['categories' => function ($q) use ($condition, $isSlug) {
             $q->with(['articles' => function ($sq) use ($condition, $isSlug) {
-                $sq->select('article_id', 'title', 'slug', 'published', 'viewed', 'image', 'featured', 'description')
-                    ->where('published', '=', true)
+                $sq->where('published', '=', true)
                     ->when($isSlug, function ($s) use ($condition) {
-                        $s->where('slug', '!=', $condition);
+                        $s->where('slug_en', '!=', $condition)->orWhere('slug_bn', '!=', $condition);
                     })
                     ->when(!$isSlug, function ($s) use ($condition) {
                         $s->where('article_id', '!=', $condition);
@@ -316,12 +314,9 @@ class ArticleRepository implements ArticleInterface
         }])
             ->with(['author'])
             ->with(['keywords'])
-            ->with(['comments'=>function($q){
-                $q->orderBy('created_at', 'desc');
-            }])
             ->where('published', true)
             ->when($isSlug, function ($q) use ($condition) {
-                $q->where('slug', $condition);
+                $q->where('slug_en', $condition)->orWhere('slug_bn', $condition);
             })
             ->when(!$isSlug, function ($q) use ($condition) {
                 $q->where('id', $condition);
@@ -342,7 +337,8 @@ class ArticleRepository implements ArticleInterface
     {
         return $this->baseQuery(1)
             ->with('author')
-            ->where('title', 'LIKE', '%' . $query . '%')
+            ->where('title_en', 'LIKE', '%' . $query . '%')
+            ->orWhere('title_bn', 'LIKE', '%' . $query . '%')
             ->latest()
             ->limit(5)
             ->paginate($perPage);
@@ -371,13 +367,10 @@ class ArticleRepository implements ArticleInterface
         $q = $this->model->whereHas('keywords', function ($q) use ($keywordIds) {
             $q->whereIn('keyword_id', $keywordIds);
         })
-            ->with('categories:id,name,slug')
+            ->with('categories:id,name_en,slug_en,name_bn,slug_bn')
             ->with('keywords:id,title')
             ->with('author')
             ->where('published', true)
-            ->when($includeFavorites, function ($q) {
-                $q->with(['favorites']);
-            })
             ->latest();
 
         return $perPage === 4 ? $q->limit($perPage)->get() : $q->paginate($perPage);

@@ -22,13 +22,17 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name',
-        'last_name',
+        'first_name_en',
+        'last_name_en',
+        'first_name_bn',
+        'last_name_bn',
         'image',
         'gender',
         'address',
-        'bio',
-        'types',
+        'bio_en',
+        'types_en',
+        'bio_bn',
+        'types_bn',
         'email',
         'role',
         'password',
@@ -99,11 +103,12 @@ class User extends Authenticatable
 
     public function getNameAttribute(): string
     {
-        return $this->getTitleAttribute() . ' ' . $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
+        return $this->getTitleAttribute() . ' ' . $this->attributes['first_name'.'_'.app()->getLocale()] . ' ' . $this->attributes['last_name'.'_'.app()->getLocale()];
     }
 
     public function getTitleAttribute(): string
     {
-        return $this->attributes['gender'] == 'm' ? '' : 'মিস';
+        return $this->attributes['gender'] == 'm' ? trans('general.mr') : trans('general.miss');
     }
+
 }
