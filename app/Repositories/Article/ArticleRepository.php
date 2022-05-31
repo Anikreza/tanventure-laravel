@@ -254,8 +254,7 @@ class ArticleRepository implements ArticleInterface
             ->with('categories')
             ->with('author')
             ->latest()
-            ->limit($limit)
-            ->get();
+            ->paginate($limit);
     }
 
     public function getNovels()
@@ -292,7 +291,7 @@ class ArticleRepository implements ArticleInterface
     public function mostReadArticles(int $categoryId, int $limit)
     {
         return $this->baseQuery($categoryId)
-            ->limit(6)
+            ->limit(3)
             ->with('author')
             ->orderBy('viewed', 'desc')
             ->get();

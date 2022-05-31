@@ -12,8 +12,7 @@
                             </a>
                         </div>
                         <p>&copy; 2022. All rights reserved</p>
-                    </div>
-                </div><!-- .wgs -->
+                    </div>                </div><!-- .wgs -->
             </div><!-- .col -->
 
             <div class="col-lg-3 col-sm-6">
@@ -21,7 +20,7 @@
                     <div class="wgs-content">
                         <h3 class="wgs-title"> ABOUT</h3>
                         <ul class="wgs-menu">
-                            <a style="color: #475e42" href="{{ url('columnist') }}">Columnist</a>
+                            <a style="color: #475e42" href="{{ url('author/8') }}">Columnist</a>
                         </ul>
                     </div>
                 </div><!-- .wgs -->

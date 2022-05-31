@@ -28,20 +28,26 @@
                             <li class="menu-item  has-sub">
                                 <a
                                     class="nav-link @if(Request::url() == url('/blog')) active @endif"
-                                    href="{{route('blog')}}">BLOG</a>
+                                    href="{{route('blog')}}">ব্লগ</a>
                             </li>
                             <li class="menu-item  has-sub">
                                 <a
                                     class="nav-link @if(Request::url() == url('/author')) active @endif"
-                                    href="{{route('author',['slug' =>8])}}">ABOUT ME</a>
+                                    href="{{route('author',['slug' =>8])}}">আমি</a>
                             </li>
                             <li class="menu-item  has-sub">
                                 <a
                                     class="nav-link @if(Request::url() == url('/the-novel')) active @endif"
-                                    href="{{route('novel')}}">The Novel</a>
+                                    href="{{route('novel')}}">ট্যানের ডায়েরী</a>
                             </li>
+{{--                            @foreach($footerPages as $pageLink)--}}
+{{--                                <li class="menu-item  has-sub">--}}
+{{--                                    <a style="color: #475e42" href="{{ route('article-details', ['slug' => $pageLink['page']['slug']]) }}">{{ $pageLink['page']['title'] }}</a>--}}
+
+{{--                                </li>--}}
+{{--                            @endforeach--}}
                             <li class="menu-item  has-sub">
-                                <a class="menu-link nav-link active menu-toggle">BLOG CATEGORIES <i class="fa fa-caret-down"></i></a>
+                                <a class="menu-link nav-link active menu-toggle">ব্লগের ধরন <i class="fa fa-caret-down"></i></a>
                                 <ul class="menu-sub menu-drop">
                             @foreach($categories as $category)
                                         <li class="menu-item has-sub">
@@ -54,6 +60,7 @@
                             @endforeach
                                 </ul>
                             </li>
+                            @include('component.languageSwitcher')
                         </ul>
                         <ul class="menu-btns">
                             <li><a href="" class="btn search search-trigger"><i style="color: #475E42FF"

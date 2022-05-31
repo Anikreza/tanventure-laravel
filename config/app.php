@@ -82,6 +82,10 @@ return [
 
     'locale' => env('APP_LOCALE', 'en'),
 
+    'available_locales' => [
+        'English' => 'en',
+        'Bengali' => 'bn',
+    ],
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale

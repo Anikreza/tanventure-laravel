@@ -2,7 +2,6 @@
 <div class="section section-l section-news ">
 {{--    customBlogContainer--}}
     @include('pages.landingPage.partial.banner')
-    <br/>
     <div class="customContainer">
         <div class="row gutter-vr-30px justify-content-sm-center">
             @foreach($articles as $key=> $article)
@@ -24,6 +23,13 @@
                     </a>
                 </div><!-- .col -->
             @endforeach
+                <div class="col-md-9 order-md-last">
+                    <div class="button-area pagination-area">
+                        <ul class="pagination text-center text-md-right">
+                            {{ $articles->render("pagination::bootstrap-4") }}
+                        </ul>
+                    </div>
+                </div>
         </div><!-- .row -->
     </div>
 </div><!-- .container -->

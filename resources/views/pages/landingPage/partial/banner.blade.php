@@ -29,10 +29,10 @@
 </div>
 
 <div>
-    <h1 style="font-size: 50px; letter-spacing: 1rem;text-align: center" class="align-items-center"> TANVENTURE</h1>
-    <p style="font-size: 2vh;letter-spacing: .5rem;text-align: center; color: #810c0c" class="align-items-center"
+    <h1 style="font-size: 50px; letter-spacing: 1rem;text-align: center" class="align-items-center"> ট্যানভেঞ্চার</h1>
+    <p style="font-size: 2vh;letter-spacing: .4rem;text-align: center; color: #810c0c" class="align-items-center"
     >
-        Read Latest Blogs
+        প্রকৃতির গল্পগুলো পড়ুন
     </p>
     <hr/>
 </div>

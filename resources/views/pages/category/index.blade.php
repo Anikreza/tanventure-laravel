@@ -31,7 +31,7 @@
                         {{ $categoryArticles->render("pagination::bootstrap-4") }}
                     </ul>
                 </div>
-            </div><!-- .col -->
+            </div>
             <div class="col-md-2 pl-lg-2 customLargeSidebar">
                 @include('component.card.sideBarCard',['tags'=>$tags,'header'=>'Read Posts By Tag'])
             </div><!-- .col -->

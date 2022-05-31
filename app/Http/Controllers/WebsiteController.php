@@ -74,7 +74,7 @@ class WebsiteController extends Controller
     {
 
         $this->articleRepository->SetVisitor();
-        $publishedArticles = $this->articleRepository->publishedArticles(1, 4);
+        $publishedArticles = $this->articleRepository->publishedArticles(1, 6);
         $featuredArticles = $this->articleRepository->publishedFeaturedArticles(1, 3);
         $mostReadArticles = $this->articleRepository->mostReadArticles(1, 3);
         $this->seo($this->baseSeoData);

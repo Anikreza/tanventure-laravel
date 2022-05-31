@@ -2,7 +2,7 @@
 @section('content')
 <div class='home'>
 {{--    <div class='home-center'>--}}
-        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" data-interval="5000" data-pause="false">
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" data-interval="5000" data-pause="false">
             <div class="carousel-inner">
                 @foreach($featuredPosts as $key=> $article)
                     @include('component.card.sliderCard',

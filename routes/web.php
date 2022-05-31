@@ -25,6 +25,13 @@ Route::post('/postComment', [WebsiteController::class, 'postComment'])->name('co
 /**
  * ADMIN ROUTES
  */
+
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale('bn');
+    session()->put('locale', $locale);
+    return redirect()->back();
+});
+
 Route::get('/dashboard/{any}', [ApplicationController::class, 'index'])->where('any', '(.*)');
 
 Route::get('/{slug}/{nextSlug}', function ($slug, $nextSlug) {
