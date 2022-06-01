@@ -1,5 +1,5 @@
 <div style="height: 15vh; text-align: right">
-    <h2 class="paddedHeader">{{trans('general.myWritings')}}</h2>
+    <h2 class="paddedHeaderTilted">{{trans('general.myWritings')}}</h2>
 </div>
 <div style="margin: 1rem 1rem 0 1rem; z-index: -2">
     <div class="d-lg-flex flex-wrap d-sm-block" style="width: 97vw;margin-left: -3vw">
@@ -7,7 +7,7 @@
             <div class="contentHover exploreSection">
                 <a href="{{ route('article-details', ['slug' => $article['slug'.'_'.app()->getLocale()]]) }}">
                     <div class="content-overlay-dense"></div>
-                    <img src="{{asset($article['image'])}}" alt="title"/>
+                    <img src="{{asset($article['image'])}}" alt="title" style="transform: rotate(-2deg);"/>
                     <div class="content-details-dense">
                         <p style="font-size: 2.8vh;">{{$article['title'.'_'.app()->getLocale()]}}</p>
                     </div>

@@ -27,7 +27,7 @@ class CategoryController extends ApiController
     public function index(Request $request): JsonResponse
     {
         if ($request->input('page') == '*') {
-            return $this->successResponse($this->categoryRepository->all(['id', 'name'], false), true);
+            return $this->successResponse($this->categoryRepository->all(['id', 'name_en'], false), true);
         } else {
             return $this->successResponse($this->categoryRepository->paginate($request->input('perPage')), true);
         }
@@ -41,7 +41,8 @@ class CategoryController extends ApiController
     public function store(Request $request): JsonResponse
     {
         $request->validate([
-            'name' => 'required|unique:categories,name'
+            'name_en' => 'required|unique:categories,name_en',
+            'name_bn' => 'required|unique:categories,name_bn'
         ]);
 
         try {
@@ -77,7 +78,8 @@ class CategoryController extends ApiController
     public function update(Request $request, int $id): JsonResponse
     {
         $request->validate([
-            'name' => 'required'
+            'name_en' => 'required',
+            'name_bn' => 'required'
         ]);
 
         $category = $request->all();

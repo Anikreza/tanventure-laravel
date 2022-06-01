@@ -74614,7 +74614,7 @@ module.exports = {"title":"Titel"};
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"first_name\":\"Vorname\",\"last_name\":\"Nachname\",\"company\":\"Unternehmensbezeichnung\",\"username\":\"Benutzername\",\"password\":\"Passwort\",\"email\":\"E-Mail-Adresse\",\"image\":\"Bild\",\"d_o_b\":\"Geburtsdatum\",\"current_password\":\"Derzeitiges Passwort\",\"new_password\":\"Neues Kennwort\",\"confirm_password\":\"Bestätige das Passwort\",\"street\":\"Straße\",\"street_number\":\"Hausnummer\",\"postcode\":\"Postleitzahl\",\"city\":\"Stadt\",\"country\":\"Land\",\"country_code\":\"Landesvorwahl\",\"phone_number\":\"Telefonnummer\",\"example\":\"Beispiel\",\"gender\":\"Geschlecht\",\"mr\":\"Herr\",\"mrs\":\"Frau\",\"avatar\":\"Benutzerbild\",\"address\":\"Adresse\"}");
+module.exports = JSON.parse("{\"first_name\":\"Vorname\",\"last_name\":\"Nachname\",\"company\":\"Unternehmensbezeichnung\",\"username\":\"Benutzername\",\"password\":\"Passwort\",\"email\":\"E-Mail-Adresse\",\"image\":\"Bild\",\"name_en\":\"English Name\",\"name_bn\":\"Bangla Name\",\"d_o_b\":\"Geburtsdatum\",\"current_password\":\"Derzeitiges Passwort\",\"new_password\":\"Neues Kennwort\",\"confirm_password\":\"Bestätige das Passwort\",\"street\":\"Straße\",\"street_number\":\"Hausnummer\",\"postcode\":\"Postleitzahl\",\"city\":\"Stadt\",\"country\":\"Land\",\"country_code\":\"Landesvorwahl\",\"phone_number\":\"Telefonnummer\",\"example\":\"Beispiel\",\"gender\":\"Geschlecht\",\"mr\":\"Herr\",\"mrs\":\"Frau\",\"avatar\":\"Benutzerbild\",\"address\":\"Adresse\"}");
 
 /***/ }),
 

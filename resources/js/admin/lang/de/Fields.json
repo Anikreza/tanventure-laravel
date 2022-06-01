@@ -6,6 +6,8 @@
     "password": "Passwort",
     "email": "E-Mail-Adresse",
     "image": "Bild",
+    "name_en": "English Name",
+    "name_bn": "Bangla Name",
     "d_o_b": "Geburtsdatum",
     "current_password": "Derzeitiges Passwort",
     "new_password": "Neues Kennwort",

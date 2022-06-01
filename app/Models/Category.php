@@ -15,11 +15,10 @@ class Category extends BaseModel
         'slug_en',
         'slug_bn',
         'excerpt',
+        'meta_title',
         'keywords',
         'is_published',
-        'is_video',
         'position',
-        'categories',
     ];
 
     /**

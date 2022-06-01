@@ -32,13 +32,21 @@
                                     <v-row>
                                         <v-col cols="12" sm="12" md="12">
                                             <VTextFieldWithValidation
-                                                v-model="form.name"
+                                                v-model="form.name_en"
                                                 rules="required"
                                                 ref="name"
-                                                field="name"
-                                                :label="'Category Name*'"
+                                                field="name_en"
+                                                :label="'Category Name (English)*'"
                                                 placeholder="Tourism"/>
-
+                                        </v-col>
+                                        <v-col cols="12" sm="12" md="12">
+                                            <VTextFieldWithValidation
+                                                v-model="form.name_bn"
+                                                rules="required"
+                                                ref="name"
+                                                field="name_bn"
+                                                :label="'ক্যাটাগরি নাম (বাংলা)*'"
+                                                placeholder="বাইকপ্যাকিং"/>
                                         </v-col>
 
                                         <v-col cols="12" sm="12" md="12">
@@ -74,29 +82,11 @@
 
                                         </v-col>
                                         <v-col cols="12" sm="12" md="12">
-                                            <VRadioInputWithValidation field="is_video_cat"
-                                                                       :rules="'required'"
-                                                                       :options="[{label: 'Yes', value: 1}, {label: 'No', value: 0}]"
-                                                                       v-model="form.is_video"/>
-                                        </v-col>
-                                        <v-col cols="12" sm="12" md="12">
                                             <VRadioInputWithValidation field="published"
                                                                        :rules="'required'"
-                                                                       :options="[{label: 'Yes', value: 1}, {label: 'No', value: 0}]"
+                                                                       :options="[{label: 'Yes', value: 0}, {label: 'No', value: 1}]"
                                                                        v-model="form.is_published"/>
                                         </v-col>
-<!--                                        <v-col cols="12" sm="12" md="12">-->
-<!--                                            <VRadioInputWithValidation field="display_in_navigation"-->
-<!--                                                                       :rules="'required'"-->
-<!--                                                                       :options="[{label: 'Yes', value: 1}, {label: 'No', value: 0}]"-->
-<!--                                                                       v-model="form.display_in_navigation"/>-->
-<!--                                        </v-col>-->
-<!--                                        <v-col cols="12" sm="12" md="12">-->
-<!--                                            <VRadioInputWithValidation field="display_in_home_page"-->
-<!--                                                                       :rules="'required'"-->
-<!--                                                                       :options="[{label: 'Yes', value: 1}, {label: 'No', value: 0}]"-->
-<!--                                                                       v-model="form.display_in_home_page"/>-->
-<!--                                        </v-col>-->
                                     </v-row>
 
                                 </v-container>
@@ -107,7 +97,7 @@
                                 <v-btn
                                     color="blue darken-1"
                                     text
-                                    @click="dialog = false"
+                                    @click="close"
                                 >
                                     Close
                                 </v-btn>
@@ -135,7 +125,10 @@
                         Order
                     </th>
                     <th class="text-left">
-                        Name
+                       Bengali Name
+                    </th>
+                    <th class="text-left">
+                       English Name
                     </th>
                     <th class="text-left">
                         Meta Description
@@ -143,12 +136,6 @@
                     <th class="text-left">
                         Published
                     </th>
-<!--                    <th class="text-left">-->
-<!--                        Navigation Display-->
-<!--                    </th>-->
-<!--                    <th class="text-left">-->
-<!--                        Homepage Display-->
-<!--                    </th>-->
                     <th class="text-left">
                         Actions
                     </th>
@@ -172,39 +159,19 @@
                             </v-icon>
                         </td>
                         <td> {{ category.position }}</td>
-                        <td> {{ category.name }}</td>
+                        <td> {{ category.name_bn }}</td>
+                        <td> {{ category.name_en }}</td>
                         <td> {{ category.excerpt || '-' }}</td>
                         <td>
                             <v-chip
                                 small
                                 class="ma-2"
                                 text-color="white"
-                                :color="category.is_published ? 'success' : 'red'"
+                                :color="!category.is_published ? 'success' : 'red'"
                             >
-                                {{ category.is_published ? 'Published' : 'Disabled' }}
+                                {{ !category.is_published ? 'Published' : 'Disabled' }}
                             </v-chip>
-
                         </td>
-<!--                        <td>-->
-<!--                            <v-chip-->
-<!--                                small-->
-<!--                                class="ma-2"-->
-<!--                                text-color="white"-->
-<!--                                :color="category.display_in_navigation ? 'success' : 'red'"-->
-<!--                            >-->
-<!--                                {{ category.display_in_navigation ? 'Displayed' : 'Hidden' }}-->
-<!--                            </v-chip>-->
-<!--                        </td>-->
-<!--                        <td>-->
-<!--                            <v-chip-->
-<!--                                small-->
-<!--                                class="ma-2"-->
-<!--                                text-color="white"-->
-<!--                                :color="category.display_in_home_page ? 'success' : 'red'"-->
-<!--                            >-->
-<!--                                {{ category.display_in_home_page ? 'Displayed' : 'Hidden' }}-->
-<!--                            </v-chip>-->
-<!--                        </td>-->
                         <td>
                             <v-icon
                                 small
@@ -248,19 +215,16 @@ export default {
             categories: {},
             editId: null,
             form: {
-                name: '',
+                name_en: '',
+                name_bn: '',
                 meta_title: '',
                 excerpt: '',
                 keywords: '',
-                is_video: 0,
                 is_published: 1
             }
         }
     },
     methods: {
-        priorityChange(data) {
-            console.log(data);
-        },
         updatePriority() {
             this.loading = true;
             let ids = this.categories.data.map(o => (o.id));
@@ -272,9 +236,14 @@ export default {
                 this.loading = false;
             })
         },
+        close(){
+          this.dialog=false
+          this.editId=null
+        },
         index(page = 1) {
             this.loading = true;
             categoryApi.getCategories(page).then(res => {
+                console.log('categories', res.data.data)
                 this.categories = res.data.data;
                 this.loading = false;
             }).catch(err => {
@@ -283,16 +252,17 @@ export default {
         },
         openForm() {
             this.form = {
-                name: '',
+                name_en: '',
+                name_bn: '',
                 meta_title: '',
                 excerpt: '',
                 keywords: '',
-                is_video: 0,
                 is_published: 1
             };
             this.dialog = true
         },
         edit(id) {
+            this.editId = id;
             this.loading = true;
             categoryApi.getCategoryDetails(id).then(res => {
                 for (const key of Object.keys(this.form)) {
@@ -301,7 +271,6 @@ export default {
                 }
                 this.dialog = true;
                 this.loading = false;
-                this.editId = id;
             }).catch(err => {
                 this.loading = false;
             })
@@ -320,6 +289,7 @@ export default {
                 this.index();
                 this.loading = false;
                 this.dialog = false;
+                this.editId = null;
             }).catch(err => {
                 this.loading = false;
             })

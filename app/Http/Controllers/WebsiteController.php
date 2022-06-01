@@ -84,7 +84,7 @@ class WebsiteController extends Controller
             compact(
                 'publishedArticles',
                 'featuredArticles',
-                'mostReadArticles'
+                'mostReadArticles',
             )
         );
     }
@@ -93,12 +93,13 @@ class WebsiteController extends Controller
     {
         $this->baseSeoData['title'] = " Tanventure | Let me tell you a story";
         $this->seo($this->baseSeoData);
+        $author = $this->articleRepository->getAuthor(8);
 
         return view('pages.homePage.index'
-//            ,
-//            compact(
-//
-//            )
+            ,
+            compact(
+                'author',
+            )
         );
     }
 

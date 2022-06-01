@@ -18,7 +18,8 @@ class CategoryRepository implements CategoryInterface
 
     public function create(array $data)
     {
-        $data['slug'] = $this->slugify($data['name']);
+        $data['slug_en'] = $this->slugify($data['name_en']);
+        $data['slug_bn'] = $this->slugify($data['name_bn']);
         $data['position'] = Category::max('position') + 1;
         Artisan::call('cache:clear');
 
@@ -27,7 +28,7 @@ class CategoryRepository implements CategoryInterface
 
     private function slugify($name): string
     {
-        return \Str::slug($name);
+        return str_replace(' ','_',$name);
     }
 
     public function getById(int $id)
@@ -37,7 +38,8 @@ class CategoryRepository implements CategoryInterface
 
     public function update(array $data, int $id)
     {
-        $data['slug'] = $this->slugify($data['name']);
+        $data['slug_en'] = $this->slugify($data['name_en']);
+        $data['slug_bn'] = $this->slugify($data['name_bn']);
         Artisan::call('cache:clear');
 
         return $this->model->where('id', $id)->update($data);
