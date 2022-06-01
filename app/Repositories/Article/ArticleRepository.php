@@ -284,6 +284,7 @@ class ArticleRepository implements ArticleInterface
             ->latest()
             ->with('author')
             ->limit($limit)
+            ->orderBy('id','desc')
             ->get();
     }
 

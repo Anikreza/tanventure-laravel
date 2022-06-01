@@ -1,7 +1,7 @@
 <!-- similar Posts -->
 <div class="wgs">
     <div class="section-head">
-        <h4 class="label-primary" style="font-weight: 500; font-size: 3vh">Related Posts</h4>
+        <h4 class="label-primary" style="font-weight: 500; font-size: 3vh">{{trans('general.relatedPost')}}</h4>
     </div>
     <div class="row gutter-vr-30px">
         @foreach($similarArticles as $article)

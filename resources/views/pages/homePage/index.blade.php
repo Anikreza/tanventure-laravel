@@ -1,9 +1,9 @@
 @extends('master')
 @section('content')
-    <div class='home'>
+    <div class='home w3-animate-top'>
         @include('pages.homePage.partial.banner')
 
-        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" data-interval="5000"
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000"
              data-pause="false">
             <div class="carousel-inner">
                 @foreach($featuredPosts as $key=> $article)
@@ -18,11 +18,11 @@
                         ])
                 @endforeach
                 <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <i class="fa fa-caret-square-left"style="font-size: 2vw;" aria-hidden="true"></i>
                     <span class="sr-only">Previous</span>
                 </a>
                 <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <i class="fa fa-caret-square-right" style="font-size: 2vw;" aria-hidden="true"></i>
                     <span class="sr-only">Next</span>
                 </a>
             </div>

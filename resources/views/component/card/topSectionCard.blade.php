@@ -13,7 +13,7 @@
 
     <div class="post-entry d-sm-flex d-block align-items-start">
         <div class="post-date">
-            <p>{{$time->translatedFormat('M')}} <strong style="font-weight: lighter">'{{trans('general.'.$time->translatedFormat('y'))}}</strong></p>
+            <p>{{trans('general.'.$time->translatedFormat('M'))}} <strong style="font-weight: lighter">{{trans('general.'.$time->translatedFormat('y'))}}</strong></p>
         </div>
         <div class="post-content">
             <div class="post-meta d-flex align-items-center">

@@ -21,7 +21,7 @@
                     <span>||</span>
                 </a>
                 <a href="{{route('about')}}">
-                    <span style="color: #0f3828">{{$article->created_at->translatedFormat('M')}} '{{$article->created_at->translatedFormat('y')}}</span>
+                    <span style="color: #0f3828">{{trans('general.'.$article->created_at->translatedFormat('M'))}} '{{trans('general.'.$article->created_at->translatedFormat('y'))}}</span>
                 </a>
             </li>
         </ul>

@@ -4,6 +4,6 @@ return [
     "aboutMe" => "আমি",
     "novel" => "ট্যানের ডায়েরী",
     "category" => "ব্লগ বিচিত্রা",
-    "changeLang" => "ভাষা",
+    "changeLang" => "language",
 ];
 

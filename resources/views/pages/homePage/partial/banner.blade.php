@@ -27,25 +27,21 @@
 
 <div>
     <p style="font-size: 1.3vh;letter-spacing: .1rem;text-align: center; text-transform: capitalize; color: #0d6b45"
-       class="align-items-center">
-        The World The Way I See It
+       class="align-items-center w3-animate-left">
+        {{trans('general.wayISeeIt')}}
     </p>
-    <h1 style="font-size: 5vh; width: fit-content; margin-left: 37vw; background-color: #cfe7dc; letter-spacing: 1rem;text-align: center; text-transform: uppercase; font-family: 'Script'"
-        class="align-items-center">
+    <h1 style="font-size: 5vh; width: fit-content; margin:auto;  background-color: #cfe7dc; letter-spacing: 1rem;text-align: center; text-transform: uppercase; font-family: 'Script'" class="align-items-center  w3-animate-fading-infinite" >
         {{ __('general.tanventure') }}
     </h1>
     <div class="homeIntro">
         <div class="homeIntroLayer">
-        <p style="text-align: center;"
-           class="align-items-center">
+        <p class="align-items-center w3-animate-changeColor">
             {{ __('general.iAm') }}
         </p>
-        <p style="text-align: center;"
-           class="align-items-center">
+        <p class="align-items-center  w3-animate-changeColor">
             {{ __('general.anotherStory') }}
         </p>
-        <p style="text-align: center;"
-           class="align-items-center">
+        <p class="align-items-center w3-animate-changeColor">
             {{ __('general.letMe') }}
         </p>
         </div>

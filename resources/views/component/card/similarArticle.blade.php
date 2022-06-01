@@ -5,7 +5,7 @@
 </div>
 <div class="post-entry d-sm-flex d-block align-items-start">
     <div class="post-date" >
-        <p style="font-size: 2vh">{{$time->translatedFormat('M')}} <strong style="font-weight: lighter; font-size: 2vh">'{{$time->translatedFormat('y')}}</strong></p>
+        <p style="font-size: 2vh">{{trans('general.'.$time->translatedFormat('M'))}} <strong style="font-weight: lighter; font-size: 2vh">'{{trans('general.'.$time->translatedFormat('y'))}}</strong></p>
     </div>
     <div class="post-content post-content-s2">
         <h4 style="margin-bottom: 20px; font-weight: 400; font-size: 2.5vh">{{ $title}}</h4>

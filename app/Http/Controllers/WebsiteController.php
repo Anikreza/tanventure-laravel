@@ -60,7 +60,7 @@ class WebsiteController extends Controller
         $subscribers = NewsLetter::all();
         $categories = Category::select('name_en', 'name_bn','slug_en', 'slug_bn')->where('is_published', 0)
             ->orderBy('position', 'asc')->get();
-        $featuredArticles = $this->articleRepository->publishedArticles(1, 4);
+        $featuredArticles = $this->articleRepository->publishedFeaturedArticles(1, 4);
         $footerPages = \Cache::remember('footer_pages', config('cache.default_ttl'), function () {
             return PageLink::where('key', 'footer_pages')->with('page:id,title,slug')->get()->toArray();
         });

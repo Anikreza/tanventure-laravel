@@ -1,5 +1,5 @@
 <!-- Header -->
-<header  id="header" class="has-fixed is-sticky is-shrink is-boxed header-s1" >
+<header id="header" class="has-fixed is-sticky is-shrink is-boxed header-s1">
     <div class="header-box">
         <div class="header-main">
             <div class="header-wrap">
@@ -7,6 +7,7 @@
                 <div class="header-logo logo">
                     <a href="{{ route('landingPage') }}" class="logo-link">
                         <img class="logo-white" src="{{asset("images/logo.png")}}" alt="logo">
+{{--                        <h2 style="font-size: 20px; font-family: Script">TANVENTURE</h2>--}}
                     </a>
                 </div>
 
@@ -28,7 +29,8 @@
                             <li class="menu-item  has-sub">
                                 <a
                                     class="nav-link @if(Request::url() == url('/blog')) active @endif"
-                                    href="{{route('blog')}}"> {{ __('navbar.blog') }}</a>
+                                    href="{{route('blog')}}"> {{ __('navbar.blog') }}
+                                </a>
                             </li>
                             <li class="menu-item  has-sub">
                                 <a
@@ -40,16 +42,17 @@
                                     class="nav-link @if(Request::url() == url('/the-novel')) active @endif"
                                     href="{{route('novel')}}">{{ __('navbar.novel') }}</a>
                             </li>
-{{--                            @foreach($footerPages as $pageLink)--}}
-{{--                                <li class="menu-item  has-sub">--}}
-{{--                                    <a style="color: #475e42" href="{{ route('article-details', ['slug' => $pageLink['page']['slug']]) }}">{{ $pageLink['page']['title'] }}</a>--}}
+                            {{--                            @foreach($footerPages as $pageLink)--}}
+                            {{--                                <li class="menu-item  has-sub">--}}
+                            {{--                                    <a style="color: #475e42" href="{{ route('article-details', ['slug' => $pageLink['page']['slug']]) }}">{{ $pageLink['page']['title'] }}</a>--}}
 
-{{--                                </li>--}}
-{{--                            @endforeach--}}
+                            {{--                                </li>--}}
+                            {{--                            @endforeach--}}
                             <li class="menu-item  has-sub">
-                                <a class="menu-link nav-link active menu-toggle">{{ __('navbar.category') }} <i class="fa fa-caret-down"></i></a>
+                                <a class="menu-link nav-link active menu-toggle">{{ __('navbar.category') }} <i
+                                        class="fa fa-caret-down"></i></a>
                                 <ul class="menu-sub menu-drop">
-                            @foreach($categories as $category)
+                                    @foreach($categories as $category)
                                         <li class="menu-item has-sub">
                                             <a
                                                 class="nav-link @if(Request::url() == route('category', ['slug' => $category['name'.'_'.app()->getLocale()]]) ) active @endif"
@@ -57,14 +60,16 @@
                                                 href="{{ route('category', ['slug' => $category['name'.'_'.app()->getLocale()]]) }}">{{ strtoupper($category['name'.'_'.app()->getLocale()]) }}
                                             </a>
                                         </li>
-                            @endforeach
+                                    @endforeach
                                 </ul>
                             </li>
                             @include('component.languageSwitcher')
                         </ul>
                         <ul class="menu-btns">
-                            <li><a href="" class="btn search search-trigger"><i style="color: #475E42FF"
-                                                                                class="icon ti-search "></i></a>
+                            <li>
+                                <a href="" class="search-trigger">
+                                    <i style="color: #475E42FF" class="icon ti-search"></i>
+                                </a>
                             </li>
                         </ul>
                     </nav>
@@ -76,8 +81,9 @@
                         <div class="search-group">
                             <input type="text" class="input-search" placeholder="Search.." name="query"
                                    required>
-                            <button class="search-submit" type="submit"><i style="color: #475E42FF"
-                                                                           class="icon ti-search"></i></button>
+                            <button class="search-submit" type="submit">
+                                <i style="color: #475E42FF" class="icon ti-search"></i>
+                            </button>
                         </div>
                     </form>
                 </div>
