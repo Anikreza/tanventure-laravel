@@ -2,6 +2,7 @@
     "first_name": "First Name",
     "last_name": "Last Name",
     "company": "Company",
+    "save": "save",
     "username": "Username",
     "password": "Password",
     "email": "E-Mail Address",
@@ -36,6 +37,7 @@
     "is_video_cat": "Is it an video category?",
     "is_video": "Is it an video article?",
     "read_time": "Read Time",
+    "ছবি": "প্রধান ছবি",
     "youtube_link": "Youtube Link",
     "short_description": "Short Description",
     "display_in_navigation": "Should display in Navigation?",
@@ -46,6 +48,8 @@
     "is_google": "Is it google ad?",
     "content": "Content",
     "script": "Script",
+    "সুপারিশ": "পাঠকদের সুপারিশ করবেন?",
+    "প্রকাশিত": "সরাসরি প্রকাশিত হবে?",
     "location": "Location",
     "publication_status": "Publication Status"
 }

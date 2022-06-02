@@ -10,17 +10,11 @@
             <v-form>
                 <v-container>
                     <v-row>
-                        <v-col cols="12" md="6">
-                            <VTextFieldWithValidation v-model="form.title" rules="required" ref="title"
-                                                      field="title"
-                                                      :label="'Title*'"/>
-                        </v-col>
 
                         <v-col cols="12" md="6">
-                            <VTextFieldWithValidation v-model="form.meta_title"
-                                                      rules="required"
-                                                      ref="meta_title"
-                                                      field="meta_title" :label="'Meta title'"/>
+                            <VTextFieldWithValidation v-model="form.title_bn" rules="required" ref="title"
+                                                      field="title"
+                                                      :label="'শিরোনাম*'"/>
                         </v-col>
 
                         <v-col cols="12" md="6">
@@ -29,58 +23,39 @@
                                                          rules="required"
                                                          ref="category"
                                                          field="category"
-                                                         :label="`Category`"
-                                                         item-text="name"/>
+                                                         :label="`ধরন`"
+                                                         item-text="name_bn"/>
                         </v-col>
 
 
                         <v-col cols="12" md="4">
-                            <VRadioInputWithValidation field="published"
+                            <VRadioInputWithValidation field="প্রকাশিত"
                                                        :rules="'required'"
-                                                       :options="[{label: 'Yes', value: 1}, {label: 'No', value: 0}]"
+                                                       :options="[{label: !articleKey?'হ্যা':$t('Common.yes'), value: 1}, {label: !articleKey?'না':$t('Common.no'), value: 0}]"
                                                        v-model="form.published"/>
                         </v-col>
 
                         <v-col cols="12" md="4">
-                            <VRadioInputWithValidation field="featured"
+                            <VRadioInputWithValidation field="সুপারিশ"
                                                        :rules="'required'"
-                                                       :options="[{label: 'Yes', value: 1}, {label: 'No', value: 0}]"
+                                                       :options="[{label: !articleKey?'হ্যা':$t('Common.yes'), value: 1}, {label: !articleKey?'না':$t('Common.no'), value: 0}]"
                                                        v-model="form.featured"/>
                         </v-col>
 
-<!--                        <v-col cols="12" md="4">-->
-<!--                            <VRadioInputWithValidation field="is_video"-->
-<!--                                                       :rules="'required'"-->
-<!--                                                       :options="[{label: 'Yes', value: 1}, {label: 'No', value: 0}]"-->
-<!--                                                       v-model="form.is_video"/>-->
-<!--                        </v-col>-->
-
                         <v-col cols="12" md="12">
-                            <VTextAreaFieldWithValidation
-                                v-if="form.is_video"
-                                v-model="form.description"
-                                :rules="{required: true, regex: /((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]{10}).\b/}"
-                                ref="description"
-                                rows="2"
-                                field="youtube_link"
-                                :label="'Youtube Link*'"
-                                hint="Paste youtube link here.."/>
-
-
-                            <vue-editor id="editor"
-                                        v-if="!form.is_video"
-                                        :editorOptions="editorConfig"
-                                        v-model="form.description"/>
+                            <span>আর্টিকেল (ঠিক যেভাবে সাইটে দেখতে চান)</span>
+                            <vue-editor :editorOptions="editorConfig"
+                                        v-model="form.description_bn"/>
                         </v-col>
 
                         <v-col cols="12" md="6">
-                            <VTextAreaFieldWithValidation v-model="form.excerpt"
+                            <VTextAreaFieldWithValidation v-model="form.excerpt_bn"
                                                           rules="required"
                                                           ref="excerpt"
                                                           rows="2"
                                                           field="short_description"
-                                                          :label="'Short Description*'"
-                                                          hint="For SEO Meta description it will be displayed"/>
+                                                          :label="'সংক্ষিপ্ত বর্ননা*'"
+                                                          hint="গুগলের সার্চ ইঞ্জিনের জন্য প্রদর্শিত হবে"/>
                         </v-col>
 
                         <v-col cols="12" sm="12" md="6">
@@ -89,9 +64,9 @@
                                                           rows="2"
                                                           ref="keywords"
                                                           field="keywords"
-                                                          :label="'Article Keyword*'"
+                                                          :label="'আর্টিকেলের গুরুত্বপুর্ন শব্দগুলি*'"
                                                           placeholder="seo keyword"
-                                                          hint="comma (,) separated"/>
+                                                          hint="প্রতিটি শব্দ কমা (,) দিয়ে আলাদা হতে হবে"/>
 
                         </v-col>
 
@@ -100,21 +75,15 @@
                                                       :image-url="form.image_url"
                                                       :rules="!articleKey ? `required` : ''"
                                                       ref="image"
-                                                      field="image"
-                                                      :label="form.is_video ? 'Poster*' : 'Image*'"/>
+                                                      field="ছবি"
+                                                      :label="form.is_video ? 'Poster*' : 'ছবি*'"/>
                         </v-col>
 
-<!--                        <v-col cols="12" md="6">-->
-<!--                            <VTextFieldWithValidation v-model="form.cover_caption"-->
-<!--                                                      ref="cover_caption"-->
-<!--                                                      field="cover_caption"-->
-<!--                                                      :label="'Cover Caption'"/>-->
-<!--                        </v-col>-->
                     </v-row>
                     <v-row>
                         <v-col style="text-align: center">
                             <v-btn depressed color="primary" @click="handleSubmit(save)">
-                                Save
+                                {{$t('Common.save')}}
                             </v-btn>
                         </v-col>
                     </v-row>
@@ -170,6 +139,7 @@ export default {
     },
     data() {
         return {
+            locale: this.$i18n.locale,
             loading: false,
             editorConfig: {
                 modules: {
@@ -179,14 +149,12 @@ export default {
             },
             categories: [],
             form: {
-                title: '',
+                title_bn: '',
                 categories: '',
-                excerpt: '',
-                meta_title: '',
-                read_time: 3,
-                published: 1,
+                excerpt_bn: '',
+                published: 0,
                 featured: 0,
-                description: '',
+                description_bn: '',
                 keywords: '',
                 image: '',
             }
@@ -204,6 +172,7 @@ export default {
             this.loading = true;
             await categoryApi.getCategories('*').then(res => {
                 this.categories = res.data.data;
+                console.log('cat', res.data.data)
                 this.loading = false;
             });
         },
@@ -248,7 +217,7 @@ export default {
                 this.loading = false;
             })
         }
-    }
+    },
 }
 </script>
 <style>

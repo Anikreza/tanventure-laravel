@@ -6,8 +6,8 @@
             <v-flex>
                 <material-card
                     :color="$store.state.app.color"
-                    :title="`Article List`"
-                    :text="`Use Filter options to filter from page list`"
+                    :title="$t('Common.pageList')"
+                    :text="$t('Common.pageFilter')"
                 >
                     <v-container>
                         <v-row>
@@ -15,7 +15,7 @@
                                 <v-btn :color="$store.state.app.color"
                                        class="float-left"
                                        :to="{ name: 'new-page' }">
-                                    Create new
+                                    {{ $t('Common.createNew') }}
                                 </v-btn>
                             </v-col>
                             <v-col cols="12" md="4" class="px-0">
@@ -24,15 +24,15 @@
                                                              @change="getData"
                                                              ref="publication_status"
                                                              field="publication_status"
-                                                             :label="`Publication status`"
-                                                             item-text="name"/>
+                                                             :label="$t('Common.status')"
+                                                             :item-text="locale==='en'?'name_en':'name_bn'"/>
                             </v-col>
                             <v-col cols="12" md="6" class=" pl-0">
                                 <VTextFieldWithValidation v-model="filter.search"
                                                           @keyup="getData"
                                                           ref="search"
                                                           field="search"
-                                                          :label="'Type...'"/>
+                                                          :label="locale==='en'?'Search...':'খুজুন...'"/>
                             </v-col>
                         </v-row>
 
@@ -40,24 +40,25 @@
                             <template v-slot:default v-if="pages">
                                 <thead>
                                 <tr>
-                                    <th class="text-left">Title</th>
-                                    <th class="text-left">Excerpt</th>
-                                    <th class="text-left">Published</th>
-                                    <th class="text-left">Viewed</th>
-                                    <th class="text-left">Actions</th>
+                                    <th class="text-left">{{$t('Common.title')}}</th>
+                                    <th class="text-left">{{$t('Common.excerpt')}}</th>
+                                    <th class="text-left">{{$t('Common.published')}}</th>
+                                    <th class="text-left">{{$t('Common.viewed')}}</th>
+                                    <th class="text-left">{{$t('Common.translate')}}</th>
+                                    <th class="text-left">{{$t('Common.actions')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr v-for="(page, index) in pages.data" :key="index">
                                     <td style="display: flex; align-items: center;">
                                         <span v-if="page.published">
-                                            <a :href="`/${page.slug}`" target="_blank">{{ page.title }}</a>
+                                            <a :href="`/${page.slug_bn}`" target="_blank">{{locale==='en'? page.title_en:page.title_bn }}</a>
                                         </span>
                                         <span v-else>
-                                            {{ page.title }}
+                                         {{locale==='en'? page.title_en:page.title_bn }}
                                         </span>
                                     </td>
-                                    <td> {{ page.excerpt ? page.excerpt.substr(0, 50) + '...' : '-' }}</td>
+                                    <td> {{locale==='en' && page.excerpt ? page.excerpt_en.substr(0, 50) + '...':page.excerpt_bn.substr(0, 50) + '...'}}</td>
                                     <td>
                                         <v-chip
                                             small
@@ -78,7 +79,10 @@
                                         </v-chip>
                                     </td>
                                     <td>
-                                        <v-icon small @click="edit(page.slug)">mdi-pencil</v-icon>
+                                        <v-icon @click="translate(page.slug_en)">mdi-pencil</v-icon>
+                                    </td>
+                                    <td>
+                                        <v-icon small @click="edit(page.slug_en)">mdi-pencil</v-icon>
                                         <v-icon small @click="destroy(page.id)">mdi-delete</v-icon>
                                     </td>
                                 </tr>
@@ -124,6 +128,7 @@ export default {
     },
     data() {
         return {
+            locale:this.$i18n.locale,
             loading: false,
             pages: {},
             editId: null,
@@ -131,9 +136,9 @@ export default {
                 {name: 'All', id: null},
             ],
             statuses: [
-                {name: 'All', id: null},
-                {name: 'Published', id: 1},
-                {name: 'Pending', id: 0},
+                {name_en: 'All',name_bn: 'সব', id: null},
+                {name_en: 'Published',name_bn: 'প্রকাশিত', id: 1},
+                {name_en: 'Pending',name_bn: 'অপেক্ষাকৃত', id: 0},
             ],
             currentPage: 1,
             filter: {
@@ -161,7 +166,10 @@ export default {
             this.getData()
         },
         edit(slug) {
-            this.$router.push({name: 'edit-pages', params: {slug: slug}});
+            this.$router.push({path: `pages/${slug}/edit`, params: {slug: slug}});
+        },
+        translate(slug) {
+            this.$router.push({path: `pages/${slug}/translate`, params: {slug: slug}});
         },
         destroy(id) {
             if (confirm('Are you sure?')) {

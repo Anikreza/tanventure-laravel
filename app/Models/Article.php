@@ -28,12 +28,8 @@ class Article extends BaseModel
         'excerpt_bn',
         'cover_caption',
         'image',
-        'image_disk', // 'default: local, option: s3, gc (google cloud), if null then external link'
-        'meta_title',
         'featured',
-        'read_time',
         'published',
-        'is_video',
         'viewed'
     ];
 

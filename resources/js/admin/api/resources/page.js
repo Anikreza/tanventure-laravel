@@ -21,6 +21,11 @@ class PageApi extends HttpClient {
         return this.requestType('post').formBody(payload).request(`pages/${payload.id}`)
     }
 
+    translate(payload) {
+        return this.requestType('post').formBody(payload).request(`pages/translate/${payload.id}`)
+    }
+
+
     delete(id) {
         return this.requestType('delete').request(`pages/${id}`)
     }

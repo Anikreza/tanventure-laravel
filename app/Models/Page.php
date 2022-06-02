@@ -12,11 +12,14 @@ class Page extends BaseModel
 
     protected $fillable = [
         'user_id',
-        'title',
-        'slug',
-        'description',
-        'excerpt',
-        'meta_title',
+        'title_en',
+        'title_bn',
+        'slug_en',
+        'slug_bn',
+        'description_en',
+        'description_bn',
+        'excerpt_en',
+        'excerpt_bn',
         'published'
     ];
 

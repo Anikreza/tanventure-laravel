@@ -2,8 +2,8 @@
     <v-container fill-height fluid grid-list-xl>
         <v-layout justify-center wrap>
             <v-flex md12>
-                <ArticleForm title="Create Article"
-                             short-description="Selecting published will display the article in website"
+                <ArticleForm title="নতুন আর্টিকেল"
+                             short-description="নতুন আর্টিকেল তৈরীর সময় প্রতিটি শব্দ বাংলায় লেখা পরামর্শিত"
                 />
             </v-flex>
         </v-layout>

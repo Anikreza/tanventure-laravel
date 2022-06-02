@@ -32,7 +32,7 @@
                         <h3 class="wgs-title">SERVICES</h3>
                         <ul class="wgs-menu">
                             @foreach($footerPages as $pageLink)
-                                <a style="color: #475e42" href="{{ route('article-details', ['slug' => $pageLink['page']['slug']]) }}">{{ $pageLink['page']['title'] }}</a>
+                                <a style="color: #475e42" href="{{ route('article-details', ['slug' => $pageLink['page']['slug'.'_'.app()->getLocale()]]) }}">{{ $pageLink['page']['title'.'_'.app()->getLocale()] }}</a>
                             @endforeach
                         </ul>
                     </div>

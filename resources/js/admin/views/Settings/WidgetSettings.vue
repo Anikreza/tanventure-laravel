@@ -19,7 +19,7 @@
                                                                      field="page"
                                                                      :no-data-text="`No Page Available for selection`"
                                                                      :label="`Select Page`"
-                                                                     item-text="title"/>
+                                                                     :item-text="locale==='en'?'title_en':'title_bn'"/>
                                     </v-col>
                                 </v-row>
 
@@ -53,7 +53,7 @@
                                                             mdi-arrow-all
                                                         </v-icon>
                                                     </td>
-                                                    <td> {{ page.title }}</td>
+                                                    <td>  {{locale==='en'? page.title_en:page.title_bn }}</td>
                                                     <td>
                                                         <v-icon
                                                             small
@@ -103,13 +103,16 @@ export default {
         MaterialCard,
         draggable
     },
-    data: () => ({
-        loading: false,
-        pages: [],
-        page: '',
-        footerSelectedPageId: [],
-        mobileAppSelectedPageId: []
-    }),
+    data() {
+        return {
+            locale: this.$i18n.locale,
+            loading: false,
+            pages: [],
+            page: '',
+            footerSelectedPageId: [],
+            mobileAppSelectedPageId: []
+        }
+    },
     computed: {
         availableFooterPages() {
             return this.pages.filter(page => !this.footerSelectedPageId.includes(page.id));
@@ -147,6 +150,7 @@ export default {
             this.loading = true;
             pageApi.getAllPages(this.form).then(res => {
                 this.pages = res.data.data.pages;
+                console.log('pages', this.pages)
                 this.footerSelectedPageId = res.data.data.footerPageIds;
                 this.mobileAppSelectedPageId = res.data.data.appNavigationPageIds;
                 this.loading = false;

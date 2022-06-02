@@ -2,8 +2,8 @@
     <v-container fill-height fluid grid-list-xl>
         <v-layout justify-center wrap>
             <v-flex md12>
-                <ArticleForm :title="$t('Common.editArticle')"
-                             :article-key="$route.params.slug"/>
+                <ArticleTranslateForm :title="$t('Common.transArticle')"
+                                      :article-key="$route.params.slug"/>
             </v-flex>
         </v-layout>
     </v-container>
@@ -11,11 +11,11 @@
 </template>
 <script>
 import articleApi from "@/api/resources/article";
-import ArticleForm from "@/components/forms/ArticleForm";
+import ArticleTranslateForm from "@/components/forms/ArticleTranslateForm";
 
 export default {
     components: {
-        ArticleForm
+        ArticleTranslateForm
     },
     data() {
         return {

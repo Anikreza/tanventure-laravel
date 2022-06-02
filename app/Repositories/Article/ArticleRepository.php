@@ -30,98 +30,115 @@ class ArticleRepository implements ArticleInterface
     public function save(Request $request)
     {
 
-        $image = $request->image;
-        if ($image) {
-            $image_ext = $image->getClientOriginalExtension();
-            $image_full_name = time() . '.' . $image_ext;
-            $upload_path = 'assets/images/';
-            $image_url = $upload_path . $image_full_name;
-
-            $success = $image->move($upload_path, $image_full_name);
-        } else {
-            $image_url = '';
-        }
-
-        $article = Article::create([
-            'user_id' => auth()->user()->id,
-            'title' => $request->input('title'),
-            'slug' => $this->slugify($request->input('title')),
-            'excerpt' => $request->input('excerpt'),
-            'featured' => filter_var($request->input('featured'), FILTER_VALIDATE_BOOLEAN),
-            'description' => $request->input('description'),
-            'published' => filter_var($request->input('published'), FILTER_VALIDATE_BOOLEAN),
-            'image_disk' => $this->disk,
-            'meta_title' => $request->input('meta_title'),
-            'image' => $image_url,
-        ]);
+        $image_url = $this->storeImage($request, $currentArticle = '');
+        $data = $this->storeData($request, $image_url);
+        $article = $this->model::create($data);
         // Category
-        $article->categories()->sync([$request->input('categories')]);
-
-        // Keywords
-        $newKeywords = explode(',', $request->input('keywords'));
-        $keywordIds = [];
-
-        foreach ($newKeywords as $keyword) {
-            $keyword = Keyword::firstOrCreate(['title' => $keyword]);
-            array_push($keywordIds, $keyword->id);
-        }
-
-        $article->keywords()->sync($keywordIds);
+        $categoryIDs=$this->getCategoryIDs($request->input('categories'));
+        $article->categories()->sync($categoryIDs);
+        // Tags
+        $tagIDs=$this->getTagIDs($request);
+        $article->keywords()->sync($tagIDs);
 
         return $article;
     }
 
+    private function getCategoryIDs($request): array
+    {
+        $newCategories= explode(',', $request);
+        $categoryIDs = [];
+        foreach ($newCategories as $category) {
+            $cat= Category::where('id', $category)->orWhere('id', $category)->first();
+
+            $categoryIDs[] = $cat->id;
+        }
+
+        return $categoryIDs;
+    }
+
+    private function getTagIDs($request): array
+    {
+        $newTags = explode(',', $request->input('keywords'));
+        $tagIDs = [];
+        foreach ($newTags as $tag) {
+            $tag = Keyword::firstOrCreate(['title' => $tag]);
+            $tagIDs[] = $tag->id;
+        }
+        return $tagIDs;
+    }
+
+    private function storeImage($request, $currentArticle): string
+    {
+        $image = $request->image;
+        if ($request->hasFile('image')) {
+            $image_ext = $image->getClientOriginalExtension();
+            $image_full_name = 'cover_' . $request->input('title_bn') . '.' . $image_ext;
+            $upload_path = 'article/images/';
+            $image_url = $upload_path . $image_full_name;
+            $image->move($upload_path, $image_full_name);
+        } else {
+            $image_url = $currentArticle->image;
+        }
+        return $image_url;
+    }
+
+    private function storeData($request, $image_url): array
+    {
+        return [
+            'user_id' => auth()->user()->id,
+            'title_bn' => $request->input('title_bn'),
+            'slug_bn' => $this->slugify($request->input('title_bn')),
+            'slug_en' => $this->slugify($request->input('title_bn')),
+            'excerpt_bn' => $request->input('excerpt_bn'),
+            'featured' => filter_var($request->input('featured'), FILTER_VALIDATE_BOOLEAN),
+            'description_bn' => $request->input('description_bn'),
+            'published' => filter_var($request->input('published'), FILTER_VALIDATE_BOOLEAN),
+            'image' => $image_url,
+        ];
+    }
+    private function translateData($request): array
+    {
+        return [
+            'title_en' => $request->input('title_en'),
+            'slug_en' => $this->slugify($request->input('title_en')),
+            'excerpt_en' => $request->input('excerpt_en'),
+            'description_en' => $request->input('description_en'),
+        ];
+    }
+
     private function slugify($name): string
     {
-        return \Str::slug($name);
+        return str_replace(' ', '-',$name);
     }
 
     public function update(Request $request, int $id): array
     {
         $article = Article::findOrFail($id);
-        $isPublishedBefore = $article->published;
+        $isPublishedBefore = $article->status;
 
-        $image = $request->image;
-        if ($image) {
-            $image_ext = $image->getClientOriginalExtension();
-            $image_full_name = time() . '.' . $image_ext;
-            $upload_path = 'assets/images/';
-            $image_url = $upload_path . $image_full_name;
-
-            $success = $image->move($upload_path, $image_full_name);
-        } else {
-            $image_url = '';
-        }
-
-        $data = [
-            'title' => $request->input('title'),
-            'slug' => $this->slugify($request->input('title')),
-            'excerpt' => $request->input('excerpt'),
-            'featured' => filter_var($request->input('featured'), FILTER_VALIDATE_BOOLEAN),
-            'description' => $request->input('description'),
-            'published' => filter_var($request->input('published'), FILTER_VALIDATE_BOOLEAN),
-            'meta_title' => $request->input('meta_title'),
-            'image' => $image_url,
-        ];
-
+        $image_url = $this->storeImage($request, $currentArticle = $article);
+        $data = $this->storeData($request, $image_url);
         // Category
         $article->categories()->detach();
-        $article->categories()->sync([$request->input('categories')]);
-
-        // Keywords
-        $newKeywords = explode(',', $request->input('keywords'));
-        $keywordIds = [];
-
-        foreach ($newKeywords as $keyword) {
-            $keyword = Keyword::firstOrCreate(['title' => $keyword]);
-            array_push($keywordIds, $keyword->id);
-        }
-
+        $categoryIDs=$this->getCategoryIDs($request->input('categories'));
+        $article->categories()->sync($categoryIDs);
+        // Tags
+        $tagIDs=$this->getTagIDs($request);
         $article->keywords()->detach();
-        $article->keywords()->sync($keywordIds);
+        $article->keywords()->sync($tagIDs);
+
         $article->update($data);
 
         return ['article' => $article, 'previouslyPublished' => $isPublishedBefore];
+    }
+
+    public function translate(Request $request, int $id): array
+    {
+        $article = Article::findOrFail($id);
+        $data = $this->translateData($request);
+        $article->update($data);
+
+        return ['article' => $article];
     }
 
     public function delete(int $id)

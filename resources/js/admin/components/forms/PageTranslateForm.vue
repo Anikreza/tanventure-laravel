@@ -10,35 +10,25 @@
             <v-form>
                 <v-container>
                     <v-row>
-
                         <v-col cols="12" md="12">
-                            <VTextFieldWithValidation v-model="form.title_bn" rules="required" ref="title"
+                            <VTextFieldWithValidation v-model="form.title_en" rules="required" ref="title"
                                                       field="title"
-                                                      :label="'শিরোনাম*'"/>
+                                                      :label="'Title*'"/>
                         </v-col>
-
-                        <v-col cols="12" md="4">
-                            <VRadioInputWithValidation field="প্রকাশিত"
-                                                       :rules="'required'"
-                                                       :options="[{label: !articleKey?'হ্যা':$t('Common.yes'), value: 1}, {label: !articleKey?'না':$t('Common.no'), value: 0}]"
-                                                       v-model="form.published"/>
-                        </v-col>
-
 
                         <v-col cols="12" md="12">
-                            <span>আর্টিকেল (ঠিক যেভাবে সাইটে দেখতে চান)</span>
                             <vue-editor :editorOptions="editorConfig"
-                                        v-model="form.description_bn"/>
+                                        v-model="form.description_en"/>
                         </v-col>
 
                         <v-col cols="12" md="6">
-                            <VTextAreaFieldWithValidation v-model="form.excerpt_bn"
+                            <VTextAreaFieldWithValidation v-model="form.excerpt_en"
                                                           rules="required"
                                                           ref="excerpt"
                                                           rows="2"
                                                           field="short_description"
-                                                          :label="'সংক্ষিপ্ত বর্ননা*'"
-                                                          hint="গুগলের সার্চ ইঞ্জিনের জন্য প্রদর্শিত হবে"/>
+                                                          :label="'Short Description*'"
+                                                          hint="For SEO Meta description it will be displayed"/>
                         </v-col>
 
                         <v-col cols="12" sm="12" md="6">
@@ -47,9 +37,9 @@
                                                           rows="2"
                                                           ref="keywords"
                                                           field="keywords"
-                                                          :label="'আর্টিকেলের গুরুত্বপুর্ন শব্দগুলি*'"
+                                                          :label="'Article Keyword*'"
                                                           placeholder="seo keyword"
-                                                          hint="প্রতিটি শব্দ কমা (,) দিয়ে আলাদা হতে হবে"/>
+                                                          hint="comma (,) separated"/>
 
                         </v-col>
 
@@ -57,7 +47,7 @@
                     <v-row>
                         <v-col style="text-align: center">
                             <v-btn depressed color="primary" @click="handleSubmit(save)">
-                                {{$t('Common.save')}}
+                                Save
                             </v-btn>
                         </v-col>
                     </v-row>
@@ -99,7 +89,7 @@ export default {
     props: {
         title: {
             type: String,
-            default: "Article Form"
+            default: "Article Translate Form"
         },
         shortDescription: {
             type: String,
@@ -122,10 +112,9 @@ export default {
             },
             categories: [],
             form: {
-                title_bn: '',
-                excerpt_bn: '',
-                published: 0,
-                description_bn: '',
+                title_en: '',
+                excerpt_en: '',
+                description_en: '',
                 keywords: '',
             }
         }
@@ -139,39 +128,33 @@ export default {
         async get() {
             this.loading = true;
             pageApi.get(this.pageKey).then(res => {
-                res.data.data.image = null;
-
                 if (res.data.data.keywords.length) {
                     res.data.data.keywords = res.data.data.keywords.map(item => item.title).toString();
                 }
-
                 this.form = res.data.data;
                 this.loading = false;
             }).catch(err => {
-                this.$toastr.e('Something went wrong! ' + err);
+                this.$toastr.e('Something went wrong!');
                 this.loading = false;
             })
         },
         save() {
             this.loading = true;
-            let reqUrl;
-
-            if (this.pageKey) {
-                reqUrl = pageApi.update(this.form)
-            } else {
-                reqUrl = pageApi.save(this.form)
-            }
-
-            reqUrl.then(res => {
-                this.$toastr.s('Data saved successful');
+            pageApi.translate(this.form).then(res => {
+                this.$toastr.s('Article Translated successful');
                 this.$router.push({name: 'pages'});
                 this.loading = false;
             }).catch(err => {
-                this.$toastr.e('Something went wrong! ' + err);
+                this.$toastr.e('Something went wrong!');
                 this.loading = false;
             })
         }
     },
+    watch: {
+        '$i18n.locale': async function (newVal, oldVal) {
+            window.location.reload()
+        }
+    }
 }
 </script>
 <style>

@@ -6,8 +6,8 @@
             <v-flex>
                 <material-card
                     :color="$store.state.app.color"
-                    :title="`Article List`"
-                    :text="`Use Filter options to filter from article list`"
+                    :title="$t('Common.articleList')"
+                    :text="$t('Common.articleFilter')"
                 >
                     <v-container>
                         <v-row>
@@ -15,7 +15,7 @@
                                 <v-btn :color="$store.state.app.color"
                                        class="float-left"
                                        :to="{ name: 'new-article' }">
-                                    Create new
+                                    {{ $t('Common.createNew') }}
                                 </v-btn>
                             </v-col>
                             <v-col cols="12" md="3" class="px-0">
@@ -24,24 +24,24 @@
                                                              @change="getData"
                                                              ref="category"
                                                              field="category"
-                                                             :label="`Category`"
-                                                             item-text="name"/>
+                                                             :label="$t('Common.category')"
+                                                             :item-text="locale==='en'?'name_en':'name_bn'"/>
                             </v-col>
                             <v-col cols="12" md="3" class="px-0">
                                 <VSelectSearchWithValidation v-model="filter.is_published"
                                                              :options="statuses"
                                                              @change="getData"
-                                                             ref="publication_status"
-                                                             field="publication_status"
-                                                             :label="`Publication status`"
-                                                             item-text="name"/>
+                                                             :ref="$t('Common.createNew')"
+                                                             :field="$t('Common.createNew')"
+                                                             :label="$t('Common.status')"
+                                                             :item-text="locale==='en'?'name_en':'name_bn'"/>
                             </v-col>
                             <v-col cols="12" md="4" class=" pl-0">
                                 <VTextFieldWithValidation v-model="filter.search"
                                                           @keyup="getData"
                                                           ref="search"
                                                           field="search"
-                                                          :label="'Type...'"/>
+                                                          :label="locale==='en'?'Search...':'খুজুন...'"/>
                             </v-col>
                         </v-row>
 
@@ -49,13 +49,14 @@
                             <template v-slot:default v-if="articles">
                                 <thead >
                                 <tr>
-                                    <th class="text-left">Category</th>
-                                    <th class="text-left">Title</th>
-                                    <th class="text-left">Excerpt</th>
-                                    <th class="text-left">Published</th>
-                                    <th class="text-left">Featured</th>
-                                    <th class="text-left">Viewed</th>
-                                    <th class="text-left">Actions</th>
+                                    <th class="text-left">{{$t('Common.category')}}</th>
+                                    <th class="text-left">{{$t('Common.title')}}</th>
+                                    <th class="text-left">{{$t('Common.excerpt')}}</th>
+                                    <th class="text-left">{{$t('Common.published')}}</th>
+                                    <th class="text-left">{{$t('Common.featured')}}</th>
+                                    <th class="text-left">{{$t('Common.viewed')}}</th>
+                                    <th class="text-left">{{$t('Common.translate')}}</th>
+                                    <th class="text-left">{{$t('Common.actions')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -72,7 +73,7 @@
                                             class="ma-2"
                                             :color="$store.state.app.color"
                                         >
-                                            {{ category.name }}
+                                            {{ locale==='en'? category.name_en : category.name_bn}}
                                         </v-chip>
                                     </td>
                                     <td style="display: flex; align-items: center; height: fit-content; padding: 30px">
@@ -83,13 +84,13 @@
                                                  style="border-radius: 10px">
                                         </span>
                                         <span v-if="article.published">
-                                            <a  :href="`/articles/${article.slug}`" target="_blank">{{ article.title }}</a>
+                                            <a  :href="`/articles/${article.slug_bn}`" target="_blank">{{locale==='en'? article.title_en:article.title_bn }}</a>
                                         </span>
                                         <span v-else>
-                                            {{ article.title }}
+                                            {{ article.title_en }}
                                         </span>
                                     </td>
-                                    <td> {{ article.excerpt ? article.excerpt.substr(0, 50) + '...' : '-' }}</td>
+                                    <td> {{locale==='en' && article.excerpt ? article.excerpt_en.substr(0, 50) + '...':article.excerpt_bn.substr(0, 50) + '...'}}</td>
                                     <td>
                                         <v-chip
                                             small
@@ -119,7 +120,10 @@
                                         </v-chip>
                                     </td>
                                     <td>
-                                        <v-icon small @click="edit(article.slug)">mdi-pencil</v-icon>
+                                        <v-icon @click="translate(article.slug_bn)">mdi-pencil</v-icon>
+                                    </td>
+                                    <td>
+                                        <v-icon small @click="edit(article.slug_en)">mdi-pencil</v-icon>
                                         <v-icon small @click="destroy(article.id)">mdi-delete</v-icon>
                                     </td>
                                 </tr>
@@ -166,16 +170,17 @@ export default {
     },
     data() {
         return {
+            locale:this.$i18n.locale,
             loading: false,
             articles: {},
             editId: null,
             categories: [
-                {name: 'All', id: null},
+                {name_en: 'All',name_bn: 'সব', id: null},
             ],
             statuses: [
-                {name: 'All', id: null},
-                {name: 'Published', id: 1},
-                {name: 'Pending', id: 0},
+                {name_en: 'All',name_bn: 'সব', id: null},
+                {name_en: 'Published',name_bn: 'প্রকাশিত', id: 1},
+                {name_en: 'Pending',name_bn: 'অপেক্ষাকৃত', id: 0},
             ],
             currentPage: 1,
             filter: {
@@ -198,7 +203,6 @@ export default {
             const query = qs.stringify(this.filter, {encode: false, skipNulls: true});
 
             Api.list(this.currentPage, query).then(res => {
-                console.log('currentPage', res.data.all.original.data)
                 this.articles = res.data.all.original.data;
                 this.currentPage = res.data.all.original.data.current_page;
                 this.loading = false;
@@ -211,7 +215,10 @@ export default {
             this.getData()
         },
         edit(slug) {
-            this.$router.push({name: 'edit-articles', params: {slug: slug}});
+            this.$router.push({path: `articles/${slug}/edit`, params: {slug: slug}});
+        },
+        translate(slug) {
+            this.$router.push({path: `articles/${slug}/translate`, params: {slug: slug}});
         },
         destroy(id) {
             if (confirm('Are you sure?')) {
@@ -228,6 +235,11 @@ export default {
     async created() {
         await this.getCategories();
         await this.getData();
+    },
+    watch: {
+        '$i18n.locale': async function (newVal, oldVal) {
+             window.location.reload()
+        }
     }
 }
 </script>

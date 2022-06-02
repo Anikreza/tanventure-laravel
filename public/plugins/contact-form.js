@@ -19710,20 +19710,20 @@ Vue.compile = compileToFunctions;
 
 /***/ }),
 
-/***/ "./resources/js/admin/lang/de/Common.json":
+/***/ "./resources/js/admin/lang/bn/Common.json":
 /*!************************************************!*\
-  !*** ./resources/js/admin/lang/de/Common.json ***!
+  !*** ./resources/js/admin/lang/bn/Common.json ***!
   \************************************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"needHelp\":\"Brauchen Sie Hilfe?\",\"close\":\"Schließen\",\"yes\":\"Ja\",\"no\":\"Nein\",\"search\":\"Suchen\",\"updated_ago\":\"aktualisiert vor {time}\",\"second\":\"zweite.\",\"minute\":\"Min.\",\"hour\":\"Std.\",\"month\":\"Monat\",\"Year\":\"Jahr\",\"companies\":\"Unternehmen\",\"company\":\"Unternehmen\",\"question\":\"Frage\",\"questions\":\"Fragen\",\"screen_test\":\"Bildschirmtest\",\"total_screen_test\":\"Gesamt Bildschirm Test\",\"passed\":\"Bestanden\",\"candidate\":\"Kandidat\",\"edit_profile\":\"Profil bearbeiten\",\"complete_your_profile\":\"Vervollständige dein Profil\",\"manage_password\":\"Passwort verwalten\",\"update_your_password\":\"Aktualisieren Ihr Passwort\",\"save_profile\":\"Profil sichern\",\"update\":\"Aktualisieren\",\"select_image\":\"Bild auswählen\"}");
+module.exports = JSON.parse("{\"needHelp\":\"সাহায্যের প্রয়োজন?\",\"close\":\"বন্ধ করুন\",\"yes\":\"হ্যাঁ\",\"no\":\"না\",\"search\":\"খুজুন\",\"updated_ago\":\"{time} আগে আপডেট হয়েছে\",\"second\":\"সেকেন্ড.\",\"minute\":\"মিনিট.\",\"save\":\"ডাটাবেজে সংরক্ষণ করুন\",\"editPage\":\"পেজ সম্পাদনা\",\"editArticle\":\"আর্টিকেল সম্পাদনা\",\"pageList\":\"পাতা তালিকা\",\"articleList\":\"আর্টিকেলের তালিকা\",\"pageFilter\":\"কোনো পাতা খুজে বের করতে সার্চ, এবং প্রকাশ অবস্থা অনুযায়ী ফিল্টার করুন\",\"articleFilter\":\"কোনো আর্টিকেল খুজে বের করতে সার্চ, ধরন এবং প্রকাশ অবস্থা অনুযায়ী ফিল্টার করুন\",\"transArticle\":\"আর্টিকেল অনুবাদ\",\"transPage\":\"পাতা অনুবাদ\",\"hour\":\"ঘন্টা.\",\"month\":\"মাস\",\"Year\":\"সাল\",\"companies\":\"Unternehmen\",\"company\":\"Unternehmen\",\"question\":\"Frage\",\"questions\":\"Fragen\",\"screen_test\":\"Bildschirmtest\",\"total_screen_test\":\"Gesamt Bildschirm Test\",\"passed\":\"Bestanden\",\"candidate\":\"Kandidat\",\"edit_profile\":\"প্রোফাইল এডিট করুন\",\"complete_your_profile\":\"Vervollständige dein Profil\",\"manage_password\":\"Passwort verwalten\",\"update_your_password\":\"Aktualisieren Ihr Passwort\",\"save_profile\":\"সেভ প্রোফাইল\",\"update\":\"আপডেট\",\"select_image\":\"ছবি বাছাই করুন\",\"createNew\":\"নতুন তৈরী করুন\",\"category\":\"ধরন\",\"title\":\"শিরোনাম\",\"excerpt\":\"সংক্ষিপ্ত বর্ননা\",\"featured\":\"সুপারিশ\",\"published\":\"প্রকাশ অবস্থা\",\"viewed\":\"পড়েছেন\",\"actions\":\"পরিবর্তন\",\"status\":\"প্রকাশ অবস্থা\",\"bName\":\"বাংলা নাম\",\"eName\":\"ইংরেজী নাম\",\"translate\":\"ইংরেজী অনুবাদ\",\"updatePriority\":\"ক্রম পরিবর্তন\",\"edit\":\"সম্পাদনা\",\"metaDesc\":\"গুগল রোবটের জন্য বর্ননা\"}");
 
 /***/ }),
 
-/***/ "./resources/js/admin/lang/de/Core/Footer.json":
+/***/ "./resources/js/admin/lang/bn/Core/Footer.json":
 /*!*****************************************************!*\
-  !*** ./resources/js/admin/lang/de/Core/Footer.json ***!
+  !*** ./resources/js/admin/lang/bn/Core/Footer.json ***!
   \*****************************************************/
 /***/ ((module) => {
 
@@ -19732,53 +19732,53 @@ module.exports = JSON.parse("{\"facebook\":\"Facebook\",\"footer\":\"Fusszeile\"
 
 /***/ }),
 
-/***/ "./resources/js/admin/lang/de/Core/Nav.json":
+/***/ "./resources/js/admin/lang/bn/Core/Nav.json":
 /*!**************************************************!*\
-  !*** ./resources/js/admin/lang/de/Core/Nav.json ***!
+  !*** ./resources/js/admin/lang/bn/Core/Nav.json ***!
   \**************************************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"dashboard\":\"Dashboard\",\"user-profile\":\"Benutzerprofil\",\"code_editor\":\"Code Editor\",\"first_level\":\"Erste Ebene\",\"second_level\":\"Zweites Ebene\",\"third_level\":\"Drittes Level\",\"more_level\":\"Mehr Ebene\",\"settings\":\"Einstellung\",\"demo_tests\":\"Demo-Tests\"}");
+module.exports = JSON.parse("{\"dashboard\":\"ড্যাশবোর্ড\",\"articles\":\"আর্টিকেল\",\"new-article\":\"নতুন আর্টিকেল\",\"new-page\":\"নতুন পাতা\",\"system-settings\":\"সিস্টেম সেটিংস\",\"widget-settings\":\"উইজেট সেটিংস\",\"user-profile\":\"ব্যাবহারকারীর তথ্য\",\"code_editor\":\"Code Editor\",\"first_level\":\"Erste Ebene\",\"second_level\":\"Zweites Ebene\",\"third_level\":\"Drittes Level\",\"more_level\":\"Mehr Ebene\",\"settings\":\"সেটিংস\",\"categories\":\"ক্যাটাগরি\",\"pages\":\"পাতা\",\"demo_tests\":\"Demo-Tests\"}");
 
 /***/ }),
 
-/***/ "./resources/js/admin/lang/de/Core/Toolbar.json":
+/***/ "./resources/js/admin/lang/bn/Core/Toolbar.json":
 /*!******************************************************!*\
-  !*** ./resources/js/admin/lang/de/Core/Toolbar.json ***!
+  !*** ./resources/js/admin/lang/bn/Core/Toolbar.json ***!
   \******************************************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = {"title":"Titel"};
+module.exports = {"title":"টাইটেল"};
 
 /***/ }),
 
-/***/ "./resources/js/admin/lang/de/Fields.json":
+/***/ "./resources/js/admin/lang/bn/Fields.json":
 /*!************************************************!*\
-  !*** ./resources/js/admin/lang/de/Fields.json ***!
+  !*** ./resources/js/admin/lang/bn/Fields.json ***!
   \************************************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"first_name\":\"Vorname\",\"last_name\":\"Nachname\",\"company\":\"Unternehmensbezeichnung\",\"username\":\"Benutzername\",\"password\":\"Passwort\",\"email\":\"E-Mail-Adresse\",\"image\":\"Bild\",\"name_en\":\"English Name\",\"name_bn\":\"Bangla Name\",\"d_o_b\":\"Geburtsdatum\",\"current_password\":\"Derzeitiges Passwort\",\"new_password\":\"Neues Kennwort\",\"confirm_password\":\"Bestätige das Passwort\",\"street\":\"Straße\",\"street_number\":\"Hausnummer\",\"postcode\":\"Postleitzahl\",\"city\":\"Stadt\",\"country\":\"Land\",\"country_code\":\"Landesvorwahl\",\"phone_number\":\"Telefonnummer\",\"example\":\"Beispiel\",\"gender\":\"Geschlecht\",\"mr\":\"Herr\",\"mrs\":\"Frau\",\"avatar\":\"Benutzerbild\",\"address\":\"Adresse\"}");
+module.exports = JSON.parse("{\"first_name\":\"Vorname\",\"last_name\":\"Nachname\",\"company\":\"Unternehmensbezeichnung\",\"username\":\"Benutzername\",\"password\":\"পাসওয়ার্ড\",\"email\":\"ইমেইল\",\"image\":\"প্রধান ছবি\",\"name_en\":\"English Name\",\"name_bn\":\"Bangla Name\",\"d_o_b\":\"Geburtsdatum\",\"current_password\":\"Derzeitiges Passwort\",\"new_password\":\"Neues Kennwort\",\"confirm_password\":\"Bestätige das Passwort\",\"street\":\"Straße\",\"street_number\":\"Hausnummer\",\"postcode\":\"Postleitzahl\",\"city\":\"Stadt\",\"country\":\"Land\",\"country_code\":\"Landesvorwahl\",\"phone_number\":\"ফোন নাম্বার\",\"example\":\"উদাহরন\",\"gender\":\"লিংগ\",\"mr\":\"জনাব\",\"mrs\":\"মিস\",\"featured\":\"পাঠকদের সুপারিশ করবেন?\",\"published\":\"সরাসরি প্রকাশিত হবে?\",\"সুপারিশ\":\"পাঠকদের সুপারিশ করবেন?\",\"প্রকাশিত\":\"সরাসরি প্রকাশিত হবে?\",\"ছবি\":\"প্রধান ছবি\",\"avatar\":\"প্রোফাইল ছবি\",\"address\":\"ঠিকানা\"}");
 
 /***/ }),
 
-/***/ "./resources/js/admin/lang/de/Home.json":
+/***/ "./resources/js/admin/lang/bn/Home.json":
 /*!**********************************************!*\
-  !*** ./resources/js/admin/lang/de/Home.json ***!
+  !*** ./resources/js/admin/lang/bn/Home.json ***!
   \**********************************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"title\":\"Titel\",\"siteName\":\"{siteName}\",\"footer\":\"{date} @:(Home.siteName)\"}");
+module.exports = JSON.parse("{\"title\":\"টাইটেল\",\"siteName\":\"{siteName}\",\"footer\":\"{date} @:(Home.siteName)\"}");
 
 /***/ }),
 
-/***/ "./resources/js/admin/lang/de/Messages.json":
+/***/ "./resources/js/admin/lang/bn/Messages.json":
 /*!**************************************************!*\
-  !*** ./resources/js/admin/lang/de/Messages.json ***!
+  !*** ./resources/js/admin/lang/bn/Messages.json ***!
   \**************************************************/
 /***/ ((module) => {
 
@@ -19787,20 +19787,20 @@ module.exports = JSON.parse("{\"login_failed\":\"Falsche Anmeldeinformationen\",
 
 /***/ }),
 
-/***/ "./resources/js/admin/lang/de/Pages/Dashboard.json":
+/***/ "./resources/js/admin/lang/bn/Pages/Dashboard.json":
 /*!*********************************************************!*\
-  !*** ./resources/js/admin/lang/de/Pages/Dashboard.json ***!
+  !*** ./resources/js/admin/lang/bn/Pages/Dashboard.json ***!
   \*********************************************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"company_register_history\":\"Firmenregistrierung Historie\",\"registration_increase\":\"Die Registrierung hat in der letzten Woche zugenommen\",\"email_campaign\":\"E-Mail-Kampagne\",\"last_campaign_performance\":\"Letzte Kampagnenleistung\",\"completed_task\":\"Aufgabe abgeschlossen\",\"campaign_sent\":\"Kampagne vor {time} gesendet\",\"latest_update\":\"Neuestes Update\",\"revenue\":\"Einnahmen\",\"last_()_hours\":\"letzte {time} stunden\",\"last_()_months\":\"letzte {time} monate\",\"last_()_years\":\"letzte {time} jahren\",\"disk_usage\":\"Festplattennutzung\",\"companies_joined\":\"{company} Unternehmen sind in den letzten {time} beigetreten\",\"with_supported_skill\":\"Mit {skill} unterstützten Fähigkeiten\",\"average_screen_test_weekly\":\"{avg} durchschnittlicher Bildschirmtest wöchentlich\",\"screening_summary\":\"Vorführung Zusammenfassung\",\"last_screening\":\"Letztes Vorführung {time}\"}");
+module.exports = JSON.parse("{\"company_register_history\":\"Firmenregistrierung Historie\",\"registration_increase\":\"Die Registrierung hat in der letzten Woche zugenommen\",\"email_campaign\":\"E-Mail-Kampagne\",\"last_campaign_performance\":\"Letzte Kampagnenleistung\",\"completed_task\":\"Aufgabe abgeschlossen\",\"campaign_sent\":\"Kampagne vor {time} gesendet\",\"latest_update\":\"Neuestes Update\",\"revenue\":\"Einnahmen\",\"total_visits\":\"মোট ভিজিট\",\"last_()_hours\":\"letzte {time} stunden\",\"last_()_months\":\"letzte {time} monate\",\"last_()_years\":\"letzte {time} jahren\",\"disk_usage\":\"Festplattennutzung\",\"companies_joined\":\"{company} Unternehmen sind in den letzten {time} beigetreten\",\"with_supported_skill\":\"Mit {skill} unterstützten Fähigkeiten\",\"average_screen_test_weekly\":\"{avg} durchschnittlicher Bildschirmtest wöchentlich\",\"screening_summary\":\"Vorführung Zusammenfassung\",\"last_screening\":\"Letztes Vorführung {time}\"}");
 
 /***/ }),
 
-/***/ "./resources/js/admin/lang/de/Pages/Login.json":
+/***/ "./resources/js/admin/lang/bn/Pages/Login.json":
 /*!*****************************************************!*\
-  !*** ./resources/js/admin/lang/de/Pages/Login.json ***!
+  !*** ./resources/js/admin/lang/bn/Pages/Login.json ***!
   \*****************************************************/
 /***/ ((module) => {
 
@@ -19809,9 +19809,9 @@ module.exports = JSON.parse("{\"toolbarTitle\":\"Melden Sie sich bei Ihrem Konto
 
 /***/ }),
 
-/***/ "./resources/js/admin/lang/de/Validation.json":
+/***/ "./resources/js/admin/lang/bn/Validation.json":
 /*!****************************************************!*\
-  !*** ./resources/js/admin/lang/de/Validation.json ***!
+  !*** ./resources/js/admin/lang/bn/Validation.json ***!
   \****************************************************/
 /***/ ((module) => {
 
@@ -19827,7 +19827,7 @@ module.exports = JSON.parse("{\"accepted\":\"{attribute} muss akzeptiert werden.
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"need_help\":\"Need Help?\",\"close\":\"Close\",\"yes\":\"Yes\",\"no\":\"No\",\"search\":\"Search\",\"updated_ago\":\"updated {time} ago\",\"second\":\"second\",\"minute\":\"minute\",\"hour\":\"hour\",\"month\":\"month\",\"Year\":\"year\",\"companies\":\"Companies\",\"company\":\"Company\",\"question\":\"Question\",\"questions\":\"Questions\",\"screen_test\":\"Screen Test\",\"total_screen_test\":\"Total Screen Test\",\"passed\":\"Passed\",\"candidate\":\"candidate\",\"edit_profile\":\"Edit Profile\",\"complete_your_profile\":\"Complete Your Profile\",\"manage_password\":\"Manage Password\",\"update_your_password\":\"Update Your Password\",\"save_profile\":\"Save Profile\",\"update\":\"Update\",\"select_image\":\"Select image\"}");
+module.exports = JSON.parse("{\"need_help\":\"Need Help?\",\"close\":\"Close\",\"yes\":\"Yes\",\"no\":\"No\",\"search\":\"Search\",\"updated_ago\":\"updated {time} ago\",\"second\":\"second\",\"minute\":\"minute\",\"hour\":\"hour\",\"month\":\"month\",\"Year\":\"year\",\"companies\":\"Companies\",\"formDesc\":\"নতুন আর্টিকেল তৈরীতে প্রতিটি তথ্য বাংলায় লিখুন\",\"newArticle\":\"নতুন আর্টিকেল\",\"company\":\"Company\",\"question\":\"Question\",\"questions\":\"Questions\",\"screen_test\":\"Screen Test\",\"total_screen_test\":\"Total Screen Test\",\"passed\":\"Passed\",\"candidate\":\"candidate\",\"edit_profile\":\"Edit Profile\",\"complete_your_profile\":\"Complete Your Profile\",\"manage_password\":\"Manage Password\",\"update_your_password\":\"Update Your Password\",\"editPage\":\"Edit Page\",\"pageList\":\"Page List\",\"articleList\":\"Article List\",\"editArticle\":\"Edit Article\",\"transArticle\":\"Translate Article\",\"transPage\":\"Translate Page\",\"pageFilter\":\"Use Filter Options To Find A Page\",\"articleFilter\":\"Use Filter Options To Find An Article\",\"save_profile\":\"Save Profile\",\"update\":\"Update\",\"select_image\":\"Select image\",\"createNew\":\"Create New\",\"category\":\"Category\",\"save\":\"Save\",\"title\":\"Title\",\"featured\":\"Featured\",\"excerpt\":\"Excerpt\",\"published\":\"Published\",\"viewed\":\"viewed\",\"actions\":\"Actions\",\"status\":\"Publication Status\",\"bName\":\"Bengali Name\",\"eName\":\"English Name\",\"updatePriority\":\"Update Priority\",\"edit\":\"Edit\",\"translate\":\"Translate\",\"metaDesc\":\"Meta Description\"}");
 
 /***/ }),
 
@@ -19871,7 +19871,7 @@ module.exports = {"title":"Title"};
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"first_name\":\"First Name\",\"last_name\":\"Last Name\",\"company\":\"Company\",\"username\":\"Username\",\"password\":\"Password\",\"email\":\"E-Mail Address\",\"image\":\"Image\",\"d_o_b\":\"Date of Birth\",\"current_password\":\"Current Password\",\"new_password\":\"New Password\",\"confirm_password\":\"Confirm Password\",\"street\":\"Street\",\"street_number\":\"Street Number\",\"postcode\":\"Postal Code\",\"city\":\"City\",\"country\":\"Country\",\"country_code\":\"Country Code\",\"phone_number\":\"Phone Number\",\"example\":\"Example\",\"gender\":\"Gender\",\"mr\":\"Mr\",\"mrs\":\"Mrs\",\"avatar\":\"Avatar\",\"address\":\"Address\",\"name\":\"name\",\"title\":\"Title\",\"meta_title\":\"Title For SEO\",\"keywords\":\"keywords\",\"excerpt\":\"Short Description\",\"home_page_image\":\"Home page image\",\"published\":\"Published\",\"featured\":\"Featured\",\"category\":\"Category\",\"categories\":\"Categories\",\"is_video_cat\":\"Is it an video category?\",\"is_video\":\"Is it an video article?\",\"read_time\":\"Read Time\",\"youtube_link\":\"Youtube Link\",\"short_description\":\"Short Description\",\"display_in_navigation\":\"Should display in Navigation?\",\"display_in_home_page\":\"Should display in home page?\",\"home_page_description\":\"Home Page Seo Description\",\"home_page_keywords\":\"Home Page Seo Keywords\",\"page\":\"Page\",\"is_google\":\"Is it google ad?\",\"content\":\"Content\",\"script\":\"Script\",\"location\":\"Location\",\"publication_status\":\"Publication Status\"}");
+module.exports = JSON.parse("{\"first_name\":\"First Name\",\"last_name\":\"Last Name\",\"company\":\"Company\",\"save\":\"save\",\"username\":\"Username\",\"password\":\"Password\",\"email\":\"E-Mail Address\",\"image\":\"Image\",\"d_o_b\":\"Date of Birth\",\"current_password\":\"Current Password\",\"new_password\":\"New Password\",\"confirm_password\":\"Confirm Password\",\"street\":\"Street\",\"street_number\":\"Street Number\",\"postcode\":\"Postal Code\",\"city\":\"City\",\"country\":\"Country\",\"country_code\":\"Country Code\",\"phone_number\":\"Phone Number\",\"example\":\"Example\",\"gender\":\"Gender\",\"mr\":\"Mr\",\"mrs\":\"Mrs\",\"avatar\":\"Avatar\",\"address\":\"Address\",\"name\":\"name\",\"title\":\"Title\",\"meta_title\":\"Title For SEO\",\"keywords\":\"keywords\",\"excerpt\":\"Short Description\",\"home_page_image\":\"Home page image\",\"published\":\"Published\",\"featured\":\"Featured\",\"category\":\"Category\",\"categories\":\"Categories\",\"is_video_cat\":\"Is it an video category?\",\"is_video\":\"Is it an video article?\",\"read_time\":\"Read Time\",\"ছবি\":\"প্রধান ছবি\",\"youtube_link\":\"Youtube Link\",\"short_description\":\"Short Description\",\"display_in_navigation\":\"Should display in Navigation?\",\"display_in_home_page\":\"Should display in home page?\",\"home_page_description\":\"Home Page Seo Description\",\"home_page_keywords\":\"Home Page Seo Keywords\",\"page\":\"Page\",\"is_google\":\"Is it google ad?\",\"content\":\"Content\",\"script\":\"Script\",\"সুপারিশ\":\"পাঠকদের সুপারিশ করবেন?\",\"প্রকাশিত\":\"সরাসরি প্রকাশিত হবে?\",\"location\":\"Location\",\"publication_status\":\"Publication Status\"}");
 
 /***/ }),
 
@@ -19937,16 +19937,16 @@ module.exports = JSON.parse("{\"accepted\":\"The {attribute} must be accepted.\"
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
-	"./de/Common.json": "./resources/js/admin/lang/de/Common.json",
-	"./de/Core/Footer.json": "./resources/js/admin/lang/de/Core/Footer.json",
-	"./de/Core/Nav.json": "./resources/js/admin/lang/de/Core/Nav.json",
-	"./de/Core/Toolbar.json": "./resources/js/admin/lang/de/Core/Toolbar.json",
-	"./de/Fields.json": "./resources/js/admin/lang/de/Fields.json",
-	"./de/Home.json": "./resources/js/admin/lang/de/Home.json",
-	"./de/Messages.json": "./resources/js/admin/lang/de/Messages.json",
-	"./de/Pages/Dashboard.json": "./resources/js/admin/lang/de/Pages/Dashboard.json",
-	"./de/Pages/Login.json": "./resources/js/admin/lang/de/Pages/Login.json",
-	"./de/Validation.json": "./resources/js/admin/lang/de/Validation.json",
+	"./bn/Common.json": "./resources/js/admin/lang/bn/Common.json",
+	"./bn/Core/Footer.json": "./resources/js/admin/lang/bn/Core/Footer.json",
+	"./bn/Core/Nav.json": "./resources/js/admin/lang/bn/Core/Nav.json",
+	"./bn/Core/Toolbar.json": "./resources/js/admin/lang/bn/Core/Toolbar.json",
+	"./bn/Fields.json": "./resources/js/admin/lang/bn/Fields.json",
+	"./bn/Home.json": "./resources/js/admin/lang/bn/Home.json",
+	"./bn/Messages.json": "./resources/js/admin/lang/bn/Messages.json",
+	"./bn/Pages/Dashboard.json": "./resources/js/admin/lang/bn/Pages/Dashboard.json",
+	"./bn/Pages/Login.json": "./resources/js/admin/lang/bn/Pages/Login.json",
+	"./bn/Validation.json": "./resources/js/admin/lang/bn/Validation.json",
 	"./en/Common.json": "./resources/js/admin/lang/en/Common.json",
 	"./en/Core/Footer.json": "./resources/js/admin/lang/en/Core/Footer.json",
 	"./en/Core/Nav.json": "./resources/js/admin/lang/en/Core/Nav.json",

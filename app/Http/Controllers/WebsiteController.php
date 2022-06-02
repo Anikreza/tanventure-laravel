@@ -60,10 +60,15 @@ class WebsiteController extends Controller
         $subscribers = NewsLetter::all();
         $categories = Category::select('name_en', 'name_bn','slug_en', 'slug_bn')->where('is_published', 0)
             ->orderBy('position', 'asc')->get();
-        $featuredArticles = $this->articleRepository->publishedFeaturedArticles(1, 4);
-        $footerPages = \Cache::remember('footer_pages', config('cache.default_ttl'), function () {
-            return PageLink::where('key', 'footer_pages')->with('page:id,title,slug')->get()->toArray();
+
+        $featuredArticles = \Cache::remember('featured_posts', config('cache.half_ttl'), function () {
+            return $this->articleRepository->publishedFeaturedArticles(1, 4);
         });
+
+        $footerPages = \Cache::remember('footer_pages', config('cache.default_ttl'), function () {
+            return PageLink::where('key', 'footer_pages')->with('page:id,title_en,title_bn,slug_en,slug_bn')->get()->toArray();
+        });
+
         view()->share('footerPages', $footerPages);
         view()->share('subscribers', $subscribers);
         view()->share('categories', $categories);
@@ -75,9 +80,16 @@ class WebsiteController extends Controller
     {
 
         $this->articleRepository->SetVisitor();
-        $publishedArticles = $this->articleRepository->publishedArticles(1, 6);
-        $featuredArticles = $this->articleRepository->publishedFeaturedArticles(1, 3);
-        $mostReadArticles = $this->articleRepository->mostReadArticles(1, 3);
+        $publishedArticles = \Cache::remember('published_posts', config('cache.half_ttl'), function () {
+            return $this->articleRepository->publishedArticles(1, 6);
+        });
+        $mostReadArticles = \Cache::remember('mostR_read_posts', config('cache.half_ttl'), function () {
+            return  $this->articleRepository->mostReadArticles(1, 3);
+        });
+        $featuredArticles = \Cache::remember('featured_posts', config('cache.half_ttl'), function () {
+            return  $this->articleRepository->publishedFeaturedArticles(1, 3);
+        });
+
         $this->seo($this->baseSeoData);
 
         return view('pages.landingPage.index',
@@ -105,8 +117,7 @@ class WebsiteController extends Controller
 
     public function about()
     {
-        $this->baseSeoData['title'] = " Tanvir Reza Anik | tanventure";
-        $this->baseSeoData['keywords'] = "bikepacking";
+
         $this->seo($this->baseSeoData);
 
         return view('pages.about.index');
@@ -241,7 +252,7 @@ class WebsiteController extends Controller
         }
 
         $segments = [
-            ['name' => $tag->title, 'url' => route('tag', ['slug' => Str::slug($tag->title)])],
+            ['name' => $tag->title, 'url' => route('tag', ['slug' => str_replace(' ', '-',$tag->title)])],
         ];
 
         // SEO META INFO
@@ -277,7 +288,7 @@ class WebsiteController extends Controller
 
     public function renderPage($slug)
     {
-        $page = Page::where('slug', $slug)->with('keywords')->first();
+        $page = Page::where('slug_en', $slug)->orWhere('slug_bn',$slug)->with('keywords')->first();
 
         if (!$page) {
             abort(404);
@@ -292,7 +303,7 @@ class WebsiteController extends Controller
         });
 
         $segments = [
-            ['name' => $page['title'], 'url' => url($slug)]
+            ['name' => $page['title'.'_'.app()->getLocale()], 'url' => url($slug)]
         ];
         $shareLinks = $this->getSeoLinksForDetailsPage($page);
 

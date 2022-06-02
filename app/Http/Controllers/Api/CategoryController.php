@@ -27,7 +27,7 @@ class CategoryController extends ApiController
     public function index(Request $request): JsonResponse
     {
         if ($request->input('page') == '*') {
-            return $this->successResponse($this->categoryRepository->all(['id', 'name_en'], false), true);
+            return $this->successResponse($this->categoryRepository->all(['id', 'name_en', 'name_bn'], false), true);
         } else {
             return $this->successResponse($this->categoryRepository->paginate($request->input('perPage')), true);
         }

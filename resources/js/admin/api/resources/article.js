@@ -30,6 +30,14 @@ class ArticleApi extends HttpClient {
         }
         return url.formBody(payload).request(`articles/${payload.id}`)
     }
+    translate(payload) {
+        let url = this.requestType('post');
+
+        if (payload.image !== null) {
+            url = url.isMultimedia();
+        }
+        return url.formBody(payload).request(`articles/translate/${payload.id}`)
+    }
 
     delete(id) {
         return this.requestType('delete').request(`articles/${id}`)

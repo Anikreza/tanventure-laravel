@@ -37,6 +37,12 @@ const routes = [
         component: () => import(`@/views/Articles/Edit.vue`),
     },
     {
+        path: 'articles/:slug/translate',
+        name: 'translate-articles',
+        meta: {name: 'Translate Article', slug: 'translate-article', requiresAuth: true},
+        component: () => import(`@/views/Articles/Translate.vue`),
+    },
+    {
         path: 'categories',
         name: 'categories',
         meta: {name: 'Categories', slug: 'categories', requiresAuth: true},
@@ -59,6 +65,12 @@ const routes = [
         name: 'edit-pages',
         meta: {name: 'Edit Page', slug: 'edit-page', requiresAuth: true},
         component: () => import(`@/views/Pages/Edit.vue`),
+    },
+    {
+        path: 'pages/:slug/translate',
+        name: 'edit-pages',
+        meta: {name: 'Edit Page', slug: 'edit-page', requiresAuth: true},
+        component: () => import(`@/views/Pages/Translate.vue`),
     },
     {
         path: 'ad-spaces',

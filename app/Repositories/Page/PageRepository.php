@@ -3,6 +3,7 @@
 
 namespace App\Repositories\Page;
 
+use App\Models\Article;
 use App\Models\Keyword;
 use App\Models\Page;
 use Illuminate\Http\Request;
@@ -22,15 +23,15 @@ class PageRepository implements PageInterface
      */
     public function save(Request $request)
     {
+
         $page = $this->model->create([
             'user_id' => auth()->user()->id,
-            'title' => $request->input('title'),
-            'slug' => $this->slugify($request->input('title')),
-            'excerpt' => $request->input('excerpt'),
-            'featured' => filter_var($request->input('featured'), FILTER_VALIDATE_BOOLEAN),
-            'description' => saveTextEditorImage($request->input('description')),
+            'title_bn' => $request->input('title_bn'),
+            'slug_bn' => $this->slugify($request->input('title_bn')),
+            'slug_en' => $this->slugify($request->input('title_bn')),
+            'excerpt_bn' => $request->input('excerpt_bn'),
+            'description_bn' => saveTextEditorImage($request->input('description_bn')),
             'published' => filter_var($request->input('published'), FILTER_VALIDATE_BOOLEAN),
-            'meta_title' => $request->input('meta_title'),
         ]);
 
         // Keywords
@@ -39,7 +40,7 @@ class PageRepository implements PageInterface
 
         foreach ($newKeywords as $keyword) {
             $keyword = Keyword::firstOrCreate(['title' => $keyword]);
-            array_push($keywordIds, $keyword->id);
+            $keywordIds[] = $keyword->id;
         }
 
         $page->keywords()->sync($keywordIds);
@@ -50,7 +51,7 @@ class PageRepository implements PageInterface
 
     private function slugify($name): string
     {
-        return \Str::slug($name);
+        return str_replace(' ', '-', $name);
     }
 
     /**
@@ -63,12 +64,12 @@ class PageRepository implements PageInterface
         $page = $this->model->findOrFail($id);
 
         $data = [
-            'title' => $request->input('title'),
-            'slug' => $this->slugify($request->input('title')),
-            'excerpt' => $request->input('excerpt'),
-            'description' => saveTextEditorImage($request->input('description')),
+            'title_bn' => $request->input('title_bn'),
+            'slug_bn' => $this->slugify($request->input('title_bn')),
+            'slug_en' => $this->slugify($request->input('title_bn')),
+            'excerpt_bn' => $request->input('excerpt_bn'),
+            'description_bn' => saveTextEditorImage($request->input('description_bn')),
             'published' => filter_var($request->input('published'), FILTER_VALIDATE_BOOLEAN),
-            'meta_title' => $request->input('meta_title'),
         ];
 
         // Keywords
@@ -78,12 +79,29 @@ class PageRepository implements PageInterface
 
         foreach ($newKeywords as $keyword) {
             $keyword = Keyword::firstOrCreate(['title' => $keyword]);
-            array_push($keywordIds, $keyword->id);
+            $keywordIds[] = $keyword->id;
         }
 
         $page->keywords()->sync($keywordIds);
 
         return $page->update($data);
+    }
+    public function translate(Request $request, int $id): array
+    {
+        $article = Page::findOrFail($id);
+        $data = $this->translateData($request);
+        $article->update($data);
+
+        return ['article' => $article];
+    }
+    private function translateData($request): array
+    {
+        return [
+            'title_en' => $request->input('title_en'),
+            'slug_en' => $this->slugify($request->input('title_en')),
+            'excerpt_en' => $request->input('excerpt_en'),
+            'description_en' => $request->input('description_en'),
+        ];
     }
 
     public function delete(int $id)
@@ -107,7 +125,7 @@ class PageRepository implements PageInterface
                 $q->where('published', (bool)request('is_published'));
             })
             ->when(\request()->has('search'), function ($q) {
-                $q->where('title', 'LIKE', '%' . \request('search') . '%');
+                $q->where('title'.'_'.app()->getLocale(), 'LIKE', '%' . \request('search') . '%');
             })
             ->paginate($perPage);
     }

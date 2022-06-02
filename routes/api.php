@@ -64,11 +64,13 @@ Route::group([
     Route::apiResource("categories", CategoryController::class);
 
     Route::get("articles/{slug}/edit", [ArticleController::class, 'edit']);
-    Route::post("articles/{id}", [ArticleController::class, 'update']);
+    Route::post("articles/{slug}", [ArticleController::class, 'update']);
+    Route::post("articles/translate/{slug}", [ArticleController::class, 'translate']);
     Route::apiResource("articles", ArticleController::class);
 
     Route::get("fetch-all-published-pages", [PageController::class, 'get']);
     Route::get("pages/{slug}/edit", [PageController::class, 'edit']);
+    Route::post("pages/translate/{slug}", [PageController::class, 'translate']);
     Route::post("pages/{id}", [PageController::class, 'update']);
     Route::apiResource("pages", PageController::class);
 

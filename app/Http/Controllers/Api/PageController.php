@@ -32,7 +32,7 @@ class PageController extends ApiController
 
     public function get(): JsonResponse
     {
-        $pages = $this->pageRepository->all(['id', 'title']);
+        $pages = $this->pageRepository->all(['id', 'title_en','title_bn']);
         $footerPageIds = PageLink::where(['key' => 'footer_pages'])->pluck('page_id');
         $appNavigationPageIds = PageLink::where(['key' => 'app_navigation_pages'])->pluck('page_id');
 
@@ -48,7 +48,7 @@ class PageController extends ApiController
     public function store(Request $request): JsonResponse
     {
         $request->validate([
-            'title' => 'required|unique:pages,title|unique:articles,title'
+            'title_bn' => 'required|unique:pages,title_bn|unique:articles,title_bn'
         ]);
 
         \DB::beginTransaction();
@@ -60,9 +60,8 @@ class PageController extends ApiController
 
                 $data = [
                     "article_id" => $page->id,
-                    "title" => $page->title,
-                    "body" => $page->excerpt,
-                    "image" => $page->thumb_image_url
+                    "title_bn" => $page->title_bn,
+                    "body" => $page->excerpt_bn,
                 ];
                 \Artisan::call("send:notification", [
                     'notificationData' => $data
@@ -84,7 +83,7 @@ class PageController extends ApiController
     public function edit($slug): JsonResponse
     {
         try {
-            $page = Page::where('slug', $slug)->with(['keywords'])->firstOrFail();
+            $page = Page::where('slug_en', $slug)->orWhere('slug_bn', $slug)->with(['keywords'])->firstOrFail();
 
             return $this->successResponse($page);
         } catch (Exception $exception) {
@@ -103,7 +102,7 @@ class PageController extends ApiController
     public function update(Request $request, int $id): JsonResponse
     {
         $request->validate([
-            'title' => 'required'
+            'title_bn' => 'required'
         ]);
 
         $category = $this->pageRepository->update($request, $id);
@@ -111,6 +110,22 @@ class PageController extends ApiController
 
         return $this->successResponse($category);
     }
+
+    /**
+     * Updates Category & Returns updated category
+     * @param Request $request
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function translate(Request $request, int $id): JsonResponse
+    {
+        $articleInfo = $this->pageRepository->translate($request, $id);
+
+        \Artisan::call('cache:clear');
+
+        return $this->successResponse($articleInfo['article']);
+    }
+
 
     /**
      * Deletes Category & Returns boolean

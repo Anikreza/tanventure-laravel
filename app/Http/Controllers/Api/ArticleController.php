@@ -61,8 +61,7 @@ class ArticleController extends ApiController
     public function store(Request $request): JsonResponse
     {
         $request->validate([
-            'title' => 'required|unique:articles,title',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'title_bn' => 'required|unique:articles,title_bn',
         ]);
 
         \DB::beginTransaction();
@@ -91,7 +90,8 @@ class ArticleController extends ApiController
     public function edit($slug): JsonResponse
     {
         try {
-            $article = Article::where('slug', $slug)->with(['categories', 'keywords'])->firstOrFail();
+            $article = Article::where('slug_en', $slug)->orWhere('slug_bn',$slug)
+            ->with(['categories', 'keywords'])->first();
 
             return $this->successResponse($article);
         } catch (Exception $exception) {
@@ -110,7 +110,7 @@ class ArticleController extends ApiController
     public function update(Request $request, int $id): JsonResponse
     {
         $request->validate([
-            'title' => 'required'
+            'title_bn' => 'required'
         ]);
 
         $articleInfo = $this->articleRepository->update($request, $id);
@@ -119,6 +119,21 @@ class ArticleController extends ApiController
         if (!$articleInfo['previouslyPublished']) {
             $this->sendNotification($articleInfo['article']);
         }
+
+        \Artisan::call('cache:clear');
+
+        return $this->successResponse($articleInfo['article']);
+    }
+
+    /**
+     * Updates Category & Returns updated category
+     * @param Request $request
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function translate(Request $request, int $id): JsonResponse
+    {
+        $articleInfo = $this->articleRepository->translate($request, $id);
 
         \Artisan::call('cache:clear');
 

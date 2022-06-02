@@ -2,8 +2,7 @@
     <v-container fill-height fluid grid-list-xl>
         <v-layout justify-center wrap>
             <v-flex md12>
-                <PageForm title="Edit Page"
-                          short-description="Selecting published will make available pages for selection"
+                <PageForm :title="$t('Common.editPage')"
                           :page-key="$route.params.slug"/>
             </v-flex>
         </v-layout>

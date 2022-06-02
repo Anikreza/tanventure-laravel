@@ -1137,6 +1137,17 @@ var ArticleApi = /*#__PURE__*/function (_HttpClient) {
       return url.formBody(payload).request("articles/".concat(payload.id));
     }
   }, {
+    key: "translate",
+    value: function translate(payload) {
+      var url = this.requestType('post');
+
+      if (payload.image !== null) {
+        url = url.isMultimedia();
+      }
+
+      return url.formBody(payload).request("articles/translate/".concat(payload.id));
+    }
+  }, {
     key: "delete",
     value: function _delete(id) {
       return this.requestType('delete').request("articles/".concat(id));
