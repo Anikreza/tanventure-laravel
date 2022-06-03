@@ -1,4 +1,11 @@
 <div class="homeBannerContainer">
+{{--    @foreach($featuredPosts as $key=> $article)--}}
+{{--        <div class="img-container-home">--}}
+{{--            <a href="articles/asia" target="_blank">--}}
+{{--                <img class="img" src="{{asset($article['image'])}}">--}}
+{{--            </a>--}}
+{{--        </div>--}}
+{{--    @endforeach--}}
     <div class="img-container-home">
         <img class="img" src="{{asset('assets/images/l.jpg')}}">
     </div>

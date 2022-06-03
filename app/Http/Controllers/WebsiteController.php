@@ -58,7 +58,7 @@ class WebsiteController extends Controller
         $tags = $this->articleRepository->getAllTags();
 
         $subscribers = NewsLetter::all();
-        $categories = Category::select('name_en', 'name_bn','slug_en', 'slug_bn')->where('is_published', 0)
+        $categories = Category::select('name_en', 'name_bn', 'slug_en', 'slug_bn')->where('is_published', 0)
             ->orderBy('position', 'asc')->get();
 
         $featuredArticles = \Cache::remember('featured_posts', config('cache.half_ttl'), function () {
@@ -78,16 +78,14 @@ class WebsiteController extends Controller
 
     public function index()
     {
-
         $this->articleRepository->SetVisitor();
-        $publishedArticles = \Cache::remember('published_posts', config('cache.half_ttl'), function () {
-            return $this->articleRepository->publishedArticles(1, 6);
-        });
+
+        $publishedArticles = $this->articleRepository->publishedArticles(1, 6);
         $mostReadArticles = \Cache::remember('mostR_read_posts', config('cache.half_ttl'), function () {
-            return  $this->articleRepository->mostReadArticles(1, 3);
+            return $this->articleRepository->mostReadArticles(1, 3);
         });
         $featuredArticles = \Cache::remember('featured_posts', config('cache.half_ttl'), function () {
-            return  $this->articleRepository->publishedFeaturedArticles(1, 3);
+            return $this->articleRepository->publishedFeaturedArticles(1, 3);
         });
 
         $this->seo($this->baseSeoData);
@@ -123,10 +121,11 @@ class WebsiteController extends Controller
         return view('pages.about.index');
 
     }
+
     public function author($slug)
     {
-        $author=$this->articleRepository->getAuthor($slug);
-        $authorArticles=$this->articleRepository->getAuthorArticles($slug);
+        $author = $this->articleRepository->getAuthor($slug);
+        $authorArticles = $this->articleRepository->getAuthorArticles($slug);
         $this->baseSeoData['title'] = $author->name . "TanVenture";
         $this->baseSeoData['keywords'] = "bikepacking";
         $this->seo($this->baseSeoData);
@@ -193,12 +192,12 @@ class WebsiteController extends Controller
         }
         $segments = [
             [
-                'name' => $article['categories'][0]['name'.'_'.app()->getLocale()],
+                'name' => $article['categories'][0]['name' . '_' . app()->getLocale()],
                 'url' => route('category', [
-                    'slug' => $category['slug'.'_'.app()->getLocale()]
+                    'slug' => $category['slug' . '_' . app()->getLocale()]
                 ])
             ],
-            ['name' => $article['title'.'_'.app()->getLocale()], 'url' => url($slug)]
+            ['name' => $article['title' . '_' . app()->getLocale()], 'url' => url($slug)]
         ];
         $cacheKey = request()->ip() . $slug;
         \Cache::remember($cacheKey, 60, function () use ($article) {
@@ -208,7 +207,7 @@ class WebsiteController extends Controller
         });
 
         $appName = env('APP_NAME');
-        $this->baseSeoData['title'] = $article['title'.'_'.app()->getLocale()]. '-'. $appName;
+        $this->baseSeoData['title'] = $article['title' . '_' . app()->getLocale()] . '-' . $appName;
         $this->baseSeoData['keywords'] = $tagTitles;
         $this->seo($this->baseSeoData);
         $shareLinks = $this->getSeoLinksForDetailsPage($article);
@@ -222,7 +221,7 @@ class WebsiteController extends Controller
         $segments = [
             [
                 'name' => "{$category['name'.'_'.app()->getLocale()]}",
-                'url' => route('category', ['slug' => $category['slug'.'_'.app()->getLocale()]])
+                'url' => route('category', ['slug' => $category['slug' . '_' . app()->getLocale()]])
             ],
         ];
         $categoryArticles = $this->articleRepository->paginateByCategoryWithFilter(5, $category->id);
@@ -252,7 +251,7 @@ class WebsiteController extends Controller
         }
 
         $segments = [
-            ['name' => $tag->title, 'url' => route('tag', ['slug' => str_replace(' ', '-',$tag->title)])],
+            ['name' => $tag->title, 'url' => route('tag', ['slug' => str_replace(' ', '-', $tag->title)])],
         ];
 
         // SEO META INFO
@@ -288,7 +287,7 @@ class WebsiteController extends Controller
 
     public function renderPage($slug)
     {
-        $page = Page::where('slug_en', $slug)->orWhere('slug_bn',$slug)->with('keywords')->first();
+        $page = Page::where('slug_en', $slug)->orWhere('slug_bn', $slug)->with('keywords')->first();
 
         if (!$page) {
             abort(404);
@@ -303,7 +302,7 @@ class WebsiteController extends Controller
         });
 
         $segments = [
-            ['name' => $page['title'.'_'.app()->getLocale()], 'url' => url($slug)]
+            ['name' => $page['title' . '_' . app()->getLocale()], 'url' => url($slug)]
         ];
         $shareLinks = $this->getSeoLinksForDetailsPage($page);
 
@@ -334,7 +333,7 @@ class WebsiteController extends Controller
     private function getSeoLinksForDetailsPage($data)
     {
         $this->baseSeoData = [
-            'title' => $data['title'.'_'.app()->getLocale()] . " | {$this->baseSeoData['app_name']}",
+            'title' => $data['title' . '_' . app()->getLocale()] . " | {$this->baseSeoData['app_name']}",
             'description' => $data->excerpt,
             'keywords' => count($data->keywords) ? implode(", ", $data->keywords->pluck('title')->toArray()) : $this->baseSeoData['keywords'],
             'image' => $data->image_url,

@@ -34,10 +34,10 @@ class ArticleRepository implements ArticleInterface
         $data = $this->storeData($request, $image_url);
         $article = $this->model::create($data);
         // Category
-        $categoryIDs=$this->getCategoryIDs($request->input('categories'));
+        $categoryIDs = $this->getCategoryIDs($request->input('categories'));
         $article->categories()->sync($categoryIDs);
         // Tags
-        $tagIDs=$this->getTagIDs($request);
+        $tagIDs = $this->getTagIDs($request);
         $article->keywords()->sync($tagIDs);
 
         return $article;
@@ -45,10 +45,10 @@ class ArticleRepository implements ArticleInterface
 
     private function getCategoryIDs($request): array
     {
-        $newCategories= explode(',', $request);
+        $newCategories = explode(',', $request);
         $categoryIDs = [];
         foreach ($newCategories as $category) {
-            $cat= Category::where('id', $category)->orWhere('id', $category)->first();
+            $cat = Category::where('id', $category)->orWhere('id', $category)->first();
 
             $categoryIDs[] = $cat->id;
         }
@@ -96,6 +96,7 @@ class ArticleRepository implements ArticleInterface
             'image' => $image_url,
         ];
     }
+
     private function translateData($request): array
     {
         return [
@@ -108,7 +109,7 @@ class ArticleRepository implements ArticleInterface
 
     private function slugify($name): string
     {
-        return str_replace(' ', '-',$name);
+        return str_replace(' ', '-', $name);
     }
 
     public function update(Request $request, int $id): array
@@ -120,10 +121,10 @@ class ArticleRepository implements ArticleInterface
         $data = $this->storeData($request, $image_url);
         // Category
         $article->categories()->detach();
-        $categoryIDs=$this->getCategoryIDs($request->input('categories'));
+        $categoryIDs = $this->getCategoryIDs($request->input('categories'));
         $article->categories()->sync($categoryIDs);
         // Tags
-        $tagIDs=$this->getTagIDs($request);
+        $tagIDs = $this->getTagIDs($request);
         $article->keywords()->detach();
         $article->keywords()->sync($tagIDs);
 
@@ -172,7 +173,7 @@ class ArticleRepository implements ArticleInterface
                 $q->where('published', (bool)request('is_published'));
             })
             ->when(\request()->has('search'), function ($q) {
-                $q->where('title'.'_'.app()->getLocale(), 'LIKE', '%' . \request('search') . '%');
+                $q->where('title' . '_' . app()->getLocale(), 'LIKE', '%' . \request('search') . '%');
             })
             ->orderBy('viewed', 'desc')
             ->paginate($perPage);
@@ -203,7 +204,8 @@ class ArticleRepository implements ArticleInterface
         return Article::all()->count();
     }
 
-    public function SetVisitor()   {
+    public function SetVisitor()
+    {
         $ip = request()->ip();
         $visited_date = Carbon::now();
         $visitor = Visitor::firstOrCreate(['ip' => $ip], ['visit_date' => $visited_date]);
@@ -266,11 +268,13 @@ class ArticleRepository implements ArticleInterface
 
     public function publishedArticles(int $categoryId, int $limit)
     {
-        return $this->baseQuery($categoryId)
-            ->with('categories')
-            ->with('author')
-            ->latest()
-            ->paginate($limit);
+        return \Cache::remember('published_posts', config('cache.half_ttl'), function () use ($categoryId, $limit) {
+            return $this->baseQuery($categoryId)
+                ->with('categories')
+                ->with('author')
+                ->latest()
+                ->paginate($limit);
+        });
     }
 
     public function getNovels()
@@ -287,6 +291,7 @@ class ArticleRepository implements ArticleInterface
         return User::where('id', $slug)
             ->first();
     }
+
     public function getAuthorArticles($slug)
     {
         return $this->model
@@ -301,7 +306,7 @@ class ArticleRepository implements ArticleInterface
             ->latest()
             ->with('author')
             ->limit($limit)
-            ->orderBy('id','desc')
+            ->orderBy('id', 'desc')
             ->get();
     }
 
@@ -318,18 +323,18 @@ class ArticleRepository implements ArticleInterface
     {
         return $this->model
             ->with(['categories' => function ($q) use ($condition, $isSlug) {
-            $q->with(['articles' => function ($sq) use ($condition, $isSlug) {
-                $sq->where('published', '=', true)
-                    ->when($isSlug, function ($s) use ($condition) {
-                        $s->where('slug_en', '!=', $condition)->orWhere('slug_bn', '!=', $condition);
-                    })
-                    ->when(!$isSlug, function ($s) use ($condition) {
-                        $s->where('article_id', '!=', $condition);
-                    })
-                    ->inRandomOrder()
-                    ->limit(4);
-            }]);
-        }])
+                $q->with(['articles' => function ($sq) use ($condition, $isSlug) {
+                    $sq->where('published', '=', true)
+                        ->when($isSlug, function ($s) use ($condition) {
+                            $s->where('slug_en', '!=', $condition)->orWhere('slug_bn', '!=', $condition);
+                        })
+                        ->when(!$isSlug, function ($s) use ($condition) {
+                            $s->where('article_id', '!=', $condition);
+                        })
+                        ->inRandomOrder()
+                        ->limit(4);
+                }]);
+            }])
             ->with(['author'])
             ->with(['keywords'])
             ->where('published', true)

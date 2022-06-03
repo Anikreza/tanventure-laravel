@@ -51,7 +51,6 @@
                                 <tr>
                                     <th class="text-left">{{$t('Common.category')}}</th>
                                     <th class="text-left">{{$t('Common.title')}}</th>
-                                    <th class="text-left">{{$t('Common.excerpt')}}</th>
                                     <th class="text-left">{{$t('Common.published')}}</th>
                                     <th class="text-left">{{$t('Common.featured')}}</th>
                                     <th class="text-left">{{$t('Common.viewed')}}</th>
@@ -90,7 +89,6 @@
                                             {{ article.title_en }}
                                         </span>
                                     </td>
-                                    <td> {{locale==='en' && article.excerpt ? article.excerpt_en.substr(0, 50) + '...':article.excerpt_bn.substr(0, 50) + '...'}}</td>
                                     <td>
                                         <v-chip
                                             small
