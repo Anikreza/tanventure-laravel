@@ -2,13 +2,13 @@
 @section('content')
     {{--    <div class="section blog section-blg" style="background: linear-gradient(-40deg,#ffffff,#9f9f9f,#b6b3b3,#e8e7e7);" onclick="scrollDown()">--}}
     <div class="section blog section-blg">
-        <div class="floatingTitle w3-animate-top">
+        <div class="floatingTitle w3-animate-top" onclick="scrollDown()">
             <h2>{{$article['title'.'_'.app()->getLocale()]}}</h2>
             <br/>
             <p>{{$article['excerpt'.'_'.app()->getLocale()]}}</p>
             <a onclick="scrollDown()" href="#reading" class="arrowDown"><i class='fas fa-angle-down'></i></a>
         </div>
-        <div class="w3-animate-fading articleCover articleBlur">
+        <div class="w3-animate-fading articleCover articleBlur" onclick="scrollDown()">
             <img src="{{asset($article->image)}}" alt="">
         </div>
         <div class="col-lg-11 col-sm-12 customContainer">

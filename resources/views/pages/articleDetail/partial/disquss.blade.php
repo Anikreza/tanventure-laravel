@@ -2,7 +2,7 @@
 <script>
     const disqus_config = function () {
         this.page.url = '{{ url()->current() }}';
-        this.page.identifier = '{{ request()->path() }}'
+        this.page.identifier = '{{ request()->path() }}';
     };
 
     (function() { // DON'T EDIT BELOW THIS LINE
