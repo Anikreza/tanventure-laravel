@@ -2,7 +2,7 @@
 return [
     "tanventure" => "tanventure",
     "subscribe" => "Subscribe Tanventure",
-    "subscribeFoot" => "Subscribe To Get Emails About Latest Updates",
+    "subscribeFoot" => "To Get Latest Updates & Be With Tanventurer",
     "letMe" => "I Have Stories! Let Me Tell You A Story...",
     'iAm' => "Hey! I Am Tanvir. But You Can Call Me Tan",
     'anotherStory' => "I'm Planning On Travelling Whole Of The World On My Bike",
@@ -14,6 +14,7 @@ return [
     "services" => "Services",
     "credit" => "All rights reserved",
     "relatedPost" => "Related Posts",
+    "yourMail" => "YourMail@xyz.com",
     "by" => "BY",
     '22' => '22',
     '23' => '23',
