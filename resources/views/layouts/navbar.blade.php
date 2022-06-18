@@ -67,7 +67,7 @@
 {{--                            <li class="menu-item  has-sub">--}}
 {{--                                <a class="menu-link nav-link active menu-toggle">--}}
 {{--                                    {{ __('navbar.settings') }}--}}
-{{--                                    <i class="fa fa-caret-down"></i></a>--}}
+{{--                                    <i class="fa fa-cog" style="color: #7a2828; font-size: 35px"></i></a>--}}
 {{--                                <ul class="menu-sub menu-drop">--}}
 {{--                                        <li class="menu-item has-sub">--}}
 {{--                                            @include('component.themeSwitcher')--}}
@@ -75,9 +75,8 @@
 {{--                                        </li>--}}
 {{--                                </ul>--}}
 {{--                            </li>--}}
-                            @include('component.themeSwitcher')
                             @include('component.languageSwitcher')
-
+                            @include('component.themeSwitcher')
                         </ul>
                         <ul class="menu-btns">
                             <li>
