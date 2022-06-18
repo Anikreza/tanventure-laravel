@@ -39,7 +39,8 @@
                         @include('pages.homePage.partial.slide',['featuredArticles'=>$featuredPosts])
                     @endif
                 </div>
-                @include('pages.homePage.partial.tan')
+
+                    @include('pages.homePage.partial.tan')
                 @include('pages.author.partial.contactAuthor')
                 <br/><br/><br/><br/>
             </div>

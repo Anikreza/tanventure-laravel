@@ -1,8 +1,9 @@
 <li class="menu-item text-secondary has-sub" >
     <a style="cursor: pointer" id="theme-toggle">
-       <span style="color: #888888">
-{{--         <i class="fa fa-{{ $theme == 'dark' ? 'sun' : 'moon' }}" style="font-size: 35px; " aria-hidden="true"></i>--}}
-           {{ $theme == 'dark' ? trans('general.light') :trans('general.dark') }}
+       <span style=" font-size: 1.9vh;">
+         <i class="fa fa-caret-right" style="font-size: 25px; " aria-hidden="true"></i>
+{{--           {{ $theme == 'dark' ? trans('general.light') :trans('general.dark') }}--}}
+           {{trans('general.theme')}}
        </span>
     </a>
 </li>

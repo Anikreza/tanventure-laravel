@@ -1,7 +1,6 @@
 <!-- Header -->
 <header id="header" class="has-fixed is-sticky is-shrink is-boxed header-s1">
     <div class="header-box">
-{{--        <div class="header-main" style="background-color: {{ $theme == 'dark' ? 'black' : 'white' }}">--}}
         <div class="header-main">
             <div class="header-wrap">
                 <!-- Logo  -->
@@ -64,25 +63,25 @@
                                     @endforeach
                                 </ul>
                             </li>
-
-{{--                            <li class="menu-item  has-sub">--}}
-{{--                                <a class="menu-link nav-link active menu-toggle">--}}
-{{--                                    {{ __('navbar.settings') }}--}}
-{{--                                    <i class="fa fa-cog" style="color: #7a2828; font-size: 35px"></i></a>--}}
-{{--                                <ul class="menu-sub menu-drop">--}}
-{{--                                        <li class="menu-item has-sub">--}}
-{{--                                            @include('component.themeSwitcher')--}}
-{{--                                            @include('component.languageSwitcher')--}}
-{{--                                        </li>--}}
-{{--                                </ul>--}}
-{{--                            </li>--}}
                             @include('component.languageSwitcher')
-                            @include('component.themeSwitcher')
+
+                            <li class="menu-item  has-sub">
+                                <a class="menu-link nav-link active menu-toggle">
+                                    {{--                                    {{ __('navbar.settings') }}--}}
+                                    <i class="fa fa-cog" style="color: #0e6e48; font-size: 3.5vh"></i></a>
+                                <ul class="menu-sub menu-drop">
+                                    <li class="menu-item has-sub">
+                                        @include('component.themeSwitcher')
+                                        {{--                                            @include('component.languageSwitcher')--}}
+                                    </li>
+                                </ul>
+                            </li>
+                            {{--                            @include('component.themeSwitcher')--}}
                         </ul>
-                        <ul class="menu-btns">
+                        <ul class="menu-btns d-lg-block d-sm-none">
                             <li>
                                 <a href="" class="search-trigger">
-                                    <i style="color: #15480a" class="icon ti-search"></i>
+                                    <i style="color: #0e6e48; font-size: 3vh" class="icon ti-search"></i>
                                 </a>
                             </li>
                         </ul>

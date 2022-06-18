@@ -11,16 +11,18 @@
                                 <img srcset="{{ asset('assets/images/logo.png') }}" alt="logo">
                             </a>
                         </div>
-                        <p>&copy; 2022. All rights reserved</p>
+                        <p style="color: #5e5e5e">&copy; 2022-{{ now()->year }}. {{trans('general.credit')}}</p>
                     </div>                </div><!-- .wgs -->
             </div><!-- .col -->
 
             <div class="col-lg-3 col-sm-6">
                 <div class="wgs">
                     <div class="wgs-content">
-                        <h3 class="wgs-title"> ABOUT</h3>
+                        <h3 class="wgs-title"> {{trans('general.about')}}</h3>
                         <ul class="wgs-menu">
-                            <a style="color: #475e42" href="{{ url('author/8') }}">Columnist</a>
+                            <li>
+                                <a href="{{ url('author/8') }}">Columnist</a>
+                            </li>
                         </ul>
                     </div>
                 </div><!-- .wgs -->
@@ -29,10 +31,12 @@
             <div class="col-lg-3 col-sm-6">
                 <div class="wgs">
                     <div class="wgs-content">
-                        <h3 class="wgs-title">SERVICES</h3>
+                        <h3 class="wgs-title">{{trans('general.services')}}</h3>
                         <ul class="wgs-menu">
                             @foreach($footerPages as $pageLink)
-                                <a style="color: #475e42" href="{{ route('article-details', ['slug' => $pageLink['page']['slug'.'_'.app()->getLocale()]]) }}">{{ $pageLink['page']['title'.'_'.app()->getLocale()] }}</a>
+                                <li>
+                                    <a href="{{ route('article-details', ['slug' => $pageLink['page']['slug'.'_'.app()->getLocale()]]) }}">{{ $pageLink['page']['title'.'_'.app()->getLocale()] }}</a>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
@@ -42,7 +46,8 @@
             <div class="col-lg-3 col-md-auto">
                 <div class="wgs">
                     <div class="wgs-content">
-                        <h3 class="wgs-title">SUBSCRIBE TANVENTURE!</h3>
+                        <h3 class="wgs-title" >{{trans('general.subscribe')}}!</h3>
+                        <p style="font-size: 1.3vh; text-align: center; color: #6c6c6c; margin-top: -1rem">{{trans('general.subscribeFoot')}}</p>
                         <form action="{{route('newsLetter')}}" method="POST">
                             @csrf
                             <div class="form-results">
@@ -57,11 +62,12 @@
                                        type="email"
                                        id="'email"
                                        class="input"
+                                       style="border: 1px solid #858585"
                                        placeholder="Your  Email"
                                        required
                                 >
                                 @error('email')<span class="text-danger">{{$message}}</span>@enderror
-                                <button type="submit"  class="far fa-paper-plane button"></button>
+                                <button type="submit"  class="fa fa-paper-plane button"></button>
                             </div>
                         </form>
                     </div>
