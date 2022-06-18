@@ -1,13 +1,13 @@
 <!-- Header -->
 <header id="header" class="has-fixed is-sticky is-shrink is-boxed header-s1">
     <div class="header-box">
-        <div class="header-main">
+        <div class="header-main" style="background-color: {{ $theme == 'dark' ? 'black' : 'white' }}">
             <div class="header-wrap">
                 <!-- Logo  -->
                 <div class="header-logo logo">
                     <a href="{{ route('landingPage') }}" class="logo-link">
                         <img class="logo-white" src="{{asset("images/logo.png")}}" alt="logo">
-{{--                        <h2 style="font-size: 20px; font-family: Script">TANVENTURE</h2>--}}
+                        {{--                        <h2 style="font-size: 20px; font-family: Script">TANVENTURE</h2>--}}
                     </a>
                 </div>
 
@@ -26,7 +26,7 @@
                 <div class="header-navbar">
                     <nav class="header-menu" id="header-menu">
                         <ul class="menu">
-                            <li class="menu-item  has-sub">
+                            <li class=" menu-item has-sub">
                                 <a
                                     class="nav-link @if(Request::url() == url('/blog')) active @endif"
                                     href="{{route('blog')}}"> {{ __('navbar.blog') }}
@@ -63,7 +63,21 @@
                                     @endforeach
                                 </ul>
                             </li>
+
+{{--                            <li class="menu-item  has-sub">--}}
+{{--                                <a class="menu-link nav-link active menu-toggle">--}}
+{{--                                    {{ __('navbar.settings') }}--}}
+{{--                                    <i class="fa fa-caret-down"></i></a>--}}
+{{--                                <ul class="menu-sub menu-drop">--}}
+{{--                                        <li class="menu-item has-sub">--}}
+{{--                                            @include('component.themeSwitcher')--}}
+{{--                                            @include('component.languageSwitcher')--}}
+{{--                                        </li>--}}
+{{--                                </ul>--}}
+{{--                            </li>--}}
+                            @include('component.themeSwitcher')
                             @include('component.languageSwitcher')
+
                         </ul>
                         <ul class="menu-btns">
                             <li>

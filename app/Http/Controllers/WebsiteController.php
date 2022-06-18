@@ -80,7 +80,7 @@ class WebsiteController extends Controller
     {
         $this->articleRepository->SetVisitor();
 
-        $publishedArticles = $this->articleRepository->publishedArticles(1, 6);
+        $publishedArticles = $this->articleRepository->publishedArticles(1, 10);
         $mostReadArticles = \Cache::remember('mostR_read_posts', config('cache.half_ttl'), function () {
             return $this->articleRepository->mostReadArticles(1, 3);
         });

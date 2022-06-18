@@ -23,6 +23,41 @@ var NioApp =(function (jQ, win, doc){
     return NioApp;
 }(jQuery, window, document));
 
+
+const toggle_icon = document.getElementById('theme-toggle');
+const body = document.getElementsByTagName('body')[0];
+const sun_class = 'icon-sun';
+const moon_class = 'icon-moon';
+const dark_theme_class = 'dark-theme';
+
+toggle_icon.addEventListener('click', function() {
+    if (body.classList.contains(dark_theme_class)) {
+        toggle_icon.classList.add(moon_class);
+        toggle_icon.classList.remove(sun_class);
+
+        body.classList.remove(dark_theme_class);
+
+        setCookie('theme', 'light');
+        window.location.reload()
+    }
+    else {
+        toggle_icon.classList.add(sun_class);
+        toggle_icon.classList.remove(moon_class);
+
+        body.classList.add(dark_theme_class);
+
+        setCookie('theme', 'dark');
+        window.location.reload()
+    }
+});
+
+function setCookie(name, value) {
+    const d = new Date();
+    d.setTime(d.getTime() + (365*24*60*60*1000));
+    const expires = "expires=" + d.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
 $(document).ready(function() {
     $(window).scroll(function(){
         if ($(this).scrollTop() > 100) {

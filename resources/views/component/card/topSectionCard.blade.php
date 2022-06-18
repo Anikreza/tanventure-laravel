@@ -16,6 +16,8 @@
             <p>{{trans('general.'.$time->translatedFormat('M'))}} <strong style="font-weight: lighter">{{trans('general.'.$time->translatedFormat('y'))}}</strong></p>
         </div>
         <div class="post-content">
+            <h4>{{$title}}</h4>
+
             <div class="post-meta d-flex align-items-center">
                 <div class="post-author d-flex align-items-center customAuthorName">
                     <div class="author-thumb">
@@ -25,7 +27,7 @@
                     </div>
                     <div class="author-name" >
                         <a href='{{route('about')}}'>
-                            <p style="color: #4d1219">{{$author}}</p>
+                            <p style="color: #727272">{{$author}}</p>
                         </a>
                     </div>
                 </div><!-- author -->
@@ -35,7 +37,7 @@
                     </ul>
                 </div><!-- .post-tag -->
             </div>
-            <h4 style="color: #155b3f;">{{$title}}</h4>
+{{--            <h4>{{$title}}</h4>--}}
             <p class="customThumbDescription">{{$description}}</p>
         </div>
     </div>

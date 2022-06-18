@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layouts.master')
 @section('content')
     <body class="body-wider" style="background: linear-gradient(180deg,#ffffff,#ccd8e0,#ffffff);">
     <div class="section blog section-x tc-grey">

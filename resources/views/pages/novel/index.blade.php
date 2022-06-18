@@ -1,6 +1,6 @@
-@extends('master')
+@extends('layouts.master')
 @section('content')
-    <div class="section blog section-x" style="background: linear-gradient(180deg,#759b6d,#ffffff,#f3fffb,#ffffff);">
+    <div class="section blog section-x">
         <div style="text-align: center">
             @include('component.breadcrumb')
             <div class="col col-md-12 col-sm-12 article-content w3-animate-zoom"
@@ -44,14 +44,14 @@
                         class="novelAnimation hidden"
                         style="{{ $key%2===0? 'height: 10vh; margin: 2rem; text-align: left' : 'height: 10vh; margin: 2rem; text-align: right'  }}"
                     >
-                        <p style="color:#475e42;">
+                        <p style="color: #838383">
                             ------------------------------------------------------------------------------------------------------------</p>
 
                         <a href="{{ route('article-details', ['slug' => $novel['slug'.'_'.app()->getLocale()]]) }}">
-                            <h2 style="color: #475e42">{{$novel['title'.'_'.app()->getLocale()]}}</h2>
+                            <h2 style="color: #578667">{{$novel['title'.'_'.app()->getLocale()]}}</h2>
                         </a>
                         {{--                    <h2>{{$novel->title}}</h2>--}}
-                        <p style="color:#475e42;">
+                        <p>
                             ------------------------------------------------------------------------------------------------------------</p>
 
                     </div>
@@ -59,7 +59,7 @@
                         style="{{ $key%2===0? 'display: flex; justify-content: space-evenly;' : 'display: flex; justify-content: space-evenly; flex-direction: row-reverse'  }}"
                     >
                         <div class="col col-md-6 col-12 novelAnimation hidden">
-                            <p style="height: 40vh; overflow: hidden; color: #0a1108">
+                            <p style="height: 40vh; overflow: hidden; color: #838383">
                                 {{$novel['excerpt'.'_'.app()->getLocale()]}}
                             </p>
                             <a href="{{ route('article-details', ['slug' => $novel['slug'.'_'.app()->getLocale()]]) }}"

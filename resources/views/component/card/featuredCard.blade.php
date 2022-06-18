@@ -15,13 +15,13 @@
         <ul class="post-tag">
             <li>
                 <a href='{{route('about')}}'>
-                    <span style="color: #4d1219">{{$author}}</span>
+                    <span style="color: #727272">{{$author}}</span>
                 </a>
                 <a>
                     <span>||</span>
                 </a>
                 <a href="{{route('about')}}">
-                    <span style="color: #0f3828">{{trans('general.'.$article->created_at->translatedFormat('M'))}} '{{trans('general.'.$article->created_at->translatedFormat('y'))}}</span>
+                    <span>{{trans('general.'.$article->created_at->translatedFormat('M'))}} '{{trans('general.'.$article->created_at->translatedFormat('y'))}}</span>
                 </a>
             </li>
         </ul>
@@ -30,7 +30,7 @@
 
             </div>
         </div><!-- author -->
-        <h4><a href="{{ route('article-details', ['slug' => $slug]) }}">{{$title}}</a></h4>
+        <h4 style="text-align: center">{{$title}}</h4>
         <p class="customThumbDescription">{{$description}}</p>
         {{--        <a href="{{ route('article-details', ['slug' => $slug]) }}" class="btn-primary btn-arrow">Read More</a>--}}
     </div>

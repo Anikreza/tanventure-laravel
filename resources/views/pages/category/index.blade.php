@@ -1,6 +1,6 @@
-@extends('master')
+@extends('layouts.master')
 @section('content')
-<body class="body-wider" style="background: linear-gradient(180deg,#ffffff,#cce0d0,#ffffff);">
+<body class="body-wider">
 <div class="section blog section-x tc-grey">
     <div style="margin:0 4rem 4rem 4rem">
         @include('component.breadcrumb')

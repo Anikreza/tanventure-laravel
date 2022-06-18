@@ -1,4 +1,4 @@
-<li class="text-secondary" style="transform:rotate(-10deg);">
+<li  style="transform:rotate(-10deg)" class="text-secondary">
     <a class="ml-1 underline ml-2 mr-2" href={{app()->getLocale()=='bn'?"/language/en":"/language/bn"}}>
         <span style="font-family: 'Segoe UI Symbol'; font-size: 2vh">{{app()->getLocale()=='bn'?'ENGLISH' :'বাংলায় পড়ুন'}}
           <i class="fa fa-caret-right" aria-hidden="true"></i>

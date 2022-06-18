@@ -13,7 +13,7 @@
 
 </head>
 
-<body class="body-wider">
+<body class="body-wider {{ $theme . '-theme' }}">
 <div class="preloader preloader-florida"><span class="spinner spinner-alt"><img class="spinner-brand" srcset="{{ asset('assets/images/logo-white.png') }}"  alt=""></span></div>
 
 @include('layouts.navbar')

@@ -1,5 +1,5 @@
 <!-- footer -->
-<footer class="section footer tc-light-dark footer-s1" style="background: linear-gradient(180deg,#ffffff,#1d2f21);">
+<footer class="section footer tc-light-dark footer-s1">
     <div class="container">
         <div class="row gutter-vr-30px">
 

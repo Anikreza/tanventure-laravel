@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layouts.master')
 @section('content')
     <div class="section blog section-x   w3-animate-bottom" style="background: linear-gradient(180deg,#ffffff,#ffffff,#a4b0ad,#ffffff);">
         <div class="customContainer" style="text-align: center">

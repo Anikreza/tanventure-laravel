@@ -31,6 +31,8 @@ return [
     'Dec'=>'December',
     'miss'=>'Ms.',
     'mr'=>'Mr.',
+    'dark'=>'Dark Mode',
+    'light'=>'Light Mode',
     'myWritings'=>'My Articles',
     'whatIWrite'=>'Things I Write About',
 ];

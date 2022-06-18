@@ -30,7 +30,7 @@
             <div class="post-tag  d-flex align-items-center"
                  style="background: rgba(0,0,0,.1); width: fit-content; padding: 1px 2rem 1px 2rem">
                 <ul class="post-cat" style="font-size:1.8vh">
-                    <li><a style="color: #1a0707"
+                    <li><a style="color: #7a7a7a"
                            href="{{ route('category', ['slug' =>  $category['slug'.'_'.app()->getLocale()]]) }}"><em
                                 class="icon ti-bookmark"></em>
                             <span>{{ $category['name'.'_'.app()->getLocale()] }}</span>
@@ -63,7 +63,7 @@
         <br/>
         <hr class="d-sm-block d-lg-none"/>
         {{--                            mobile share--}}
-        <div class="content articleContent" style="text-align: justify; font-size: 2vh">
+        <div class="content articleContent" style="text-align: justify; font-size: 2vh; color: #838383">
             {!! $article['description'.'_'.app()->getLocale()] !!}
         </div>
     </div>

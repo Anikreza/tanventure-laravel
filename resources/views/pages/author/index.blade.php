@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layouts.master')
 @section('content')
     <div class="section blog section-x   w3-animate-bottom">
         <div class="customContainer" style="text-align: center">

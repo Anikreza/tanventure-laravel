@@ -33,11 +33,11 @@
 </div>
 
 <div>
-    <p style="font-size: 1.3vh;letter-spacing: .1rem;text-align: center; text-transform: capitalize; color: #0d6b45"
+    <p style="font-size: 1.3vh;letter-spacing: .1rem;text-align: center; text-transform: capitalize; color: #25855e"
        class="align-items-center w3-animate-left">
         {{trans('general.wayISeeIt')}}
     </p>
-    <h1 style="font-size: 5vh; width: fit-content; margin:auto;  background-color: #cfe7dc; letter-spacing: 1rem;text-align: center; text-transform: uppercase; font-family: 'Script'" class="align-items-center  w3-animate-fading-infinite" >
+    <h1 style="font-size: 5vh; width: fit-content; margin:auto;  background: rgba(207,231,220,.6); letter-spacing: 1rem;text-align: center; text-transform: uppercase; font-family: 'Script'" class="align-items-center  w3-animate-fading-infinite" >
         {{ __('general.tanventure') }}
     </h1>
     <div class="homeIntro">
