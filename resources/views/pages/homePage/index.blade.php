@@ -43,11 +43,11 @@
                 @include('pages.author.partial.contactAuthor')
                 <br/><br/><br/><br/>
             </div>
-            <div class="section section-l section-news customMobileFeaturedSection d-lg-none">
-                @if(count($featuredPosts))
-                    @include('pages.landingPage.partial.featured',['featuredArticles'=>$featuredPosts, 'color'=>'whitesmoke'])
-                @endif
-            </div>
+{{--            <div class="section section-l section-news customMobileFeaturedSection d-lg-none">--}}
+{{--                @if(count($featuredPosts))--}}
+{{--                    @include('pages.landingPage.partial.featured',['featuredArticles'=>$featuredPosts, 'color'=>'whitesmoke'])--}}
+{{--                @endif--}}
+{{--            </div>--}}
         </div>
 
 @endsection

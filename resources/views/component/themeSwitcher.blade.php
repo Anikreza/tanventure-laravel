@@ -1,6 +1,6 @@
 <li class="menu-item text-secondary has-sub" >
     <a style="cursor: pointer" id="theme-toggle">
-       <span style="color: #b23019">
+       <span style="color: #888888">
 {{--         <i class="fa fa-{{ $theme == 'dark' ? 'sun' : 'moon' }}" style="font-size: 35px; " aria-hidden="true"></i>--}}
            {{ $theme == 'dark' ? trans('general.light') :trans('general.dark') }}
        </span>

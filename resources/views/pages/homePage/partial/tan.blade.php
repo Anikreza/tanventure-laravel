@@ -1,11 +1,11 @@
-<div style="transform: rotate(-2deg)">
+<div>
 {{--<h3 class="paddedHeaderTilted">MEET TAN</h3>--}}
 {{--    <br/>--}}
-<div class='home-im'></div>
+<div class='home-im' style="transform: rotate(-1deg)"></div>
 <div class='video'>
     <div>
         <h2>ট্যান...</h2>
-        _________________________________________________________________________
+        <hr/>
 
         <p>ট্যানকে যেবার প্রথম দেখেছিলাম, ওর সারা গায়ে ধুলো, কাদার ছোপ, ছন্নছাড়া এক ভংগি যেনো তার
             চেহারায় গিল্টি করে দেয়া হয়েছে, ওর সাইকেলটা ঠেলে নিয়ে আফতাবনগরের একটা সাকো পার হচ্ছে, মুখে
@@ -28,17 +28,17 @@
         {{--                </Link>--}}
     </div>
 
-    <div>
-        <div class="wgs wgs-sidebar wgs-tags" style="margin-top: 50px">
-            <div class="wgs-content">
-                <ul class="tag-list">
-                    @foreach($tags as $tag)
-                        <li>
-                            <a href="{{ route('tag', ['slug' => \Str::slug($tag->title)]) }}">{{$tag->title}}</a>
-                        </li>
-                    @endforeach</ul>
-            </div>
-        </div>
-    </div>
+{{--    <div>--}}
+{{--        <div class="wgs wgs-sidebar wgs-tags" style="margin-top: 50px">--}}
+{{--            <div class="wgs-content">--}}
+{{--                <ul class="tag-list">--}}
+{{--                    @foreach($tags as $tag)--}}
+{{--                        <li>--}}
+{{--                            <a href="{{ route('tag', ['slug' => \Str::slug($tag->title)]) }}">{{$tag->title}}</a>--}}
+{{--                        </li>--}}
+{{--                    @endforeach</ul>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 </div>
 </div>

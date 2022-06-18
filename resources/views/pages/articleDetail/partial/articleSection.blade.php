@@ -63,7 +63,7 @@
         <br/>
         <hr class="d-sm-block d-lg-none"/>
         {{--                            mobile share--}}
-        <div class="content articleContent" style="text-align: justify; font-size: 2vh; color: #838383">
+        <div class="content articleContent" style="text-align: justify; font-size: 2vh;">
             {!! $article['description'.'_'.app()->getLocale()] !!}
         </div>
     </div>

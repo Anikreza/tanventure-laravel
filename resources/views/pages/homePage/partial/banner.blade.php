@@ -33,7 +33,7 @@
 </div>
 
 <div>
-    <p style="font-size: 1.3vh;letter-spacing: .1rem;text-align: center; text-transform: capitalize; color: #25855e"
+    <p style="font-size: 1.3vh;letter-spacing: .1rem;text-align: center; text-transform: capitalize;"
        class="align-items-center w3-animate-left">
         {{trans('general.wayISeeIt')}}
     </p>

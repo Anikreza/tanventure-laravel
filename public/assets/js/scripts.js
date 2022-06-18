@@ -31,23 +31,33 @@ const moon_class = 'icon-moon';
 const dark_theme_class = 'dark-theme';
 
 toggle_icon.addEventListener('click', function() {
+    // window.location.reload()
+
     if (body.classList.contains(dark_theme_class)) {
         toggle_icon.classList.add(moon_class);
         toggle_icon.classList.remove(sun_class);
+        $( document ).ready(function() {
+            $('.header-main').css("background-color", "white");
+            $('.menu-sub').css("background-color", "white");
+            $('.articleContent').css("color", "black");
+        });
 
         body.classList.remove(dark_theme_class);
 
         setCookie('theme', 'light');
-        window.location.reload()
     }
     else {
         toggle_icon.classList.add(sun_class);
         toggle_icon.classList.remove(moon_class);
+        $( document ).ready(function() {
+            $('.header-main').css("background-color", "black");
+            $('.menu-sub').css("background-color", "black");
+            $('.articleContent').css("color", "#9a9a9a");
+        });
 
         body.classList.add(dark_theme_class);
 
         setCookie('theme', 'dark');
-        window.location.reload()
     }
 });
 
@@ -57,6 +67,37 @@ function setCookie(name, value) {
     const expires = "expires=" + d.toUTCString();
     document.cookie = name + "=" + value + ";" + expires + ";path=/";
 }
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+$( document ).ready(function() {
+    const theme=getCookie('theme')
+    // console.log('theme', theme)
+    if(theme==='dark'){
+        $('.header-main').css("background-color", "black");
+        $('.menu-sub').css("background-color", "black");
+        $('.articleContent').css("color", "#9a9a9a");
+    }
+    else{
+        $('.header-main').css("background-color", "white");
+        $('.menu-sub').css("background-color", "white");
+        $('.articleContent').css("color", "black");
+    }
+});
 
 $(document).ready(function() {
     $(window).scroll(function(){
