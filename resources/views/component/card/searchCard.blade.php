@@ -20,7 +20,7 @@
                         </div>
                         </a>
                         <div class="author-name" style="width: 150px">
-                            <a href="{{route('about')}}">
+                            <a href="{{route('author',['slug' => 8])}}">
                             <p style="font-size: .7rem;">{{$article->author->name}}</p>
                             </a>
                         </div>

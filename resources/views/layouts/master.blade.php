@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="zxx" class="js">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="js">
 <head>
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Site Title  -->
     {!! SEO::generate() !!}
+    <meta itemprop="publisher" content="tanventurer"/>
+    <meta itemprop="author" content="Tanvir Reza Anik"/>
+    <meta itemprop="author" content="তানভীর রেজা অনিক"/>
     <!-- Bundle and Base CSS -->
+
     <link rel="stylesheet" href="{{ asset('assets/css/vendor.bundle.css') }}" >
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" >
 {{--    <link rel="stylesheet" href="{{ asset('assets/css/theme.css') }}" >--}}

@@ -91,7 +91,7 @@
                                                  style="border-radius: 10px">
                                         </span>
                                         <span >
-                                            <a  :href="`/articles/${article.slug_bn}`" target="_blank">{{locale==='en'? article.title_en:article.title_bn }}</a>
+                                            <a  :href="`/articles/${locale==='en'? article.title_en:article.title_bn }`" target="_blank">{{locale==='en'? article.title_en:article.title_bn }}</a>
                                         </span>
                                     </td>
                                     <td>
@@ -218,7 +218,8 @@ export default {
             this.getData()
         },
         edit(slug) {
-            this.$router.push({path: `articles/${slug}/edit`, params: {slug: slug}});
+            // this.$router.push({path: `articles/${slug}/edit`, params: {slug: slug}});
+            window.location.replace(`articles/${slug}/edit`)
         },
         translate(slug) {
             this.$router.push({path: `articles/${slug}/translate`, params: {slug: slug}});

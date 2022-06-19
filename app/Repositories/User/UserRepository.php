@@ -41,14 +41,27 @@ class UserRepository implements UserInterface
                 $gender = 'm';
             }
 
-            $user = User::where('id', $user->id)->update([
-                'first_name' => $request->input('first_name'),
-                'last_name' => $request->input('last_name'),
-                'email' => $request->input('email'),
-                'gender' => $gender,
-                'bio' => $request->input('bio'),
-                'types' => $request->input('types'),
-            ]);
+            if($request->input('locale')=='en'){
+                $user = User::where('id', $user->id)->update([
+                    'first_name_en' => $request->input('first_name'),
+                    'last_name_en' => $request->input('last_name'),
+                    'email' => $request->input('email'),
+                    'gender' => $gender,
+                    'bio_en' => $request->input('bio'),
+                    'types_en' => $request->input('types'),
+                ]);
+            }
+            else{
+                $user = User::where('id', $user->id)->update([
+                    'first_name_bn' => $request->input('first_name'),
+                    'last_name_bn' => $request->input('last_name'),
+                    'email' => $request->input('email'),
+                    'gender' => $gender,
+                    'bio_bn' => $request->input('bio'),
+                    'types_bn' => $request->input('types'),
+                ]);
+            }
+
 
             DB::commit();
 
@@ -81,16 +94,26 @@ class UserRepository implements UserInterface
                 $gender = 'm';
             }
 
-            $user = User::where('id', $user->id)->update([
-                'first_name' => $request->input('first_name'),
-                'last_name' => $request->input('last_name'),
-                'email' => $request->input('email'),
-                'gender' => $gender,
-                'bio' => $request->input('bio'),
-                'types' => $request->input('types'),
-                'image' => FileDirectory::AVATAR . $user->id . '/' . $request->file('image')->getClientOriginalName()
-
-            ]);
+            if($request->input('locale')=='en'){
+                $user = User::where('id', $user->id)->update([
+                    'first_name_en' => $request->input('first_name'),
+                    'last_name_en' => $request->input('last_name'),
+                    'email' => $request->input('email'),
+                    'gender' => $gender,
+                    'bio_en' => $request->input('bio'),
+                    'types_en' => $request->input('types'),
+                ]);
+            }
+            else{
+                $user = User::where('id', $user->id)->update([
+                    'first_name_bn' => $request->input('first_name'),
+                    'last_name_bn' => $request->input('last_name'),
+                    'email' => $request->input('email'),
+                    'gender' => $gender,
+                    'bio_bn' => $request->input('bio'),
+                    'types_bn' => $request->input('types'),
+                ]);
+            }
 
             DB::commit();
 

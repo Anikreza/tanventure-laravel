@@ -2777,17 +2777,6 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_admin_views_Pages_Translate_vue").then(__webpack_require__.bind(__webpack_require__, /*! @/views/Pages/Translate.vue */ "./resources/js/admin/views/Pages/Translate.vue"));
   }
 }, {
-  path: 'ad-spaces',
-  name: 'ad-spaces',
-  meta: {
-    name: 'AdSpace',
-    slug: 'ad-spaces',
-    requiresAuth: true
-  },
-  component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_admin_views_AdSpace_List_vue").then(__webpack_require__.bind(__webpack_require__, /*! @/views/AdSpace/List.vue */ "./resources/js/admin/views/AdSpace/List.vue"));
-  }
-}, {
   path: 'widget-settings',
   name: 'widget-settings',
   meta: {
@@ -74965,7 +74954,7 @@ webpackContext.id = "./resources/js/admin/store/modules sync recursive \\.js$";
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_admin_views_errors_404_vue":1,"routes":1,"resources_js_admin_components_LoginForm_vue":1,"resources_js_admin_views_DashboardView_vue":1,"resources_js_admin_components_dash-views_Dashboard_vue":1,"resources_js_admin_views_UserProfile_vue":1,"resources_js_admin_views_Articles_List_vue":1,"resources_js_admin_views_Articles_New_vue":1,"resources_js_admin_views_Articles_Edit_vue":1,"resources_js_admin_views_Articles_Translate_vue":1,"resources_js_admin_views_Categories_List_vue":1,"resources_js_admin_views_Pages_List_vue":1,"resources_js_admin_views_Pages_New_vue":1,"resources_js_admin_views_Pages_Edit_vue":1,"resources_js_admin_views_Pages_Translate_vue":1,"resources_js_admin_views_AdSpace_List_vue":1,"resources_js_admin_views_Settings_WidgetSettings_vue":1,"resources_js_admin_views_Settings_SystemSettings_vue":1}[chunkId]) return "js/admin/index/" + chunkId + ".js";
+/******/ 			if ({"resources_js_admin_views_errors_404_vue":1,"routes":1,"resources_js_admin_components_LoginForm_vue":1,"resources_js_admin_views_DashboardView_vue":1,"resources_js_admin_components_dash-views_Dashboard_vue":1,"resources_js_admin_views_UserProfile_vue":1,"resources_js_admin_views_Articles_List_vue":1,"resources_js_admin_views_Articles_New_vue":1,"resources_js_admin_views_Articles_Edit_vue":1,"resources_js_admin_views_Articles_Translate_vue":1,"resources_js_admin_views_Categories_List_vue":1,"resources_js_admin_views_Pages_List_vue":1,"resources_js_admin_views_Pages_New_vue":1,"resources_js_admin_views_Pages_Edit_vue":1,"resources_js_admin_views_Pages_Translate_vue":1,"resources_js_admin_views_Settings_WidgetSettings_vue":1,"resources_js_admin_views_Settings_SystemSettings_vue":1}[chunkId]) return "js/admin/index/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

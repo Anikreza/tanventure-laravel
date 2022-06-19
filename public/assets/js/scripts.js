@@ -37,6 +37,7 @@ const dark_theme_class = 'dark-theme';
 toggle_icon.addEventListener('click', function () {
 
     sessionStorage.setItem('themeFlag', 'true');
+    const bg='#16191e'
 
     if (body.classList.contains(dark_theme_class)) {
         toggle_icon.classList.add(moon_class);
@@ -44,7 +45,7 @@ toggle_icon.addEventListener('click', function () {
 
         $('.header-main').css("background-color", "white");
         $('.menu-sub').css("background-color", "white");
-        $('.articleContent').css("color", "black");
+        $('.articleContent').css("color", bg);
         $('.homeIntroLayer').css({"border-left": "1.5vw solid #56987e", "border-right": "1.5vw solid #6bbd9c"});
         $('.homeIntro').css({"border-left": "1.5vw solid #6bbd9c", "border-right": "1.5vw solid #56987e"});
         $('.header-navbar').css('background-color', 'white');
@@ -54,12 +55,12 @@ toggle_icon.addEventListener('click', function () {
     } else {
         toggle_icon.classList.add(sun_class);
         toggle_icon.classList.remove(moon_class);
-        $('.menu-sub').css("background-color", "black");
-        $('.header-main').css("background-color", "black");
+        $('.menu-sub').css("background-color", bg);
+        $('.header-main').css("background-color", bg);
         $('.articleContent').css("color", "#9a9a9a");
         $('.homeIntroLayer').css({"border-left": "1.5vw solid #042518", "border-right": "1.5vw solid #042518"});
         $('.homeIntro').css({"border-left": "1.5vw solid #042518", "border-right": "1.5vw solid #042518"});
-        $('.header-navbar').css('background-color', 'black');
+        $('.header-navbar').css('background-color', bg);
 
         body.classList.add(dark_theme_class);
         setCookie('theme', 'dark');
@@ -115,18 +116,19 @@ $(document).ready(function () {
 
     const theme = getCookie('theme')
     // console.log('theme', theme)
+    const bg='#16191e'
     if (theme === 'dark') {
-        $('.header-main').css("background-color", "black");
-        $('.menu-sub').css("background-color", "black");
+        $('.header-main').css("background-color", bg);
+        $('.menu-sub').css("background-color", bg);
         $('.articleContent').css("color", "#9a9a9a");
         $('.homeIntroLayer').css({"border-left": "1.5vw solid #042518", "border-right": "1.5vw solid #042518"});
         $('.homeIntro').css({"border-left": "1.5vw solid #042518", "border-right": "1.5vw solid #042518"});
-        $('.header-navbar').css('background-color', 'black');
+        $('.header-navbar').css('background-color', bg);
 
     } else {
         $('.header-main').css("background-color", "white");
         $('.menu-sub').css("background-color", "white");
-        $('.articleContent').css("color", "black");
+        $('.articleContent').css("color", bg);
         $('.homeIntroLayer').css({"border-left": "1.5vw solid #6bbd9c", "border-right": "1.5vw solid #6bbd9c"});
         $('.homeIntro').css({"border-left": "1.5vw solid #6bbd9c", "border-right": "1.5vw solid #56987e"});
         $('.header-navbar').css('background-color', 'white');

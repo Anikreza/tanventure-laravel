@@ -716,10 +716,6 @@ var adminRoutes = [{
   icon: 'mdi-cog',
   slug: 'settings',
   subLinks: [{
-    to: "/".concat(adminPrefixSlug, "/ad-spaces"),
-    icon: 'mdi-google-ads',
-    slug: 'ad-spaces'
-  }, {
     to: "/".concat(adminPrefixSlug, "/widget-settings"),
     icon: 'mdi-saw-blade',
     slug: 'widget-settings'

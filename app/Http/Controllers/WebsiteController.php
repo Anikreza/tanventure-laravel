@@ -16,6 +16,11 @@ use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\TwitterCard;
+// OR with multi
+use Artesaos\SEOTools\Facades\JsonLdMulti;
+
+// OR
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Share;
@@ -44,10 +49,7 @@ class WebsiteController extends Controller
             'title' => $this->homePageSeoData['home_page_title'],
             'description' => $this->homePageSeoData['home_page_description'],
             'keywords' => $this->homePageSeoData['home_page_keywords'],
-            'image' => $this->homePageSeoData['home_page_image_url'] ?
-                Storage::disk('public')->url('settings/' . basename($this->homePageSeoData['home_page_image_url']))
-                :
-                asset('asset/logo.png'),
+            'image' => asset('images/logo.png'),
             'type' => 'website',
             'site' => env('APP_URL'),
             'app_name' => $this->homePageSeoData['app_name'],
@@ -213,6 +215,7 @@ class WebsiteController extends Controller
 
         $appName = env('APP_NAME');
         $this->baseSeoData['title'] = $article['title' . '_' . app()->getLocale()] . '-' . $appName;
+        $this->baseSeoData['description'] = $article['excerpt' . '_' . app()->getLocale()] . '-' . $appName;
         $this->baseSeoData['keywords'] = $tagTitles;
         $this->seo($this->baseSeoData);
         $shareLinks = $this->getSeoLinksForDetailsPage($article);
@@ -261,7 +264,7 @@ class WebsiteController extends Controller
 
         // SEO META INFO
         $appName = env('APP_NAME');
-        if ($tag->title == 'XYZs column') {
+        if ($tag->title == "Tanvir Reza Anik's column") {
             $this->baseSeoData['title'] = " $appName | {$this->baseSeoData['app_name']}";
         } else {
             $this->baseSeoData['title'] = "{$tag->title} | {$this->baseSeoData['app_name']}";
@@ -339,7 +342,7 @@ class WebsiteController extends Controller
     {
         $this->baseSeoData = [
             'title' => $data['title' . '_' . app()->getLocale()] . " | {$this->baseSeoData['app_name']}",
-            'description' => $data->excerpt,
+            'description' => $data['excerpt' . '_' . app()->getLocale()],
             'keywords' => count($data->keywords) ? implode(", ", $data->keywords->pluck('title')->toArray()) : $this->baseSeoData['keywords'],
             'image' => $data->image_url,
             'type' => 'article',
@@ -367,9 +370,16 @@ class WebsiteController extends Controller
         SEOMeta::setRobots($data['robots']);
         SEOMeta::setCanonical(url()->full());
 
+        SEOTools::opengraph()->setUrl(url()->current());
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@tanventurer');
+        SEOTools::jsonLd()->addImage(asset('/images/logo.png'));
+
 //        OpenGraph::addProperty('keywords', '$value'); // value can be string or array
         OpenGraph::setTitle($data['title']); // define title
         OpenGraph::setDescription($data['description']);  // define description
+        OpenGraph::setSiteName($data['app_name']);
+        OpenGraph::setArticle($data);
 
         if ($data['image']) {
             OpenGraph::addImage($data['image']); // add image url
@@ -409,7 +419,7 @@ class WebsiteController extends Controller
         } else {
             JsonLd::setImage($this->homePageSeoData['home_page_image_url']); // add image url
         }
-        JsonLd::setSite('@DemoBlog'); // site of twitter card tag
+        JsonLd::setSite('@Tanventurer'); // site of twitter card tag
         JsonLd::setUrl(url()->current()); // url of twitter card tag
     }
 }

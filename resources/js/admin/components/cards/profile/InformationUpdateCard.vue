@@ -24,12 +24,19 @@
                                                       v-model="profile.last_name"
                             />
                         </v-flex>
-                        <v-col cols="12" md="6">
+                        <v-col cols="12" md="12">
                             <VTextFieldWithValidation :label="$t('Fields.email')"
                                                       disabled
                                                       field="email"
                                                       rules="required|email"
                                                       v-model="profile.email"
+                            />
+                        </v-col>
+                        <v-col cols="12" md="12">
+                            <VTextFieldWithValidation :label="$t('Fields.email')"
+                                                      hidden
+                                                      field="email"
+                                                      v-model="profile.locale"
                             />
                         </v-col>
                         <v-flex xs12 md6>
@@ -111,8 +118,9 @@ export default {
         VTextAreaFieldWithValidation,
         VueEditor
     },
-    data: () => {
+    data () {
         return {
+            locale:this.$i18n.locale,
             editorConfig: {
                 modules: {
                     imageDrop: true,
@@ -127,6 +135,7 @@ export default {
                 bio: '',
                 types: '',
                 image: '',
+                locale: this.$i18n.locale,
             },
         }
     },
@@ -134,13 +143,14 @@ export default {
         const {user} = this.$store.state
         this.profile = {
             gender: parseInt(user.gender),
-            first_name: user.first_name,
-            last_name: user.last_name,
+            first_name: this.locale==='en'? user.first_name_en:user.first_name_bn,
+            last_name: this.locale==='en'? user.last_name_en:user.last_name_bn,
             email: user.email,
-            bio: user.bio,
-            types: user.types,
+            bio: this.locale==='en'? user.bio_en:user.bio_bn,
+            types: this.locale==='en'? user.types_en:user.types_bn,
             image: user.image,
         }
+        console.log('user', user)
     },
     methods: {
         async onSubmit() {
@@ -151,10 +161,15 @@ export default {
             this.$store.dispatch('saveProfile', formData)
                 .then(res => {
                     this.$store.dispatch('app/setSnackbarMessage', this.$t('Messages.saved_successfully'))
-                    window.location.reload()
+                    // window.location.reload()
                 })
                 .catch(() => this.$store.dispatch('app/setSnackbarMessage', this.$t('Messages.something_went_wrong')))
         },
+    },
+    watch: {
+        '$i18n.locale': async function (newVal, oldVal) {
+            window.location.reload()
+        }
     }
 }
 </script>

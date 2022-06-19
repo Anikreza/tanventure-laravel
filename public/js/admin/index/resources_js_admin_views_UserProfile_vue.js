@@ -126,6 +126,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -153,6 +160,7 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_8__.Quill.register('modules/imageDrop', qui
   },
   data: function data() {
     return {
+      locale: this.$i18n.locale,
       editorConfig: {
         modules: {
           imageDrop: true,
@@ -166,7 +174,8 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_8__.Quill.register('modules/imageDrop', qui
         email: '',
         bio: '',
         types: '',
-        image: ''
+        image: '',
+        locale: this.$i18n.locale
       }
     };
   },
@@ -174,13 +183,14 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_8__.Quill.register('modules/imageDrop', qui
     var user = this.$store.state.user;
     this.profile = {
       gender: parseInt(user.gender),
-      first_name: user.first_name,
-      last_name: user.last_name,
+      first_name: this.locale === 'en' ? user.first_name_en : user.first_name_bn,
+      last_name: this.locale === 'en' ? user.last_name_en : user.last_name_bn,
       email: user.email,
-      bio: user.bio,
-      types: user.types,
+      bio: this.locale === 'en' ? user.bio_en : user.bio_bn,
+      types: this.locale === 'en' ? user.types_en : user.types_bn,
       image: user.image
     };
+    console.log('user', user);
   },
   methods: {
     onSubmit: function onSubmit() {
@@ -211,9 +221,8 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_8__.Quill.register('modules/imageDrop', qui
                 formData = _objectSpread(_objectSpread({}, profile), address);
 
                 _this.$store.dispatch('saveProfile', formData).then(function (res) {
-                  _this.$store.dispatch('app/setSnackbarMessage', _this.$t('Messages.saved_successfully'));
+                  _this.$store.dispatch('app/setSnackbarMessage', _this.$t('Messages.saved_successfully')); // window.location.reload()
 
-                  window.location.reload();
                 })["catch"](function () {
                   return _this.$store.dispatch('app/setSnackbarMessage', _this.$t('Messages.something_went_wrong'));
                 });
@@ -226,6 +235,30 @@ vue2_editor__WEBPACK_IMPORTED_MODULE_8__.Quill.register('modules/imageDrop', qui
         }, _callee);
       }))();
     }
+  },
+  watch: {
+    '$i18n.locale': function () {
+      var _$i18nLocale = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(newVal, oldVal) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                window.location.reload();
+
+              case 1:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      function $i18nLocale(_x, _x2) {
+        return _$i18nLocale.apply(this, arguments);
+      }
+
+      return $i18nLocale;
+    }()
   }
 });
 
@@ -13926,7 +13959,7 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", md: "6" } },
+                              { attrs: { cols: "12", md: "12" } },
                               [
                                 _c("VTextFieldWithValidation", {
                                   attrs: {
@@ -13941,6 +13974,28 @@ var render = function() {
                                       _vm.$set(_vm.profile, "email", $$v)
                                     },
                                     expression: "profile.email"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", md: "12" } },
+                              [
+                                _c("VTextFieldWithValidation", {
+                                  attrs: {
+                                    label: _vm.$t("Fields.email"),
+                                    hidden: "",
+                                    field: "email"
+                                  },
+                                  model: {
+                                    value: _vm.profile.locale,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.profile, "locale", $$v)
+                                    },
+                                    expression: "profile.locale"
                                   }
                                 })
                               ],

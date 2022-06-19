@@ -2,7 +2,7 @@
 return [
     "tanventure" => "tanventure",
     "subscribe" => "Subscribe Tanventure",
-    "subscribeFoot" => "To Get Latest Updates & Be With Tanventurer",
+    "subscribeFoot" => "To Get Latest Updates & Be With Me",
     "letMe" => "I Have Stories! Let Me Tell You A Story...",
     'iAm' => "Hey! I Am Tanvir. But You Can Call Me Tan",
     'anotherStory' => "I'm Planning On Travelling Whole Of The World On My Bike",

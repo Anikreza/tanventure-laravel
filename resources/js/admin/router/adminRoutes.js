@@ -73,12 +73,6 @@ const routes = [
         component: () => import(`@/views/Pages/Translate.vue`),
     },
     {
-        path: 'ad-spaces',
-        name: 'ad-spaces',
-        meta: {name: 'AdSpace', slug: 'ad-spaces', requiresAuth: true},
-        component: () => import(`@/views/AdSpace/List.vue`)
-    },
-    {
         path: 'widget-settings',
         name: 'widget-settings',
         meta: {name: 'Widget Settings', slug: 'widget-settings', requiresAuth: true},

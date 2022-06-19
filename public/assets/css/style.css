@@ -1017,7 +1017,7 @@ h6, .h6, .fz-6 { font-size: 0.875rem; }
 .tc-grey { color: #4b4b4b !important; }
 .tc-grey-alt { color: #4a4a4a !important; }
 .tc-alt { color: #4b4b4b; }
-.tc-light-dark { color: rgba(255, 255, 255, 0.7) !important; box-shadow: 12px 1px 12px 12px #031f17;}
+.tc-light-dark { color: rgba(255, 255, 255, 0.7) !important; box-shadow: 12px 1px 12px 12px #333333;}
 .tc-light-dark h1, .tc-light-dark h2, .tc-light-dark h3, .tc-light-dark h4, .tc-light-dark h5 {font-weight: 300; color: #283625; }
 .tc-bunker { color: #475e42; }
 .tc-bunker p:not(.lead) { color: #5c7971; }
@@ -5148,7 +5148,7 @@ hr{border:0;border-top:1px solid #cbcbcb;margin:20px 0}
 
 .dark-theme {
     color: #b2b2b2;
-    background-color: #000000;
+    background-color: #16191e;
 }
 
 .tooltip {

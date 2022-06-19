@@ -1,6 +1,5 @@
 <!-- Header -->
-<header id="header" class="has-fixed is-sticky is-shrink is-boxed header-s1">
-    <div class="header-box">
+<header id="header" class="has-fixed is-sticky is-boxed header-s1">
         <div class="header-main">
             <div class="header-wrap">
                 <!-- Logo  -->
@@ -103,6 +102,5 @@
                 <!-- . header-search -->
             </div>
         </div>
-    </div>
 </header>
 <!-- end header -->

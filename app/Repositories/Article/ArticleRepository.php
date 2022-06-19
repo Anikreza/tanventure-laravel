@@ -50,10 +50,13 @@ class ArticleRepository implements ArticleInterface
     public function update(Request $request, int $id): array
     {
         $article = Article::findOrFail($id);
-        $isPublishedBefore = $article->status;
-
+        $isPublishedBefore = $article->published;
+        $isTranslatedBefore = $article->title_en;
         $image_url = $this->storeImage($request, $currentArticle = $article);
         $data = $this->storeData($request, $image_url);
+        if($article['slug_en']){
+            $data['slug_en']=$article['slug_en'];
+        }
         // Category
         $article->categories()->detach();
         $categoryIDs = $this->getCategoryIDs($request->input('categories'));
@@ -65,8 +68,12 @@ class ArticleRepository implements ArticleInterface
 
         $article->update($data);
 
-        if($request->input('published')===1){
+
+        if($isPublishedBefore===0 && $request->input('published')===1){
             $this->sendMail($article);
+        }
+        if(!$isTranslatedBefore && $request->input('published')===1){
+            $this->sendMailEnglish($article);
         }
 
         return ['article' => $article, 'previouslyPublished' => $isPublishedBefore];
@@ -75,10 +82,11 @@ class ArticleRepository implements ArticleInterface
     public function translate(Request $request, int $id): array
     {
         $article = Article::findOrFail($id);
+        $isTranslatedBefore = $article->title_en;
         $data = $this->translateData($request);
         $article->update($data);
 
-        if($article->published===1){
+        if(!$isTranslatedBefore && $article->published===1){
             $this->sendMailEnglish($article);
         }
 
