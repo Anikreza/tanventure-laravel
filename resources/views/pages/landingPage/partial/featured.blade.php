@@ -1,6 +1,6 @@
 <div class="customContainer">
     <div class="row justify-content-center">
-        <h5 class="heading-xs dash dash-both">Featured Articles</h5>
+        <h5 class="heading-theme dash dash-both">{{trans('general.featured')}}</h5>
     </div>
     <br/>
     <br/>

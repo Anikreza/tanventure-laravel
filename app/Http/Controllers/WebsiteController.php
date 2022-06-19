@@ -65,6 +65,10 @@ class WebsiteController extends Controller
             return $this->articleRepository->publishedFeaturedArticles(1, 4);
         });
 
+        $continentArticles = \Cache::remember('continental_posts', config('cache.long_ttl'), function () {
+            return $this->articleRepository->continentArticles();
+        });
+//        dd($continentArticles);
         $footerPages = \Cache::remember('footer_pages', config('cache.default_ttl'), function () {
             return PageLink::where('key', 'footer_pages')->with('page:id,title_en,title_bn,slug_en,slug_bn')->get()->toArray();
         });
@@ -74,6 +78,7 @@ class WebsiteController extends Controller
         view()->share('categories', $categories);
         view()->share('tags', $tags);
         view()->share('featuredPosts', $featuredArticles);
+        view()->share('continentArticles', $continentArticles);
     }
 
     public function index()

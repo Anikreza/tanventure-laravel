@@ -2,7 +2,7 @@
     <br/>
     <br/>
     <div class="row justify-content-center">
-        <h5 class="heading-xs dash dash-both">Most Read Articles</h5>
+        <h5 class="heading-theme dash dash-both">{{trans('general.mostRead')}}</h5>
     </div>
     <br/>
     <br/>

@@ -1824,7 +1824,7 @@ h6, .h6, .fz-6 { font-size: 0.875rem; }
 .tc-bunker .heading-xs:not(.tc-primary) { color: rgba(255, 255, 255, 0.7) !important; }
 .heading-xs.tc-primary { color: #ff4157 !important; }
 .bg-ocean-pattern .heading-xs.tc-primary { color: #ff4157 !important; }
-.heading-theme { color: #ff4157 !important; }
+.heading-theme { color: #149b65 !important; }
 .tc-bunker .heading-theme:not(.tc-primary) { color: #ff4157 !important; }
 .bg-ocean-pattern .tc-bunker .heading-theme:not(.tc-primary) { color: #ff4157 !important; }
 

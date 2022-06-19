@@ -72,8 +72,8 @@ class ArticleRepository implements ArticleInterface
         $image = $request->image;
         if ($request->hasFile('image')) {
             $image_ext = $image->getClientOriginalExtension();
-            $image_full_name = 'cover_' . $request->input('title_bn') . '.' . $image_ext;
-            $upload_path = 'article/images/';
+            $image_full_name = 'cover_' . str_replace(' ', '_',$request->input('title_bn')) . '.' . $image_ext;
+            $upload_path = 'assets/images/';
             $image_url = $upload_path . $image_full_name;
             $image->move($upload_path, $image_full_name);
         } else {
@@ -259,22 +259,20 @@ class ArticleRepository implements ArticleInterface
     private function baseQuery(int $categoryId = 1)
     {
         return $this->model->whereHas('categories', function ($q) use ($categoryId) {
-            $q->where('is_published', '=', 0);
+            $q->where('published', '=', 1);
             $q->when($categoryId !== 1, function ($sq) use ($categoryId) {
                 $sq->where('category_id', $categoryId);
             });
         });
     }
 
-    public function publishedArticles(int $categoryId, int $limit)
+    public function publishedArticles(int $categoryId, int $limit): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
-        return \Cache::remember('published_posts', config('cache.half_ttl'), function () use ($categoryId, $limit) {
-            return $this->baseQuery($categoryId)
+            return $this->model
                 ->with('categories')
                 ->with('author')
                 ->latest()
                 ->paginate($limit);
-        });
     }
 
     public function getNovels()
@@ -307,6 +305,15 @@ class ArticleRepository implements ArticleInterface
             ->with('author')
             ->limit($limit)
             ->orderBy('id', 'desc')
+            ->get();
+    }
+
+    public function continentArticles()
+    {
+        return $this->baseQuery(5)
+            ->latest()
+            ->with('author')
+            ->orderBy('title_en', 'asc')
             ->get();
     }
 

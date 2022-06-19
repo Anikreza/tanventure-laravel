@@ -1,4 +1,6 @@
 
+@if($category['name'.'_'.'en']!=='continents')
+
 <div class="contentHoverTop">
     <div class="content-overlay"></div>
     <div>
@@ -42,6 +44,6 @@
         </div>
     </div>
 </div>
-
+@endif
 
 
