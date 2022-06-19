@@ -1,4 +1,4 @@
-<template>
+<template xmlns="http://www.w3.org/1999/html">
     <div>
         <material-card
             :color="color"
@@ -14,20 +14,36 @@
                         </th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <thead v-if="loading" style="height: 100vh;">
+                    <v-card-text>
+                        <v-progress-circular
+                            indeterminate
+                            color="green"
+                            class="mb-0"/>
+                    </v-card-text>
+                    </thead>
+                    <thead v-else>
                     <tr>
-                        <td> {{ articles[0].title }}</td>
+                        <td>  {{locale==='en'?articles[0].title_en:articles[0].title_bn}} </td>
                         <td> {{ articles[0].viewed }}</td>
                     </tr>
                     <tr>
-                        <td> {{ articles[1].title }}</td>
+                        <td> {{locale==='en'?articles[1].title_en:articles[1].title_bn}}</td>
                         <td> {{ articles[1].viewed }}</td>
                     </tr>
                     <tr>
-                        <td> {{ articles[2].title }}</td>
+                        <td> {{locale==='en'?articles[2].title_en:articles[2].title_bn}}</td>
                         <td> {{ articles[2].viewed }}</td>
                     </tr>
-                    </tbody>
+                    <tr>
+                        <td> {{locale==='en'?articles[3].title_en:articles[3].title_bn}}</td>
+                        <td> {{ articles[2].viewed }}</td>
+                    </tr>
+                    <tr>
+                        <td> {{locale==='en'?articles[4].title_en:articles[4].title_bn}}</td>
+                        <td> {{ articles[2].viewed }}</td>
+                    </tr>
+                    </thead>
                 </template>
             </v-simple-table>
         </material-card>
@@ -75,33 +91,12 @@ export default {
     },
     data() {
         return {
+            locale:this.$i18n.locale,
             loading: false,
             articles: {},
-            editId: null,
-            categories: [
-                {name: 'All', id: null},
-            ],
-            statuses: [
-                {name: 'All', id: 1},
-                {name: 'Published', id: 1},
-                {name: 'Pending', id: 0},
-            ],
-            currentPage: 1,
-            filter: {
-                search: null,
-                category: null,
-                is_published: null,
-            }
         }
     },
     methods: {
-        async getCategories() {
-            this.loading = true;
-            await categoryApi.getCategories('*').then(res => {
-                this.categories = [...this.categories, ...res.data.data];
-                this.loading = false;
-            });
-        },
         getData() {
             this.loading = true;
             const query = qs.stringify(this.filter, {encode: false, skipNulls: true});
@@ -122,7 +117,6 @@ export default {
     },
 
     async created() {
-        await this.getCategories();
         await this.getData();
     }
 }

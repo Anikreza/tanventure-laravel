@@ -56,7 +56,7 @@
                     </v-row>
                     <v-row>
                         <v-col style="text-align: center">
-                            <v-btn depressed color="primary" @click="handleSubmit(save)">
+                            <v-btn  :loading="loading" depressed color="primary" @click="handleSubmit(save)">
                                 {{$t('Common.save')}}
                             </v-btn>
                         </v-col>

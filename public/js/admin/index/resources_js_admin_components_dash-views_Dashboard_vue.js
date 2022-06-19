@@ -106,233 +106,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 // Plugins
 
 
@@ -350,86 +123,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      dailySalesChart: {
-        data: {
-          labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-          series: [[this.dailyData]]
-        },
-        options: {
-          lineSmooth: this.$chartist.Interpolation.cardinal({
-            tension: 0
-          }),
-          low: 0,
-          high: 50,
-          // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-          chartPadding: {
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0
-          }
-        }
-      },
-      dataCompletedTasksChart: {
-        data: {
-          labels: ['12am', '3pm', '6pm', '9pm', '12pm', '3am', '6am', '9am'],
-          series: [[230, 750, 450, 300, 280, 240, 200, 190]]
-        },
-        options: {
-          lineSmooth: this.$chartist.Interpolation.cardinal({
-            tension: 0
-          }),
-          low: 0,
-          high: 1000,
-          // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-          chartPadding: {
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0
-          }
-        }
-      },
-      emailsSubscriptionChart: {
-        data: {
-          labels: ['Ja', 'Fe', 'Ma', 'Ap', 'Mai', 'Ju', 'Jul', 'Au', 'Se', 'Oc', 'No', 'De'],
-          series: [[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]]
-        },
-        options: {
-          axisX: {
-            showGrid: false
-          },
-          low: 0,
-          high: 1000,
-          chartPadding: {
-            top: 0,
-            right: 5,
-            bottom: 0,
-            left: 0
-          }
-        },
-        responsiveOptions: [['screen and (max-width: 768x)', {
-          seriesBarDistance: 5,
-          axisX: {
-            labelInterpolationFnc: function labelInterpolationFnc(value) {
-              return value[0];
-            }
-          }
-        }]]
-      },
       tabs: 0,
-      list: {
-        0: false,
-        1: false,
-        2: false
-      },
       articleCountInLastDay: 0,
       allArticleCount: 0,
       visitors: 0,
       visitorsInLastWeek: 0,
       totalVisitsInLastDay: 0,
       totalVisitsAllTime: 0,
-      categories: 0,
+      getSubsCount: 0,
+      getLastWeekSubsCount: 0,
       dailyData: []
     };
   },
@@ -449,13 +151,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this.visitorsInLastWeek = res.data.LastWeeksUniqueVisitors.original.data;
         _this.totalVisitsAllTime = res.data.totalVisits.original.data;
         _this.totalVisitsInLastDay = res.data.totalVisitsLastDay.original.data;
-        _this.categories = res.data.categoryCount.original.data;
+        _this.getSubsCount = res.data.getSubsCount.original.data;
+        _this.getLastWeekSubsCount = res.data.getLastWeekSubsCount.original.data;
         _this.dailyData = res.data.hitsPerDayLastWeek.original.data;
         _this.loading = false;
       })["catch"](function (err) {
         _this.loading = false;
-      })["finally"](function () {
-        console.log('again', _this.dailyData[0].visits);
       });
     }
   },
@@ -502,22 +203,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(qs__WEBPACK_IMPORTED_MODULE_4__);
 
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -590,57 +295,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
+      locale: this.$i18n.locale,
       loading: false,
-      articles: {},
-      editId: null,
-      categories: [{
-        name: 'All',
-        id: null
-      }],
-      statuses: [{
-        name: 'All',
-        id: 1
-      }, {
-        name: 'Published',
-        id: 1
-      }, {
-        name: 'Pending',
-        id: 0
-      }],
-      currentPage: 1,
-      filter: {
-        search: null,
-        category: null,
-        is_published: null
-      }
+      articles: {}
     };
   },
   methods: {
-    getCategories: function getCategories() {
-      var _this = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _this.loading = true;
-                _context.next = 3;
-                return _api_resources_category__WEBPACK_IMPORTED_MODULE_3__.default.getCategories('*').then(function (res) {
-                  _this.categories = [].concat(_toConsumableArray(_this.categories), _toConsumableArray(res.data.data));
-                  _this.loading = false;
-                });
-
-              case 3:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    },
     getData: function getData() {
-      var _this2 = this;
+      var _this = this;
 
       this.loading = true;
       var query = qs__WEBPACK_IMPORTED_MODULE_4___default().stringify(this.filter, {
@@ -649,11 +311,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
       _api_resources_article__WEBPACK_IMPORTED_MODULE_2__.default.list(this.currentPage, query).then(function (res) {
         console.log('simpletable', res.data.all.original.data.data);
-        _this2.articles = res.data.all.original.data.data;
-        _this2.currentPage = res.data.all.original.data.current_page;
-        _this2.loading = false;
+        _this.articles = res.data.all.original.data.data;
+        _this.currentPage = res.data.all.original.data.current_page;
+        _this.loading = false;
       })["catch"](function (err) {
-        _this2.loading = false;
+        _this.loading = false;
       });
     },
     paginate: function paginate(current_page) {
@@ -662,26 +324,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   created: function created() {
-    var _this3 = this;
+    var _this2 = this;
 
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
-          switch (_context2.prev = _context2.next) {
+          switch (_context.prev = _context.next) {
             case 0:
-              _context2.next = 2;
-              return _this3.getCategories();
+              _context.next = 2;
+              return _this2.getData();
 
             case 2:
-              _context2.next = 4;
-              return _this3.getData();
-
-            case 4:
             case "end":
-              return _context2.stop();
+              return _context.stop();
           }
         }
-      }, _callee2);
+      }, _callee);
     }))();
   }
 });
@@ -6986,7 +6644,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _SimpleTable_vue_vue_type_template_id_4cb2a03a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SimpleTable.vue?vue&type=template&id=4cb2a03a& */ "./resources/js/admin/components/general/SimpleTable.vue?vue&type=template&id=4cb2a03a&");
+/* harmony import */ var _SimpleTable_vue_vue_type_template_id_4cb2a03a_xmlns_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SimpleTable.vue?vue&type=template&id=4cb2a03a&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml& */ "./resources/js/admin/components/general/SimpleTable.vue?vue&type=template&id=4cb2a03a&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml&");
 /* harmony import */ var _SimpleTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SimpleTable.vue?vue&type=script&lang=js& */ "./resources/js/admin/components/general/SimpleTable.vue?vue&type=script&lang=js&");
 /* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
 /* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _SimpleTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _SimpleTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[__WEBPACK_IMPORT_KEY__]
@@ -7001,8 +6659,8 @@ __webpack_require__.r(__webpack_exports__);
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
   _SimpleTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _SimpleTable_vue_vue_type_template_id_4cb2a03a___WEBPACK_IMPORTED_MODULE_0__.render,
-  _SimpleTable_vue_vue_type_template_id_4cb2a03a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _SimpleTable_vue_vue_type_template_id_4cb2a03a_xmlns_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__.render,
+  _SimpleTable_vue_vue_type_template_id_4cb2a03a_xmlns_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -7387,17 +7045,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/admin/components/general/SimpleTable.vue?vue&type=template&id=4cb2a03a&":
-/*!**********************************************************************************************!*\
-  !*** ./resources/js/admin/components/general/SimpleTable.vue?vue&type=template&id=4cb2a03a& ***!
-  \**********************************************************************************************/
+/***/ "./resources/js/admin/components/general/SimpleTable.vue?vue&type=template&id=4cb2a03a&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml&":
+/*!******************************************************************************************************************************************!*\
+  !*** ./resources/js/admin/components/general/SimpleTable.vue?vue&type=template&id=4cb2a03a&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml& ***!
+  \******************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SimpleTable_vue_vue_type_template_id_4cb2a03a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SimpleTable.vue?vue&type=template&id=4cb2a03a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/components/general/SimpleTable.vue?vue&type=template&id=4cb2a03a&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SimpleTable_vue_vue_type_template_id_4cb2a03a_xmlns_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SimpleTable.vue?vue&type=template&id=4cb2a03a&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/components/general/SimpleTable.vue?vue&type=template&id=4cb2a03a&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml&");
 /* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
-/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SimpleTable_vue_vue_type_template_id_4cb2a03a___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SimpleTable_vue_vue_type_template_id_4cb2a03a___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SimpleTable_vue_vue_type_template_id_4cb2a03a_xmlns_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SimpleTable_vue_vue_type_template_id_4cb2a03a_xmlns_http_3A_2F_2Fwww_w3_org_2F1999_2Fhtml___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
 /* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
 
 
@@ -7493,230 +7151,6 @@ var render = function() {
         [
           _c(
             "v-flex",
-            { attrs: { md12: "", sm12: "", lg4: "" } },
-            [
-              _c(
-                "material-chart-card",
-                {
-                  attrs: {
-                    data: _vm.dailySalesChart.data,
-                    options: _vm.dailySalesChart.options,
-                    color: _vm.$store.state.app.color,
-                    type: "Line"
-                  }
-                },
-                [
-                  _c("h4", { staticClass: "title font-weight-light" }, [
-                    _vm._v("Last 7 Days Visit")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "p",
-                    { staticClass: "category d-inline-flex font-weight-light" },
-                    [
-                      _c("v-icon", { attrs: { color: "green", small: "" } }, [
-                        _vm._v(
-                          "\n                        mdi-arrow-up\n                    "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "green--text" }, [
-                        _vm._v("55%")
-                      ]),
-                      _vm._v(
-                        " \n                    Visitor increased in last week\n                "
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "template",
-                    { slot: "actions" },
-                    [
-                      _c(
-                        "v-icon",
-                        { staticClass: "mr-2", attrs: { small: "" } },
-                        [
-                          _vm._v(
-                            "\n                        mdi-clock-outline\n                    "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          staticClass:
-                            "caption grey-lighten-1--text font-weight-light"
-                        },
-                        [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(
-                                _vm.$t("Common.updated_ago", {
-                                  time: "4 " + _vm.$t("Common.minute")
-                                })
-                              ) +
-                              "\n                    "
-                          )
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                ],
-                2
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-flex",
-            { attrs: { md12: "", sm12: "", lg4: "" } },
-            [
-              _c(
-                "material-chart-card",
-                {
-                  attrs: {
-                    data: _vm.emailsSubscriptionChart.data,
-                    options: _vm.emailsSubscriptionChart.options,
-                    "responsive-options":
-                      _vm.emailsSubscriptionChart.responsiveOptions,
-                    color: _vm.$store.state.app.color,
-                    type: "Bar"
-                  }
-                },
-                [
-                  _c("h4", { staticClass: "title font-weight-light" }, [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.$t("Pages.Dashboard.email_campaign")) +
-                        "\n                "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "p",
-                    { staticClass: "category d-inline-flex font-weight-light" },
-                    [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(
-                            _vm.$t("Pages.Dashboard.last_campaign_performance")
-                          ) +
-                          "\n                "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "template",
-                    { slot: "actions" },
-                    [
-                      _c(
-                        "v-icon",
-                        { staticClass: "mr-2", attrs: { small: "" } },
-                        [
-                          _vm._v(
-                            "\n                        mdi-clock-outline\n                    "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          staticClass:
-                            "caption blue-grey--text font-weight-light"
-                        },
-                        [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(
-                                _vm.$t("Common.updated_ago", {
-                                  time: "10 " + _vm.$t("Common.hour")
-                                })
-                              ) +
-                              "\n                    "
-                          )
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                ],
-                2
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-flex",
-            { attrs: { md12: "", sm12: "", lg4: "" } },
-            [
-              _c(
-                "material-chart-card",
-                {
-                  attrs: {
-                    data: _vm.dataCompletedTasksChart.data,
-                    options: _vm.dataCompletedTasksChart.options,
-                    color: _vm.$store.state.app.color,
-                    type: "Line"
-                  }
-                },
-                [
-                  _c("h3", { staticClass: "title font-weight-light" }, [
-                    _vm._v("Push Notification")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "p",
-                    { staticClass: "category d-inline-flex font-weight-light" },
-                    [
-                      _vm._v(
-                        "\n                    Sent by every 3 hours\n                "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "template",
-                    { slot: "actions" },
-                    [
-                      _c(
-                        "v-icon",
-                        { staticClass: "mr-2", attrs: { small: "" } },
-                        [
-                          _vm._v(
-                            "\n                        mdi-clock-outline\n                    "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        { staticClass: "caption grey--text font-weight-light" },
-                        [
-                          _vm._v(
-                            "\n                        Sent 10 minute ago\n                    "
-                          )
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                ],
-                2
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-flex",
             { attrs: { sm6: "", xs12: "", md6: "", lg3: "" } },
             [
               _c("material-stats-card", {
@@ -7763,10 +7197,11 @@ var render = function() {
                 attrs: {
                   color: _vm.$store.state.app.color,
                   icon: "mdi-tag-multiple",
-                  title: "Total Categories",
-                  value: _vm.categories,
+                  title: "Total Subscribers",
+                  value: _vm.getSubsCount,
                   "sub-icon": "mdi-video",
-                  "sub-text": "0 Video published"
+                  "sub-text":
+                    _vm.getLastWeekSubsCount + " Subscribers Last Week"
                 }
               })
             ],
@@ -7794,7 +7229,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "v-flex",
-            { attrs: { md12: "", lg6: "" } },
+            { attrs: { md12: "", lg12: "" } },
             [
               _c("SimpleTable", {
                 attrs: {
@@ -7803,352 +7238,6 @@ var render = function() {
                   "sub-title": "Last Updated at " + new Date().toDateString()
                 }
               })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-flex",
-            { attrs: { md12: "", lg6: "" } },
-            [
-              _c(
-                "material-card",
-                {
-                  staticClass: "card-tabs",
-                  attrs: { color: _vm.$store.state.app.color }
-                },
-                [
-                  _c(
-                    "v-flex",
-                    { attrs: { slot: "header" }, slot: "header" },
-                    [
-                      _c(
-                        "v-tabs",
-                        {
-                          attrs: { "align-with-title": "" },
-                          model: {
-                            value: _vm.tabs,
-                            callback: function($$v) {
-                              _vm.tabs = $$v
-                            },
-                            expression: "tabs"
-                          }
-                        },
-                        [
-                          _c("v-tabs-slider", { attrs: { color: "yellow" } }),
-                          _vm._v(" "),
-                          _c(
-                            "v-tab",
-                            { staticClass: "mr-3" },
-                            [
-                              _c("v-icon", { staticClass: "mr-2" }, [
-                                _vm._v("mdi-bug")
-                              ]),
-                              _vm._v(
-                                "\n                            Bugs\n                        "
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-tab",
-                            { staticClass: "mr-3" },
-                            [
-                              _c("v-icon", { staticClass: "mr-2" }, [
-                                _vm._v("mdi-code-tags")
-                              ]),
-                              _vm._v(
-                                "\n                            Website\n                        "
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-tab",
-                            [
-                              _c("v-icon", { staticClass: "mr-2" }, [
-                                _vm._v("mdi-cloud")
-                              ]),
-                              _vm._v(
-                                "\n                            Server\n                        "
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-tabs-items",
-                    {
-                      model: {
-                        value: _vm.tabs,
-                        callback: function($$v) {
-                          _vm.tabs = $$v
-                        },
-                        expression: "tabs"
-                      }
-                    },
-                    _vm._l(3, function(n) {
-                      return _c(
-                        "v-tab-item",
-                        { key: n },
-                        [
-                          _c(
-                            "v-list",
-                            [
-                              _c(
-                                "v-list-item",
-                                {
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.complete(0)
-                                    }
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "v-list-item-action",
-                                    [
-                                      _c("v-checkbox", {
-                                        attrs: {
-                                          value: _vm.list[0],
-                                          color: "green"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-list-item-content",
-                                    [
-                                      _c("v-list-item-title", [
-                                        _vm._v(
-                                          '\n                                        Sign contract for "What are conference organized afraid of?"\n                                    '
-                                        )
-                                      ])
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    { staticClass: "d-flex" },
-                                    [
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          staticClass: "v-btn--simple",
-                                          attrs: { color: "success", icon: "" }
-                                        },
-                                        [
-                                          _c(
-                                            "v-icon",
-                                            { attrs: { color: "primary" } },
-                                            [_vm._v("mdi-pencil")]
-                                          )
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          staticClass: "v-btn--simple",
-                                          attrs: { color: "danger", icon: "" }
-                                        },
-                                        [
-                                          _c(
-                                            "v-icon",
-                                            { attrs: { color: "error" } },
-                                            [_vm._v("mdi-close")]
-                                          )
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c("v-divider"),
-                              _vm._v(" "),
-                              _c(
-                                "v-list-item",
-                                {
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.complete(1)
-                                    }
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "v-list-item-action",
-                                    [
-                                      _c("v-checkbox", {
-                                        attrs: {
-                                          value: _vm.list[1],
-                                          color: "success"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-list-item-content",
-                                    [
-                                      _c("v-list-item-title", [
-                                        _vm._v(
-                                          "\n                                        Lines From Great Russian Literature? Or E-mails From My Boss?\n                                    "
-                                        )
-                                      ])
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    { staticClass: "d-flex" },
-                                    [
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          staticClass: "v-btn--simple",
-                                          attrs: { color: "success", icon: "" }
-                                        },
-                                        [
-                                          _c(
-                                            "v-icon",
-                                            { attrs: { color: "primary" } },
-                                            [_vm._v("mdi-pencil")]
-                                          )
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          staticClass: "v-btn--simple",
-                                          attrs: { color: "danger", icon: "" }
-                                        },
-                                        [
-                                          _c(
-                                            "v-icon",
-                                            { attrs: { color: "error" } },
-                                            [_vm._v("mdi-close")]
-                                          )
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c("v-divider"),
-                              _vm._v(" "),
-                              _c(
-                                "v-list-item",
-                                {
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.complete(2)
-                                    }
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "v-list-item-action",
-                                    [
-                                      _c("v-checkbox", {
-                                        attrs: {
-                                          value: _vm.list[2],
-                                          color: "success"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-list-item-content",
-                                    [
-                                      _c("v-list-item-title", [
-                                        _vm._v(
-                                          "\n                                        Flooded: One year later, assessing what was lost and what was found when a\n                                        ravaging rain swept\n                                        through metro Detroit\n                                    "
-                                        )
-                                      ])
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    { staticClass: "d-flex" },
-                                    [
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          staticClass: "v-btn--simple",
-                                          attrs: { color: "success", icon: "" }
-                                        },
-                                        [
-                                          _c(
-                                            "v-icon",
-                                            { attrs: { color: "primary" } },
-                                            [_vm._v("mdi-pencil")]
-                                          )
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          staticClass: "v-btn--simple",
-                                          attrs: { color: "danger", icon: "" }
-                                        },
-                                        [
-                                          _c(
-                                            "v-icon",
-                                            { attrs: { color: "error" } },
-                                            [_vm._v("mdi-close")]
-                                          )
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    }),
-                    1
-                  )
-                ],
-                1
-              )
             ],
             1
           )
@@ -8166,10 +7255,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/components/general/SimpleTable.vue?vue&type=template&id=4cb2a03a&":
-/*!*************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/components/general/SimpleTable.vue?vue&type=template&id=4cb2a03a& ***!
-  \*************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/components/general/SimpleTable.vue?vue&type=template&id=4cb2a03a&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/admin/components/general/SimpleTable.vue?vue&type=template&id=4cb2a03a&xmlns=http%3A%2F%2Fwww.w3.org%2F1999%2Fhtml& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -8215,25 +7304,111 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("tbody", [
-                      _c("tr", [
-                        _c("td", [_vm._v(" " + _vm._s(_vm.articles[0].title))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(" " + _vm._s(_vm.articles[0].viewed))])
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("td", [_vm._v(" " + _vm._s(_vm.articles[1].title))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(" " + _vm._s(_vm.articles[1].viewed))])
-                      ]),
-                      _vm._v(" "),
-                      _c("tr", [
-                        _c("td", [_vm._v(" " + _vm._s(_vm.articles[2].title))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(" " + _vm._s(_vm.articles[2].viewed))])
-                      ])
-                    ])
+                    _vm.loading
+                      ? _c(
+                          "thead",
+                          { staticStyle: { height: "100vh" } },
+                          [
+                            _c(
+                              "v-card-text",
+                              [
+                                _c("v-progress-circular", {
+                                  staticClass: "mb-0",
+                                  attrs: { indeterminate: "", color: "green" }
+                                })
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      : _c("thead", [
+                          _c("tr", [
+                            _c("td", [
+                              _vm._v(
+                                "  " +
+                                  _vm._s(
+                                    _vm.locale === "en"
+                                      ? _vm.articles[0].title_en
+                                      : _vm.articles[0].title_bn
+                                  ) +
+                                  " "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(" " + _vm._s(_vm.articles[0].viewed))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [
+                              _vm._v(
+                                " " +
+                                  _vm._s(
+                                    _vm.locale === "en"
+                                      ? _vm.articles[1].title_en
+                                      : _vm.articles[1].title_bn
+                                  )
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(" " + _vm._s(_vm.articles[1].viewed))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [
+                              _vm._v(
+                                " " +
+                                  _vm._s(
+                                    _vm.locale === "en"
+                                      ? _vm.articles[2].title_en
+                                      : _vm.articles[2].title_bn
+                                  )
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(" " + _vm._s(_vm.articles[2].viewed))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [
+                              _vm._v(
+                                " " +
+                                  _vm._s(
+                                    _vm.locale === "en"
+                                      ? _vm.articles[3].title_en
+                                      : _vm.articles[3].title_bn
+                                  )
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(" " + _vm._s(_vm.articles[2].viewed))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [
+                              _vm._v(
+                                " " +
+                                  _vm._s(
+                                    _vm.locale === "en"
+                                      ? _vm.articles[4].title_en
+                                      : _vm.articles[4].title_bn
+                                  )
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(" " + _vm._s(_vm.articles[2].viewed))
+                            ])
+                          ])
+                        ])
                   ]
                 },
                 proxy: true

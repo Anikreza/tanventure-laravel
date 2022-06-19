@@ -33,7 +33,8 @@ class ArticleController extends ApiController
         $hits= $this->successResponse($this->articleRepository->getTotalVisitCount(), true);
         $hitsLastDay= $this->successResponse($this->articleRepository->getLastDaysTotalVisitCount(), true);
         $hitsPerUserLastWeek= $this->successResponse($this->articleRepository->getLastWeeksUniqueVisitorCount(), true);
-        $categoryCount= $this->successResponse($this->articleRepository->getCategoriesCount(), true);
+        $getSubsCount= $this->successResponse($this->articleRepository->getSubsCount(), true);
+        $getLastWeekSubsCount= $this->successResponse($this->articleRepository->getLastWeekSubsCount(), true);
         $hitsPerDayLastWeek= $this->successResponse($this->articleRepository->getLastWeeksVisitCountByDay(), true);
         $AllCount= $this->successResponse($this->articleRepository->getAllArticleCount(), true);
 
@@ -45,7 +46,8 @@ class ArticleController extends ApiController
             'LastWeeksUniqueVisitors'=>$hitsPerUserLastWeek,
             'totalVisits'=>$hits,
             'totalVisitsLastDay'=>$hitsLastDay,
-            'categoryCount'=>$categoryCount,
+            'getSubsCount'=>$getSubsCount,
+            'getLastWeekSubsCount'=>$getLastWeekSubsCount,
             'hitsPerDayLastWeek'=>$hitsPerDayLastWeek
         ];
 

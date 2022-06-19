@@ -57,7 +57,7 @@ class WebsiteController extends Controller
         $this->articleRepository = $articleRepository;
         $tags = $this->articleRepository->getAllTags();
 
-        $subscribers = NewsLetter::all();
+//        $subscribers = NewsLetter::all();
         $categories = Category::select('name_en', 'name_bn', 'slug_en', 'slug_bn')->where('is_published', 0)
             ->orderBy('position', 'asc')->get();
 
@@ -74,7 +74,7 @@ class WebsiteController extends Controller
         });
 
         view()->share('footerPages', $footerPages);
-        view()->share('subscribers', $subscribers);
+//        view()->share('subscribers', $subscribers);
         view()->share('categories', $categories);
         view()->share('tags', $tags);
         view()->share('featuredPosts', $featuredArticles);

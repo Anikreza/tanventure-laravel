@@ -5,6 +5,7 @@ namespace App\Repositories\Article;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Keyword;
+use App\Models\NewsLetter;
 use App\Models\User;
 use App\Models\Visitor;
 use Cache;
@@ -40,7 +41,105 @@ class ArticleRepository implements ArticleInterface
         $tagIDs = $this->getTagIDs($request);
         $article->keywords()->sync($tagIDs);
 
+        if($request->input('published')==='1'){
+            $this->sendMail($article);
+        }
+
         return $article;
+    }
+    public function update(Request $request, int $id): array
+    {
+        $article = Article::findOrFail($id);
+        $isPublishedBefore = $article->status;
+
+        $image_url = $this->storeImage($request, $currentArticle = $article);
+        $data = $this->storeData($request, $image_url);
+        // Category
+        $article->categories()->detach();
+        $categoryIDs = $this->getCategoryIDs($request->input('categories'));
+        $article->categories()->sync($categoryIDs);
+        // Tags
+        $tagIDs = $this->getTagIDs($request);
+        $article->keywords()->detach();
+        $article->keywords()->sync($tagIDs);
+
+        $article->update($data);
+
+        if($request->input('published')===1){
+            $this->sendMail($article);
+        }
+
+        return ['article' => $article, 'previouslyPublished' => $isPublishedBefore];
+    }
+
+    public function translate(Request $request, int $id): array
+    {
+        $article = Article::findOrFail($id);
+        $data = $this->translateData($request);
+        $article->update($data);
+
+        if($article->published===1){
+            $this->sendMailEnglish($article);
+        }
+
+        return ['article' => $article];
+    }
+
+    public function delete(int $id)
+    {
+        $article = Article::findOrFail($id);
+        if (File::exists($article->image)) {
+            File::delete($article->image);
+        }
+        $article->categories()->detach();
+        $article->keywords()->detach();
+
+        return $article->delete();
+    }
+
+    private function sendMail($article)
+    {
+        $subscribers = NewsLetter::all();
+        $data = [
+            'name' => 'Tanventurer',
+            'thanks' => 'সাথে থাকার জন্যে ধন্যবাদান্তে',
+            'hello' => 'প্রিয় সাবস্ক্রাইবার!!',
+            'email' => 'tanvirrezaanik@gmail.com',
+            'contact' => 'আমার সাথে যোগাযোগ করতে পারেন এই ইমেইলে: ',
+            'subject' => 'ট্যানভেঞ্চারে নতুন আর্টিকেল প্রকাশিত হয়েছে',
+            'link' => "tanventurer.com/articles/$article->slug_bn",
+            'body' => 'ট্যানভেঞ্চারারে একটি নতুন আর্টিকেল প্রকাশিত হয়েছে! লেখাটি এখানে পড়তে পারেনঃ '
+        ];
+
+        for ($i = 0; $i < $subscribers->count(); $i++) {
+            \Mail::send('email.contact-template', $data, function ($message) use ($subscribers, $i, $data) {
+                $message->to($subscribers[$i]->email)
+                    ->from($data['email'], $data['name'])
+                    ->subject($data['subject']);
+            });
+        }
+    }
+    private function sendMailEnglish($article)
+    {
+        $subscribers = NewsLetter::all();
+        $data = [
+            'name' => 'Tanventurer',
+            'thanks' => 'Thanks for staying in touch',
+            'hello' => 'Hello Dear Subscriber!!',
+            'email' => 'tanvirrezaanik@gmail.com',
+            'contact' => 'Get in touch with me for anything at: ',
+            'subject' => 'Whoooo! Tan wrote a new something!!',
+            'link' => "tanventurer.com/articles/$article->slug_en",
+            'body' => 'Tanventurer had a recent article published.You can find the post in this link: ',
+        ];
+
+        for ($i = 0; $i < $subscribers->count(); $i++) {
+            \Mail::send('email.contact-template', $data, function ($message) use ($subscribers, $i, $data) {
+                $message->to($subscribers[$i]->email)
+                    ->from($data['email'], $data['name'])
+                    ->subject($data['subject']);
+            });
+        }
     }
 
     private function getCategoryIDs($request): array
@@ -112,48 +211,6 @@ class ArticleRepository implements ArticleInterface
         return str_replace(' ', '-', $name);
     }
 
-    public function update(Request $request, int $id): array
-    {
-        $article = Article::findOrFail($id);
-        $isPublishedBefore = $article->status;
-
-        $image_url = $this->storeImage($request, $currentArticle = $article);
-        $data = $this->storeData($request, $image_url);
-        // Category
-        $article->categories()->detach();
-        $categoryIDs = $this->getCategoryIDs($request->input('categories'));
-        $article->categories()->sync($categoryIDs);
-        // Tags
-        $tagIDs = $this->getTagIDs($request);
-        $article->keywords()->detach();
-        $article->keywords()->sync($tagIDs);
-
-        $article->update($data);
-
-        return ['article' => $article, 'previouslyPublished' => $isPublishedBefore];
-    }
-
-    public function translate(Request $request, int $id): array
-    {
-        $article = Article::findOrFail($id);
-        $data = $this->translateData($request);
-        $article->update($data);
-
-        return ['article' => $article];
-    }
-
-    public function delete(int $id)
-    {
-        $article = Article::findOrFail($id);
-        if (File::exists($article->image)) {
-            File::delete($article->image);
-        }
-        $article->categories()->detach();
-        $article->keywords()->detach();
-
-        return $article->delete();
-    }
-
     public function all(array $columns = [])
     {
         return count($columns) ? Article::select($columns)->orderBy('id')->get() : Article::orderBy('viewed')->get();
@@ -218,7 +275,6 @@ class ArticleRepository implements ArticleInterface
         Visitor::where('created_at', '<', Carbon::now()->subDays(1))
             ->update(['visit_date' => Carbon::now(), 'created_at' => Carbon::now()]);
 
-
     }
 
     public function getTotalVisitCount(): int
@@ -251,9 +307,15 @@ class ArticleRepository implements ArticleInterface
             ->get();
     }
 
-    public function getCategoriesCount(): int
+    public function getSubsCount(): int
     {
-        return Category::all()->count();
+        return NewsLetter::all()->count();
+    }
+
+    public function getLastWeekSubsCount(): int
+    {
+        return NewsLetter::where('created_at', '>', Carbon::now()->subDays(7))
+            ->count('id');
     }
 
     private function baseQuery(int $categoryId = 1)
@@ -269,6 +331,7 @@ class ArticleRepository implements ArticleInterface
     public function publishedArticles(int $categoryId, int $limit): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
             return $this->model
+                ->where('published', 1)
                 ->with('categories')
                 ->with('author')
                 ->latest()

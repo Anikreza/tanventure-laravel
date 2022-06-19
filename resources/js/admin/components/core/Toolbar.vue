@@ -13,46 +13,46 @@
                 align-center
                 layout
                 py-2>
-                <v-text-field
-                    v-if="responsiveInput"
-                    class="mr-4 mt-2 purple-input"
-                    :label="`${$t('Common.search')}...`"
-                    hide-details
-                    color="purple"
-                />
-                <router-link
-                    v-ripple
-                    class="toolbar-items"
-                    to="/">
-                    <v-icon>mdi-home</v-icon>
-                </router-link>
-                <v-menu
-                    bottom
-                    left
-                    offset-y
-                    transition="slide-y-transition">
-                    <template v-slot:activator="{ on, attrs }">
+<!--                <v-text-field-->
+<!--                    v-if="responsiveInput"-->
+<!--                    class="mr-4 mt-2 purple-input"-->
+<!--                    :label="`${$t('Common.search')}...`"-->
+<!--                    hide-details-->
+<!--                    color="purple"-->
+<!--                />-->
+<!--                <router-link-->
+<!--                    v-ripple-->
+<!--                    class="toolbar-items"-->
+<!--                    to="/">-->
+<!--                    <v-icon>mdi-home</v-icon>-->
+<!--                </router-link>-->
+<!--                <v-menu-->
+<!--                    bottom-->
+<!--                    left-->
+<!--                    offset-y-->
+<!--                    transition="slide-y-transition">-->
+<!--                    <template v-slot:activator="{ on, attrs }">-->
 
-                        <v-badge :color="$store.state.app.color" overlap>
-                            <template slot="badge">{{ notifications.length }}</template>
-                            <div v-ripple v-bind="attrs" v-on="on">
-                                <v-icon>mdi-bell</v-icon>
-                            </div>
-                        </v-badge>
+<!--                        <v-badge :color="$store.state.app.color" overlap>-->
+<!--                            <template slot="badge">{{ notifications.length }}</template>-->
+<!--                            <div v-ripple v-bind="attrs" v-on="on">-->
+<!--                                <v-icon>mdi-bell</v-icon>-->
+<!--                            </div>-->
+<!--                        </v-badge>-->
 
-                    </template>
+<!--                    </template>-->
 
-                    <v-card class="notifications-area">
-                        <v-list dense>
-                            <v-list-item
-                                v-for="notification in notifications"
-                                :key="notification"
-                                @click="onClick">
-                                <v-list-item-title v-text="notification"/>
-                            </v-list-item>
-                        </v-list>
-                    </v-card>
-                </v-menu>
+<!--                    <v-card class="notifications-area">-->
+<!--                        <v-list dense>-->
+<!--                            <v-list-item-->
+<!--                                v-for="notification in notifications"-->
+<!--                                :key="notification"-->
+<!--                                @click="onClick">-->
+<!--                                <v-list-item-title v-text="notification"/>-->
+<!--                            </v-list-item>-->
+<!--                        </v-list>-->
+<!--                    </v-card>-->
+<!--                </v-menu>-->
                 <router-link
                     v-ripple
                     class="toolbar-items"

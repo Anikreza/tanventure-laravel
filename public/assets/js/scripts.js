@@ -35,7 +35,7 @@ const moon_class = 'icon-moon';
 const dark_theme_class = 'dark-theme';
 
 toggle_icon.addEventListener('click', function () {
-    // window.location.reload()
+
     sessionStorage.setItem('themeFlag', 'true');
 
     if (body.classList.contains(dark_theme_class)) {
@@ -92,7 +92,7 @@ function getCookie(cname) {
 $(document).ready(function () {
 
     const time = new Date().getHours()
-    const isDayTime = time > 6 && time < 20
+    const isDayTime = time > 6 && time < 18
     const themeFlag = sessionStorage.themeFlag
     console.log('themeFlag', themeFlag)
 

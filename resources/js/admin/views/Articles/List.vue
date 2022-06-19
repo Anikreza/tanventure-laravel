@@ -58,6 +58,14 @@
                                     <th class="text-left">{{$t('Common.actions')}}</th>
                                 </tr>
                                 </thead>
+                                <tbody v-if="loading" style="height: 100vh;">
+                                <v-card-text>
+                                    <v-progress-circular
+                                        indeterminate
+                                        color="green"
+                                        class="mb-0"/>
+                                </v-card-text>
+                                </tbody>
                                 <tbody>
                                 <tr v-for="(article, index) in articles.data" :key="index">
                                     <td>
@@ -82,11 +90,8 @@
                                                  width="60"
                                                  style="border-radius: 10px">
                                         </span>
-                                        <span v-if="article.published">
+                                        <span >
                                             <a  :href="`/articles/${article.slug_bn}`" target="_blank">{{locale==='en'? article.title_en:article.title_bn }}</a>
-                                        </span>
-                                        <span v-else>
-                                            {{ article.title_en }}
                                         </span>
                                     </td>
                                     <td>

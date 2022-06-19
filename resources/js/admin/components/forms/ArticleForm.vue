@@ -76,13 +76,14 @@
                                                       :rules="!articleKey ? `required` : ''"
                                                       ref="image"
                                                       field="ছবি"
+                                                      :isRow="true"
                                                       :label="form.is_video ? 'Poster*' : 'ছবি*'"/>
                         </v-col>
 
                     </v-row>
                     <v-row>
                         <v-col style="text-align: center">
-                            <v-btn depressed color="primary" @click="handleSubmit(save)">
+                            <v-btn :loading="loading" depressed color="primary" @click="handleSubmit(save)">
                                 {{$t('Common.save')}}
                             </v-btn>
                         </v-col>

@@ -46,7 +46,7 @@
                     </v-row>
                     <v-row>
                         <v-col style="text-align: center">
-                            <v-btn depressed color="primary" @click="handleSubmit(save)">
+                            <v-btn :loading="loading" depressed color="primary" @click="handleSubmit(save)">
                                 Save
                             </v-btn>
                         </v-col>

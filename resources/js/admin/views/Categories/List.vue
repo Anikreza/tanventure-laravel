@@ -102,6 +102,7 @@
                                     Close
                                 </v-btn>
                                 <v-btn
+                                    :loading="loading"
                                     color="blue darken-1"
                                     text
                                     @click="handleSubmit(save)"

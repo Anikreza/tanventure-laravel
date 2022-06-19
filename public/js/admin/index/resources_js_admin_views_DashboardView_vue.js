@@ -778,7 +778,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#core-toolbar a {\r\n    text-decoration: none;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#core-toolbar a {\n    text-decoration: none;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2119,7 +2119,7 @@ var render = function() {
       _c(
         "v-toolbar-title",
         { class: "font-color-" + _vm.$store.state.app.color },
-        [_vm._v("\n        " + _vm._s(_vm.pageTitle) + "\n    ")]
+        [_vm._v("\n            " + _vm._s(_vm.pageTitle) + "\n        ")]
       ),
       _vm._v(" "),
       _c("v-spacer"),
@@ -2131,113 +2131,6 @@ var render = function() {
             "v-flex",
             { attrs: { "align-center": "", layout: "", "py-2": "" } },
             [
-              _vm.responsiveInput
-                ? _c("v-text-field", {
-                    staticClass: "mr-4 mt-2 purple-input",
-                    attrs: {
-                      label: _vm.$t("Common.search") + "...",
-                      "hide-details": "",
-                      color: "purple"
-                    }
-                  })
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  directives: [{ name: "ripple", rawName: "v-ripple" }],
-                  staticClass: "toolbar-items",
-                  attrs: { to: "/" }
-                },
-                [_c("v-icon", [_vm._v("mdi-home")])],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-menu",
-                {
-                  attrs: {
-                    bottom: "",
-                    left: "",
-                    "offset-y": "",
-                    transition: "slide-y-transition"
-                  },
-                  scopedSlots: _vm._u([
-                    {
-                      key: "activator",
-                      fn: function(ref) {
-                        var on = ref.on
-                        var attrs = ref.attrs
-                        return [
-                          _c(
-                            "v-badge",
-                            {
-                              attrs: {
-                                color: _vm.$store.state.app.color,
-                                overlap: ""
-                              }
-                            },
-                            [
-                              _c("template", { slot: "badge" }, [
-                                _vm._v(_vm._s(_vm.notifications.length))
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                _vm._g(
-                                  _vm._b(
-                                    {
-                                      directives: [
-                                        { name: "ripple", rawName: "v-ripple" }
-                                      ]
-                                    },
-                                    "div",
-                                    attrs,
-                                    false
-                                  ),
-                                  on
-                                ),
-                                [_c("v-icon", [_vm._v("mdi-bell")])],
-                                1
-                              )
-                            ],
-                            2
-                          )
-                        ]
-                      }
-                    }
-                  ])
-                },
-                [
-                  _vm._v(" "),
-                  _c(
-                    "v-card",
-                    { staticClass: "notifications-area" },
-                    [
-                      _c(
-                        "v-list",
-                        { attrs: { dense: "" } },
-                        _vm._l(_vm.notifications, function(notification) {
-                          return _c(
-                            "v-list-item",
-                            { key: notification, on: { click: _vm.onClick } },
-                            [
-                              _c("v-list-item-title", {
-                                domProps: { textContent: _vm._s(notification) }
-                              })
-                            ],
-                            1
-                          )
-                        }),
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
               _c(
                 "router-link",
                 {
@@ -2252,7 +2145,7 @@ var render = function() {
               _c(
                 "v-icon",
                 { staticClass: "toolbar-items", on: { click: _vm.logout } },
-                [_vm._v("mdi-power\n            ")]
+                [_vm._v("mdi-power\n                ")]
               )
             ],
             1
