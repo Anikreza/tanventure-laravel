@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
  */
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 Route::get('/send-notification', [NotificationController::class, 'sendNotification'])->name('send.notification');
-Route::get('/', [WebsiteController::class, 'home'])->name('landingPage');
+Route::get('/', [WebsiteController::class, 'home'])->name('home');
 Route::get('/blog', [WebsiteController::class, 'index'])->name('blog');
 Route::get('/author', [WebsiteController::class, 'about'])->name('about');
 Route::get('/author/{slug}', [WebsiteController::class, 'author'])->name('author');

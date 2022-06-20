@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Comment;
+use App\Models\News;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\NewsLetter;
@@ -97,7 +98,7 @@ class WebsiteController extends Controller
 
         $this->seo($this->baseSeoData);
 
-        return view('pages.landingPage.index',
+        return view('pages.blog.index',
             compact(
                 'publishedArticles',
                 'featuredArticles',
@@ -111,12 +112,9 @@ class WebsiteController extends Controller
         $this->baseSeoData['title'] = " Tanventure | Let me tell you a story";
         $this->seo($this->baseSeoData);
         $author = $this->articleRepository->getAuthor(8);
+        $news=News::where('published', 1)->get();
 
-        return view('pages.homePage.index'
-            ,
-            compact(
-                'author',
-            )
+        return view('pages.homePage.index', compact('author','news')
         );
     }
 

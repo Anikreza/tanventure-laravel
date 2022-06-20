@@ -30,8 +30,18 @@
 
         <div class='home-hr'>
             <div class='home-others'>
-                <div class="container" style="transform: rotate(1deg)">
+                <div class="container" style="transform: rotate(0deg)">
                     @include('pages.author.partial.authorBio')
+                </div>
+                <div>
+                    @foreach($news as $id=> $info)
+                        @include('component.card.newsCard',
+                            [
+                                'key'=>$id,
+                                'title'=>$info['title'.'_'.app()->getLocale()],
+                                'description' => $info['description'.'_'.app()->getLocale()],
+                            ])
+                    @endforeach
                 </div>
                 @include('pages.homePage.partial.exploreSection')
                 <div class="section section-l section-news customFeaturedSection">
@@ -46,7 +56,7 @@
             </div>
 {{--            <div class="section section-l section-news customMobileFeaturedSection d-lg-none">--}}
 {{--                @if(count($featuredPosts))--}}
-{{--                    @include('pages.landingPage.partial.featured',['featuredArticles'=>$featuredPosts, 'color'=>'whitesmoke'])--}}
+{{--                    @include('pages.blog.partial.featured',['featuredArticles'=>$featuredPosts, 'color'=>'whitesmoke'])--}}
 {{--                @endif--}}
 {{--            </div>--}}
         </div>

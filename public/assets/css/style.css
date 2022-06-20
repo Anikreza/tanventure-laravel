@@ -3992,9 +3992,9 @@ video {
     font-weight: 800;width: fit-content;margin: auto;color: #19b275; background: rgba(0,0,0,.3);opacity: 0;
 }
 .carouselCaptions:hover h2{opacity: 1;}
-.carouselCaptions h2:hover{color: #ff5151
+.carouselCaptions h2:hover{color: #ff5151}
+.newsSection{transform: rotate(0deg);  text-align: center; padding: 4rem; margin: 4rem 0; border-bottom-right-radius: 10%; border-top-left-radius: 10%;  background-color: rgba(12, 17, 14, 0.1)
 }
-
 
 @media (max-width: 1023px) {
     .wgs-sidebar { padding: 40px; }

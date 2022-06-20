@@ -1,7 +1,7 @@
 {{--<div class="customBlogTop" style="filter: blur(8px); opacity: .4;"></div>--}}
 <div class="section section-l section-news ">
 {{--    customBlogContainer--}}
-    @include('pages.landingPage.partial.banner')
+    @include('pages.blog.partial.banner')
     <div class="customContainer">
         <div class="row gutter-vr-30px justify-content-sm-center">
             @foreach($articles as $key=> $article)

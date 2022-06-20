@@ -325,7 +325,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       links: [{
         name: 'Home',
-        Link: '/dashboard/admin/landingPage'
+        Link: '/dashboard/admin/blog'
       }, {
         name: 'Demo',
         Link: ''

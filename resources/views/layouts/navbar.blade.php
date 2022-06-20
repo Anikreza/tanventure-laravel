@@ -4,7 +4,7 @@
             <div class="header-wrap">
                 <!-- Logo  -->
                 <div class="header-logo logo">
-                    <a href="{{ route('landingPage') }}" class="logo-link">
+                    <a href="{{ route('home') }}" class="logo-link">
                         <img class="logo-white" src="{{asset("images/logo-white.png")}}" alt="logo">
                         {{--                        <h2 style="font-size: 20px; font-family: Script">TANVENTURE</h2>--}}
                     </a>
