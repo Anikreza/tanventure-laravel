@@ -1,4 +1,4 @@
-<div class="bannerContainer">
+<div class="bannerContainer ">
     <div id="img-1" class="img-container">
         <img class="img" src="{{asset('assets/images/bd2.jpg')}}">
     </div>
@@ -29,7 +29,7 @@
 </div>
 
 <div>
-    <h1 style="font-size: 50px;font-family: Script; color:#6b6b6b;  letter-spacing: 1rem;text-align: center; text-transform: uppercase" class="align-items-center">
+    <h1 style="font-size: 50px;font-family: Script; color:#6b6b6b;  letter-spacing: 1rem;text-align: center; text-transform: uppercase" class="align-items-center w3-animate-right">
         {{ __('general.tanventure') }}
     </h1>
     <p style="font-size: 2vh;letter-spacing: .4rem;text-align: center; text-transform: capitalize; color: #29502b" class="align-items-center">

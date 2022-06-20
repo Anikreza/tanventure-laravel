@@ -5,6 +5,7 @@ namespace App\Repositories\Page;
 
 use App\Models\Article;
 use App\Models\Keyword;
+use App\Models\News;
 use App\Models\Page;
 use Illuminate\Http\Request;
 
@@ -116,6 +117,10 @@ class PageRepository implements PageInterface
     public function all(array $columns = [])
     {
         return count($columns) ? $this->model->select($columns)->orderBy('id')->get() : $this->model->orderBy('id')->get();
+    }
+    public function allNews(array $columns = [])
+    {
+        return count($columns) ? News::select($columns)->orderBy('id')->get() : News::orderBy('id')->get();
     }
 
     public function paginate($perPage = 10)

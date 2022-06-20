@@ -2208,16 +2208,16 @@ h6, .h6, .fz-6 { font-size: 0.875rem; }
 
 /** 03. Layouts */
 /** 03.01 Header */
-.nk-header { position: relative; z-index: 10; }
-
+.nk-header { position: relative; }
+/*.is-sticky{max-height: 7vh;transition: all .4s}*/
 .header-box { position: relative; }
-.header-main { padding: 12px 0px; transition: all .4s; position: absolute; width: 100%; z-index: 9; left: 0;}
+.header-main { padding: 12px 0; position: absolute; width: 100%; z-index: 9; left: 0; box-shadow: 0 0 10px 0 rgb(6, 73, 46); }
 .is-transparent .header-main, .has-fixed .header-main { width: 100%; z-index: 49; }
 .is-transparent .header-main { position: absolute !important; }
 .bg-dark-alt .header-s1 .header-main { background: #0a1015; }
 .bg-dark-alt .has-fixed .header-main { background: #121d26; }
 .bg-dark .header-s2.has-fixed .header-main { background: #111b23; }
-.has-fixed .header-main { position: fixed !important; box-shadow: 0 0 20px 0 rgba(10, 16, 21, 0.08); top: 0; }
+.has-fixed .header-main { transition: all; position: fixed !important; box-shadow: 0 0 10px 0 rgb(6, 73, 46); top: 0;}
 .bg-ocean-pattern .has-fixed .header-main { background: #1b0768; }
 .has-fixed.is-shrink .header-main { padding-top: 8px; padding-bottom: 8px; }
 .is-boxed .header-main { padding: 12px 15px; z-index: 9; }

@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\App\ArticleController as AppArticleController;
 use App\Http\Controllers\Api\ArticleController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\NewsController;
 use App\Http\Controllers\Api\PageController;
 use App\Http\Controllers\Api\SettingsController;
 use App\Http\Controllers\Api\User\ProfileController;
@@ -58,6 +59,7 @@ Route::group([
     Route::apiResource("articles", ArticleController::class);
 
     Route::get("fetch-all-published-pages", [PageController::class, 'get']);
+    Route::get("fetch-all-published-news", [NewsController::class, 'get']);
     Route::get("pages/{slug}/edit", [PageController::class, 'edit']);
     Route::post("pages/translate/{slug}", [PageController::class, 'translate']);
     Route::post("pages/{id}", [PageController::class, 'update']);
@@ -67,4 +69,5 @@ Route::group([
     Route::post("settings", [SettingsController::class, 'set']);
 
     Route::post("save-page-ids", [PageController::class, 'savePageIds']);
+    Route::post("save-news-status", [PageController::class, 'saveNewsStatus']);
 });

@@ -8,6 +8,9 @@ class PageApi extends HttpClient {
     getAllPages() {
         return this.requestType('get').request(`/fetch-all-published-pages`)
     }
+    getAllNews() {
+        return this.requestType('get').request(`/fetch-all-published-news`)
+    }
 
     get(slug) {
         return this.requestType('get').request(`/pages/${slug}/edit`)
@@ -30,9 +33,11 @@ class PageApi extends HttpClient {
         return this.requestType('delete').request(`pages/${id}`)
     }
 
-
     savePageIds(payload) {
         return this.requestType('post').formBody(payload).request(`save-page-ids`)
+    }
+    saveStatus(payload) {
+        return this.requestType('post').formBody(payload).request(`save-news-status`)
     }
 }
 

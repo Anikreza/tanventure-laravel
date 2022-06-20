@@ -5,7 +5,7 @@
 
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000"
              data-pause="false">
-            <div class="carousel-inner">
+            <div class="carousel-inner w3-animate-zoom">
                 @foreach($featuredPosts as $key=> $article)
                     @include('component.card.sliderCard',
                         [

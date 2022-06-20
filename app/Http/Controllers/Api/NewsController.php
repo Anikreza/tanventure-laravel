@@ -4,14 +4,25 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\News;
+use App\Models\PageLink;
+use App\Repositories\Page\PageRepository;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
-class NewsController extends Controller
+class NewsController extends ApiController
 {
+    public $pageRepository;
+
+    public function __construct(PageRepository $pageRepository)
+    {
+        $this->pageRepository = $pageRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -21,7 +32,7 @@ class NewsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -32,7 +43,7 @@ class NewsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -42,8 +53,8 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\News  $news
-     * @return \Illuminate\Http\Response
+     * @param News $news
+     * @return Response
      */
     public function show(News $news)
     {
@@ -53,8 +64,8 @@ class NewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\News  $news
-     * @return \Illuminate\Http\Response
+     * @param News $news
+     * @return Response
      */
     public function edit(News $news)
     {
@@ -65,8 +76,8 @@ class NewsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\News  $news
-     * @return \Illuminate\Http\Response
+     * @param News $news
+     * @return Response
      */
     public function update(Request $request, News $news)
     {
@@ -76,11 +87,24 @@ class NewsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\News  $news
-     * @return \Illuminate\Http\Response
+     * @param News $news
+     * @return Response
      */
     public function destroy(News $news)
     {
         //
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param News $news
+     * @return JsonResponse
+     */
+    public function get(News $news): JsonResponse
+    {
+        $news = $this->pageRepository->allNews(['id', 'title_en', 'title_bn']);
+        $newsIds = News::where('published',1)->pluck('id');
+
+        return $this->successResponse(['news' => $news, 'newsIds' => $newsIds]);
     }
 }

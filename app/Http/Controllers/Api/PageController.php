@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\News;
 use App\Models\Page;
 use App\Models\PageLink;
 use App\Repositories\Page\PageRepository;
@@ -32,7 +33,7 @@ class PageController extends ApiController
 
     public function get(): JsonResponse
     {
-        $pages = $this->pageRepository->all(['id', 'title_en','title_bn']);
+        $pages = $this->pageRepository->all(['id', 'title_en', 'title_bn']);
         $footerPageIds = PageLink::where(['key' => 'footer_pages'])->pluck('page_id');
         $appNavigationPageIds = PageLink::where(['key' => 'app_navigation_pages'])->pluck('page_id');
 
@@ -155,6 +156,16 @@ class PageController extends ApiController
             PageLink::insert($data);
         }
         \Artisan::call('cache:clear');
+
+        return $this->successResponse();
+    }
+
+    public function saveNewsStatus(Request $request): JsonResponse
+    {
+        foreach ($request->ids as $id) {
+            News::where('id', '!=', $id)->update(['published' => 0]);
+            News::where('id', $id)->update(['published' => 1]);
+        }
 
         return $this->successResponse();
     }
