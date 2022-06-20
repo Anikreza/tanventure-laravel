@@ -8,11 +8,11 @@
         <p style="font-size: 2vh">{{trans('general.'.$time->translatedFormat('M'))}} <strong style="font-weight: lighter; font-size: 2vh">'{{trans('general.'.$time->translatedFormat('y'))}}</strong></p>
     </div>
     <div class="post-content post-content-s2">
-        <h4 style="margin-bottom: 20px; font-weight: 400; font-size: 2.5vh">{{ $title}}</h4>
+        <h4 style="margin-bottom: 20px; font-weight: 400; font-size: 2.5vh;">{{ $title}}</h4>
         <div class="post-tag">
             <ul class="post-cat">
                 <li style="font-size: 1.5vh">
-                    <a href="{{ route('category', ['slug' =>  $category['slug'.'_'.app()->getLocale()]]) }}"><em class="icon ti-bookmark"></em>
+                    <a class="customFont" href="{{ route('category', ['slug' =>  $category['slug'.'_'.app()->getLocale()]]) }}"><em class="icon ti-bookmark"></em>
                         <span>{{$category['name'.'_'.app()->getLocale()]}}</span>
                     </a>
                 </li>

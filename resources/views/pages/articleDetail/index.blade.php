@@ -20,7 +20,7 @@
                 @include('pages.articleDetail.partial.tags')
                 <!-- post-bottom -->
                     <div class="d-lg-flex d-sm-block justify-content-evenly">
-                        <div id="comments" class="wgs col-sm-12 col-lg-8 comments justify-center comments-list">
+                        <div id="comments" class="wgs col-sm-12 col-lg-8 comments justify-center comments-list" style="margin-right: 50px">
                             {{--                        @include('component.comments.index',['comments'=>$article->comments,'article'=>$article->id])--}}
                             @include('pages.articleDetail.partial.disquss')
                         </div>

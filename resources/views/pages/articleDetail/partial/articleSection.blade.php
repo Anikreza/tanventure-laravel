@@ -1,11 +1,11 @@
 <div class="post-entry d-sm-flex d-block align-items-start">
     <div class="content-left d-flex">
         <div class="post-date">
-            <p style="font-size: 1.5rem">{{$article->created_at->translatedFormat('M')}} <strong
+            <p style="font-size: 1rem">{{ trans('general.'.$article->created_at->translatedFormat('M'))}} <strong
                     style="font-weight: lighter; font-size: 1.5rem">'{{trans('general.'.$article->created_at->translatedFormat('y'))}}</strong>
             </p>
         </div>
-        <ul class="social text-center  d-sm-none d-lg-block" style="font-size:1vh">
+        <ul class="text-center  d-sm-none d-lg-block social" style="font-size:1vh">
             @foreach($shareLinks as $key=>$link)
                 <li><a href="{{$link}}" target="_blank" class="pin fab fa-{{$key}}"></a></li>
             @endforeach
@@ -30,7 +30,7 @@
             <div class="post-tag  d-flex align-items-center"
                  style="background: rgba(0,0,0,.1); width: fit-content; padding: 1px 2rem 1px 2rem">
                 <ul class="post-cat" style="font-size:1.8vh">
-                    <li><a style="color: #7a7a7a"
+                    <li><a class="customFont"
                            href="{{ route('category', ['slug' =>  $category['slug'.'_'.app()->getLocale()]]) }}"><em
                                 class="icon ti-bookmark"></em>
                             <span>{{ $category['name'.'_'.app()->getLocale()] }}</span>
@@ -39,7 +39,7 @@
                 </ul>
                 <ul class="d-lg-none d-sm-block">
                     <li>
-                        <a style="font-size: 1.8vh; color: #210808">|| {{$article->created_at->translatedFormat('M')}}
+                        <a style="font-size: 1.8vh;">|| {{$article->created_at->translatedFormat('M')}}
                             '{{$article->created_at->translatedFormat('y')}}</a></li>
                 </ul>
 
@@ -53,7 +53,7 @@
             @foreach($shareLinks as $key=>$link)
                 <a class="post-tag" target="_blank" href="{{$link}}">
                                 <span
-                                    style=" font-size:2vh; margin-left: 10px; background-color:#19b275; color: #ffffff; padding: 10px; border-radius: 5px"
+                                    style=" font-size:2vh; margin-left: 10px; background-color:rgb(25,178,117); color: #ffffff; padding: 10px; border-radius: 5px"
                                     class=" post-tag pin fab fa-{{$key}}"
                                 >
                                 </span>

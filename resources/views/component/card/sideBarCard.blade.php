@@ -1,6 +1,6 @@
 <div class="sidebar customSidebarWidth w3-animate-right">
     <div class="wgs wgs-sidebar wgs-tags">
-        <h3 class="wgs-heading" style="color: #8d8d8d">{{$header}}</h3>
+        <h3 class="wgs-heading customFont" >{{$header}}</h3>
         <div class="wgs-content">
             <ul class="tag-list">
                 @foreach($tags as $tag)
@@ -11,7 +11,7 @@
         </div>
     </div><!-- .wgs -->
     <div class="wgs wgs-sidebar wgs-recents">
-        <h3 class="wgs-heading" style=" color: #8d8d8d;">Suggested Posts</h3>
+        <h3 class="wgs-heading customFont">Suggested Posts</h3>
         <div class="wgs-content">
             <ul class="post-recent">
                 @foreach($featuredPosts as $article)
@@ -25,7 +25,7 @@
     </div><!-- .wgs -->
 
     <div class="wgs wgs-sidebar bg-primary-after-transparency wgs-archive">
-        <h3 class="wgs-heading" style=" color: #8d8d8d;">Archives</h3>
+        <h3 class="wgs-heading customFont">Archives</h3>
         <div class="wgs-content">
             <ul class="wgs-menu">
                 <li><a href="#">December 2017 <span>(10)</span></a></li>

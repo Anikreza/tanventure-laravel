@@ -46,6 +46,7 @@ toggle_icon.addEventListener('click', function () {
         $('.header-main').css("background-color", "white");
         $('.menu-sub').css("background-color", "white");
         $('.articleContent').css("color", bg);
+        $('.customFont').css("color", bg);
         $('.homeIntroLayer').css({"border-left": "1.5vw solid #56987e", "border-right": "1.5vw solid #6bbd9c"});
         $('.homeIntro').css({"border-left": "1.5vw solid #6bbd9c", "border-right": "1.5vw solid #56987e"});
         $('.header-navbar').css('background-color', 'white');
@@ -58,6 +59,7 @@ toggle_icon.addEventListener('click', function () {
         $('.menu-sub').css("background-color", bg);
         $('.header-main').css("background-color", bg);
         $('.articleContent').css("color", "#9a9a9a");
+        $('.customFont').css("color", "#9a9a9a");
         $('.homeIntroLayer').css({"border-left": "1.5vw solid #042518", "border-right": "1.5vw solid #042518"});
         $('.homeIntro').css({"border-left": "1.5vw solid #042518", "border-right": "1.5vw solid #042518"});
         $('.header-navbar').css('background-color', bg);
@@ -120,6 +122,7 @@ $(document).ready(function () {
     if (theme === 'dark') {
         $('.header-main').css("background-color", bg);
         $('.menu-sub').css("background-color", bg);
+        $('.customFont').css("color", "#9a9a9a");
         $('.articleContent').css("color", "#9a9a9a");
         $('.homeIntroLayer').css({"border-left": "1.5vw solid #042518", "border-right": "1.5vw solid #042518"});
         $('.homeIntro').css({"border-left": "1.5vw solid #042518", "border-right": "1.5vw solid #042518"});
@@ -129,6 +132,7 @@ $(document).ready(function () {
         $('.header-main').css("background-color", "white");
         $('.menu-sub').css("background-color", "white");
         $('.articleContent').css("color", bg);
+        $('.customFont').css("color", bg);
         $('.homeIntroLayer').css({"border-left": "1.5vw solid #6bbd9c", "border-right": "1.5vw solid #6bbd9c"});
         $('.homeIntro').css({"border-left": "1.5vw solid #6bbd9c", "border-right": "1.5vw solid #56987e"});
         $('.header-navbar').css('background-color', 'white');

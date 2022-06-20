@@ -91,8 +91,8 @@
                 <div class="header-search">
                     <form class="search-form" action="{{ route('search') }}">
                         <div class="search-group">
-                            <input type="text" class="input-search" placeholder="Search.." name="query"
-                                   required>
+                            <input  type="text" class="input-search" placeholder="Search.." name="query"
+                                   required  style="z-index: 999999">
                             <button class="search-submit" type="submit">
                                 <i style="color: #475E42FF" class="icon ti-search"></i>
                             </button>

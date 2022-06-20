@@ -11,17 +11,17 @@
                                 <img srcset="{{ asset('assets/images/logo-white.png') }}" alt="logo">
                             </a>
                         </div>
-                        <p style="color: #5e5e5e">&copy; 2022-{{ now()->year }}. {{trans('general.credit')}}</p>
+                        <p class="customFont" style="color: #5e5e5e">&copy; 2022-{{ now()->year }}. {{trans('general.credit')}}</p>
                     </div>                </div><!-- .wgs -->
             </div><!-- .col -->
 
             <div class="col-lg-3 col-sm-6">
                 <div class="wgs">
                     <div class="wgs-content">
-                        <h3 class="wgs-title"> {{trans('general.about')}}</h3>
+                        <h3 class="wgs-title customFont"> {{trans('general.about')}}</h3>
                         <ul class="wgs-menu">
                             <li>
-                                <a href="{{ url('author/8') }}">Columnist</a>
+                                <a class="customFont" href="{{ url('author/8') }}">Columnist</a>
                             </li>
                         </ul>
                     </div>
@@ -31,11 +31,11 @@
             <div class="col-lg-3 col-sm-6">
                 <div class="wgs">
                     <div class="wgs-content">
-                        <h3 class="wgs-title">{{trans('general.services')}}</h3>
+                        <h3 class="wgs-title customFont">{{trans('general.services')}}</h3>
                         <ul class="wgs-menu">
                             @foreach($footerPages as $pageLink)
                                 <li>
-                                    <a href="{{ route('article-details', ['slug' => $pageLink['page']['slug'.'_'.app()->getLocale()]]) }}">{{ $pageLink['page']['title'.'_'.app()->getLocale()] }}</a>
+                                    <a class="customFont" href="{{ route('article-details', ['slug' => $pageLink['page']['slug'.'_'.app()->getLocale()]]) }}">{{ $pageLink['page']['title'.'_'.app()->getLocale()] }}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -60,12 +60,12 @@
                                 <input name="email"
                                        type="email"
                                        id="'email"
-                                       class="input"
+                                       class="input customFont"
                                        style="border: 1px solid #858585"
                                        placeholder={{trans('general.yourMail')}}
                                        required
                                 >
-                                <p style="font-size: 1.3vh; color: #6c6c6c; margin-top: -.5rem">{{trans('general.subscribeFoot')}}</p>
+                                <p class="customFont" style="font-size: 1.3vh; margin-top: -.5rem">{{trans('general.subscribeFoot')}}</p>
                                 @error('email')<span class="text-danger">{{$message}}</span>@enderror
                                 <button type="submit"  class="fa fa-paper-plane button"></button>
                             </div>

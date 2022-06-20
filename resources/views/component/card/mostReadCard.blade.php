@@ -15,13 +15,13 @@
         <ul class="post-tag">
             <li>
                 <a href='{{route('about')}}'>
-                    <span style="color: #727272">{{$author}}</span>
+                    <span class="customFont">{{$author}}</span>
                 </a>
                 <a>
-                    <span>||</span>
+                    <span class="customFont">||</span>
                 </a>
                 <a href="{{route('about')}}">
-                    <span>{{trans('general.'.$article->created_at->translatedFormat('M'))}} '{{trans('general.'.$article->created_at->translatedFormat('y'))}}</span>
+                    <span class="customFont">{{trans('general.'.$article->created_at->translatedFormat('M'))}} '{{trans('general.'.$article->created_at->translatedFormat('y'))}}</span>
                 </a>
             </li>
         </ul>

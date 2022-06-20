@@ -18,6 +18,7 @@
                                 'title' => $article['title'.'_'.app()->getLocale()],
                                 'slug' => $article['slug'.'_'.app()->getLocale()],
                                 'author' => $article['author']['name'],
+                                'authorId' => $article['author']['id'],
                                 'description' => $article['excerpt'.'_'.app()->getLocale()],
                                 'category' => $category ?? $article['categories'][0],
                             ])

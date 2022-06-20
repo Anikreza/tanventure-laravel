@@ -3497,7 +3497,7 @@ h6, .h6, .fz-6 { font-size: 0.875rem; }
     .section-cta-alt .cta-heading { font-size: 3rem; line-height: 1.25; margin-bottom: 20px; } }
 @media (min-width: 1200px) { .cta-heading { font-size: 4.5rem; margin-bottom: 15px; line-height: 0.833; margin-bottom: 28px; } }
 /**  05.9 Post **/
-.post .social a { background: #5c7971; border-color: #19b275; }
+.social li a { background: rgb(33, 68, 59) !important; border-color: #19b275; }
 .post-v1 .post-content { padding: 35px 0 0; }
 .post-content { padding: 15px 0; }
 .post-content h4 { color: #58836d; font-weight: 600; text-align: right}
@@ -3580,9 +3580,9 @@ h6, .h6, .fz-6 { font-size: 0.875rem; }
     filter: blur(8px); min-height: 150vh;opacity: .8; box-shadow: 4px 4px 4px 4px #2f2f2f;
     -webkit-filter: blur(8px); background-size: cover}
 
-.floatingTitle{text-align: center;padding:0 20% 0 20%;}
-.floatingTitle h2{position: absolute;background: rgb(93, 19, 19, .1);color: #5d1313;margin-top: 29vh;margin-left: -20px;font-size: 2.2vh;z-index: 2000;}
-.floatingTitle p{width: 60%;background: rgb(25, 178, 117, .1);color: #1c0808;position: absolute;margin-top: 32vh;font-size: 2vh;z-index: 2000;}
+.floatingTitle{text-align: center;padding:0 20% 0 15%;}
+.floatingTitle h2{position: absolute;background: rgb(93, 19, 19, .1);color: #5d1313;margin-top: 25vh; margin-left: -50px;font-size: 4vh;z-index: 2000;}
+.floatingTitle p{width: 70%;background: rgb(25, 178, 117, .1);color: #1c0808;position: absolute;margin-top: 32vh;font-size: 2.5vh;z-index: 2000;}
 .arrowDown{color: #1f1f1f;position: absolute;margin-top: 75vh;font-size: 5rem;z-index: 2000;}
 
 .articleScrolled {margin-top: 6vh;}
@@ -3842,15 +3842,6 @@ video {
     }
 
 }
-
-
-
-
-
-
-@media screen and (max-width: 800px) {
-
-}
 @media (min-width: 576px) { .post-content { margin-left: 20px; padding-top: 0; }
     .post-alt .post-content h4 { margin: 8px 0 0px; }
     .post-alt .post-content h4.post-title { padding-bottom: 10px; }
@@ -3939,7 +3930,8 @@ video {
 .wgs-content h5 { font-size: 1rem; margin-bottom: 10px; line-height: 1.5; }
 
 .tag-list li { margin: 5px 5px 5px 0; display: inline-flex; }
-.tag-list li a { padding: 3px 14px; font-size: .8rem; text-transform: capitalize; }
+.tag-list li a { padding: 3px 14px; font-size: .8rem; text-transform: capitalize;color: #626262
+}
 .bg-dark-alt .tag-list li a, .bg-dark .tag-list li a { background: #0a1015; color: #ffffff; }
 .tag-list li a:hover { background: #19b275; color: #ffffff; }
 .tag-list-s2 li a { background: #230985; }
@@ -3969,7 +3961,7 @@ video {
 .customBanner p{margin-top:2vh;color: #0c3b1c; font-size: 1.8vh; font-weight: 600}
 .sectionBanner{transform: rotate(0deg); margin-bottom: -2vh; background: rgba(0,0,0, .7); width: fit-content; margin-left: 45vw; padding: 0 1rem 0 1rem}
 .sectionBanner2{transform: rotate(-2deg); margin-bottom: -2vh; background: rgba(0,0,0, .7); width: fit-content; margin-left: 45vw; padding: 0 1rem 0 1rem }
-.customTags{font-size:2vh; margin-left: 10px; background-color: #1c8c5f; color: #ffffff; padding: 10px; border-radius: 5px}
+.customTags{font-size:2vh; margin-left: 10px; background-color: #1b5940; color: #ffffff; padding: 10px; border-radius: 5px}
 .customTags:hover{background-color: #54101a
 }
 .exploreSection img{min-width: 24vw; height: 350px;box-shadow:2px 2px 2px 2px #2d2a2a;border-radius: 20px; object-fit: cover}
@@ -4001,9 +3993,14 @@ video {
     .customContainer{
         margin:1rem 2rem 0 2rem;
     }
+    .post-content h4 { text-align: center; font-size: 2.3vh !important}
+    .floatingTitle h2{position: absolute;background:inherit ;margin-top: 15vh;font-size: 4vh;}
+    .floatingTitle p{width: 80%;background: rgb(25, 178, 117, .1);margin-top: 33vh;font-size: 2.5vh;}
+    .arrowDown{margin-top: 80vh;}
+
     .paddedHeader{font-size: 3vh}
     .post-details .post-date {display: none}
-    .post-full .post-date { background: rgba(25,178,117,1); color: #ffffff; flex-shrink: 0; height: 120px; width: 120px; text-align: center; font-size: 30px; font-family: "Poppins", sans-serif; position: absolute; margin-top: -7vh; left: -1vh }
+    .post-full .post-date { display: none; background: rgba(25,178,117,1); color: #ffffff; flex-shrink: 0; height: 120px; width: 120px; text-align: center; font-size: 30px; font-family: "Poppins", sans-serif; position: absolute; margin-top: -7vh; left: -1vh }
     .languageAngle {
         transform:rotate(0deg);
     }
@@ -4061,8 +4058,7 @@ video {
      }
     .customThumbDescription{
         display: block;
-        color: #0a1108;
-        font-size: 20px;
+        font-size: 1.8vh;
         line-height: 1.8;
     }
 
