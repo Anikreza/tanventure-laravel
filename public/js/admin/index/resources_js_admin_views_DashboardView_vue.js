@@ -707,9 +707,9 @@ var adminRoutes = [{
     icon: 'mdi-table-edit',
     slug: 'pages'
   }, {
-    to: "/".concat(adminPrefixSlug, "/create-page"),
+    to: "/".concat(adminPrefixSlug, "/news"),
     icon: 'mdi-square-edit-outline',
-    slug: 'new-page'
+    slug: 'news'
   }]
 }, {
   to: "#",

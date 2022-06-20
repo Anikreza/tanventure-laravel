@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-layout justify-center wrap>
-            <v-flex md12>
+            <v-flex>
                 <v-row>
                     <v-col v-for="(widget, index) in widgets" :key="index" cols="6" md="6" sm="12">
                         <material-card
@@ -11,7 +11,7 @@
 
                             <v-container>
                                 <v-row>
-                                    <v-col cols="12" md="6">
+                                    <v-col cols="12" md="12">
                                         <VSelectSearchWithValidation v-model="page"
                                                                      :options="widget.availableData"
                                                                      @change="selectPage($event, widget.widgetName)"
@@ -24,8 +24,9 @@
                                 </v-row>
 
                                 <v-row v-if="widget.data.length">
+                                    <v-col cols="12" md="12">
                                     <v-simple-table>
-                                        <template v-slot:default v-if="widget.data">
+                                        <template v-slot:default v-if="widget.data" >
                                             <thead>
                                             <tr>
                                                 <th>Reorder</th>
@@ -53,11 +54,11 @@
                                                             mdi-arrow-all
                                                         </v-icon>
                                                     </td>
-                                                    <td>  {{locale==='en'? page.title_en:page.title_bn }}</td>
+                                                    <td> {{ locale === 'en' ? page.title_en : page.title_bn }}</td>
                                                     <td>
                                                         <v-icon
                                                             small
-                                                            @click="removePage(wIndex, widget.widgetName)"
+                                                            @click="removePage(wIndex, widget.widgetName, page.id)"
                                                         >
                                                             mdi-delete
                                                         </v-icon>
@@ -66,13 +67,14 @@
                                             </draggable>
                                         </template>
                                     </v-simple-table>
+                                    </v-col>
                                 </v-row>
 
                                 <v-row>
-                                    <v-col>
+                                    <v-col class="d-flex justify-end align-content-center">
                                         <v-btn :color="$store.state.app.color"
-                                               @click="priorityChange(widget.widgetName)">Save
-                                            Changes
+                                               @click="priorityChange(widget.widgetName)">
+                                            Save Changes
                                         </v-btn>
                                     </v-col>
                                 </v-row>
@@ -80,86 +82,6 @@
 
                         </material-card>
                     </v-col>
-                </v-row>
-
-                <v-row>
-                <v-col v-for="(widget, index) in newses" :key="index" cols="6" md="6" sm="12">
-                    <material-card
-                        :color="$store.state.app.color"
-                        :title="widget.title"
-                    >
-
-                        <v-container>
-                            <v-row>
-                                <v-col cols="12" md="6">
-                                    <VSelectSearchWithValidation v-model="news"
-                                                                 :options="news.availableData"
-                                                                 @change="selectPage($event, widget.widgetName)"
-                                                                 ref="page"
-                                                                 field="page"
-                                                                 :no-data-text="`No Page Available for selection`"
-                                                                 :label="`Select Section`"
-                                                                 :item-text="locale==='en'?'title_en':'title_bn'"/>
-                                </v-col>
-                            </v-row>
-
-                            <v-row v-if="widget.data.length">
-                                <v-simple-table>
-                                    <template v-slot:default v-if="widget.data">
-                                        <thead>
-                                        <tr>
-                                            <th>Reorder</th>
-                                            <th class="text-left">
-                                                Section Title
-                                            </th>
-                                            <th>
-                                                Remove
-                                            </th>
-                                        </tr>
-                                        </thead>
-                                        <draggable
-                                            :list="widget.data"
-                                            tag="tbody"
-                                        >
-                                            <tr
-                                                v-for="(page, wIndex) in widget.selectedPages"
-                                                :key="wIndex"
-                                            >
-                                                <td>
-                                                    <v-icon
-                                                        small
-                                                        class="page__grab-icon"
-                                                    >
-                                                        mdi-arrow-all
-                                                    </v-icon>
-                                                </td>
-                                                <td>  {{locale==='en'? page.title_en:page.title_bn }}</td>
-                                                <td>
-                                                    <v-icon
-                                                        small
-                                                        @click="removePage(wIndex, widget.widgetName)"
-                                                    >
-                                                        mdi-delete
-                                                    </v-icon>
-                                                </td>
-                                            </tr>
-                                        </draggable>
-                                    </template>
-                                </v-simple-table>
-                            </v-row>
-
-                            <v-row>
-                                <v-col>
-                                    <v-btn :color="$store.state.app.color"
-                                           @click="priorityChange()">Save
-                                        Changes
-                                    </v-btn>
-                                </v-col>
-                            </v-row>
-                        </v-container>
-
-                    </material-card>
-                </v-col>
                 </v-row>
             </v-flex>
         </v-layout>
@@ -224,7 +146,7 @@ export default {
                     'widgetName': 'news_sections'
                 }
             ];
-        } ,
+        },
         newses() {
             return [
                 // {
@@ -242,8 +164,6 @@ export default {
             this.loading = true;
             pageApi.getAllPages(this.form).then(res => {
                 this.pages = res.data.data.pages;
-                // console.log('pages', this.pages)
-                // console.log('footers', res.data.data.footerPageIds)
                 this.footerSelectedPageId = res.data.data.footerPageIds;
                 this.loading = false;
             }).catch(err => {
@@ -252,7 +172,6 @@ export default {
             })
             pageApi.getAllNews(this.form).then(res => {
                 this.news = res.data.data.news;
-                console.log('news', this.news)
                 this.newsSelectedPageId = res.data.data.newsIds;
                 this.loading = false;
             }).catch(err => {
@@ -269,29 +188,34 @@ export default {
             }
         },
 
-        removePage(index, type) {
+        removePage(index, type, id) {
             if (type === 'footer_pages') {
                 this.footerSelectedPageId.splice(index);
-            } else {
-                this.newsSelectedPageId.splice(index);
+            }
+            else{
+                pageApi.deleteNews(id).then(res => {
+                    this.$toastr.s('Updated Successfully!');
+                    this.getPages()
+                }).catch(err => {
+                    this.$toastr.e('Something went wrong!');
+                    this.loading = false;
+                })
             }
         },
-
         priorityChange(widget_name = 'footer_pages') {
             this.loading = true;
-            if(widget_name==='footer_pages'){
+            if (widget_name === 'footer_pages') {
                 pageApi.savePageIds({ids: this.footerSelectedPageId, widget_name}).then(res => {
                     this.loading = false;
-                    this.$toastr.s('Saved successful');
+                    this.$toastr.s('Saved successfully');
                 }).catch(err => {
                     this.loading = false;
                     this.$toastr.e('Something went wrong');
                 })
-            }
-            else{
+            } else {
                 pageApi.saveStatus({ids: this.newsSelectedPageId}).then(res => {
                     this.loading = false;
-                    this.$toastr.s('Saved successful');
+                    this.$toastr.s('Saved successfully');
                 }).catch(err => {
                     this.loading = false;
                     this.$toastr.e('Something went wrong');

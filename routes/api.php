@@ -59,15 +59,21 @@ Route::group([
     Route::apiResource("articles", ArticleController::class);
 
     Route::get("fetch-all-published-pages", [PageController::class, 'get']);
-    Route::get("fetch-all-published-news", [NewsController::class, 'get']);
     Route::get("pages/{slug}/edit", [PageController::class, 'edit']);
     Route::post("pages/translate/{slug}", [PageController::class, 'translate']);
     Route::post("pages/{id}", [PageController::class, 'update']);
     Route::apiResource("pages", PageController::class);
+    Route::post("save-page-ids", [PageController::class, 'savePageIds']);
 
     Route::get("settings", [SettingsController::class, 'get']);
     Route::post("settings", [SettingsController::class, 'set']);
 
-    Route::post("save-page-ids", [PageController::class, 'savePageIds']);
-    Route::post("save-news-status", [PageController::class, 'saveNewsStatus']);
+
+    Route::apiResource("news", NewsController::class);
+    Route::post("save-news-status", [NewsController::class, 'saveNewsStatus']);
+    Route::delete("delete-news/{id}", [NewsController::class, 'deleteNews']);
+    Route::post("news/{id}", [NewsController::class, 'update']);
+    Route::get("news/{slug}/edit", [NewsController::class, 'edit']);
+    Route::get("fetch-all-published-news", [NewsController::class, 'get']);
+
 });

@@ -2722,6 +2722,28 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_admin_views_Articles_Translate_vue").then(__webpack_require__.bind(__webpack_require__, /*! @/views/Articles/Translate.vue */ "./resources/js/admin/views/Articles/Translate.vue"));
   }
 }, {
+  path: 'create-news',
+  name: 'new-news',
+  meta: {
+    name: 'New News',
+    slug: 'new-news',
+    requiresAuth: true
+  },
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_admin_views_News_New_vue").then(__webpack_require__.bind(__webpack_require__, /*! @/views/News/New.vue */ "./resources/js/admin/views/News/New.vue"));
+  }
+}, {
+  path: 'news/:slug/edit',
+  name: 'edit-news',
+  meta: {
+    name: 'Edit News',
+    slug: 'edit-news',
+    requiresAuth: true
+  },
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_admin_views_News_Edit_vue").then(__webpack_require__.bind(__webpack_require__, /*! @/views/News/Edit.vue */ "./resources/js/admin/views/News/Edit.vue"));
+  }
+}, {
   path: 'categories',
   name: 'categories',
   meta: {
@@ -2731,6 +2753,17 @@ var routes = [{
   },
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_admin_views_Categories_List_vue").then(__webpack_require__.bind(__webpack_require__, /*! @/views/Categories/List.vue */ "./resources/js/admin/views/Categories/List.vue"));
+  }
+}, {
+  path: 'news',
+  name: 'news',
+  meta: {
+    name: 'News',
+    slug: 'news',
+    requiresAuth: true
+  },
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_admin_views_News_List_vue").then(__webpack_require__.bind(__webpack_require__, /*! @/views/News/List.vue */ "./resources/js/admin/views/News/List.vue"));
   }
 }, {
   path: 'pages',
@@ -74581,7 +74614,7 @@ var index = {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"needHelp\":\"সাহায্যের প্রয়োজন?\",\"close\":\"বন্ধ করুন\",\"yes\":\"হ্যাঁ\",\"no\":\"না\",\"search\":\"খুজুন\",\"updated_ago\":\"{time} আগে আপডেট হয়েছে\",\"second\":\"সেকেন্ড.\",\"minute\":\"মিনিট.\",\"save\":\"ডাটাবেজে সংরক্ষণ করুন\",\"editPage\":\"পেজ সম্পাদনা\",\"editArticle\":\"আর্টিকেল সম্পাদনা\",\"pageList\":\"পাতা তালিকা\",\"articleList\":\"আর্টিকেলের তালিকা\",\"pageFilter\":\"কোনো পাতা খুজে বের করতে সার্চ, এবং প্রকাশ অবস্থা অনুযায়ী ফিল্টার করুন\",\"articleFilter\":\"কোনো আর্টিকেল খুজে বের করতে সার্চ, ধরন এবং প্রকাশ অবস্থা অনুযায়ী ফিল্টার করুন\",\"transArticle\":\"আর্টিকেল অনুবাদ\",\"transPage\":\"পাতা অনুবাদ\",\"hour\":\"ঘন্টা.\",\"month\":\"মাস\",\"Year\":\"সাল\",\"companies\":\"Unternehmen\",\"company\":\"Unternehmen\",\"question\":\"Frage\",\"questions\":\"Fragen\",\"screen_test\":\"Bildschirmtest\",\"total_screen_test\":\"Gesamt Bildschirm Test\",\"passed\":\"Bestanden\",\"candidate\":\"Kandidat\",\"edit_profile\":\"প্রোফাইল এডিট করুন\",\"complete_your_profile\":\"Vervollständige dein Profil\",\"manage_password\":\"Passwort verwalten\",\"update_your_password\":\"Aktualisieren Ihr Passwort\",\"save_profile\":\"সেভ প্রোফাইল\",\"update\":\"আপডেট\",\"select_image\":\"ছবি বাছাই করুন\",\"createNew\":\"নতুন তৈরী করুন\",\"category\":\"ধরন\",\"title\":\"শিরোনাম\",\"excerpt\":\"সংক্ষিপ্ত বর্ননা\",\"featured\":\"সুপারিশ\",\"published\":\"প্রকাশ অবস্থা\",\"viewed\":\"পাঠসংখ্যা\",\"actions\":\"পরিবর্তন\",\"status\":\"প্রকাশ অবস্থা\",\"bName\":\"বাংলা নাম\",\"eName\":\"ইংরেজী নাম\",\"translate\":\"ইংরেজী অনুবাদ\",\"updatePriority\":\"ক্রম পরিবর্তন\",\"edit\":\"সম্পাদনা\",\"metaDesc\":\"গুগল রোবটের জন্য বর্ননা\"}");
+module.exports = JSON.parse("{\"needHelp\":\"সাহায্যের প্রয়োজন?\",\"close\":\"বন্ধ করুন\",\"yes\":\"হ্যাঁ\",\"no\":\"না\",\"search\":\"খুজুন\",\"updated_ago\":\"{time} আগে আপডেট হয়েছে\",\"second\":\"সেকেন্ড.\",\"minute\":\"মিনিট.\",\"save\":\"ডাটাবেজে সংরক্ষণ করুন\",\"editPage\":\"পেজ সম্পাদনা\",\"editNews\":\"খবর সম্পাদনা\",\"newNews\":\"নতুন খবর\",\"newNewsDesc\":\"নতুন নিউজ তৈরীর সময় প্রতিটি বাংলা, ও ইংরেজী, উভয় ভাষায় ডাটা সেভ করা পরামর্শিত\",\"editArticle\":\"আর্টিকেল সম্পাদনা\",\"pageList\":\"পাতা তালিকা\",\"newsList\":\"খবরের তালিকা\",\"articleList\":\"আর্টিকেলের তালিকা\",\"pageFilter\":\"কোনো পাতা খুজে বের করতে সার্চ, এবং প্রকাশ অবস্থা অনুযায়ী ফিল্টার করুন\",\"articleFilter\":\"কোনো আর্টিকেল খুজে বের করতে সার্চ, ধরন এবং প্রকাশ অবস্থা অনুযায়ী ফিল্টার করুন\",\"transArticle\":\"আর্টিকেল অনুবাদ\",\"transPage\":\"পাতা অনুবাদ\",\"hour\":\"ঘন্টা.\",\"month\":\"মাস\",\"Year\":\"সাল\",\"companies\":\"Unternehmen\",\"company\":\"Unternehmen\",\"question\":\"Frage\",\"questions\":\"Fragen\",\"screen_test\":\"Bildschirmtest\",\"total_screen_test\":\"Gesamt Bildschirm Test\",\"passed\":\"Bestanden\",\"candidate\":\"Kandidat\",\"edit_profile\":\"প্রোফাইল এডিট করুন\",\"complete_your_profile\":\"Vervollständige dein Profil\",\"manage_password\":\"Passwort verwalten\",\"update_your_password\":\"Aktualisieren Ihr Passwort\",\"save_profile\":\"সেভ প্রোফাইল\",\"update\":\"আপডেট\",\"select_image\":\"ছবি বাছাই করুন\",\"createNew\":\"নতুন তৈরী করুন\",\"category\":\"ধরন\",\"title\":\"শিরোনাম\",\"excerpt\":\"সংক্ষিপ্ত বর্ননা\",\"featured\":\"সুপারিশ\",\"published\":\"প্রকাশ অবস্থা\",\"viewed\":\"পাঠসংখ্যা\",\"actions\":\"পরিবর্তন\",\"status\":\"প্রকাশ অবস্থা\",\"bName\":\"বাংলা নাম\",\"eName\":\"ইংরেজী নাম\",\"translate\":\"ইংরেজী অনুবাদ\",\"updatePriority\":\"ক্রম পরিবর্তন\",\"edit\":\"সম্পাদনা\",\"metaDesc\":\"গুগল রোবটের জন্য বর্ননা\"}");
 
 /***/ }),
 
@@ -74603,7 +74636,7 @@ module.exports = JSON.parse("{\"facebook\":\"Facebook\",\"footer\":\"Fusszeile\"
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"dashboard\":\"ড্যাশবোর্ড\",\"articles\":\"আর্টিকেল\",\"new-article\":\"নতুন আর্টিকেল\",\"new-page\":\"নতুন পাতা\",\"system-settings\":\"সিস্টেম সেটিংস\",\"widget-settings\":\"উইজেট সেটিংস\",\"user-profile\":\"ব্যাবহারকারীর তথ্য\",\"code_editor\":\"Code Editor\",\"first_level\":\"Erste Ebene\",\"second_level\":\"Zweites Ebene\",\"third_level\":\"Drittes Level\",\"more_level\":\"Mehr Ebene\",\"settings\":\"সেটিংস\",\"categories\":\"ক্যাটাগরি\",\"pages\":\"পাতা\",\"demo_tests\":\"Demo-Tests\"}");
+module.exports = JSON.parse("{\"dashboard\":\"ড্যাশবোর্ড\",\"articles\":\"আর্টিকেল\",\"new-article\":\"নতুন আর্টিকেল\",\"new-page\":\"নতুন পাতা\",\"system-settings\":\"সিস্টেম সেটিংস\",\"widget-settings\":\"উইজেট সেটিংস\",\"user-profile\":\"ব্যাবহারকারীর তথ্য\",\"code_editor\":\"Code Editor\",\"first_level\":\"Erste Ebene\",\"second_level\":\"Zweites Ebene\",\"third_level\":\"Drittes Level\",\"more_level\":\"Mehr Ebene\",\"news\":\"খবর\",\"settings\":\"সেটিংস\",\"categories\":\"ক্যাটাগরি\",\"pages\":\"খন্ডাংশ\",\"demo_tests\":\"Demo-Tests\"}");
 
 /***/ }),
 
@@ -74691,7 +74724,7 @@ module.exports = JSON.parse("{\"accepted\":\"{attribute} muss akzeptiert werden.
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"need_help\":\"Need Help?\",\"close\":\"Close\",\"yes\":\"Yes\",\"no\":\"No\",\"search\":\"Search\",\"updated_ago\":\"updated {time} ago\",\"second\":\"second\",\"minute\":\"minute\",\"hour\":\"hour\",\"month\":\"month\",\"Year\":\"year\",\"companies\":\"Companies\",\"formDesc\":\"নতুন আর্টিকেল তৈরীতে প্রতিটি তথ্য বাংলায় লিখুন\",\"newArticle\":\"নতুন আর্টিকেল\",\"company\":\"Company\",\"question\":\"Question\",\"questions\":\"Questions\",\"screen_test\":\"Screen Test\",\"total_screen_test\":\"Total Screen Test\",\"passed\":\"Passed\",\"candidate\":\"candidate\",\"edit_profile\":\"Edit Profile\",\"complete_your_profile\":\"Complete Your Profile\",\"manage_password\":\"Manage Password\",\"update_your_password\":\"Update Your Password\",\"editPage\":\"Edit Page\",\"pageList\":\"Page List\",\"articleList\":\"Article List\",\"editArticle\":\"Edit Article\",\"transArticle\":\"Translate Article\",\"transPage\":\"Translate Page\",\"pageFilter\":\"Use Filter Options To Find A Page\",\"articleFilter\":\"Use Filter Options To Find An Article\",\"save_profile\":\"Save Profile\",\"update\":\"Update\",\"select_image\":\"Select image\",\"createNew\":\"Create New\",\"category\":\"Category\",\"save\":\"Save\",\"title\":\"Title\",\"featured\":\"Featured\",\"excerpt\":\"Excerpt\",\"published\":\"Published\",\"viewed\":\"viewed\",\"actions\":\"Actions\",\"status\":\"Publication Status\",\"bName\":\"Bengali Name\",\"eName\":\"English Name\",\"updatePriority\":\"Update Priority\",\"edit\":\"Edit\",\"translate\":\"Translate\",\"metaDesc\":\"Meta Description\"}");
+module.exports = JSON.parse("{\"need_help\":\"Need Help?\",\"close\":\"Close\",\"yes\":\"Yes\",\"no\":\"No\",\"search\":\"Search\",\"updated_ago\":\"updated {time} ago\",\"second\":\"second\",\"minute\":\"minute\",\"hour\":\"hour\",\"month\":\"month\",\"editNews\":\"Edit News\",\"newNews\":\"New News\",\"newNewsDesc\":\"Fill up both the English & Bangla fields\",\"newsList\":\"News List\",\"Year\":\"year\",\"companies\":\"Companies\",\"formDesc\":\"নতুন আর্টিকেল তৈরীতে প্রতিটি তথ্য বাংলায় লিখুন\",\"newArticle\":\"নতুন আর্টিকেল\",\"company\":\"Company\",\"question\":\"Question\",\"questions\":\"Questions\",\"screen_test\":\"Screen Test\",\"total_screen_test\":\"Total Screen Test\",\"passed\":\"Passed\",\"candidate\":\"candidate\",\"edit_profile\":\"Edit Profile\",\"complete_your_profile\":\"Complete Your Profile\",\"manage_password\":\"Manage Password\",\"update_your_password\":\"Update Your Password\",\"editPage\":\"Edit Page\",\"pageList\":\"Page List\",\"articleList\":\"Article List\",\"editArticle\":\"Edit Article\",\"transArticle\":\"Translate Article\",\"transPage\":\"Translate Page\",\"pageFilter\":\"Use Filter Options To Find A Page\",\"articleFilter\":\"Use Filter Options To Find An Article\",\"save_profile\":\"Save Profile\",\"update\":\"Update\",\"select_image\":\"Select image\",\"createNew\":\"Create New\",\"category\":\"Category\",\"save\":\"Save\",\"title\":\"Title\",\"featured\":\"Featured\",\"excerpt\":\"Excerpt\",\"published\":\"Published\",\"viewed\":\"viewed\",\"actions\":\"Actions\",\"status\":\"Publication Status\",\"bName\":\"Bengali Name\",\"eName\":\"English Name\",\"updatePriority\":\"Update Priority\",\"edit\":\"Edit\",\"translate\":\"Translate\",\"metaDesc\":\"Meta Description\"}");
 
 /***/ }),
 
@@ -74713,7 +74746,7 @@ module.exports = JSON.parse("{\"facebook\":\"Facebook\",\"footer\":\"Footer\",\"
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"dashboard\":\"Dashboard\",\"user-profile\":\"User Profile\",\"code_editor\":\"Code Editor\",\"first_level\":\"1st Level\",\"second_level\":\"2nd Level\",\"third_level\":\"3rd Level\",\"more_level\":\"More Level\",\"settings\":\"Settings\",\"demo_tests\":\"Demo Tests\",\"articles\":\"Articles\",\"pages\":\"Pages\",\"article-detail\":\"Article Detail\",\"new-article\":\"New Article\",\"new-page\":\"New Page\",\"edit-article\":\"Edit Article\",\"edit-page\":\"Edit Page\",\"categories\":\"Categories\",\"new\":\"New\",\"system-settings\":\"System Settings\",\"ad-spaces\":\"Ad Spaces\",\"widget-settings\":\"Widget Settings\"}");
+module.exports = JSON.parse("{\"dashboard\":\"Dashboard\",\"user-profile\":\"User Profile\",\"code_editor\":\"Code Editor\",\"first_level\":\"1st Level\",\"second_level\":\"2nd Level\",\"third_level\":\"3rd Level\",\"more_level\":\"More Level\",\"settings\":\"Settings\",\"demo_tests\":\"Demo Tests\",\"articles\":\"Articles\",\"pages\":\"Sections\",\"news\":\"News\",\"article-detail\":\"Article Detail\",\"new-article\":\"New Article\",\"new-page\":\"New Page\",\"new-news\":\"New News\",\"edit-article\":\"Edit Article\",\"edit-news\":\"Edit News\",\"edit-page\":\"Edit Page\",\"categories\":\"Categories\",\"new\":\"New\",\"system-settings\":\"System Settings\",\"ad-spaces\":\"Ad Spaces\",\"widget-settings\":\"Widget Settings\"}");
 
 /***/ }),
 
@@ -74954,7 +74987,7 @@ webpackContext.id = "./resources/js/admin/store/modules sync recursive \\.js$";
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_admin_views_errors_404_vue":1,"routes":1,"resources_js_admin_components_LoginForm_vue":1,"resources_js_admin_views_DashboardView_vue":1,"resources_js_admin_components_dash-views_Dashboard_vue":1,"resources_js_admin_views_UserProfile_vue":1,"resources_js_admin_views_Articles_List_vue":1,"resources_js_admin_views_Articles_New_vue":1,"resources_js_admin_views_Articles_Edit_vue":1,"resources_js_admin_views_Articles_Translate_vue":1,"resources_js_admin_views_Categories_List_vue":1,"resources_js_admin_views_Pages_List_vue":1,"resources_js_admin_views_Pages_New_vue":1,"resources_js_admin_views_Pages_Edit_vue":1,"resources_js_admin_views_Pages_Translate_vue":1,"resources_js_admin_views_Settings_WidgetSettings_vue":1,"resources_js_admin_views_Settings_SystemSettings_vue":1}[chunkId]) return "js/admin/index/" + chunkId + ".js";
+/******/ 			if ({"resources_js_admin_views_errors_404_vue":1,"routes":1,"resources_js_admin_components_LoginForm_vue":1,"resources_js_admin_views_DashboardView_vue":1,"resources_js_admin_components_dash-views_Dashboard_vue":1,"resources_js_admin_views_UserProfile_vue":1,"resources_js_admin_views_Articles_List_vue":1,"resources_js_admin_views_Articles_New_vue":1,"resources_js_admin_views_Articles_Edit_vue":1,"resources_js_admin_views_Articles_Translate_vue":1,"resources_js_admin_views_News_New_vue":1,"resources_js_admin_views_News_Edit_vue":1,"resources_js_admin_views_Categories_List_vue":1,"resources_js_admin_views_News_List_vue":1,"resources_js_admin_views_Pages_List_vue":1,"resources_js_admin_views_Pages_New_vue":1,"resources_js_admin_views_Pages_Edit_vue":1,"resources_js_admin_views_Pages_Translate_vue":1,"resources_js_admin_views_Settings_WidgetSettings_vue":1,"resources_js_admin_views_Settings_SystemSettings_vue":1}[chunkId]) return "js/admin/index/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

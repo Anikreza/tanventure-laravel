@@ -160,13 +160,4 @@ class PageController extends ApiController
         return $this->successResponse();
     }
 
-    public function saveNewsStatus(Request $request): JsonResponse
-    {
-        foreach ($request->ids as $id) {
-            News::where('id', '!=', $id)->update(['published' => 0]);
-            News::where('id', $id)->update(['published' => 1]);
-        }
-
-        return $this->successResponse();
-    }
 }

@@ -39,6 +39,9 @@ class PageApi extends HttpClient {
     saveStatus(payload) {
         return this.requestType('post').formBody(payload).request(`save-news-status`)
     }
+    deleteNews(id) {
+        return this.requestType('delete').request(`delete-news/${id}`)
+    }
 }
 
 const pageApi = new PageApi()

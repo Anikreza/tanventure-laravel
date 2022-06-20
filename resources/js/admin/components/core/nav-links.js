@@ -38,9 +38,9 @@ const adminRoutes = [
                 slug: 'pages'
             },
             {
-                to: `/${adminPrefixSlug}/create-page`,
+                to: `/${adminPrefixSlug}/news`,
                 icon: 'mdi-square-edit-outline',
-                slug: 'new-page'
+                slug: 'news'
             }
         ]
     },

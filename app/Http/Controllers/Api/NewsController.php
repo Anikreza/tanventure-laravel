@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\News;
-use App\Models\PageLink;
 use App\Repositories\Page\PageRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Throwable;
 
 class NewsController extends ApiController
 {
@@ -19,92 +17,84 @@ class NewsController extends ApiController
         $this->pageRepository = $pageRepository;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
+    public function index(Request $request): JsonResponse
     {
-        //
+        return $this->successResponse($this->pageRepository->paginateNews($request->input('perPage')), true);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
+    public function store(Request $request): JsonResponse
     {
-        //
+        $request->validate([
+            'title_bn' => 'required|unique:news,title_bn',
+            'title_en' => 'required|unique:news,title_en'
+        ]);
+
+        \DB::beginTransaction();
+
+        try {
+            $page = $this->pageRepository->saveNews($request);
+            \DB::commit();
+            return $this->successResponse($page);
+        } catch (Throwable $throwable) {
+            \DB::rollBack();
+            $this->errorLog($throwable, 'api');
+
+            return $this->failResponse($throwable->getMessage());
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
+    public function edit($slug): JsonResponse
     {
-        //
+        try {
+            $news = News::where('id', $slug)->firstOrFail();
+
+            return $this->successResponse($news);
+        } catch (Exception $exception) {
+            $this->errorLog($exception, 'api');
+
+            return $this->failResponse($exception->getMessage());
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param News $news
-     * @return Response
-     */
-    public function show(News $news)
+    public function update(Request $request, $id): JsonResponse
     {
-        //
+
+        $category = $this->pageRepository->updateNews($request, $id);
+        \Artisan::call('cache:clear');
+
+        return $this->successResponse($category);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param News $news
-     * @return Response
-     */
-    public function edit(News $news)
+
+    public function destroy($id)
     {
-        //
+        $news = News::findOrFail($id);
+
+        return $news->delete();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param News $news
-     * @return Response
-     */
-    public function update(Request $request, News $news)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param News $news
-     * @return Response
-     */
-    public function destroy(News $news)
-    {
-        //
-    }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param News $news
-     * @return JsonResponse
-     */
     public function get(News $news): JsonResponse
     {
         $news = $this->pageRepository->allNews(['id', 'title_en', 'title_bn']);
         $newsIds = News::where('published',1)->pluck('id');
 
         return $this->successResponse(['news' => $news, 'newsIds' => $newsIds]);
+    }
+    public function saveNewsStatus(Request $request): JsonResponse
+    {
+
+        foreach ($request->ids as $id) {
+            News::where('id', $id)->update(['published' => 1]);
+        }
+
+        return $this->successResponse();
+    }
+
+    public function deleteNews($id): JsonResponse
+    {
+
+        News::where('id', $id)->update(['published' => 0]);
+
+        return $this->successResponse();
     }
 }
