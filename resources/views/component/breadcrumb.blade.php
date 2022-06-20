@@ -5,11 +5,11 @@
                 <a style="color: #19b275" href="{{route('blog')}}">Home</a>
             </li>
             @for($i = 0; $i < count($segments); $i++)
-                <li class="breadcrumb-item @if($i == (count($segments) - 1)) active @endif" aria-current="page">
+                <li class="breadcrumb-item customFont @if($i == (count($segments) - 1)) active @endif" aria-current="page">
                     @if($i == (count($segments) - 1))
                         {{$segments[$i]['name']}}
                     @else
-                        <a href="{{ $i != (count($segments) - 1) ? $segments[$i]['url'] : '#' }}">
+                        <a class="customFont" href="{{ $i != (count($segments) - 1) ? $segments[$i]['url'] : '#' }}">
                             {{$segments[$i]['name']}}
                         </a>
                     @endif

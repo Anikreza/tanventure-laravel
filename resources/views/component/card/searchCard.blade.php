@@ -3,7 +3,7 @@
 <div class="post-entry d-sm-flex d-block align-items-start   w3-animate-zoom customSearchCard">
             <div class="post-content">
                 <h3 style="width: 420%;margin-top: -60px; font-weight: 400; font-size: 2.5vh">
-                    <a href="{{ route('article-details', ['slug' => $slug]) }}" style="color: #106b46 !important; ">{{$title}}</a>
+                    <a href="{{ route('article-details', ['slug' => $slug]) }}" style="color: #2e8d67 !important; ">{{$title}}</a>
                 </h3>
 
                 <a href="{{ route('article-details', ['slug' => $slug]) }}">
