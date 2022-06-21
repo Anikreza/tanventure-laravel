@@ -22,6 +22,7 @@ Route::get('/columnist', [WebsiteController::class, 'getColumnistPage'])->name('
 Route::get('tag/{slug}', [WebsiteController::class, 'tagDetails'])->name('tag');
 Route::post('/newsLetter', [WebsiteController::class, 'newsLetters'])->name('newsLetter');
 Route::post('/postComment', [WebsiteController::class, 'postComment'])->name('comment');
+Route::get('/gallery', [WebsiteController::class, 'gallery'])->name('gallery');
 /**
  * ADMIN ROUTES
  */

@@ -31,6 +31,12 @@
                                     href="{{route('blog')}}"> {{ __('navbar.blog') }}
                                 </a>
                             </li>
+{{--                            <li class=" menu-item has-sub">--}}
+{{--                                <a--}}
+{{--                                    class="nav-link @if(Request::url() == url('/gallery')) active @endif"--}}
+{{--                                    href="{{route('gallery')}}"> gallery--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
                             <li class="menu-item  has-sub">
                                 <a
                                     class="nav-link @if(Request::url() == url('/author')) active @endif"

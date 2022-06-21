@@ -18,11 +18,11 @@
                         ])
                 @endforeach
                 <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-                    <i class="fa fa-caret-square-left" style="font-size: 2vw;" aria-hidden="true"></i>
+                    <i class="fa fa-caret-square-left" style="font-size: 2vh;" aria-hidden="true"></i>
                     <span class="sr-only">Previous</span>
                 </a>
                 <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-                    <i class="fa fa-caret-square-right" style="font-size: 2vw;" aria-hidden="true"></i>
+                    <i class="fa fa-caret-square-right" style="font-size: 2vh;" aria-hidden="true"></i>
                     <span class="sr-only">Next</span>
                 </a>
             </div>
@@ -30,7 +30,7 @@
 
         <div class='home-hr'>
             <div class='home-others'>
-                <div class="container" style="transform: rotate(0deg)">
+                <div class="container novelAnimation hidden" style="transform: rotate(0deg)">
                     @include('pages.author.partial.authorBio')
                 </div>
                 <div>

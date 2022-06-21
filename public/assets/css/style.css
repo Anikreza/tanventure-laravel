@@ -2685,7 +2685,7 @@ h6, .h6, .fz-6 { font-size: 0.875rem; }
 .wgs-content-s2 h4 { font-size: 13px; text-transform: uppercase;  margin-bottom: 0.5rem; }
 .wgs-logo { max-width: 170px; padding-bottom: 20px; }
 .wgs-logo img { height: 36px; }
-.wgs-title {  font-size: 2.5vh; margin-bottom: 15px; color: #0c461e !important; font-weight: 600 !important; text-transform: uppercase}
+.wgs-title {  font-size: 2.5vh; margin-bottom: 15px; color: #702d32 !important; font-weight: 600 !important; text-transform: uppercase}
 .wgs-title + form { padding-top: 10px; }
 .wgs-title-s2 { font-size: 1rem; font-weight: 400; }
 .wgs-menu li a { display: inline-block; padding: 6px 0; color: #505050
@@ -4046,10 +4046,10 @@ video {
         height: 4250px;
         background-size: contain;
         /*background-image: url('../../assets/images/2.png');*/
-}
+    }
     .customBlogContainer{
         position: absolute; top: 4vh;
-}
+    }
     .custom4Column{
         padding: 2rem;
         flex:0 0 100%;max-width:100%
@@ -5172,3 +5172,133 @@ hr{border:0;border-top:1px solid #cbcbcb;margin:20px 0}
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
+
+
+
+.imageRow > .column {
+    padding: 0 8px;
+}
+
+.imageRow:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Create four equal columns that floats next to eachother */
+.imageColumn {
+    float: left;
+    width: 33%;
+    object-fit: cover;
+}
+
+/* The Modal (background) */
+.imageModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+}
+
+/* Modal Content */
+.image-modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* The Close Button */
+.imageclose {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.imageClose:hover,
+.imageClose:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Hide the slides by default */
+.imageMySlides {
+    display: none;
+}
+
+/* Next & previous buttons */
+.imagePrev,
+.imageNext {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.imageNext {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.imagePrev:hover,
+.imageNext:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.imageNumbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+/* Caption text */
+.image-caption-container {
+    text-align: center;
+    background-color: black;
+    padding: 2px 16px;
+    color: white;
+}
+
+img.imageDemo {
+    opacity: 0.6;
+}
+
+.imageActive,
+.imageDemo:hover {
+    opacity: 1;
+}
+
+img.hover-shadow {
+    transition: 0.3s;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+

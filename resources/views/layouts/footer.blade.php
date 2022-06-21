@@ -11,7 +11,7 @@
                                 <img srcset="{{ asset('assets/images/logo-white.png') }}" alt="logo">
                             </a>
                         </div>
-                        <p class="customFont" style="color: #5e5e5e">&copy; 2022-{{ now()->year }}. {{trans('general.credit')}}</p>
+                        <p class="customFont">&copy; 2022-{{ now()->year }}. {{trans('general.credit')}}</p>
                     </div>                </div><!-- .wgs -->
             </div><!-- .col -->
 
@@ -65,7 +65,7 @@
                                        placeholder={{trans('general.yourMail')}}
                                        required
                                 >
-                                <p class="customFont" style="font-size: 1.3vh; margin-top: -.5rem">{{trans('general.subscribeFoot')}}</p>
+                                <p style="font-size: 1.3vh; color: #6c6c6c; margin-top: -.5rem">{{trans('general.subscribeFoot')}}</p>
                                 @error('email')<span class="text-danger">{{$message}}</span>@enderror
                                 <button type="submit"  class="fa fa-paper-plane button"></button>
                             </div>

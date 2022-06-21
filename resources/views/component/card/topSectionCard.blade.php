@@ -15,7 +15,7 @@
 
     <div class="post-entry d-sm-flex d-block align-items-start">
         <div class="post-date">
-            <p>{{trans('general.'.$time->translatedFormat('M'))}} <strong style="font-weight: lighter">{{trans('general.'.$time->translatedFormat('y'))}}</strong></p>
+            <p>{{trans('general.'.$time->translatedFormat('M'))}} <strong style="font-weight: lighter">'{{trans('general.'.$time->translatedFormat('y'))}}</strong></p>
         </div>
         <div class="post-content">
             <h4>{{$title}}</h4>

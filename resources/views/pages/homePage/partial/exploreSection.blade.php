@@ -1,5 +1,5 @@
 <br/>
-<div style="margin: .1rem 1rem 0 1rem;">
+<div style="margin: 0 1rem;">
     <h3 class="paddedHeaderTilted">EXPLORE</h3>
     <br/>
     <div class="d-lg-flex">

@@ -174,10 +174,11 @@ $(document).ready(function () {
     });
 });
 
+
 NioApp = function (NioApp, $, window, document) {
     "use strict";
     // Defined Variables
-    var $win = $(window),
+    const $win = $(window),
         $doc = $(document),
         $body = $('body'),
         $header = $('.header-main'),

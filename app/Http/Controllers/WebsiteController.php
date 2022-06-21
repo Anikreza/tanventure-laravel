@@ -145,12 +145,11 @@ class WebsiteController extends Controller
         $this->baseSeoData['title'] = " The Novel | tanventure";
         $this->seo($this->baseSeoData);
 
-        return view('pages.novel.index',
-            compact(
-                'novels'
-            )
-        );
-
+        return view('pages.novel.index', compact('novels'));
+    }
+    public function gallery()
+    {
+        return view('pages.imageGallery.index');
     }
 
     public function newsLetters(Request $request): \Illuminate\Http\RedirectResponse
@@ -165,6 +164,8 @@ class WebsiteController extends Controller
 
         return back()->with("success", "Thanks! We Got You!!");
     }
+
+
 
     public function sendNewsLetters(Request $request): \Illuminate\Http\RedirectResponse
     {

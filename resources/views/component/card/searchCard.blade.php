@@ -16,24 +16,22 @@
                     </div>
 
                     <div class="post-author d-flex align-items-start" style="padding: 1rem">
-                        <a href="{{route('about')}}">
-                        <div class="post-author d-flex align-items-center flex-shrink-0 align-self-start">
-                            <a href="{{route('author',['slug' => $article['author']['id']])}}">
-                            <img src="{{asset($article->author->image)}}" alt="" style="width: 5vh; height: 5vh;border-radius: 50%">
-                            </a>
-                        </div>
-                        </a>
+{{--                        <div class="post-author d-flex align-items-center flex-shrink-0 align-self-start">--}}
+{{--                            <a href="{{route('author',['slug' => $article['author']['id']])}}">--}}
+{{--                            <img src="{{asset($article->author->image)}}" alt="" style="width: 5vh; height: 5vh;border-radius: 50%">--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
                         <div class="author-name" style="width: 150px">
                             <a href="{{route('author',['slug' => $article['author']['id']])}}">
                             <p class="customFont" style="font-size: 1rem;">{{$article->author->name}}</p>
                             </a>
                         </div>
                         <div class="post-tag d-flex" style="margin-left: 10px">
-{{--                            <ul class="post-cat">--}}
-{{--                                <a href="{{ route('category', ['slug' =>  $category['slug'.'_'.app()->getLocale()]]) }}"><em class="icon ti-bookmark"></em>--}}
-{{--                                    <span>{{$category['name'.'_'.app()->getLocale()]}}</span>--}}
-{{--                                </a>--}}
-{{--                            </ul>--}}
+                            <ul class="post-cat">
+                                <a class="customFont" style="font-size: 1rem" href="{{ route('category', ['slug' =>  $category['slug'.'_'.app()->getLocale()]]) }}"><em class="icon ti-bookmark"></em>
+                                    <span>{{$category['name'.'_'.app()->getLocale()]}}</span>
+                                </a>
+                            </ul>
                         </div>
                     </div>
                 </div>
