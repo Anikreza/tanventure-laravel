@@ -2,9 +2,8 @@
 @section('content')
 <body class="body-wider">
 <div class="section blog section-x tc-grey">
-    <div style="margin:2rem 4rem 4rem 4rem">
+    <div class="customCategoryPage">
         @include('component.breadcrumb')
-        <br/>
         <div class="row gutter-vr-30px ">
                 <div class="col-md-9">
                     @foreach($categoryArticles as $key=> $article)
@@ -18,7 +17,7 @@
                                         'title' => $article['title'.'_'.app()->getLocale()],
                                         'slug' => $article['slug'.'_'.app()->getLocale()],
                                         'description' => $article['description'.'_'.app()->getLocale()],
-                                        'category' => $category,
+                                        'category' => $article['categories'][0]['name'.'_'.app()->getLocale()],
                                     ])
                             </div>
                         </div>

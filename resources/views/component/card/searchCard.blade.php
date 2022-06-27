@@ -2,7 +2,7 @@
 
 <div class="post-entry d-sm-flex d-block align-items-start   w3-animate-zoom customSearchCard">
             <div class="post-content">
-                <h3 style="width: 420%;margin-top: -60px; font-weight: 400; font-size: 2.5vh">
+                <h3 style="width: 250%;margin-top: -60px; font-weight: 400; font-size: 2.2vh" class="d-flex flex-wrap">
                     <a href="{{ route('article-details', ['slug' => $slug]) }}" style="color: #2e8d67 !important; ">{{$title}}</a>
                 </h3>
 
@@ -28,8 +28,8 @@
                         </div>
                         <div class="post-tag d-flex" style="margin-left: 10px">
                             <ul class="post-cat">
-                                <a class="customFont" style="font-size: 1rem" href="{{ route('category', ['slug' =>  $category['slug'.'_'.app()->getLocale()]]) }}"><em class="icon ti-bookmark"></em>
-                                    <span>{{$category['name'.'_'.app()->getLocale()]}}</span>
+                                <a class="customFont" style="font-size: 1rem" href="{{ route('category', ['slug' =>  $category]) }}"><em class="icon ti-bookmark"></em>
+                                    <span>{{$category}}</span>
                                 </a>
                             </ul>
                         </div>
@@ -43,10 +43,10 @@
 {{--            </a>--}}
 {{--        </div>--}}
         <a href="{{ route('article-details', ['slug' => $slug]) }}">
-        <div class="content customFont grid-sm-3" style="height: 255px; overflow: hidden;width: 100%; text-align: right; margin-left: 20px; margin-top: 30px; font-size: 1.3rem;font-weight: 500">
-            {!! $description !!}
+        <div class="content customFont grid-sm-3" style="max-height: 320px; overflow: hidden;width: 100%; text-align: right; margin-left: 20px; margin-top: 20px; font-size: 1.8vh;font-weight: 500">
+            {!!Str::limit($description, 600, $end='....') !!}
         </div>
         </a>
-        <a style="margin-left: 20px; font-weight: 300; font-size: 2.6vh" href="{{ route('article-details', ['slug' => $slug]) }}" class="btn-primary btn-arrow">Read More</a>
+        <a style="margin-left: 20px; font-weight: 300; font-size: 2vh" href="{{ route('article-details', ['slug' => $slug]) }}" class="btn-primary btn-arrow">Read More</a>
     </div>
 </div>

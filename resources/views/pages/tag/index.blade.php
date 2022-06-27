@@ -2,9 +2,8 @@
 @section('content')
     <body class="body-wider">
     <div class="section blog section-x tc-grey">
-        <div style="margin: 2rem 4rem 4rem 4rem">
-            @include('component.breadcrumb')
-            <br/>
+        <div class="customCategoryPage">
+        @include('component.breadcrumb')
 {{--            <h5 style="color: #7e7777; margin-left: 15px; margin-bottom: 15px">Showing Posts With Tag : <span style="color: #19b275"> {{ $tag->title}}</span></h5>--}}
             <div class="row gutter-vr-30px">
                 <div class="col-md-9">

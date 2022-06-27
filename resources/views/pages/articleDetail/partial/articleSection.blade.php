@@ -63,7 +63,7 @@
         <br/>
         <hr class="d-sm-block d-lg-none"/>
         {{--                            mobile share--}}
-        <div class="content articleContent" id="articleContent" style="text-align: justify; font-size: 2vh;">
+        <div class="articleContent" id="articleContent" style="text-align: justify; font-size: 2vh;">
             {!! $article['description'.'_'.app()->getLocale()] !!}
             @include('pages.articleDetail.partial.imageFullScreen')
         </div>

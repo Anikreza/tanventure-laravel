@@ -1,17 +1,17 @@
 <div class="sidebar customSidebarWidth w3-animate-right">
     <div class="wgs wgs-sidebar wgs-tags">
-        <h3 class="wgs-heading customFont" >{{$header}}</h3>
+        <h3 class="wgs-heading customFont" style="font-size: 2.8vh">{{$header}}</h3>
         <div class="wgs-content">
             <ul class="tag-list">
                 @foreach($tags as $tag)
                     <li >
-                        <a href="{{ route('tag', ['slug' => \Str::slug($tag->title)]) }}">{{$tag->title}}</a>
+                        <a style="font-size: 1.8vh" href="{{ route('tag', ['slug' => \Str::slug($tag->title)]) }}">{{$tag->title}}</a>
                     </li>
                 @endforeach</ul>
         </div>
     </div><!-- .wgs -->
     <div class="wgs wgs-sidebar wgs-recents">
-        <h3 class="wgs-heading customFont">Suggested Posts</h3>
+        <h3 class="wgs-heading customFont" style="font-size: 2.8vh">Suggested Posts</h3>
         <div class="wgs-content">
             <ul class="post-recent">
                 @foreach($featuredPosts as $article)

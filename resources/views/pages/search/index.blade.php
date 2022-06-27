@@ -2,7 +2,7 @@
 @section('content')
     <body  class="body-wider">
     <div class="section blog section-x tc-grey" >
-        <div style="margin: 2rem 4rem 4rem 4rem">
+        <div class="customCategoryPage">
             @include('component.breadcrumb')
             @if(count($searchedArticles))
             <h5 class="customFont" style=" margin-left: 15px; margin-bottom: 15px">Showing Results For : <span style="color: #19b275"> {{ $searchTerm}}</span></h5>
