@@ -174,6 +174,22 @@ $(document).ready(function () {
             $('.novelAnimation').removeClass('w3-animate-fading');
             $('.novelAnimation').addClass('hidden');
         }
+
+        if ($(this).scrollTop() > 650) {
+            $('.exploreSectionContainer').addClass('w3-animate-zoom');
+            $('.exploreSectionContainer').removeClass('hidden');
+        } else {
+            $('.exploreSectionContainer').removeClass('w3-animate-zoom');
+            $('.exploreSectionContainer').addClass('hidden');
+        }
+
+        if ($(this).scrollTop() > 1250) {
+            $('.tanSection').addClass('w3-animate-bottom');
+            $('.tanSection').removeClass('hidden');
+        } else {
+            $('.tanSection').removeClass('w3-animate-bottom');
+            $('.tanSection').addClass('hidden');
+        }
     });
 });
 

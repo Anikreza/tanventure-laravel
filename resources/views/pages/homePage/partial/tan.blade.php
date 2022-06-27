@@ -1,7 +1,7 @@
 
 <div class='home-im' style="transform: rotate(-1deg)"></div>
 <div class='video'>
-    <div>
+    <div  class="tanSection">
         <h2>{{trans('general.tan')}}...</h2>
         <hr/>
         <p>

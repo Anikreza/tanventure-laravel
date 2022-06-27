@@ -45,7 +45,7 @@
                         style="{{ $key%2===0? 'display: flex; justify-content: space-evenly;' : 'display: flex; justify-content: space-evenly; flex-direction: row-reverse'  }}"
                     >
                         <div class="col col-md-6 col-12 novelAnimation hidden">
-                            <p style="height: 40vh; overflow: hidden; color: #838383">
+                            <p style="height: 40vh; overflow: hidden; color: #838383; font-size: 2vh">
                                 {{$novel['excerpt'.'_'.app()->getLocale()]}}
                             </p>
                             <a href="{{ route('article-details', ['slug' => $novel['slug'.'_'.app()->getLocale()]]) }}"

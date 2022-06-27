@@ -43,22 +43,25 @@
                             ])
                     @endforeach
                 </div>
-                @include('pages.homePage.partial.exploreSection')
+                <div class="exploreSectionContainer">
+                    @include('pages.homePage.partial.exploreSection')
+                </div>
                 <div class="section section-l section-news customFeaturedSection">
                     @if(count($featuredPosts))
                         @include('pages.homePage.partial.slide',['featuredArticles'=>$featuredPosts])
                     @endif
                 </div>
-
+                <div>
                     @include('pages.homePage.partial.tan')
+                </div>
                 @include('pages.author.partial.contactAuthor')
                 <br/><br/><br/><br/>
             </div>
-{{--            <div class="section section-l section-news customMobileFeaturedSection d-lg-none">--}}
-{{--                @if(count($featuredPosts))--}}
-{{--                    @include('pages.blog.partial.featured',['featuredArticles'=>$featuredPosts, 'color'=>'whitesmoke'])--}}
-{{--                @endif--}}
-{{--            </div>--}}
+            {{--            <div class="section section-l section-news customMobileFeaturedSection d-lg-none">--}}
+            {{--                @if(count($featuredPosts))--}}
+            {{--                    @include('pages.blog.partial.featured',['featuredArticles'=>$featuredPosts, 'color'=>'whitesmoke'])--}}
+            {{--                @endif--}}
+            {{--            </div>--}}
         </div>
 
 @endsection
