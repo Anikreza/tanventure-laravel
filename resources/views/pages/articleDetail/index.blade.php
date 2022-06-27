@@ -2,7 +2,7 @@
 @section('content')
     {{--    <div class="section blog section-blg" style="background: linear-gradient(-40deg,#ffffff,#9f9f9f,#b6b3b3,#e8e7e7);" onclick="scrollDown()">--}}
     <div class="section blog section-blg">
-        <div class="floatingTitle w3-animate-top" onclick="scrollDown()">
+        <div class="floatingTitle w3-animate-zoomOut" onclick="scrollDown()">
             <h2>{{$article['title'.'_'.app()->getLocale()]}}</h2>
             <br/>
             <p>{{$article['excerpt'.'_'.app()->getLocale()]}}</p>
@@ -20,7 +20,8 @@
                 @include('pages.articleDetail.partial.tags')
                 <!-- post-bottom -->
                     <div class="d-lg-flex d-sm-block justify-content-evenly">
-                        <div id="comments" class="wgs col-sm-12 col-lg-8 comments justify-center comments-list" style="margin-right: 50px">
+                        <div id="comments" class="wgs col-sm-12 col-lg-8 comments justify-center comments-list"
+                             style="margin-right: 50px">
                             {{--                        @include('component.comments.index',['comments'=>$article->comments,'article'=>$article->id])--}}
                             @include('pages.articleDetail.partial.disquss')
                         </div>

@@ -27,7 +27,6 @@ var NioApp = (function (jQ, win, doc) {
     return NioApp;
 }(jQuery, window, document));
 
-
 const toggle_icon = document.getElementById('theme-toggle');
 const body = document.getElementsByTagName('body')[0];
 const sun_class = 'icon-sun';
@@ -50,6 +49,7 @@ toggle_icon.addEventListener('click', function () {
         $('.homeIntroLayer').css({"border-left": "1.5vw solid #56987e", "border-right": "1.5vw solid #6bbd9c"});
         $('.homeIntro').css({"border-left": "1.5vw solid #6bbd9c", "border-right": "1.5vw solid #56987e"});
         $('.header-navbar').css('background-color', 'white');
+        $('.modal-content').css('background-color', 'white');
 
         body.classList.remove(dark_theme_class);
         setCookie('theme', 'light');
@@ -63,6 +63,7 @@ toggle_icon.addEventListener('click', function () {
         $('.homeIntroLayer').css({"border-left": "1.5vw solid #042518", "border-right": "1.5vw solid #042518"});
         $('.homeIntro').css({"border-left": "1.5vw solid #042518", "border-right": "1.5vw solid #042518"});
         $('.header-navbar').css('background-color', bg);
+        $('.modal-content').css('background-color', bg);
 
         body.classList.add(dark_theme_class);
         setCookie('theme', 'dark');
@@ -127,6 +128,7 @@ $(document).ready(function () {
         $('.homeIntroLayer').css({"border-left": "1.5vw solid #042518", "border-right": "1.5vw solid #042518"});
         $('.homeIntro').css({"border-left": "1.5vw solid #042518", "border-right": "1.5vw solid #042518"});
         $('.header-navbar').css('background-color', bg);
+        $('.modal-content').css('background-color', bg);
 
     } else {
         $('.header-main').css("background-color", "white");
@@ -136,6 +138,7 @@ $(document).ready(function () {
         $('.homeIntroLayer').css({"border-left": "1.5vw solid #6bbd9c", "border-right": "1.5vw solid #6bbd9c"});
         $('.homeIntro').css({"border-left": "1.5vw solid #6bbd9c", "border-right": "1.5vw solid #56987e"});
         $('.header-navbar').css('background-color', 'white');
+        $('.modal-content').css('background-color', 'white');
     }
 });
 

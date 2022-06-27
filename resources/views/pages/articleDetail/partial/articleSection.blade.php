@@ -63,8 +63,22 @@
         <br/>
         <hr class="d-sm-block d-lg-none"/>
         {{--                            mobile share--}}
-        <div class="content articleContent" style="text-align: justify; font-size: 2vh;">
+        <div class="content articleContent" id="articleContent" style="text-align: justify; font-size: 2vh;">
             {!! $article['description'.'_'.app()->getLocale()] !!}
+            @include('pages.articleDetail.partial.imageFullScreen')
         </div>
     </div>
 </div>
+
+<script>
+    const article_image = document.getElementById("articleContent").querySelectorAll("img");
+    // console.log('article_image', article_image[1].src);
+
+    for (let i = 0; i < article_image.length; i++) {
+        article_image[i].addEventListener('click', function () {
+            document.getElementById("articleImage").src = article_image[i].src
+            document.getElementById('modalId').click()
+            console.log(`image ${i} clicked`);
+        });
+    }
+</script>

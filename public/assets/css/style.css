@@ -5302,3 +5302,26 @@ img.hover-shadow {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.modal {
+    padding: 0 !important;
+    z-index: 99999999999;
+// override inline padding-right added from js
+
+}
+.modal .modal-dialog {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    margin: 0 !important;
+}
+.modal .modal-content {
+    height: 100%;
+    border: 0 !important;
+    border-radius: 0 !important;
+}
+.modal .modal-body {
+    overflow: hidden;
+}
+.articleContent img {
+    cursor: zoom-in;
+}

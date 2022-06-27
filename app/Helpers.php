@@ -24,14 +24,14 @@ function estimate_reading_time($content): string
     return $minutes;
 }
 
-function saveTextEditorImage($detail)
+function saveTextEditorImage($detail, $title)
 {
     $dom = new \domdocument();
     @$dom->loadHtml(mb_convert_encoding($detail, 'HTML-ENTITIES', 'UTF-8'));
     $images = $dom->getelementsbytagname('img');
 
-    if (!File::exists(public_path('/uploads/'))) {
-        File::makeDirectory(public_path() . '/' . '/uploads/', 0777, true, true);
+    if (!File::exists(public_path('/article/contents/'.$title .'/'))) {
+        File::makeDirectory(public_path() . '/article/' . '/contents/'.$title .'/', 0777, true, true);
     }
     foreach ($images as $k => $img) {
         $data = $img->getattribute('src');
@@ -42,11 +42,11 @@ function saveTextEditorImage($detail)
         list($type, $data) = explode(';', $data);
         list(, $data) = explode(',', $data);
         $data = base64_decode($data);
-        $image_name = time() . $k . '.png';
-        $path = public_path("/") . '/uploads/' . $image_name;
+        $image_name = time().'_'.$k. '.png';
+        $path = public_path("/") . '/article/contents/'.$title .'/' . $image_name;
         file_put_contents($path, $data);
         $img->removeattribute('src');
-        $img->setattribute('src', asset('/uploads/' . $image_name));
+        $img->setattribute('src', asset('/article/contents/' .$title .'/'. $image_name));
     }
 
     return $detail = $dom->savehtml();

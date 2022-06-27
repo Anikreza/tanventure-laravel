@@ -198,7 +198,7 @@ class ArticleRepository implements ArticleInterface
             'slug_en' => $this->slugify($request->input('title_bn')),
             'excerpt_bn' => $request->input('excerpt_bn'),
             'featured' => filter_var($request->input('featured'), FILTER_VALIDATE_BOOLEAN),
-            'description_bn' => $request->input('description_bn'),
+            'description_bn' => saveTextEditorImage($request->input('description_bn'), $this->slugify($request->input('title_bn'))),
             'published' => filter_var($request->input('published'), FILTER_VALIDATE_BOOLEAN),
             'image' => $image_url,
         ];
