@@ -1,6 +1,6 @@
 <!-- Header -->
-<header id="header" class="has-fixed is-sticky is-shrink is-boxed header-s1">
-        <div class="header-main">
+<header id="header" class="has-fixed is-boxed is-sticky header-s1" >
+        <div class="header-main"  id="navbar" style="transition: top 0.3s;">
             <div class="header-wrap">
                 <!-- Logo  -->
                 <div class="header-logo logo">
@@ -109,4 +109,16 @@
             </div>
         </div>
 </header>
+<script>
+    let prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+        const currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            document.getElementById("navbar").style.top = "0px";
+        } else {
+            document.getElementById("navbar").style.top = "-110px";
+        }
+        prevScrollpos = currentScrollPos;
+    }
+</script>
 <!-- end header -->
