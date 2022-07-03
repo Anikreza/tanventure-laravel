@@ -35,7 +35,10 @@ const dark_theme_class = 'dark-theme';
 
 toggle_icon.addEventListener('click', function () {
 
-    sessionStorage.setItem('themeFlag', 'true');
+    const themeFlag = sessionStorage.themeFlag
+    if(!themeFlag){
+        sessionStorage.setItem('themeFlag', 'true');
+    }
     const bg='#16191e'
 
     if (body.classList.contains(dark_theme_class)) {
@@ -100,8 +103,9 @@ $(document).ready(function () {
     const themeFlag = sessionStorage.themeFlag
     console.log('themeFlag', themeFlag)
 
-    if(themeFlag!=='true'){
-        if (body.classList.contains(dark_theme_class) && isDayTime) {
+    if(!themeFlag){
+        // if (body.classList.contains(dark_theme_class) && isDayTime) {
+        if ( isDayTime) {
             toggle_icon.classList.add(moon_class);
             toggle_icon.classList.remove(sun_class);
             body.classList.remove(dark_theme_class);
